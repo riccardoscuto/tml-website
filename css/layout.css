@@ -1,0 +1,73 @@
+/* ── Section container ── */
+.section {
+  padding: var(--space-20) var(--space-6);
+}
+.section__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.section__title {
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+.section__subtitle {
+  text-align: center;
+  max-width: var(--max-width-text);
+  margin: 0 auto var(--space-12);
+  font-size: var(--text-lg);
+}
+
+/* ── Alternating section backgrounds ── */
+.blend-section,
+.masks-section,
+.io-section,
+.stats-section,
+.compat-section {
+  background: var(--color-bg-alt);
+}
+
+/* ── Media frames ── */
+.media-frame {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+.media-frame--16x9 { aspect-ratio: 16 / 9; }
+.media-frame--4x3  { aspect-ratio: 4 / 3; }
+.media-frame--21x9 { aspect-ratio: 21 / 9; }
+.media-frame--1x1  { aspect-ratio: 1 / 1; }
+
+.media-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Placeholder ── */
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  padding: var(--space-4);
+  text-align: center;
+}
+.placeholder svg {
+  opacity: 0.4;
+}
+
+/* ── Responsive helpers ── */
+@media (max-width: 767px) {
+  h1 { font-size: var(--text-3xl); }
+  h2 { font-size: var(--text-2xl); }
+  .section { padding: var(--space-12) var(--space-4); }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  h1 { font-size: var(--text-4xl); }
+}

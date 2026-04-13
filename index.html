@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Texture Layer Manager — Photoshop-Style Layers for Blender</title>
+  <meta name="description" content="Non-destructive Photoshop-style layer system for Blender texture painting. Blend modes, PBR channels, smart masks, and one-click export.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Texture Layer Manager for Blender">
+  <meta property="og:description" content="Non-destructive layer system with blend modes, PBR channels, smart masks, and one-click export.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Texture Layer Manager for Blender">
+  <meta name="twitter:description" content="Photoshop-style layers, right inside Blender.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       NAV
+       ════════════════════════════════════════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__brand">
+        <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
+        </svg>
+        <span class="nav__brand-text">Texture Layer Manager</span>
+      </a>
+      <div class="nav__links" id="nav-links">
+        <a href="#features" class="nav__link">Features</a>
+        <a href="#workflow" class="nav__link">Workflow</a>
+        <a href="#export" class="nav__link">Export</a>
+        <a href="#pricing" class="nav__link">Pricing</a>
+      </div>
+      <a href="#pricing" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $15</a>
+      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       HERO
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero__inner">
+      <div class="hero__text">
+        <h1 class="hero__title">Photoshop-Style Layers<br>for Blender Textures</h1>
+        <p class="hero__subtitle">Non-destructive layer system with blend modes, PBR channels, smart masks, and one-click export. Paint textures the way you already know.</p>
+        <div class="hero__ctas">
+          <a href="#pricing" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>
+          <a href="#features" class="btn btn--outline btn--lg">See Features</a>
+        </div>
+        <div class="hero__stats">
+          <div class="hero__stat"><strong>5</strong> Layer Types</div>
+          <div class="hero__stat"><strong>20</strong> Blend Modes</div>
+          <div class="hero__stat"><strong>6</strong> PBR Channels</div>
+          <div class="hero__stat"><strong>4</strong> Smart Masks</div>
+        </div>
+      </div>
+      <div class="hero__media">
+        <div class="media-frame media-frame--16x9 hero__image">
+          <div class="placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            <span>Blender viewport + TLM panel screenshot</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       PAIN POINTS
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section pain" id="features">
+    <div class="section__inner">
+      <div class="pain__grid reveal">
+        <div class="pain__card" style="--reveal-delay: 0ms">
+          <div class="pain__icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+          </div>
+          <p class="pain__text">Tired of <strong>spaghetti node trees</strong> just to blend two textures?</p>
+        </div>
+        <div class="pain__card" style="--reveal-delay: 120ms">
+          <div class="pain__icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z"/><path d="M14 14h6v6h-6" stroke-dasharray="3 3"/></svg>
+          </div>
+          <p class="pain__text">Switching between <strong>Blender and Substance</strong> for every texture change?</p>
+        </div>
+        <div class="pain__card" style="--reveal-delay: 240ms">
+          <div class="pain__icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <p class="pain__text">Spending more time on <strong>nodes</strong> than on actual <strong>painting</strong>?</p>
+        </div>
+      </div>
+      <p class="pain__bridge reveal">TLM brings the layer workflow you already know &mdash; right inside Blender.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       LAYER TYPES
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section layers-section" id="layer-types">
+    <div class="section__inner">
+      <h2 class="section__title reveal">Five Layer Types. Infinite Possibilities.</h2>
+      <div class="layers reveal">
+        <div class="layers__tabs">
+          <button class="layers__tab is-active" data-tab="paint">Paint</button>
+          <button class="layers__tab" data-tab="fill">Fill</button>
+          <button class="layers__tab" data-tab="procedural">Procedural</button>
+          <button class="layers__tab" data-tab="adjustment">Adjustment</button>
+          <button class="layers__tab" data-tab="group">Group</button>
+        </div>
+        <div class="layers__content">
+          <div class="layers__panel is-active" id="tab-paint">
+            <div class="layers__info">
+              <span class="badge">Paint Layer</span>
+              <h3>Brush directly onto your model</h3>
+              <p>The familiar paintable layer. Each layer gets its own image texture at your chosen resolution (512 to 4096). Full alpha support, per-layer blend modes, and live viewport preview.</p>
+            </div>
+            <div class="media-frame media-frame--4x3">
+              <div class="placeholder">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m15.232 5.232 3.536 3.536m-2.036-5.036a2.5 2.5 0 0 1 3.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+                <span>Paint layer in action</span>
+              </div>
+            </div>
+          </div>
+          <div class="layers__panel" id="tab-fill">
+            <div class="layers__info">
+              <span class="badge">Fill Layer</span>
+              <h3>Parametric solid color fills</h3>
+              <p>Set a base color, roughness, metallic value &mdash; change them anytime. No painting required, fully parametric. Perfect for base materials and color foundations.</p>
+            </div>
+            <div class="media-frame media-frame--4x3">
+              <div class="placeholder">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                <span>Fill layer properties</span>
+              </div>
+            </div>
+          </div>
+          <div class="layers__panel" id="tab-procedural">
+            <div class="layers__info">
+              <span class="badge">Procedural Layer</span>
+              <h3>8 procedural patterns, no UV needed</h3>
+              <p>Noise, Voronoi, Wave, Marble, Clouds, Musgrave, Gradient, and Checker. Fully parametric with scale, detail, distortion, dual colors, and 3D offset controls.</p>
+            </div>
+            <div class="media-frame media-frame--4x3">
+              <div class="placeholder">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                <span>Procedural noise on sphere</span>
+              </div>
+            </div>
+          </div>
+          <div class="layers__panel" id="tab-adjustment">
+            <div class="layers__info">
+              <span class="badge">Adjustment Layer</span>
+              <h3>Non-destructive color grading</h3>
+              <p>Hue/Saturation, Levels, Curves, Color Balance, Brightness/Contrast. Adjust everything below without touching a single pixel. Stack multiple adjustments freely.</p>
+            </div>
+            <div class="media-frame media-frame--4x3">
+              <div class="placeholder">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v1m0 16v1m-8-9H3m18 0h-1M5.6 5.6l.7.7m12.4 12.4.7-.7M5.6 18.4l.7-.7M18 5.6l.7.7"/><circle cx="12" cy="12" r="4"/></svg>
+                <span>Adjustment layer controls</span>
+              </div>
+            </div>
+          </div>
+          <div class="layers__panel" id="tab-group">
+            <div class="layers__info">
+              <span class="badge">Group Layer</span>
+              <h3>Organize into folders</h3>
+              <p>Group related layers together. Collapse, reorder, and control group opacity &mdash; just like Photoshop. Nest groups inside groups for complex material stacks.</p>
+            </div>
+            <div class="media-frame media-frame--4x3">
+              <div class="placeholder">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                <span>Group with nested layers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       BLEND MODES
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section blend-section" id="workflow">
+    <div class="section__inner">
+      <h2 class="section__title reveal">20 Blend Modes. Full Compositing Control.</h2>
+      <p class="section__subtitle reveal">Per-layer opacity with keyframe support. Animate texture transitions over time.</p>
+      <div class="blend reveal">
+        <div class="blend__group">
+          <h4 class="blend__label">Basic</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Normal</span>
+            <span class="blend__pill">Multiply</span>
+            <span class="blend__pill">Screen</span>
+            <span class="blend__pill">Overlay</span>
+          </div>
+        </div>
+        <div class="blend__group">
+          <h4 class="blend__label">Light</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Add</span>
+            <span class="blend__pill">Color Dodge</span>
+            <span class="blend__pill">Soft Light</span>
+            <span class="blend__pill">Hard Light</span>
+            <span class="blend__pill">Linear Light</span>
+          </div>
+        </div>
+        <div class="blend__group">
+          <h4 class="blend__label">Dark</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Subtract</span>
+            <span class="blend__pill">Darken</span>
+            <span class="blend__pill">Color Burn</span>
+          </div>
+        </div>
+        <div class="blend__group">
+          <h4 class="blend__label">Difference</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Difference</span>
+            <span class="blend__pill">Exclusion</span>
+            <span class="blend__pill">Divide</span>
+            <span class="blend__pill">Lighten</span>
+          </div>
+        </div>
+        <div class="blend__group">
+          <h4 class="blend__label">Color</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Hue</span>
+            <span class="blend__pill">Saturation</span>
+            <span class="blend__pill">Color</span>
+            <span class="blend__pill">Luminosity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       PBR CHANNELS
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section pbr-section">
+    <div class="section__inner">
+      <h2 class="section__title reveal">Full PBR Per Layer</h2>
+      <p class="section__subtitle reveal">Every layer can independently drive Roughness, Metallic, Normal, Emission, and Bump. Paint once, affect all channels.</p>
+      <div class="pbr__grid reveal">
+        <div class="pbr__card" style="--accent: #8BC34A">
+          <h4>Base Color</h4>
+          <p>Paint or fill the diffuse color for each layer independently.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #607D8B">
+          <h4>Roughness</h4>
+          <p>Per-layer roughness with slider or imported texture map.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #9E9E9E">
+          <h4>Metallic</h4>
+          <p>Toggle metallic per layer, smooth 0-to-1 control.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #7E57C2">
+          <h4>Normal</h4>
+          <p>Import or assign normal maps per layer with strength control.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #FF9800">
+          <h4>Emission</h4>
+          <p>Add glow with color picker and strength. Perfect for energy effects.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #5C6BC0">
+          <h4>Bump</h4>
+          <p>Generate displacement from layer texture signal with adjustable strength.</p>
+        </div>
+      </div>
+      <div class="media-frame media-frame--16x9 reveal" style="max-width: 800px; margin: var(--space-12) auto 0;">
+        <div class="placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>PBR channels panel expanded</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       MASKS & SMART MASKS
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section masks-section">
+    <div class="section__inner">
+      <h2 class="section__title reveal">Masks That Think For You</h2>
+      <div class="masks__grid reveal">
+        <div class="masks__card">
+          <div class="masks__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 3v18M3 12h18"/></svg>
+          </div>
+          <h4>Layer Masks</h4>
+          <p>Paint where each layer is visible. White reveals, black conceals &mdash; the Photoshop way.</p>
+        </div>
+        <div class="masks__card">
+          <div class="masks__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 4h2a2 2 0 0 1 2 2v2M8 4H6a2 2 0 0 0-2 2v2m0 8v2a2 2 0 0 0 2 2h2m8 0h2a2 2 0 0 0 2-2v-2"/></svg>
+          </div>
+          <h4>Clipping Masks</h4>
+          <p>Clip a layer to the alpha of the layer below. Build complex compositions effortlessly.</p>
+        </div>
+        <div class="masks__card masks__card--wide">
+          <div class="masks__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="m2 12 20 0" stroke-dasharray="2 2"/><path d="M12 2a7 7 0 0 1 0 20" stroke-dasharray="2 2"/></svg>
+          </div>
+          <h4>Smart Masks</h4>
+          <p>Geometry-driven masks that auto-generate from mesh data:</p>
+          <div class="masks__types">
+            <span class="badge badge--sm">Ambient Occlusion</span>
+            <span class="badge badge--sm">Curvature</span>
+            <span class="badge badge--sm">Facing Angle</span>
+            <span class="badge badge--sm">Height</span>
+          </div>
+        </div>
+      </div>
+      <p class="masks__extra reveal">+ Fresnel mask &amp; Triplanar projection &mdash; no UV required.</p>
+      <div class="media-frame media-frame--21x9 reveal" style="max-width: 1000px; margin: var(--space-8) auto 0;">
+        <div class="placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Smart mask showcase: AO + Curvature on 3D model</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       PROCEDURAL TEXTURES
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section proc-section">
+    <div class="section__inner">
+      <h2 class="section__title reveal">8 Procedural Textures. Zero UV Required.</h2>
+      <p class="section__subtitle reveal">Full parametric control: scale, detail, distortion, dual colors, 3D offset. Change everything live.</p>
+      <div class="proc__grid reveal">
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--noise"></div>
+          <h4>Noise</h4>
+          <p>Perlin/FBM organic noise</p>
+        </div>
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--voronoi"></div>
+          <h4>Voronoi</h4>
+          <p>Cell patterns &amp; edges</p>
+        </div>
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--wave"></div>
+          <h4>Wave</h4>
+          <p>Bands &amp; ring patterns</p>
+        </div>
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--gradient"></div>
+          <h4>Gradient</h4>
+          <p>Linear to spherical fades</p>
+        </div>
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--musgrave"></div>
+          <h4>Musgrave</h4>
+          <p>Rich fractal terrain noise</p>
+        </div>
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--checker"></div>
+          <h4>Checker</h4>
+          <p>Clean checkerboard grid</p>
+        </div>
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--marble"></div>
+          <h4>Marble</h4>
+          <p>Veined stone patterns</p>
+        </div>
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--clouds"></div>
+          <h4>Clouds</h4>
+          <p>Billowy organic forms</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       IMPORT / EXPORT
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section io-section" id="export">
+    <div class="section__inner">
+      <h2 class="section__title reveal">From Concept to Game-Ready in One Click</h2>
+      <div class="io__grid reveal">
+        <div class="io__col">
+          <div class="io__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+          </div>
+          <h3>Import</h3>
+          <ul class="io__list">
+            <li>Import single textures as layers</li>
+            <li>Import full PBR sets with auto-detection</li>
+            <li>Paste from clipboard</li>
+            <li>Load .tlm preset files</li>
+          </ul>
+        </div>
+        <div class="io__divider"></div>
+        <div class="io__col">
+          <div class="io__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15V3m0 0-4 4m4-4 4 4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+          </div>
+          <h3>Export &amp; Bake</h3>
+          <div class="io__engines">
+            <span class="badge">Unreal</span>
+            <span class="badge">Unity HDRP</span>
+            <span class="badge">glTF</span>
+            <span class="badge">Custom</span>
+          </div>
+          <ul class="io__list">
+            <li>One-click PBR bake for any engine</li>
+            <li>Custom channel packing (ORM, Mask)</li>
+            <li>PNG, JPEG, TIFF, EXR output</li>
+            <li>512 to 4096 resolution</li>
+          </ul>
+        </div>
+      </div>
+      <div class="media-frame media-frame--16x9 reveal" style="max-width: 800px; margin: var(--space-12) auto 0;">
+        <div class="placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Bake PBR dialog screenshot</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       PRESETS GALLERY
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section presets-section">
+    <div class="section__inner">
+      <h2 class="section__title reveal">Start with a Preset, Make It Yours</h2>
+      <p class="section__subtitle reveal">5 built-in material presets. Save your own and share as .tlm files.</p>
+      <div class="presets__strip reveal">
+        <div class="presets__card">
+          <div class="presets__preview" style="background: linear-gradient(135deg, #2a2a30, #4a4a55, #3a3a40)"></div>
+          <h4>Metal Base</h4>
+          <p>Dark steel with surface variation</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview" style="background: linear-gradient(135deg, #2a1f18, #4a3a2e, #1a1410)"></div>
+          <h4>Rock Base</h4>
+          <p>Volcanic rock with fine detail</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview" style="background: linear-gradient(135deg, #c4946a, #a87856, #d4a478)"></div>
+          <h4>Skin Base</h4>
+          <p>Mid-tone skin with pore detail</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview" style="background: linear-gradient(135deg, #5a3015, #8b4513, #3a3a40)"></div>
+          <h4>Rusted Metal</h4>
+          <p>Oxidized steel with corrosion</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview" style="background: linear-gradient(135deg, #4a3520, #6b4830, #3a2515)"></div>
+          <h4>Wood Grain</h4>
+          <p>Wood base with fiber detail</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       STATS
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section stats-section">
+    <div class="section__inner">
+      <div class="stats__grid reveal">
+        <div class="stats__item">
+          <span class="stats__number" data-target="5">0</span>
+          <span class="stats__label">Layer Types</span>
+        </div>
+        <div class="stats__item">
+          <span class="stats__number" data-target="20">0</span>
+          <span class="stats__label">Blend Modes</span>
+        </div>
+        <div class="stats__item">
+          <span class="stats__number" data-target="6">0</span>
+          <span class="stats__label">PBR Channels</span>
+        </div>
+        <div class="stats__item">
+          <span class="stats__number" data-target="8">0</span>
+          <span class="stats__label">Procedural Types</span>
+        </div>
+        <div class="stats__item">
+          <span class="stats__number" data-target="5">0</span>
+          <span class="stats__label">Adjustment Types</span>
+        </div>
+        <div class="stats__item">
+          <span class="stats__number" data-target="4">0</span>
+          <span class="stats__label">Smart Masks</span>
+        </div>
+        <div class="stats__item">
+          <span class="stats__number" data-target="5">0</span>
+          <span class="stats__label">Built-in Presets</span>
+        </div>
+        <div class="stats__item">
+          <span class="stats__number" data-target="4">0</span>
+          <span class="stats__label">Export Presets</span>
+        </div>
+      </div>
+      <p class="stats__extra reveal">+ triplanar projection, clipboard paste, JSON import/export, keyframe opacity, color tags, solo mode, layer groups, and more.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       PRICING
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section pricing-section" id="pricing">
+    <div class="section__inner">
+      <h2 class="section__title reveal">Professional Texture Workflow. Indie Price.</h2>
+      <div class="pricing__card reveal">
+        <div class="pricing__header">
+          <span class="pricing__name">Texture Layer Manager</span>
+          <div class="pricing__price">
+            <span class="pricing__currency">$</span>
+            <span class="pricing__amount">15</span>
+          </div>
+        </div>
+        <ul class="pricing__features">
+          <li>5 layer types with 20 blend modes</li>
+          <li>6 PBR channels per layer</li>
+          <li>8 procedural textures</li>
+          <li>5 adjustment layer types</li>
+          <li>4 smart masks + layer &amp; clipping masks</li>
+          <li>PBR bake for Unreal, Unity, glTF</li>
+          <li>Import PBR sets with auto-detection</li>
+          <li>Custom channel packing</li>
+          <li>5 built-in material presets</li>
+          <li>Blender 5.0+ compatible</li>
+          <li>Lifetime updates</li>
+        </ul>
+        <a href="#" class="btn btn--primary btn--lg pricing__cta">Get TLM on Blender Market</a>
+        <p class="pricing__note">One-time purchase. No subscription. No account required.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       COMPATIBILITY
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section compat-section">
+    <div class="section__inner">
+      <div class="compat__row reveal">
+        <div class="compat__item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>Blender 5.0+</span>
+        </div>
+        <div class="compat__item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>Cycles &amp; EEVEE</span>
+        </div>
+        <div class="compat__item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>Windows, macOS, Linux</span>
+        </div>
+        <div class="compat__item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>No external dependencies</span>
+        </div>
+        <div class="compat__item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>Saves with .blend file</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
+        </svg>
+        <span>Texture Layer Manager</span>
+      </div>
+      <div class="footer__links">
+        <a href="#">Blender Market</a>
+        <a href="#">Documentation</a>
+        <a href="#">Contact</a>
+      </div>
+      <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
