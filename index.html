@@ -224,8 +224,8 @@
        ════════════════════════════════════════════════════════════════════ -->
   <section class="section blend-section" id="workflow">
     <div class="section__inner">
-      <h2 class="section__title reveal">19 Blend Modes. Per-Channel Branching.</h2>
-      <p class="section__subtitle reveal">Per-layer opacity with keyframe support &mdash; plus optional per-channel overrides: have one layer Multiply on Base Color while staying Mix on Roughness.</p>
+      <h2 class="section__title reveal">19 Blend Modes &middot; 41 Alpha Math Ops.</h2>
+      <p class="section__subtitle reveal">Per-layer opacity with keyframe support &mdash; plus optional per-channel overrides: have one layer Multiply on Base Color while staying Mix on Roughness. Route the layer to Alpha and the modes flip to 41 math operations for mask compositing.</p>
       <div class="blend reveal">
         <div class="blend__group">
           <h4 class="blend__label">Basic</h4>
@@ -270,6 +270,82 @@
             <span class="blend__pill">Color</span>
             <span class="blend__pill">Luminosity</span>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       OUTPUT ROUTING & ALPHA MATH
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section routing-section">
+    <div class="section__inner">
+      <h2 class="section__title reveal">Route Any Layer to Any Channel.</h2>
+      <p class="section__subtitle reveal">Every layer carries an <strong>Output Channel</strong> setting that decides where it ends up &mdash; paint a noise straight into Roughness, or fill a cutout straight into Alpha. No node tree to wire.</p>
+
+      <div class="routing__channels reveal">
+        <div class="routing__channel" style="--accent: #8BC34A">
+          <span class="routing__dot"></span>
+          <h4>Base Color</h4>
+          <p>Default. The layer drives the diffuse color of the material.</p>
+        </div>
+        <div class="routing__channel" style="--accent: #607D8B">
+          <span class="routing__dot"></span>
+          <h4>Roughness</h4>
+          <p>The layer's value becomes a roughness map &mdash; paint dirt, fingerprints or scratches as smooth/rough shifts.</p>
+        </div>
+        <div class="routing__channel" style="--accent: #9E9E9E">
+          <span class="routing__dot"></span>
+          <h4>Metallic</h4>
+          <p>The layer's value becomes a metallic mask &mdash; expose bare metal exactly where you paint.</p>
+        </div>
+        <div class="routing__channel" style="--accent: #EF5350">
+          <span class="routing__dot"></span>
+          <h4>Alpha</h4>
+          <p>The layer becomes a cutout / transparency mask &mdash; with a special twist below.</p>
+        </div>
+      </div>
+
+      <div class="routing__alpha reveal">
+        <div class="routing__alpha-head">
+          <span class="badge">Alpha Math</span>
+          <h3>Blend modes become 41 math operations when output is Alpha.</h3>
+          <p>Composite alpha masks the way Substance Designer wires them: multiply two masks together, take the smooth minimum, raise to a power, threshold with greater-than. Build complex cutouts without touching the node tree.</p>
+        </div>
+        <div class="routing__alpha-ops">
+          <span class="blend__pill">Add</span>
+          <span class="blend__pill">Subtract</span>
+          <span class="blend__pill">Multiply</span>
+          <span class="blend__pill">Divide</span>
+          <span class="blend__pill">Multiply Add</span>
+          <span class="blend__pill">Power</span>
+          <span class="blend__pill">Minimum</span>
+          <span class="blend__pill">Maximum</span>
+          <span class="blend__pill">Smooth Min</span>
+          <span class="blend__pill">Smooth Max</span>
+          <span class="blend__pill">Less Than</span>
+          <span class="blend__pill">Greater Than</span>
+          <span class="blend__pill">Compare</span>
+          <span class="blend__pill">Modulo</span>
+          <span class="blend__pill">Floored Mod</span>
+          <span class="blend__pill">Wrap</span>
+          <span class="blend__pill">Snap</span>
+          <span class="blend__pill">PingPong</span>
+          <span class="blend__pill">Round</span>
+          <span class="blend__pill">Floor</span>
+          <span class="blend__pill">Ceil</span>
+          <span class="blend__pill">Truncate</span>
+          <span class="blend__pill">Fraction</span>
+          <span class="blend__pill">Absolute</span>
+          <span class="blend__pill">Sign</span>
+          <span class="blend__pill">Logarithm</span>
+          <span class="blend__pill">Sqrt</span>
+          <span class="blend__pill">Inverse Sqrt</span>
+          <span class="blend__pill">Exponent</span>
+          <span class="blend__pill">Sine</span>
+          <span class="blend__pill">Cosine</span>
+          <span class="blend__pill">Tangent</span>
+          <span class="blend__pill blend__pill--more">+ 9 more trig &amp; conversions</span>
         </div>
       </div>
     </div>
@@ -691,6 +767,7 @@
         </div>
         <ul class="pricing__features">
           <li>6 layer types with 19 blend modes + per-channel branching</li>
+          <li>Per-layer output routing (Base Color / Roughness / Metallic / Alpha) + 41 alpha math ops</li>
           <li>8 PBR channels per layer with cumulative routing</li>
           <li>16 procedural textures (incl. Gabor, Dots, Ridged, Cracks) + coordinate transforms</li>
           <li>4 adjustment types routed to any channel</li>

@@ -762,6 +762,91 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════
+   OUTPUT ROUTING & ALPHA MATH
+   ══════════════════════════════════════════════════════════════════════ */
+.routing__channels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  max-width: 1100px;
+  margin: 0 auto var(--space-12);
+}
+.routing__channel {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--accent, var(--color-accent));
+  border-radius: var(--radius);
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  transition: border-color var(--dur-normal), transform var(--dur-normal) var(--ease-out);
+}
+.routing__channel:hover {
+  border-color: var(--color-border-hover);
+  border-top-color: var(--accent, var(--color-accent));
+  transform: translateY(-2px);
+}
+.routing__dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent, var(--color-accent));
+  margin-bottom: var(--space-3);
+}
+.routing__channel h4 {
+  margin-bottom: var(--space-2);
+  font-size: var(--text-base);
+}
+.routing__channel p {
+  font-size: var(--text-sm);
+  color: var(--color-text-sub);
+  line-height: 1.5;
+}
+
+.routing__alpha {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: var(--space-8);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.routing__alpha-head .badge {
+  margin-bottom: var(--space-4);
+}
+.routing__alpha-head h3 {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-lg);
+  line-height: 1.35;
+}
+.routing__alpha-head p {
+  font-size: var(--text-sm);
+  color: var(--color-text-sub);
+  line-height: 1.6;
+}
+.routing__alpha-ops {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-content: flex-start;
+}
+.blend__pill--more {
+  background: transparent;
+  border-style: dashed;
+  color: var(--color-text-sub);
+}
+
+@media (max-width: 1023px) {
+  .routing__alpha { grid-template-columns: 1fr; }
+}
+@media (max-width: 767px) {
+  .routing__channels { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
    PER-CHANNEL BRANCHING
    ══════════════════════════════════════════════════════════════════════ */
 .branching__grid {
