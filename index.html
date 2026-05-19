@@ -81,10 +81,10 @@
         </div>
       </div>
       <div class="hero__media">
-        <div class="media-frame media-frame--16x9 hero__image">
+        <div class="media-frame media-frame--16x9 hero__image media-frame--screenshot media-frame--screenshot-hero">
           <div class="placeholder">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            <span>Blender viewport + TLM panel screenshot</span>
+            <span>Drop in <code>assets/images/screenshots/hero.png</code></span>
           </div>
         </div>
       </div>
@@ -126,26 +126,32 @@
   <section class="section layers-section" id="layer-types">
     <div class="section__inner">
       <h2 class="section__title reveal">Six Layer Types. Infinite Possibilities.</h2>
+      <!--
+        Layer-type panels are kept in alphabetical order.
+        Drop a 640×480 PNG into  assets/images/layer-types/<slug>.png
+        and it will overlay the placeholder SVG.
+        Slug = data-tab attribute (lowercase).
+      -->
       <div class="layers reveal">
         <div class="layers__tabs">
-          <button class="layers__tab is-active" data-tab="paint">Paint</button>
+          <button class="layers__tab is-active" data-tab="adjustment">Adjustment</button>
           <button class="layers__tab" data-tab="fill">Fill</button>
-          <button class="layers__tab" data-tab="procedural">Procedural</button>
-          <button class="layers__tab" data-tab="adjustment">Adjustment</button>
           <button class="layers__tab" data-tab="group">Group</button>
+          <button class="layers__tab" data-tab="paint">Paint</button>
+          <button class="layers__tab" data-tab="procedural">Procedural</button>
           <button class="layers__tab" data-tab="reference">Reference</button>
         </div>
         <div class="layers__content">
-          <div class="layers__panel is-active" id="tab-paint">
+          <div class="layers__panel is-active" id="tab-adjustment">
             <div class="layers__info">
-              <span class="badge">Paint Layer</span>
-              <h3>Brush directly onto your model</h3>
-              <p>The familiar paintable layer. Each layer gets its own image texture at your chosen resolution (512 to 4096). Full alpha support, per-layer blend modes, and live viewport preview.</p>
+              <span class="badge">Adjustment Layer</span>
+              <h3>Non-destructive color grading</h3>
+              <p>Hue/Saturation, Brightness/Contrast, Levels and Color Balance. Adjust everything below without touching a single pixel &mdash; and route the adjustment to any PBR channel (Roughness, Metallic, Emission…), not just Base Color.</p>
             </div>
-            <div class="media-frame media-frame--4x3">
+            <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-adjustment">
               <div class="placeholder">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m15.232 5.232 3.536 3.536m-2.036-5.036a2.5 2.5 0 0 1 3.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
-                <span>Paint layer in action</span>
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v1m0 16v1m-8-9H3m18 0h-1M5.6 5.6l.7.7m12.4 12.4.7-.7M5.6 18.4l.7-.7M18 5.6l.7.7"/><circle cx="12" cy="12" r="4"/></svg>
+                <span>Adjustment layer controls</span>
               </div>
             </div>
           </div>
@@ -155,36 +161,10 @@
               <h3>Parametric solid color fills</h3>
               <p>Set a base color, roughness, metallic value &mdash; change them anytime. No painting required, fully parametric. Perfect for base materials and color foundations.</p>
             </div>
-            <div class="media-frame media-frame--4x3">
+            <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-fill">
               <div class="placeholder">
                 <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
                 <span>Fill layer properties</span>
-              </div>
-            </div>
-          </div>
-          <div class="layers__panel" id="tab-procedural">
-            <div class="layers__info">
-              <span class="badge">Procedural Layer</span>
-              <h3>16 procedural patterns, no UV needed</h3>
-              <p>Noise, Voronoi, Wave, Marble, Musgrave, Gradient, Checker, Brick, Hex Grid, Magic, Stripes, White Noise, anisotropic Gabor, Dots, Ridged fractal and Cracks. Fully parametric: scale, detail, distortion, dual colors, 3D offset, vector distortion, and coordinate transforms (polar, spherical, swirl, cylindrical).</p>
-            </div>
-            <div class="media-frame media-frame--4x3">
-              <div class="placeholder">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                <span>Procedural noise on sphere</span>
-              </div>
-            </div>
-          </div>
-          <div class="layers__panel" id="tab-adjustment">
-            <div class="layers__info">
-              <span class="badge">Adjustment Layer</span>
-              <h3>Non-destructive color grading</h3>
-              <p>Hue/Saturation, Brightness/Contrast, Levels and Color Balance. Adjust everything below without touching a single pixel — and route the adjustment to any PBR channel (Roughness, Metallic, Emission…), not just Base Color.</p>
-            </div>
-            <div class="media-frame media-frame--4x3">
-              <div class="placeholder">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v1m0 16v1m-8-9H3m18 0h-1M5.6 5.6l.7.7m12.4 12.4.7-.7M5.6 18.4l.7-.7M18 5.6l.7.7"/><circle cx="12" cy="12" r="4"/></svg>
-                <span>Adjustment layer controls</span>
               </div>
             </div>
           </div>
@@ -194,10 +174,36 @@
               <h3>Organize into folders</h3>
               <p>Group related layers together. Collapse, reorder, and control group opacity &mdash; just like Photoshop. Nest groups inside groups for complex material stacks.</p>
             </div>
-            <div class="media-frame media-frame--4x3">
+            <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-group">
               <div class="placeholder">
                 <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                 <span>Group with nested layers</span>
+              </div>
+            </div>
+          </div>
+          <div class="layers__panel" id="tab-paint">
+            <div class="layers__info">
+              <span class="badge">Paint Layer</span>
+              <h3>Brush directly onto your model</h3>
+              <p>The familiar paintable layer. Each layer gets its own image texture at your chosen resolution (512 to 4096). Full alpha support, per-layer blend modes, and live viewport preview.</p>
+            </div>
+            <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-paint">
+              <div class="placeholder">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m15.232 5.232 3.536 3.536m-2.036-5.036a2.5 2.5 0 0 1 3.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+                <span>Paint layer in action</span>
+              </div>
+            </div>
+          </div>
+          <div class="layers__panel" id="tab-procedural">
+            <div class="layers__info">
+              <span class="badge">Procedural Layer</span>
+              <h3>16 procedural patterns, no UV needed</h3>
+              <p>Noise, Voronoi, Wave, Marble, Musgrave, Gradient, Checker, Brick, Hex Grid, Magic, Stripes, White Noise, anisotropic Gabor, Dots, Ridged fractal and Cracks. Fully parametric: scale, detail, distortion, dual colors, 3D offset, vector distortion, and coordinate transforms (polar, spherical, swirl, cylindrical).</p>
+            </div>
+            <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-procedural">
+              <div class="placeholder">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                <span>Procedural noise on sphere</span>
               </div>
             </div>
           </div>
@@ -207,7 +213,7 @@
               <h3>One pattern, many channels</h3>
               <p>Reuse any layer's pattern as the source for another layer &mdash; with its own blend mode, opacity, mask and PBR channel routing. Build a single wear mask once, drive base color, metallic, roughness and bump from it independently. Substance-grade smart-material workflow without baking.</p>
             </div>
-            <div class="media-frame media-frame--4x3">
+            <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-reference">
               <div class="placeholder">
                 <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3h-3a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/><circle cx="12" cy="12" r="3"/></svg>
                 <span>Reference layer reusing a pattern</span>
@@ -422,10 +428,10 @@
           <p>Surface cutout with Cycles-correct transparency. Auto-detects when to enable Hashed alpha in Eevee.</p>
         </div>
       </div>
-      <div class="media-frame media-frame--16x9 reveal" style="max-width: 800px; margin: var(--space-12) auto 0;">
+      <div class="media-frame media-frame--16x9 media-frame--screenshot media-frame--screenshot-pbr reveal" style="max-width: 800px; margin: var(--space-12) auto 0;">
         <div class="placeholder">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <span>PBR channels panel expanded</span>
+          <span>Drop in <code>assets/images/screenshots/pbr-channels.png</code></span>
         </div>
       </div>
     </div>
@@ -468,10 +474,10 @@
         </div>
       </div>
       <p class="masks__extra reveal">+ Compound dual-mask (A op B with 39 math operations) &middot; Mask blur &middot; Mask contrast &middot; Fresnel mask &middot; Image projection (Flat, Box, Sphere, Tube).</p>
-      <div class="media-frame media-frame--21x9 reveal" style="max-width: 1000px; margin: var(--space-8) auto 0;">
+      <div class="media-frame media-frame--21x9 media-frame--screenshot media-frame--screenshot-smart-masks reveal" style="max-width: 1000px; margin: var(--space-8) auto 0;">
         <div class="placeholder">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <span>Smart mask showcase: AO + Curvature on 3D model</span>
+          <span>Drop in <code>assets/images/screenshots/smart-masks.png</code></span>
         </div>
       </div>
     </div>
@@ -511,89 +517,47 @@
        ════════════════════════════════════════════════════════════════════ -->
   <section class="section proc-section">
     <div class="section__inner">
-      <h2 class="section__title reveal">16 Procedural Textures. Zero UV Required.</h2>
-      <p class="section__subtitle reveal">Full parametric control: scale, detail, distortion, dual colors, 3D offset, vector distortion, plus coordinate transforms (polar, spherical, swirl, cylindrical). Change everything live.</p>
-      <div class="proc__grid reveal">
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--noise"></div>
-          <h4>Noise</h4>
-          <p>Perlin / FBM organic noise</p>
+      <h2 class="section__title reveal">16 Procedurals. Swap Them Live.</h2>
+      <p class="section__subtitle reveal">Change procedural type, scale, distortion, vector warp &mdash; every parameter updates the viewport without rebuilding the node tree. Drop one in, dial it, swap to another. Sixteen patterns at your fingertips.</p>
+
+      <!--
+        Procedural showcase video.
+        Drop a loop into  assets/videos/procedurals-loop.{mp4,webm}
+        (recommended: 10-15s, 720p H.264 MP4 + VP9 WebM, muted, ~1-3 MB).
+        Optional first-frame poster: assets/images/procedurals/poster.jpg
+        While both files are missing, the dashed placeholder shows the
+        expected path so it's clear what's needed.
+      -->
+      <div class="proc__showcase reveal">
+        <video class="proc__video" autoplay muted loop playsinline
+               poster="assets/images/procedurals/poster.jpg">
+          <source src="assets/videos/procedurals-loop.webm" type="video/webm">
+          <source src="assets/videos/procedurals-loop.mp4" type="video/mp4">
+        </video>
+        <div class="proc__placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6 4 20 12 6 20"/></svg>
+          <span>Drop loop into <code>assets/videos/procedurals-loop.mp4</code> (or <code>.webm</code>)</span>
         </div>
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--voronoi"></div>
-          <h4>Voronoi</h4>
-          <p>Cells, distance-to-edge, crackle</p>
-        </div>
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--wave"></div>
-          <h4>Wave</h4>
-          <p>Bands &amp; ring patterns</p>
-        </div>
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--marble"></div>
-          <h4>Marble</h4>
-          <p>Veined stone patterns</p>
-        </div>
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--musgrave"></div>
-          <h4>Musgrave</h4>
-          <p>Fractal multifractal &amp; ridged</p>
-        </div>
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--gradient"></div>
-          <h4>Gradient</h4>
-          <p>Linear, radial, quadratic, spherical</p>
-        </div>
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--checker"></div>
-          <h4>Checker</h4>
-          <p>Clean checkerboard grid</p>
-        </div>
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--brick"></div>
-          <h4>Brick</h4>
-          <p>Tile pattern with offset &amp; mortar mask</p>
-        </div>
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--hex"></div>
-          <h4>Hex Grid</h4>
-          <p>Honeycomb / cell distance-to-edge</p>
-        </div>
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--stripes"></div>
-          <h4>Stripes</h4>
-          <p>Hard-edged X / Y / diagonal stripes</p>
-        </div>
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--magic"></div>
-          <h4>Magic</h4>
-          <p>Kaleidoscopic colored swirl</p>
-        </div>
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--whitenoise"></div>
-          <h4>White Noise</h4>
-          <p>Per-pixel grain &mdash; dust &amp; dithering</p>
-        </div>
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--gabor"></div>
-          <h4>Gabor</h4>
-          <p>Anisotropic streaks &mdash; brushed metal, fibers</p>
-        </div>
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--dots"></div>
-          <h4>Dots</h4>
-          <p>Packed circles &mdash; splatter, polkadots, freckles</p>
-        </div>
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--ridged"></div>
-          <h4>Ridged</h4>
-          <p>Razor-sharp crests &mdash; mountains, rock veins</p>
-        </div>
-        <div class="proc__card">
-          <div class="proc__preview proc__preview--cracks"></div>
-          <h4>Cracks</h4>
-          <p>Organic vein network &mdash; marble, lava, ceramic</p>
-        </div>
+      </div>
+
+      <!-- Procedural list in alphabetical order — names match proc_type IDs. -->
+      <div class="proc__list reveal" aria-label="All procedural types">
+        <span class="proc__chip">Brick</span>
+        <span class="proc__chip">Checker</span>
+        <span class="proc__chip">Cracks</span>
+        <span class="proc__chip">Dots</span>
+        <span class="proc__chip">Gabor</span>
+        <span class="proc__chip">Gradient</span>
+        <span class="proc__chip">Hex Grid</span>
+        <span class="proc__chip">Magic</span>
+        <span class="proc__chip">Marble</span>
+        <span class="proc__chip">Musgrave</span>
+        <span class="proc__chip">Noise</span>
+        <span class="proc__chip">Ridged</span>
+        <span class="proc__chip">Stripes</span>
+        <span class="proc__chip">Voronoi</span>
+        <span class="proc__chip">Wave</span>
+        <span class="proc__chip">White Noise</span>
       </div>
     </div>
   </section>
@@ -637,10 +601,10 @@
           </ul>
         </div>
       </div>
-      <div class="media-frame media-frame--16x9 reveal" style="max-width: 800px; margin: var(--space-12) auto 0;">
+      <div class="media-frame media-frame--16x9 media-frame--screenshot media-frame--screenshot-bake reveal" style="max-width: 800px; margin: var(--space-12) auto 0;">
         <div class="placeholder">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <span>Bake PBR dialog screenshot</span>
+          <span>Drop in <code>assets/images/screenshots/bake.png</code></span>
         </div>
       </div>
     </div>
@@ -653,54 +617,60 @@
     <div class="section__inner">
       <h2 class="section__title reveal">10 Showcase Materials. Studio-Grade Starting Points.</h2>
       <p class="section__subtitle reveal">Ten production-ready preset stacks shipping in the pack &mdash; each one a documented "look-dev study", not a generic procedural. Save your own and share as <code>.tlm</code> files.</p>
+      <!--
+        Preset cards in alphabetical order.
+        Drop a 800×800 PNG into  assets/images/presets/<slug>.png
+        and the CSS will overlay it on the gradient placeholder.
+        Slug = modifier after `presets__preview--` (kebab-case).
+      -->
       <div class="presets__strip reveal">
         <div class="presets__card">
-          <div class="presets__preview" style="background: linear-gradient(135deg, #6e1818, #2a2226, #c4501f)"></div>
-          <h4>Painted Industrial Metal</h4>
-          <p>Paint chips, primer halo, rust bleed, fine scratches</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview" style="background: linear-gradient(135deg, #a87833, #3a6248, #1c1410)"></div>
-          <h4>Ancient Patina Bronze</h4>
-          <p>Cast bronze with verdigris islands and polished rim</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview" style="background: linear-gradient(135deg, #14110f, #1c1814, #d8b65a)"></div>
-          <h4>Gold-Veined Black Marble</h4>
-          <p>Polished stone, narrow veins, sparse gold inlay</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview" style="background: linear-gradient(135deg, #4a2a14, #8a4a20, #2e1808)"></div>
-          <h4>Lacquered Burl Wood</h4>
-          <p>Grain, burl swirl, dark pores, amber clearcoat</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview" style="background: linear-gradient(135deg, #2c3022, #4a4a30, #1a1d12)"></div>
-          <h4>Tactical Woven Fabric</h4>
-          <p>Warp + weft, fiber fuzz, worn high spots</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview" style="background: linear-gradient(135deg, #14181c, #3a4a55, #00c2ff)"></div>
-          <h4>Sci-Fi Emissive Hull</h4>
-          <p>Hex panels, seam glow, dirt-pooled recesses</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview" style="background: linear-gradient(135deg, #08182c, #3a72b8, #b8e8ff)"></div>
+          <div class="presets__preview presets__preview--alien-energy-crystal" role="img" aria-label="Alien Energy Crystal preset"></div>
           <h4>Alien Energy Crystal</h4>
           <p>Transmission, internal veins, core glow, Fresnel rim</p>
         </div>
         <div class="presets__card">
-          <div class="presets__preview" style="background: linear-gradient(135deg, #0a0606, #2a1208, #ff4818)"></div>
-          <h4>Cracked Lava Rock</h4>
-          <p>Basalt crust, glowing cracks, porous micro detail</p>
+          <div class="presets__preview presets__preview--ancient-patina-bronze" role="img" aria-label="Ancient Patina Bronze preset"></div>
+          <h4>Ancient Patina Bronze</h4>
+          <p>Cast bronze with verdigris islands and polished rim</p>
         </div>
         <div class="presets__card">
-          <div class="presets__preview" style="background: linear-gradient(135deg, #d8c89c, #b89860, #e8e0c8)"></div>
+          <div class="presets__preview presets__preview--ceramic-mosaic-tile" role="img" aria-label="Ceramic Mosaic Tile preset"></div>
           <h4>Ceramic Mosaic Tile</h4>
           <p>Glazed tiles, grout dirt, hairline cracks</p>
         </div>
         <div class="presets__card">
-          <div class="presets__preview" style="background: linear-gradient(135deg, #888880, #b0a898, #5c5650)"></div>
+          <div class="presets__preview presets__preview--cracked-lava-rock" role="img" aria-label="Cracked Lava Rock preset"></div>
+          <h4>Cracked Lava Rock</h4>
+          <p>Basalt crust, glowing cracks, porous micro detail</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview presets__preview--gold-veined-black-marble" role="img" aria-label="Gold-Veined Black Marble preset"></div>
+          <h4>Gold-Veined Black Marble</h4>
+          <p>Polished stone, narrow veins, sparse gold inlay</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview presets__preview--lacquered-burl-wood" role="img" aria-label="Lacquered Burl Wood preset"></div>
+          <h4>Lacquered Burl Wood</h4>
+          <p>Grain, burl swirl, dark pores, amber clearcoat</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview presets__preview--painted-industrial-metal" role="img" aria-label="Painted Industrial Metal preset"></div>
+          <h4>Painted Industrial Metal</h4>
+          <p>Paint chips, primer halo, rust bleed, fine scratches</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview presets__preview--sci-fi-emissive-hull" role="img" aria-label="Sci-Fi Emissive Hull preset"></div>
+          <h4>Sci-Fi Emissive Hull</h4>
+          <p>Hex panels, seam glow, dirt-pooled recesses</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview presets__preview--tactical-woven-fabric" role="img" aria-label="Tactical Woven Fabric preset"></div>
+          <h4>Tactical Woven Fabric</h4>
+          <p>Warp + weft, fiber fuzz, worn high spots</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview presets__preview--weathered-concrete" role="img" aria-label="Weathered Concrete preset"></div>
           <h4>Weathered Concrete</h4>
           <p>Cement clouding, aggregate, pores, water stains</p>
         </div>

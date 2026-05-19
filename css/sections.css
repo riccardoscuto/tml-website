@@ -319,184 +319,86 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════
-   PROCEDURAL TEXTURES
+   PROCEDURAL SHOWCASE (video loop + name chips)
    ══════════════════════════════════════════════════════════════════════ */
-.proc__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-4);
-}
-.proc__card {
+.proc__showcase {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: var(--radius-xl);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: border-color var(--dur-normal), transform var(--dur-normal) var(--ease-out);
 }
-.proc__card:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-4px);
+.proc__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  background: transparent;
 }
-.proc__card h4 {
-  padding: var(--space-3) var(--space-4) var(--space-1);
-  font-size: var(--text-base);
-}
-.proc__card p {
-  padding: 0 var(--space-4) var(--space-4);
-  font-size: var(--text-xs);
+/* Placeholder shown when the <video> has no playable source.
+   The <video> element renders as transparent in that case, so the
+   placeholder underneath (z:1) becomes visible — exactly what we
+   want for "drop in path to fill". */
+.proc__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
   color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-align: center;
+  padding: var(--space-6);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-xl);
+  z-index: 1;
+}
+.proc__placeholder svg {
+  opacity: 0.5;
+}
+.proc__placeholder code {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: var(--text-xs);
+  color: var(--color-accent);
 }
 
-/* Procedural preview patterns (CSS approximations) */
-.proc__preview {
-  aspect-ratio: 1;
-  width: 100%;
+.proc__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+  max-width: 900px;
+  margin: var(--space-8) auto 0;
 }
-.proc__preview--noise {
-  background:
-    radial-gradient(circle at 30% 40%, #3a2e22 0%, transparent 50%),
-    radial-gradient(circle at 70% 60%, #2a1f18 0%, transparent 50%),
-    radial-gradient(circle at 50% 20%, #1a1410 0%, transparent 60%),
-    linear-gradient(135deg, #1a1410, #2a1f18, #0d0a07);
+.proc__chip {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  font-size: var(--text-sm);
+  color: var(--color-text-sub);
+  transition: border-color var(--dur-normal), color var(--dur-normal), transform var(--dur-normal) var(--ease-out);
 }
-.proc__preview--voronoi {
-  background:
-    radial-gradient(circle at 20% 30%, #2a2a35 0%, #0a0a0f 40%),
-    radial-gradient(circle at 70% 20%, #2a2a35 0%, #0a0a0f 35%),
-    radial-gradient(circle at 50% 70%, #2a2a35 0%, #0a0a0f 45%),
-    radial-gradient(circle at 85% 75%, #2a2a35 0%, #0a0a0f 30%),
-    radial-gradient(circle at 10% 80%, #2a2a35 0%, #0a0a0f 35%),
-    #0a0a0f;
-}
-.proc__preview--wave {
-  background: repeating-linear-gradient(
-    90deg,
-    #1a1a25 0px, #1a1a25 8px,
-    #2a2a35 8px, #2a2a35 10px,
-    #1a1a25 10px, #1a1a25 18px,
-    #333340 18px, #333340 20px
-  );
-}
-.proc__preview--gradient {
-  background: linear-gradient(135deg, #0a0a0f 0%, #2a3a5a 50%, #4d8bff 100%);
-}
-.proc__preview--musgrave {
-  background:
-    radial-gradient(ellipse at 25% 35%, #2a1f18 0%, transparent 40%),
-    radial-gradient(ellipse at 60% 70%, #3a2e22 0%, transparent 35%),
-    radial-gradient(ellipse at 80% 25%, #1a1410 0%, transparent 50%),
-    radial-gradient(ellipse at 40% 80%, #2a1f18 0%, transparent 45%),
-    linear-gradient(160deg, #0d0a07, #1a1410);
-}
-.proc__preview--checker {
-  background:
-    conic-gradient(#2a2a35 90deg, #12121a 90deg 180deg, #2a2a35 180deg 270deg, #12121a 270deg)
-    0 0 / 50% 50%;
-}
-.proc__preview--marble {
-  background:
-    linear-gradient(
-      170deg,
-      #e8ddd0 0%, #b8a898 15%, #e8ddd0 20%, #6b5b4a 35%,
-      #e8ddd0 40%, #d4c4b4 55%, #6b5b4a 65%, #e8ddd0 75%,
-      #b8a898 85%, #e8ddd0 100%
-    );
-}
-.proc__preview--brick {
-  background:
-    linear-gradient(180deg, #12121a 0 5%, transparent 5% 49%, #12121a 49% 51%, transparent 51% 95%, #12121a 95% 100%),
-    repeating-linear-gradient(90deg, #12121a 0 6%, transparent 6% 50%, #12121a 50% 56%, transparent 56% 100%),
-    linear-gradient(180deg, #4a3326 0%, #6b4830 100%);
-  background-size: 100% 100%, 100% 50%, 100% 100%;
-}
-.proc__preview--hex {
-  background:
-    radial-gradient(circle at 20% 25%, #4d8bff 0 12%, transparent 13%),
-    radial-gradient(circle at 50% 25%, #4d8bff 0 12%, transparent 13%),
-    radial-gradient(circle at 80% 25%, #4d8bff 0 12%, transparent 13%),
-    radial-gradient(circle at 35% 60%, #4d8bff 0 12%, transparent 13%),
-    radial-gradient(circle at 65% 60%, #4d8bff 0 12%, transparent 13%),
-    radial-gradient(circle at 20% 95%, #4d8bff 0 12%, transparent 13%),
-    radial-gradient(circle at 50% 95%, #4d8bff 0 12%, transparent 13%),
-    radial-gradient(circle at 80% 95%, #4d8bff 0 12%, transparent 13%),
-    linear-gradient(180deg, #0e0e16, #1a1a25);
-}
-.proc__preview--stripes {
-  background: repeating-linear-gradient(
-    65deg,
-    #1a1a25 0 14px,
-    #c2d8ff 14px 18px
-  );
-}
-.proc__preview--magic {
-  background:
-    radial-gradient(circle at 35% 30%, #ff6f3a 0%, transparent 35%),
-    radial-gradient(circle at 70% 55%, #4d8bff 0%, transparent 40%),
-    radial-gradient(circle at 25% 80%, #d8c84a 0%, transparent 35%),
-    radial-gradient(circle at 80% 25%, #b14de8 0%, transparent 40%),
-    linear-gradient(135deg, #12121a, #1a1a25);
-}
-.proc__preview--gabor {
-  background:
-    repeating-linear-gradient(
-      62deg,
-      rgba(184, 184, 200, 0) 0 4px,
-      rgba(184, 184, 200, 0.55) 5px 6px,
-      rgba(184, 184, 200, 0) 7px 11px,
-      rgba(184, 184, 200, 0.30) 12px 13px,
-      rgba(184, 184, 200, 0) 14px 18px
-    ),
-    linear-gradient(135deg, #2a2a35, #14141a);
-}
-.proc__preview--dots {
-  background:
-    radial-gradient(circle at 18% 22%, #e8e8f0 0 8%, transparent 9%),
-    radial-gradient(circle at 50% 22%, #e8e8f0 0 8%, transparent 9%),
-    radial-gradient(circle at 82% 22%, #e8e8f0 0 8%, transparent 9%),
-    radial-gradient(circle at 30% 55%, #e8e8f0 0 8%, transparent 9%),
-    radial-gradient(circle at 70% 55%, #e8e8f0 0 8%, transparent 9%),
-    radial-gradient(circle at 18% 85%, #e8e8f0 0 8%, transparent 9%),
-    radial-gradient(circle at 50% 85%, #e8e8f0 0 8%, transparent 9%),
-    radial-gradient(circle at 82% 85%, #e8e8f0 0 8%, transparent 9%),
-    linear-gradient(135deg, #1a1a25, #0e0e16);
-}
-.proc__preview--ridged {
-  background:
-    repeating-linear-gradient(
-      110deg,
-      #1a1a22 0 8px,
-      #6a7088 9px 10px,
-      #c0c8e0 11px 12px,
-      #6a7088 13px 14px,
-      #1a1a22 15px 22px
-    ),
-    linear-gradient(180deg, #14141c, #1a1a25);
-}
-.proc__preview--cracks {
-  background:
-    linear-gradient(72deg,  transparent 0% 47%, #e8d8b0 47.5% 48.5%, transparent 49% 100%),
-    linear-gradient(115deg, transparent 0% 32%, #e8d8b0 32.5% 33.2%, transparent 33.7% 70%, #e8d8b0 70.5% 71.2%, transparent 71.7% 100%),
-    linear-gradient(28deg,  transparent 0% 58%, #e8d8b0 58.5% 59.3%, transparent 59.8% 100%),
-    linear-gradient(160deg, transparent 0% 78%, #e8d8b0 78.5% 79.2%, transparent 79.7% 100%),
-    linear-gradient(135deg, #14141c, #1a1a22);
-}
-.proc__preview--whitenoise {
-  background:
-    radial-gradient(circle at 12% 18%, #e8e8f0 0 1.5px, transparent 2px),
-    radial-gradient(circle at 38% 9%, #c8c8d0 0 1.5px, transparent 2px),
-    radial-gradient(circle at 62% 25%, #e8e8f0 0 1.5px, transparent 2px),
-    radial-gradient(circle at 88% 14%, #b8b8c0 0 1.5px, transparent 2px),
-    radial-gradient(circle at 20% 48%, #d8d8e0 0 1.5px, transparent 2px),
-    radial-gradient(circle at 52% 52%, #e8e8f0 0 1.5px, transparent 2px),
-    radial-gradient(circle at 78% 68%, #c8c8d0 0 1.5px, transparent 2px),
-    radial-gradient(circle at 30% 82%, #e8e8f0 0 1.5px, transparent 2px),
-    radial-gradient(circle at 65% 92%, #d8d8e0 0 1.5px, transparent 2px),
-    radial-gradient(circle at 90% 85%, #b8b8c0 0 1.5px, transparent 2px),
-    linear-gradient(180deg, #12121a, #1a1a25);
+.proc__chip:hover {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 767px) {
-  .proc__grid { grid-template-columns: repeat(2, 1fr); }
+  .proc__chip { font-size: var(--text-xs); padding: var(--space-1) var(--space-3); }
 }
 
 /* ══════════════════════════════════════════════════════════════════════
@@ -585,6 +487,67 @@
 .presets__preview {
   aspect-ratio: 1;
   width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/*
+   Per-preset slot.
+   Each rule stacks:
+     1. url('../assets/images/presets/<slug>.png')  ← user-provided render
+     2. linear-gradient(...)                          ← palette fallback
+   When the image is missing the gradient remains visible and the card
+   still reads as the right material family. Slugs are alphabetical.
+*/
+.presets__preview--alien-energy-crystal {
+  background-image:
+    url('../assets/images/presets/alien-energy-crystal.png'),
+    linear-gradient(135deg, #08182c, #3a72b8, #b8e8ff);
+}
+.presets__preview--ancient-patina-bronze {
+  background-image:
+    url('../assets/images/presets/ancient-patina-bronze.png'),
+    linear-gradient(135deg, #a87833, #3a6248, #1c1410);
+}
+.presets__preview--ceramic-mosaic-tile {
+  background-image:
+    url('../assets/images/presets/ceramic-mosaic-tile.png'),
+    linear-gradient(135deg, #d8c89c, #b89860, #e8e0c8);
+}
+.presets__preview--cracked-lava-rock {
+  background-image:
+    url('../assets/images/presets/cracked-lava-rock.png'),
+    linear-gradient(135deg, #0a0606, #2a1208, #ff4818);
+}
+.presets__preview--gold-veined-black-marble {
+  background-image:
+    url('../assets/images/presets/gold-veined-black-marble.png'),
+    linear-gradient(135deg, #14110f, #1c1814, #d8b65a);
+}
+.presets__preview--lacquered-burl-wood {
+  background-image:
+    url('../assets/images/presets/lacquered-burl-wood.png'),
+    linear-gradient(135deg, #4a2a14, #8a4a20, #2e1808);
+}
+.presets__preview--painted-industrial-metal {
+  background-image:
+    url('../assets/images/presets/painted-industrial-metal.png'),
+    linear-gradient(135deg, #6e1818, #2a2226, #c4501f);
+}
+.presets__preview--sci-fi-emissive-hull {
+  background-image:
+    url('../assets/images/presets/sci-fi-emissive-hull.png'),
+    linear-gradient(135deg, #14181c, #3a4a55, #00c2ff);
+}
+.presets__preview--tactical-woven-fabric {
+  background-image:
+    url('../assets/images/presets/tactical-woven-fabric.png'),
+    linear-gradient(135deg, #2c3022, #4a4a30, #1a1d12);
+}
+.presets__preview--weathered-concrete {
+  background-image:
+    url('../assets/images/presets/weathered-concrete.png'),
+    linear-gradient(135deg, #888880, #b0a898, #5c5650);
 }
 .presets__card h4 {
   padding: var(--space-3) var(--space-4) var(--space-1);

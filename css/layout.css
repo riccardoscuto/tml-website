@@ -44,6 +44,45 @@
   object-fit: cover;
 }
 
+/*
+   Drop-in image slots.
+   Each modifier maps to a real file under assets/images/<area>/.
+   When the file is missing, no warning fires — the URL is silently
+   dropped and the underlying media-frame surface + the .placeholder
+   inside (with its "Drop in <path>" hint) remain visible. Drop the
+   file in and refresh: the image fills the frame.
+   Slugs are alphabetical. Match HTML data-tab attributes (layers)
+   and the screenshot keys.
+*/
+.media-frame--layer,
+.media-frame--screenshot {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.media-frame--layer-adjustment  { background-image: url('../assets/images/layer-types/adjustment.png');  }
+.media-frame--layer-fill        { background-image: url('../assets/images/layer-types/fill.png');        }
+.media-frame--layer-group       { background-image: url('../assets/images/layer-types/group.png');       }
+.media-frame--layer-paint       { background-image: url('../assets/images/layer-types/paint.png');       }
+.media-frame--layer-procedural  { background-image: url('../assets/images/layer-types/procedural.png');  }
+.media-frame--layer-reference   { background-image: url('../assets/images/layer-types/reference.png');   }
+
+.media-frame--screenshot-hero         { background-image: url('../assets/images/screenshots/hero.png');         }
+.media-frame--screenshot-pbr          { background-image: url('../assets/images/screenshots/pbr-channels.png'); }
+.media-frame--screenshot-smart-masks  { background-image: url('../assets/images/screenshots/smart-masks.png');  }
+.media-frame--screenshot-bake         { background-image: url('../assets/images/screenshots/bake.png');         }
+
+/* When a media-frame has a real image set, hide the placeholder hint.
+   Detection: any modifier that has a background-image whose URL doesn't
+   404. There's no CSS-native "image loaded" hook, so we keep this opt-in:
+   on missing images the placeholder remains a useful drop-in guide;
+   when you add the file the image renders on top and the placeholder
+   text overlays it (mostly transparent). If overlay becomes annoying,
+   add the `is-filled` class to the media-frame to hide the placeholder.
+*/
+.media-frame.is-filled .placeholder { display: none; }
+
 /* ── Placeholder ── */
 .placeholder {
   width: 100%;
