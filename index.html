@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Texture Layer Manager — Photoshop-Style Layers for Blender</title>
-  <meta name="description" content="Non-destructive Photoshop-style layer system for Blender texture painting. Blend modes, PBR channels, smart masks, and one-click export.">
+  <meta name="description" content="Substance-grade smart-material authoring inside Blender. 6 layer types, 8 PBR channels, 16 procedurals, 5 live smart masks, per-channel blend overrides, reference layers, and one-click PBR bake.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Texture Layer Manager for Blender">
-  <meta property="og:description" content="Non-destructive layer system with blend modes, PBR channels, smart masks, and one-click export.">
+  <meta property="og:description" content="Photoshop-style layers with PBR channels, live smart masks, reference layers and per-channel blend overrides &mdash; native in Blender 5.0.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/images/og-image.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Texture Layer Manager for Blender">
-  <meta name="twitter:description" content="Photoshop-style layers, right inside Blender.">
+  <meta name="twitter:description" content="Smart-material authoring without leaving Blender.">
 
   <!-- Favicon -->
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -73,10 +73,11 @@
           <a href="#features" class="btn btn--outline btn--lg">See Features</a>
         </div>
         <div class="hero__stats">
-          <div class="hero__stat"><strong>5</strong> Layer Types</div>
-          <div class="hero__stat"><strong>20</strong> Blend Modes</div>
-          <div class="hero__stat"><strong>6</strong> PBR Channels</div>
-          <div class="hero__stat"><strong>4</strong> Smart Masks</div>
+          <div class="hero__stat"><strong>6</strong> Layer Types</div>
+          <div class="hero__stat"><strong>19</strong> Blend Modes</div>
+          <div class="hero__stat"><strong>8</strong> PBR Channels</div>
+          <div class="hero__stat"><strong>16</strong> Procedurals</div>
+          <div class="hero__stat"><strong>5</strong> Smart Masks</div>
         </div>
       </div>
       <div class="hero__media">
@@ -124,7 +125,7 @@
        ════════════════════════════════════════════════════════════════════ -->
   <section class="section layers-section" id="layer-types">
     <div class="section__inner">
-      <h2 class="section__title reveal">Five Layer Types. Infinite Possibilities.</h2>
+      <h2 class="section__title reveal">Six Layer Types. Infinite Possibilities.</h2>
       <div class="layers reveal">
         <div class="layers__tabs">
           <button class="layers__tab is-active" data-tab="paint">Paint</button>
@@ -132,6 +133,7 @@
           <button class="layers__tab" data-tab="procedural">Procedural</button>
           <button class="layers__tab" data-tab="adjustment">Adjustment</button>
           <button class="layers__tab" data-tab="group">Group</button>
+          <button class="layers__tab" data-tab="reference">Reference</button>
         </div>
         <div class="layers__content">
           <div class="layers__panel is-active" id="tab-paint">
@@ -163,8 +165,8 @@
           <div class="layers__panel" id="tab-procedural">
             <div class="layers__info">
               <span class="badge">Procedural Layer</span>
-              <h3>8 procedural patterns, no UV needed</h3>
-              <p>Noise, Voronoi, Wave, Marble, Clouds, Musgrave, Gradient, and Checker. Fully parametric with scale, detail, distortion, dual colors, and 3D offset controls.</p>
+              <h3>16 procedural patterns, no UV needed</h3>
+              <p>Noise, Voronoi, Wave, Marble, Musgrave, Gradient, Checker, Brick, Hex Grid, Magic, Stripes, White Noise, anisotropic Gabor, Dots, Ridged fractal and Cracks. Fully parametric: scale, detail, distortion, dual colors, 3D offset, vector distortion, and coordinate transforms (polar, spherical, swirl, cylindrical).</p>
             </div>
             <div class="media-frame media-frame--4x3">
               <div class="placeholder">
@@ -177,7 +179,7 @@
             <div class="layers__info">
               <span class="badge">Adjustment Layer</span>
               <h3>Non-destructive color grading</h3>
-              <p>Hue/Saturation, Levels, Curves, Color Balance, Brightness/Contrast. Adjust everything below without touching a single pixel. Stack multiple adjustments freely.</p>
+              <p>Hue/Saturation, Brightness/Contrast, Levels and Color Balance. Adjust everything below without touching a single pixel — and route the adjustment to any PBR channel (Roughness, Metallic, Emission…), not just Base Color.</p>
             </div>
             <div class="media-frame media-frame--4x3">
               <div class="placeholder">
@@ -199,6 +201,19 @@
               </div>
             </div>
           </div>
+          <div class="layers__panel" id="tab-reference">
+            <div class="layers__info">
+              <span class="badge">Reference Layer</span>
+              <h3>One pattern, many channels</h3>
+              <p>Reuse any layer's pattern as the source for another layer &mdash; with its own blend mode, opacity, mask and PBR channel routing. Build a single wear mask once, drive base color, metallic, roughness and bump from it independently. Substance-grade smart-material workflow without baking.</p>
+            </div>
+            <div class="media-frame media-frame--4x3">
+              <div class="placeholder">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3h-3a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/><circle cx="12" cy="12" r="3"/></svg>
+                <span>Reference layer reusing a pattern</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -209,8 +224,8 @@
        ════════════════════════════════════════════════════════════════════ -->
   <section class="section blend-section" id="workflow">
     <div class="section__inner">
-      <h2 class="section__title reveal">20 Blend Modes. Full Compositing Control.</h2>
-      <p class="section__subtitle reveal">Per-layer opacity with keyframe support. Animate texture transitions over time.</p>
+      <h2 class="section__title reveal">19 Blend Modes. Per-Channel Branching.</h2>
+      <p class="section__subtitle reveal">Per-layer opacity with keyframe support &mdash; plus optional per-channel overrides: have one layer Multiply on Base Color while staying Mix on Roughness.</p>
       <div class="blend reveal">
         <div class="blend__group">
           <h4 class="blend__label">Basic</h4>
@@ -227,7 +242,6 @@
             <span class="blend__pill">Add</span>
             <span class="blend__pill">Color Dodge</span>
             <span class="blend__pill">Soft Light</span>
-            <span class="blend__pill">Hard Light</span>
             <span class="blend__pill">Linear Light</span>
           </div>
         </div>
@@ -262,12 +276,42 @@
   </section>
 
   <!-- ════════════════════════════════════════════════════════════════════
+       PER-CHANNEL BRANCHING
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section branching-section">
+    <div class="section__inner">
+      <h2 class="section__title reveal">One Layer. Different Blend Per Channel.</h2>
+      <p class="section__subtitle reveal">Per-channel blend overrides let a single layer <strong>Multiply</strong> the base color while staying <strong>Mix</strong> on roughness &mdash; the way Substance Designer branches mask channels, native in Blender.</p>
+      <div class="branching__grid reveal">
+        <div class="branching__example">
+          <span class="badge">Rust Bleed</span>
+          <ul class="branching__list">
+            <li><span class="branching__ch">Base Color</span> <code>Multiply</code> &mdash; rust stains paint &amp; primer below.</li>
+            <li><span class="branching__ch">Metallic</span> <code>Mix</code> &mdash; rust is dielectric, drops to 0.</li>
+            <li><span class="branching__ch">Roughness</span> <code>Mix</code> &mdash; rust is rough, raises to 0.9.</li>
+            <li><span class="branching__ch">Bump</span> <code>Mix</code> &mdash; rust is raised, +0.025 distance.</li>
+          </ul>
+        </div>
+        <div class="branching__example">
+          <span class="badge">Edge Wear</span>
+          <ul class="branching__list">
+            <li><span class="branching__ch">Base Color</span> <code>Mix</code> &mdash; cool steel grey on chip edges.</li>
+            <li><span class="branching__ch">Metallic</span> <code>Mix</code> &mdash; raises to 1 (bare metal).</li>
+            <li><span class="branching__ch">Roughness</span> <code>Subtract</code> &mdash; fresh metal smoother than weathered paint.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="branching__note reveal">+ <strong>Cumulative routing</strong> &mdash; a single Fill layer drives Base Color, Metallic and Roughness at the same time. One decision, three channels.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
        PBR CHANNELS
        ════════════════════════════════════════════════════════════════════ -->
   <section class="section pbr-section">
     <div class="section__inner">
-      <h2 class="section__title reveal">Full PBR Per Layer</h2>
-      <p class="section__subtitle reveal">Every layer can independently drive Roughness, Metallic, Normal, Emission, and Bump. Paint once, affect all channels.</p>
+      <h2 class="section__title reveal">8 PBR Channels Per Layer</h2>
+      <p class="section__subtitle reveal">Every layer can independently drive Base Color, Roughness, Metallic, Normal, Bump, Emission, Transmission and Alpha &mdash; with cumulative routing: one Fill can paint base color, metallic and roughness at the same time.</p>
       <div class="pbr__grid reveal">
         <div class="pbr__card" style="--accent: #8BC34A">
           <h4>Base Color</h4>
@@ -275,7 +319,7 @@
         </div>
         <div class="pbr__card" style="--accent: #607D8B">
           <h4>Roughness</h4>
-          <p>Per-layer roughness with slider or imported texture map.</p>
+          <p>Per-layer roughness with slider, image, or procedural fac.</p>
         </div>
         <div class="pbr__card" style="--accent: #9E9E9E">
           <h4>Metallic</h4>
@@ -283,15 +327,23 @@
         </div>
         <div class="pbr__card" style="--accent: #7E57C2">
           <h4>Normal</h4>
-          <p>Import or assign normal maps per layer with strength control.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #FF9800">
-          <h4>Emission</h4>
-          <p>Add glow with color picker and strength. Perfect for energy effects.</p>
+          <p>Per-layer normal maps with strength, tile scale and rotation. True vector blending across multiple layers &mdash; not naive RGB mix.</p>
         </div>
         <div class="pbr__card" style="--accent: #5C6BC0">
           <h4>Bump</h4>
-          <p>Generate displacement from layer texture signal with adjustable strength.</p>
+          <p>Generate displacement from any layer's texture or procedural with adjustable strength and distance.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #FF9800">
+          <h4>Emission</h4>
+          <p>Glow color and strength &mdash; with selective emission (gate the glow to a noise / cell / image sub-region).</p>
+        </div>
+        <div class="pbr__card" style="--accent: #4DD0E1">
+          <h4>Transmission</h4>
+          <p>Per-layer glass / refraction weight for crystals, frosted glass and translucent inserts.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #EF5350">
+          <h4>Alpha</h4>
+          <p>Surface cutout with Cycles-correct transparency. Auto-detects when to enable Hashed alpha in Eevee.</p>
         </div>
       </div>
       <div class="media-frame media-frame--16x9 reveal" style="max-width: 800px; margin: var(--space-12) auto 0;">
@@ -328,17 +380,18 @@
           <div class="masks__icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="m2 12 20 0" stroke-dasharray="2 2"/><path d="M12 2a7 7 0 0 1 0 20" stroke-dasharray="2 2"/></svg>
           </div>
-          <h4>Smart Masks</h4>
-          <p>Geometry-driven masks that auto-generate from mesh data:</p>
+          <h4>Live Smart Masks</h4>
+          <p>Geometry-driven masks that auto-generate from mesh data &mdash; recomputed every frame, no bake required (with optional bake-to-image for performance):</p>
           <div class="masks__types">
             <span class="badge badge--sm">Ambient Occlusion</span>
+            <span class="badge badge--sm">Pointiness</span>
+            <span class="badge badge--sm">Edge Wear</span>
+            <span class="badge badge--sm">Dirt</span>
             <span class="badge badge--sm">Curvature</span>
-            <span class="badge badge--sm">Facing Angle</span>
-            <span class="badge badge--sm">Height</span>
           </div>
         </div>
       </div>
-      <p class="masks__extra reveal">+ Fresnel mask &amp; Triplanar projection &mdash; no UV required.</p>
+      <p class="masks__extra reveal">+ Compound dual-mask (A op B with 39 math operations) &middot; Mask blur &middot; Mask contrast &middot; Fresnel mask &middot; Image projection (Flat, Box, Sphere, Tube).</p>
       <div class="media-frame media-frame--21x9 reveal" style="max-width: 1000px; margin: var(--space-8) auto 0;">
         <div class="placeholder">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
@@ -349,22 +402,51 @@
   </section>
 
   <!-- ════════════════════════════════════════════════════════════════════
+       SMART MATERIAL WORKFLOW
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section workflow-section">
+    <div class="section__inner">
+      <h2 class="section__title reveal">Build a Wear Mask Once. Drive Everything.</h2>
+      <p class="section__subtitle reveal">Reference Layers give you Substance-grade smart-material authoring &mdash; without baking, without round-trips.</p>
+      <div class="workflow__flow reveal">
+        <div class="workflow__step">
+          <span class="workflow__badge">1</span>
+          <h4>Build a driver</h4>
+          <p>A Procedural Voronoi with distance-to-edge becomes your chip mask. One layer, one decision.</p>
+        </div>
+        <div class="workflow__arrow" aria-hidden="true">→</div>
+        <div class="workflow__step">
+          <span class="workflow__badge">2</span>
+          <h4>Reference it everywhere</h4>
+          <p>Reference layers point to the chip pattern: one drives <strong>Steel</strong> (metallic 1, smoother), another drives <strong>Primer</strong> (warmer, rougher).</p>
+        </div>
+        <div class="workflow__arrow" aria-hidden="true">→</div>
+        <div class="workflow__step">
+          <span class="workflow__badge">3</span>
+          <h4>Tweak the source. Everything follows.</h4>
+          <p>Change chip density once &mdash; every dependent channel updates live. No node spaghetti. No baking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
        PROCEDURAL TEXTURES
        ════════════════════════════════════════════════════════════════════ -->
   <section class="section proc-section">
     <div class="section__inner">
-      <h2 class="section__title reveal">8 Procedural Textures. Zero UV Required.</h2>
-      <p class="section__subtitle reveal">Full parametric control: scale, detail, distortion, dual colors, 3D offset. Change everything live.</p>
+      <h2 class="section__title reveal">16 Procedural Textures. Zero UV Required.</h2>
+      <p class="section__subtitle reveal">Full parametric control: scale, detail, distortion, dual colors, 3D offset, vector distortion, plus coordinate transforms (polar, spherical, swirl, cylindrical). Change everything live.</p>
       <div class="proc__grid reveal">
         <div class="proc__card">
           <div class="proc__preview proc__preview--noise"></div>
           <h4>Noise</h4>
-          <p>Perlin/FBM organic noise</p>
+          <p>Perlin / FBM organic noise</p>
         </div>
         <div class="proc__card">
           <div class="proc__preview proc__preview--voronoi"></div>
           <h4>Voronoi</h4>
-          <p>Cell patterns &amp; edges</p>
+          <p>Cells, distance-to-edge, crackle</p>
         </div>
         <div class="proc__card">
           <div class="proc__preview proc__preview--wave"></div>
@@ -372,14 +454,19 @@
           <p>Bands &amp; ring patterns</p>
         </div>
         <div class="proc__card">
-          <div class="proc__preview proc__preview--gradient"></div>
-          <h4>Gradient</h4>
-          <p>Linear to spherical fades</p>
+          <div class="proc__preview proc__preview--marble"></div>
+          <h4>Marble</h4>
+          <p>Veined stone patterns</p>
         </div>
         <div class="proc__card">
           <div class="proc__preview proc__preview--musgrave"></div>
           <h4>Musgrave</h4>
-          <p>Rich fractal terrain noise</p>
+          <p>Fractal multifractal &amp; ridged</p>
+        </div>
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--gradient"></div>
+          <h4>Gradient</h4>
+          <p>Linear, radial, quadratic, spherical</p>
         </div>
         <div class="proc__card">
           <div class="proc__preview proc__preview--checker"></div>
@@ -387,14 +474,49 @@
           <p>Clean checkerboard grid</p>
         </div>
         <div class="proc__card">
-          <div class="proc__preview proc__preview--marble"></div>
-          <h4>Marble</h4>
-          <p>Veined stone patterns</p>
+          <div class="proc__preview proc__preview--brick"></div>
+          <h4>Brick</h4>
+          <p>Tile pattern with offset &amp; mortar mask</p>
         </div>
         <div class="proc__card">
-          <div class="proc__preview proc__preview--clouds"></div>
-          <h4>Clouds</h4>
-          <p>Billowy organic forms</p>
+          <div class="proc__preview proc__preview--hex"></div>
+          <h4>Hex Grid</h4>
+          <p>Honeycomb / cell distance-to-edge</p>
+        </div>
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--stripes"></div>
+          <h4>Stripes</h4>
+          <p>Hard-edged X / Y / diagonal stripes</p>
+        </div>
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--magic"></div>
+          <h4>Magic</h4>
+          <p>Kaleidoscopic colored swirl</p>
+        </div>
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--whitenoise"></div>
+          <h4>White Noise</h4>
+          <p>Per-pixel grain &mdash; dust &amp; dithering</p>
+        </div>
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--gabor"></div>
+          <h4>Gabor</h4>
+          <p>Anisotropic streaks &mdash; brushed metal, fibers</p>
+        </div>
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--dots"></div>
+          <h4>Dots</h4>
+          <p>Packed circles &mdash; splatter, polkadots, freckles</p>
+        </div>
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--ridged"></div>
+          <h4>Ridged</h4>
+          <p>Razor-sharp crests &mdash; mountains, rock veins</p>
+        </div>
+        <div class="proc__card">
+          <div class="proc__preview proc__preview--cracks"></div>
+          <h4>Cracks</h4>
+          <p>Organic vein network &mdash; marble, lava, ceramic</p>
         </div>
       </div>
     </div>
@@ -453,33 +575,58 @@
        ════════════════════════════════════════════════════════════════════ -->
   <section class="section presets-section">
     <div class="section__inner">
-      <h2 class="section__title reveal">Start with a Preset, Make It Yours</h2>
-      <p class="section__subtitle reveal">5 built-in material presets. Save your own and share as .tlm files.</p>
+      <h2 class="section__title reveal">10 Showcase Materials. Studio-Grade Starting Points.</h2>
+      <p class="section__subtitle reveal">Ten production-ready preset stacks shipping in the pack &mdash; each one a documented "look-dev study", not a generic procedural. Save your own and share as <code>.tlm</code> files.</p>
       <div class="presets__strip reveal">
         <div class="presets__card">
-          <div class="presets__preview" style="background: linear-gradient(135deg, #2a2a30, #4a4a55, #3a3a40)"></div>
-          <h4>Metal Base</h4>
-          <p>Dark steel with surface variation</p>
+          <div class="presets__preview" style="background: linear-gradient(135deg, #6e1818, #2a2226, #c4501f)"></div>
+          <h4>Painted Industrial Metal</h4>
+          <p>Paint chips, primer halo, rust bleed, fine scratches</p>
         </div>
         <div class="presets__card">
-          <div class="presets__preview" style="background: linear-gradient(135deg, #2a1f18, #4a3a2e, #1a1410)"></div>
-          <h4>Rock Base</h4>
-          <p>Volcanic rock with fine detail</p>
+          <div class="presets__preview" style="background: linear-gradient(135deg, #a87833, #3a6248, #1c1410)"></div>
+          <h4>Ancient Patina Bronze</h4>
+          <p>Cast bronze with verdigris islands and polished rim</p>
         </div>
         <div class="presets__card">
-          <div class="presets__preview" style="background: linear-gradient(135deg, #c4946a, #a87856, #d4a478)"></div>
-          <h4>Skin Base</h4>
-          <p>Mid-tone skin with pore detail</p>
+          <div class="presets__preview" style="background: linear-gradient(135deg, #14110f, #1c1814, #d8b65a)"></div>
+          <h4>Gold-Veined Black Marble</h4>
+          <p>Polished stone, narrow veins, sparse gold inlay</p>
         </div>
         <div class="presets__card">
-          <div class="presets__preview" style="background: linear-gradient(135deg, #5a3015, #8b4513, #3a3a40)"></div>
-          <h4>Rusted Metal</h4>
-          <p>Oxidized steel with corrosion</p>
+          <div class="presets__preview" style="background: linear-gradient(135deg, #4a2a14, #8a4a20, #2e1808)"></div>
+          <h4>Lacquered Burl Wood</h4>
+          <p>Grain, burl swirl, dark pores, amber clearcoat</p>
         </div>
         <div class="presets__card">
-          <div class="presets__preview" style="background: linear-gradient(135deg, #4a3520, #6b4830, #3a2515)"></div>
-          <h4>Wood Grain</h4>
-          <p>Wood base with fiber detail</p>
+          <div class="presets__preview" style="background: linear-gradient(135deg, #2c3022, #4a4a30, #1a1d12)"></div>
+          <h4>Tactical Woven Fabric</h4>
+          <p>Warp + weft, fiber fuzz, worn high spots</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview" style="background: linear-gradient(135deg, #14181c, #3a4a55, #00c2ff)"></div>
+          <h4>Sci-Fi Emissive Hull</h4>
+          <p>Hex panels, seam glow, dirt-pooled recesses</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview" style="background: linear-gradient(135deg, #08182c, #3a72b8, #b8e8ff)"></div>
+          <h4>Alien Energy Crystal</h4>
+          <p>Transmission, internal veins, core glow, Fresnel rim</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview" style="background: linear-gradient(135deg, #0a0606, #2a1208, #ff4818)"></div>
+          <h4>Cracked Lava Rock</h4>
+          <p>Basalt crust, glowing cracks, porous micro detail</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview" style="background: linear-gradient(135deg, #d8c89c, #b89860, #e8e0c8)"></div>
+          <h4>Ceramic Mosaic Tile</h4>
+          <p>Glazed tiles, grout dirt, hairline cracks</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview" style="background: linear-gradient(135deg, #888880, #b0a898, #5c5650)"></div>
+          <h4>Weathered Concrete</h4>
+          <p>Cement clouding, aggregate, pores, water stains</p>
         </div>
       </div>
     </div>
@@ -492,39 +639,39 @@
     <div class="section__inner">
       <div class="stats__grid reveal">
         <div class="stats__item">
-          <span class="stats__number" data-target="5">0</span>
+          <span class="stats__number" data-target="6">0</span>
           <span class="stats__label">Layer Types</span>
         </div>
         <div class="stats__item">
-          <span class="stats__number" data-target="20">0</span>
+          <span class="stats__number" data-target="19">0</span>
           <span class="stats__label">Blend Modes</span>
         </div>
         <div class="stats__item">
-          <span class="stats__number" data-target="6">0</span>
+          <span class="stats__number" data-target="8">0</span>
           <span class="stats__label">PBR Channels</span>
         </div>
         <div class="stats__item">
-          <span class="stats__number" data-target="8">0</span>
+          <span class="stats__number" data-target="16">0</span>
           <span class="stats__label">Procedural Types</span>
         </div>
         <div class="stats__item">
-          <span class="stats__number" data-target="5">0</span>
+          <span class="stats__number" data-target="4">0</span>
           <span class="stats__label">Adjustment Types</span>
         </div>
         <div class="stats__item">
-          <span class="stats__number" data-target="4">0</span>
+          <span class="stats__number" data-target="5">0</span>
           <span class="stats__label">Smart Masks</span>
         </div>
         <div class="stats__item">
-          <span class="stats__number" data-target="5">0</span>
-          <span class="stats__label">Built-in Presets</span>
+          <span class="stats__number" data-target="10">0</span>
+          <span class="stats__label">Showcase Presets</span>
         </div>
         <div class="stats__item">
           <span class="stats__number" data-target="4">0</span>
           <span class="stats__label">Export Presets</span>
         </div>
       </div>
-      <p class="stats__extra reveal">+ triplanar projection, clipboard paste, JSON import/export, keyframe opacity, color tags, solo mode, layer groups, and more.</p>
+      <p class="stats__extra reveal">+ per-channel blend overrides, cumulative routing, hot-update sliders (no rebuild lag), compound dual-mask, mask blur &amp; contrast, coordinate transforms (polar, spherical, swirl, cylindrical), selective emission, clipping masks, solo mode, color tags, group layers, convert-to-editable-nodes, clipboard paste, .tlm preset I/O, performance debug panel, and more.</p>
     </div>
   </section>
 
@@ -543,16 +690,18 @@
           </div>
         </div>
         <ul class="pricing__features">
-          <li>5 layer types with 20 blend modes</li>
-          <li>6 PBR channels per layer</li>
-          <li>8 procedural textures</li>
-          <li>5 adjustment layer types</li>
-          <li>4 smart masks + layer &amp; clipping masks</li>
-          <li>PBR bake for Unreal, Unity, glTF</li>
+          <li>6 layer types with 19 blend modes + per-channel branching</li>
+          <li>8 PBR channels per layer with cumulative routing</li>
+          <li>16 procedural textures (incl. Gabor, Dots, Ridged, Cracks) + coordinate transforms</li>
+          <li>4 adjustment types routed to any channel</li>
+          <li>5 live smart masks + compound dual-mask + clipping masks</li>
+          <li>Reference layers &mdash; one pattern, many channels</li>
+          <li>Hot-update sliders (no full rebuild lag)</li>
+          <li>PBR bake for Unreal, Unity, glTF + custom channel packing</li>
           <li>Import PBR sets with auto-detection</li>
-          <li>Custom channel packing</li>
-          <li>5 built-in material presets</li>
-          <li>Blender 5.0+ compatible</li>
+          <li>10 showcase material presets (production-ready)</li>
+          <li>Convert-to-editable-nodes (eject anytime)</li>
+          <li>Blender 5.0+ compatible &middot; Cycles &amp; Eevee Next</li>
           <li>Lifetime updates</li>
         </ul>
         <a href="#" class="btn btn--primary btn--lg pricing__cta">Get TLM on Blender Market</a>
@@ -569,11 +718,19 @@
       <div class="compat__row reveal">
         <div class="compat__item">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg>
-          <span>Blender 5.0+</span>
+          <span>Blender 5.0+ (4.2 LTS supported)</span>
         </div>
         <div class="compat__item">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg>
-          <span>Cycles &amp; EEVEE</span>
+          <span>Cycles &amp; Eevee Next</span>
+        </div>
+        <div class="compat__item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>Hot-update sliders (no rebuild lag)</span>
+        </div>
+        <div class="compat__item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>Convert to editable nodes anytime</span>
         </div>
         <div class="compat__item">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg>
