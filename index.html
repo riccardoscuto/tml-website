@@ -146,7 +146,7 @@
             <div class="layers__info">
               <span class="badge">Adjustment Layer</span>
               <h3>Non-destructive color grading</h3>
-              <p>Hue/Saturation, Brightness/Contrast, Levels and Color Balance. Adjust everything below without touching a single pixel &mdash; and route the adjustment to any PBR channel (Roughness, Metallic, Emission…), not just Base Color.</p>
+              <p>Hue/Saturation, Brightness/Contrast, Levels and Color Balance. Adjust everything below without touching a single pixel &mdash; and route the adjustment to any PBR channel (Roughness, Metallic, Emission…), not just Base Color. <strong>Use it for:</strong> warming a whole stack, knocking back an over-bright preset, or grading <em>only</em> the roughness.</p>
             </div>
             <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-adjustment">
               <div class="placeholder">
@@ -159,7 +159,7 @@
             <div class="layers__info">
               <span class="badge">Fill Layer</span>
               <h3>Parametric solid color fills</h3>
-              <p>Set a base color, roughness, metallic value &mdash; change them anytime. No painting required, fully parametric. Perfect for base materials and color foundations.</p>
+              <p>Set a base color, roughness, metallic value &mdash; change them anytime. No painting required, fully parametric. Perfect for base materials and color foundations. <strong>Use it for:</strong> the bottom &ldquo;primer&rdquo; layer almost every material starts from.</p>
             </div>
             <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-fill">
               <div class="placeholder">
@@ -172,7 +172,7 @@
             <div class="layers__info">
               <span class="badge">Group Layer</span>
               <h3>Organize into folders</h3>
-              <p>Group related layers together. Collapse, reorder, and control group opacity &mdash; just like Photoshop. Nest groups inside groups for complex material stacks.</p>
+              <p>Group related layers together. Collapse, reorder, and control group opacity &mdash; just like Photoshop. Nest groups inside groups for complex material stacks. <strong>Use it for:</strong> bundling a &ldquo;rust kit&rdquo; (color + roughness + bump) and fading it all in with one opacity slider.</p>
             </div>
             <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-group">
               <div class="placeholder">
@@ -185,7 +185,7 @@
             <div class="layers__info">
               <span class="badge">Paint Layer</span>
               <h3>Brush directly onto your model</h3>
-              <p>The familiar paintable layer. Each layer gets its own image texture at your chosen resolution (512 to 4096). Full alpha support, per-layer blend modes, and live viewport preview.</p>
+              <p>The familiar paintable layer. Each layer gets its own image texture at your chosen resolution (512 to 4096). Full alpha support, per-layer blend modes, and live viewport preview. <strong>Use it for:</strong> logos, decals, hand-painted dirt &mdash; anything that has to sit in a specific UV spot.</p>
             </div>
             <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-paint">
               <div class="placeholder">
@@ -198,7 +198,7 @@
             <div class="layers__info">
               <span class="badge">Procedural Layer</span>
               <h3>16 procedural patterns, no UV needed</h3>
-              <p>Noise, Voronoi, Wave, Marble, Musgrave, Gradient, Checker, Brick, Hex Grid, Magic, Stripes, White Noise, anisotropic Gabor, Dots, Ridged fractal and Cracks. Fully parametric: scale, detail, distortion, dual colors, 3D offset, vector distortion, and coordinate transforms (polar, spherical, swirl, cylindrical).</p>
+              <p>Noise, Voronoi, Wave, Marble, Musgrave, Gradient, Checker, Brick, Hex Grid, Magic, Stripes, White Noise, anisotropic Gabor, Dots, Ridged fractal and Cracks. Fully parametric: scale, detail, distortion, dual colors, 3D offset, vector distortion, and coordinate transforms (polar, spherical, swirl, cylindrical). <strong>Use it for:</strong> infinite-resolution surfaces with zero UVs and zero texture memory.</p>
             </div>
             <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-procedural">
               <div class="placeholder">
@@ -211,7 +211,7 @@
             <div class="layers__info">
               <span class="badge">Reference Layer</span>
               <h3>One pattern, many channels</h3>
-              <p>Reuse any layer's pattern as the source for another layer &mdash; with its own blend mode, opacity, mask and PBR channel routing. Build a single wear mask once, drive base color, metallic, roughness and bump from it independently. Substance-grade smart-material workflow without baking.</p>
+              <p>Reuse any layer's pattern as the source for another layer &mdash; with its own blend mode, opacity, mask and PBR channel routing. Build a single wear mask once, drive base color, metallic, roughness and bump from it independently. Substance-grade smart-material workflow without baking. <strong>Use it for:</strong> one chip mask that simultaneously exposes bare metal, raises roughness and adds bump &mdash; edit the source once, everything follows.</p>
             </div>
             <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-reference">
               <div class="placeholder">
@@ -234,7 +234,7 @@
       <p class="section__subtitle reveal">Per-layer opacity with keyframe support &mdash; plus optional per-channel overrides: have one layer Multiply on Base Color while staying Mix on Roughness. Route the layer to Alpha and the modes flip to 41 math operations for mask compositing.</p>
       <div class="blend reveal">
         <div class="blend__group">
-          <h4 class="blend__label">Basic</h4>
+          <h4 class="blend__label">Basic &mdash; everyday compositing</h4>
           <div class="blend__modes">
             <span class="blend__pill">Normal</span>
             <span class="blend__pill">Multiply</span>
@@ -243,7 +243,7 @@
           </div>
         </div>
         <div class="blend__group">
-          <h4 class="blend__label">Light</h4>
+          <h4 class="blend__label">Light &mdash; brighten &amp; add glow</h4>
           <div class="blend__modes">
             <span class="blend__pill">Add</span>
             <span class="blend__pill">Color Dodge</span>
@@ -252,7 +252,7 @@
           </div>
         </div>
         <div class="blend__group">
-          <h4 class="blend__label">Dark</h4>
+          <h4 class="blend__label">Dark &mdash; deepen &amp; stain</h4>
           <div class="blend__modes">
             <span class="blend__pill">Subtract</span>
             <span class="blend__pill">Darken</span>
@@ -260,7 +260,7 @@
           </div>
         </div>
         <div class="blend__group">
-          <h4 class="blend__label">Difference</h4>
+          <h4 class="blend__label">Difference &mdash; invert &amp; contrast tricks</h4>
           <div class="blend__modes">
             <span class="blend__pill">Difference</span>
             <span class="blend__pill">Exclusion</span>
@@ -269,7 +269,7 @@
           </div>
         </div>
         <div class="blend__group">
-          <h4 class="blend__label">Color</h4>
+          <h4 class="blend__label">Color &mdash; recolour, keep the detail</h4>
           <div class="blend__modes">
             <span class="blend__pill">Hue</span>
             <span class="blend__pill">Saturation</span>
