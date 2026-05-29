@@ -313,6 +313,13 @@
   color: var(--color-accent);
   font-weight: 500;
 }
+.masks__subhead {
+  text-align: center;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  margin: 0 0 var(--space-6);
+  color: var(--color-text);
+}
 
 @media (max-width: 767px) {
   .masks__grid { grid-template-columns: 1fr; }

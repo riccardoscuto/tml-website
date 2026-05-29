@@ -443,37 +443,108 @@
   <section class="section masks-section">
     <div class="section__inner">
       <h2 class="section__title reveal">Masks That Think For You</h2>
-      <div class="masks__grid reveal">
-        <div class="masks__card">
-          <div class="masks__icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 3v18M3 12h18"/></svg>
-          </div>
-          <h4>Layer Masks</h4>
-          <p>Paint where each layer is visible. White reveals, black conceals &mdash; the Photoshop way.</p>
+      <p class="section__subtitle reveal">A mask is a 0&ndash;1 factor that decides <em>where</em> a layer shows. In TLM every layer &mdash; and every PBR channel &mdash; can carry one, built from a pipeline you control end to end. Pick a source, optionally combine a second, refine the falloff, and it gates the layer. No nodes.</p>
+
+      <!-- THE PIPELINE -->
+      <div class="workflow__flow reveal" style="margin-bottom: var(--space-12);">
+        <div class="workflow__step">
+          <span class="workflow__badge">1</span>
+          <h4>Pick a source</h4>
+          <p>What the mask reads from &mdash; a painted image, the mesh geometry, the view / light angle, or a procedural pattern.</p>
         </div>
-        <div class="masks__card">
-          <div class="masks__icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 4h2a2 2 0 0 1 2 2v2M8 4H6a2 2 0 0 0-2 2v2m0 8v2a2 2 0 0 0 2 2h2m8 0h2a2 2 0 0 0 2-2v-2"/></svg>
-          </div>
-          <h4>Clipping Masks</h4>
-          <p>Clip a layer to the alpha of the layer below. Build complex compositions effortlessly.</p>
+        <div class="workflow__arrow" aria-hidden="true">→</div>
+        <div class="workflow__step">
+          <span class="workflow__badge">2</span>
+          <h4>Combine a second</h4>
+          <p>Optional slot B, blended with A: Multiply, Min, Max, Add, Subtract, Screen or Difference &mdash; each slot independently invertible.</p>
         </div>
-        <div class="masks__card masks__card--wide">
-          <div class="masks__icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="m2 12 20 0" stroke-dasharray="2 2"/><path d="M12 2a7 7 0 0 1 0 20" stroke-dasharray="2 2"/></svg>
-          </div>
-          <h4>Live Smart Masks</h4>
-          <p>Geometry-driven masks that auto-generate from mesh data &mdash; recomputed every frame, no bake required (with optional bake-to-image for performance):</p>
-          <div class="masks__types">
-            <span class="badge badge--sm">Ambient Occlusion</span>
-            <span class="badge badge--sm">Pointiness</span>
-            <span class="badge badge--sm">Edge Wear</span>
-            <span class="badge badge--sm">Dirt</span>
-            <span class="badge badge--sm">Curvature</span>
-          </div>
+        <div class="workflow__arrow" aria-hidden="true">→</div>
+        <div class="workflow__step">
+          <span class="workflow__badge">3</span>
+          <h4>Refine the falloff</h4>
+          <p>Contrast, Levels (in / gamma / out), Softness and Blur &mdash; shape the edge exactly like Photoshop curves.</p>
+        </div>
+        <div class="workflow__arrow" aria-hidden="true">→</div>
+        <div class="workflow__step">
+          <span class="workflow__badge">4</span>
+          <h4>Gate the layer</h4>
+          <p>The final factor &times; the layer's opacity decides precisely where the layer contributes.</p>
         </div>
       </div>
-      <p class="masks__extra reveal">+ Compound dual-mask (A op B with 39 math operations) &middot; Mask blur &middot; Mask contrast &middot; Fresnel mask &middot; Image projection (Flat, Box, Sphere, Tube).</p>
+
+      <!-- THE 11 SOURCES -->
+      <h3 class="masks__subhead reveal">11 Mask Sources &mdash; what each one reads</h3>
+      <div class="pbr__grid reveal">
+        <div class="pbr__card" style="--accent: #B0BEC5">
+          <h4>Image</h4>
+          <p>A painted or baked black/white texture. The classic hand-authored mask &mdash; paint exactly where the layer lives.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #8D6E63">
+          <h4>Ambient Occlusion</h4>
+          <p>Cavity mask straight from the geometry: dark in recesses, bright on exposed faces. Pools dirt &amp; grime where it belongs.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #A1887F">
+          <h4>Pointiness</h4>
+          <p>Surface curvature: bright on convex edges, dark in concavities. The raw signal behind edge highlights and wear.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #C0CA33">
+          <h4>Edge Wear <span class="badge badge--sm">live</span></h4>
+          <p>Convex edges + noise breakup + a sharpness control. Paint chips and scuffs that ride the model's edges &mdash; real-time, no bake.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #795548">
+          <h4>Dirt <span class="badge badge--sm">live</span></h4>
+          <p>Inverted AO &times; noise grunge. Accumulates organically in cavities &mdash; soot, dust, oxidation in the cracks.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #BCAAA4">
+          <h4>Curvature <span class="badge badge--sm">live</span></h4>
+          <p>Bipolar pointiness: catches <em>both</em> convex and concave edges with a threshold &mdash; highlight every panel seam at once.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #4FC3F7">
+          <h4>Wireframe</h4>
+          <p>A true mesh-edge mask from Blender's Wireframe node &mdash; follows the actual topology, not a faked grid.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #26C6DA">
+          <h4>Fresnel</h4>
+          <p>Viewing-angle gradient: 0 facing the camera, 1 at the grazing silhouette. Drives iridescence, oil-slick, bubble &amp; rim effects.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #FFB300">
+          <h4>Light Angle <span class="badge badge--sm">NdotL</span></h4>
+          <p>Normal &middot; Sun direction, remapped 0&ndash;1: lit vs. in-shadow. With a hard ramp it&rsquo;s instant binary cel-shading.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #FF7043">
+          <h4>Half-Vector <span class="badge badge--sm">NdotH</span></h4>
+          <p>Peaks at the Phong specular spot between sun and camera &mdash; shaped toon highlights and anime sparkle.</p>
+        </div>
+        <div class="pbr__card" style="--accent: #AB47BC">
+          <h4>Voronoi / Pattern</h4>
+          <p>Use a Voronoi (cell distance or distance-to-edge) as the mask &mdash; align its scale with a layer to drop grime exactly between stones, tiles or panels.</p>
+        </div>
+      </div>
+
+      <!-- COMBINE + REFINE -->
+      <div class="branching__grid reveal" style="margin-top: var(--space-12);">
+        <div class="branching__example">
+          <span class="badge">Two-slot compositing</span>
+          <ul class="branching__list">
+            <li><span class="branching__ch">Multiply</span> <code>A&times;B</code> &mdash; intersect: only where both agree (edges <em>and</em> facing up).</li>
+            <li><span class="branching__ch">Maximum</span> <code>max</code> &mdash; union: either mask reveals.</li>
+            <li><span class="branching__ch">Subtract</span> <code>A&minus;B</code> &mdash; carve B out of A (mask out a painted zone).</li>
+            <li><span class="branching__ch">Min / Add / Screen / Diff</span> &mdash; the rest of the set. Each slot has its own <strong>Invert</strong>.</li>
+          </ul>
+        </div>
+        <div class="branching__example">
+          <span class="badge">Refinement chain</span>
+          <ul class="branching__list">
+            <li><span class="branching__ch">Contrast</span> &mdash; harden a soft gradient into a crisp cutoff, or vice-versa.</li>
+            <li><span class="branching__ch">Levels</span> &mdash; input black/white + gamma + output range, Photoshop-style.</li>
+            <li><span class="branching__ch">Softness</span> &mdash; smoothstep the threshold for a feathered edge.</li>
+            <li><span class="branching__ch">Blur</span> &mdash; feather an image mask without re-painting it.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="masks__extra reveal">Two ways to <em>apply</em> a mask, on top of the sources above: <strong>Layer Masks</strong> gate a single layer (white reveals, black conceals); <strong>Clipping Masks</strong> clip a layer to the one below. Plus image projection &mdash; Flat, Box (triplanar), Sphere &amp; Tube.</p>
+
       <div class="media-frame media-frame--21x9 media-frame--screenshot media-frame--screenshot-smart-masks reveal" style="max-width: 1000px; margin: var(--space-8) auto 0;">
         <div class="placeholder">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
@@ -540,25 +611,46 @@
         </div>
       </div>
 
-      <!-- Procedural list in alphabetical order — names match proc_type IDs. -->
-      <div class="proc__list reveal" aria-label="All procedural types">
-        <span class="proc__chip">Brick</span>
-        <span class="proc__chip">Checker</span>
-        <span class="proc__chip">Cracks</span>
-        <span class="proc__chip">Dots</span>
-        <span class="proc__chip">Gabor</span>
-        <span class="proc__chip">Gradient</span>
-        <span class="proc__chip">Hex Grid</span>
-        <span class="proc__chip">Magic</span>
-        <span class="proc__chip">Marble</span>
-        <span class="proc__chip">Musgrave</span>
-        <span class="proc__chip">Noise</span>
-        <span class="proc__chip">Ridged</span>
-        <span class="proc__chip">Stripes</span>
-        <span class="proc__chip">Voronoi</span>
-        <span class="proc__chip">Wave</span>
-        <span class="proc__chip">White Noise</span>
+      <!-- Procedurals grouped by family, each with a "what it's for" hint. -->
+      <div class="blend reveal" aria-label="All procedural types, grouped by family">
+        <div class="blend__group">
+          <h4 class="blend__label">Noise &amp; Fractal &mdash; organic, cloudy surfaces</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Noise</span>
+            <span class="blend__pill">Musgrave</span>
+            <span class="blend__pill">Ridged</span>
+            <span class="blend__pill">White Noise</span>
+            <span class="blend__pill">Magic</span>
+          </div>
+        </div>
+        <div class="blend__group">
+          <h4 class="blend__label">Cellular &mdash; stone, scales, cracks, dots</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Voronoi</span>
+            <span class="blend__pill">Cracks</span>
+            <span class="blend__pill">Dots</span>
+          </div>
+        </div>
+        <div class="blend__group">
+          <h4 class="blend__label">Tiling &amp; Geometric &mdash; man-made surfaces</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Brick</span>
+            <span class="blend__pill">Hex Grid</span>
+            <span class="blend__pill">Checker</span>
+            <span class="blend__pill">Stripes</span>
+          </div>
+        </div>
+        <div class="blend__group">
+          <h4 class="blend__label">Waves &amp; Gradients &mdash; veins, ramps, anisotropy</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Wave</span>
+            <span class="blend__pill">Marble</span>
+            <span class="blend__pill">Gradient</span>
+            <span class="blend__pill">Gabor</span>
+          </div>
+        </div>
       </div>
+      <p class="masks__extra reveal">Every procedural shares the same live controls &mdash; <strong>scale, detail, distortion, dual / multi-stop colour ramp, 3D offset, vector warp</strong> &mdash; plus coordinate transforms (<strong>polar, spherical, swirl, cylindrical</strong>) and a view-driven shift for holographic foils. Swap the type or dial any value and the viewport updates without rebuilding the node tree.</p>
     </div>
   </section>
 
