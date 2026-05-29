@@ -499,55 +499,70 @@
    When the image is missing the gradient remains visible and the card
    still reads as the right material family. Slugs are alphabetical.
 */
-.presets__preview--alien-energy-crystal {
+.presets__preview--anime-genshin-hero {
   background-image:
-    url('../assets/images/presets/alien-energy-crystal.png'),
-    linear-gradient(135deg, #08182c, #3a72b8, #b8e8ff);
+    url('../assets/images/presets/anime-genshin-hero.png'),
+    linear-gradient(135deg, #efe7e0, #b9a9d6, #6a5a8a);
 }
-.presets__preview--ancient-patina-bronze {
+.presets__preview--bronze-verdigris-patina {
   background-image:
-    url('../assets/images/presets/ancient-patina-bronze.png'),
+    url('../assets/images/presets/bronze-verdigris-patina.png'),
     linear-gradient(135deg, #a87833, #3a6248, #1c1410);
 }
-.presets__preview--ceramic-mosaic-tile {
+.presets__preview--burn-dissolve {
   background-image:
-    url('../assets/images/presets/ceramic-mosaic-tile.png'),
-    linear-gradient(135deg, #d8c89c, #b89860, #e8e0c8);
+    url('../assets/images/presets/burn-dissolve.png'),
+    linear-gradient(135deg, #0a2a14, #2faa6a, #ff3ad0);
 }
-.presets__preview--cracked-lava-rock {
+.presets__preview--galaxy-marble {
   background-image:
-    url('../assets/images/presets/cracked-lava-rock.png'),
-    linear-gradient(135deg, #0a0606, #2a1208, #ff4818);
+    url('../assets/images/presets/galaxy-marble.png'),
+    linear-gradient(135deg, #14110f, #5a2a7a, #d8b65a);
 }
-.presets__preview--gold-veined-black-marble {
+.presets__preview--holo-card {
   background-image:
-    url('../assets/images/presets/gold-veined-black-marble.png'),
-    linear-gradient(135deg, #14110f, #1c1814, #d8b65a);
+    url('../assets/images/presets/holo-card.png'),
+    linear-gradient(135deg, #2a1840, #ff3cf0, #2cc8ff);
 }
-.presets__preview--lacquered-burl-wood {
+.presets__preview--inverted-checker {
   background-image:
-    url('../assets/images/presets/lacquered-burl-wood.png'),
-    linear-gradient(135deg, #4a2a14, #8a4a20, #2e1808);
+    url('../assets/images/presets/inverted-checker.png'),
+    linear-gradient(135deg, #111111, #f5f5f5, #111111);
 }
-.presets__preview--painted-industrial-metal {
+.presets__preview--led-screen {
   background-image:
-    url('../assets/images/presets/painted-industrial-metal.png'),
-    linear-gradient(135deg, #6e1818, #2a2226, #c4501f);
+    url('../assets/images/presets/led-screen.png'),
+    linear-gradient(135deg, #14181c, #3a4a55, #d8a23a);
 }
-.presets__preview--sci-fi-emissive-hull {
+.presets__preview--mars {
   background-image:
-    url('../assets/images/presets/sci-fi-emissive-hull.png'),
-    linear-gradient(135deg, #14181c, #3a4a55, #00c2ff);
+    url('../assets/images/presets/mars.png'),
+    linear-gradient(135deg, #6e2a14, #b8642a, #d8a060);
 }
-.presets__preview--tactical-woven-fabric {
+.presets__preview--mirror {
   background-image:
-    url('../assets/images/presets/tactical-woven-fabric.png'),
-    linear-gradient(135deg, #2c3022, #4a4a30, #1a1d12);
+    url('../assets/images/presets/mirror.png'),
+    linear-gradient(135deg, #2a3a55, #8aa0c0, #d8e2f0);
 }
-.presets__preview--weathered-concrete {
+.presets__preview--oil-slick {
   background-image:
-    url('../assets/images/presets/weathered-concrete.png'),
-    linear-gradient(135deg, #888880, #b0a898, #5c5650);
+    url('../assets/images/presets/oil-slick.png'),
+    linear-gradient(135deg, #0a0a14, #6a2a8a, #2cc8ff);
+}
+.presets__preview--plasma-core {
+  background-image:
+    url('../assets/images/presets/plasma-core.png'),
+    linear-gradient(135deg, #1a0606, #b82010, #ff8a18);
+}
+.presets__preview--watercolor {
+  background-image:
+    url('../assets/images/presets/watercolor.png'),
+    linear-gradient(135deg, #cfeaf2, #8ad0c0, #6aa8d8);
+}
+.presets__preview--wireframe {
+  background-image:
+    url('../assets/images/presets/wireframe.png'),
+    linear-gradient(135deg, #1a2a55, #5a7ad8, #e8eeff);
 }
 .presets__card h4 {
   padding: var(--space-3) var(--space-4) var(--space-1);
