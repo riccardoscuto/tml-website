@@ -73,15 +73,11 @@
 .media-frame--screenshot-smart-masks  { background-image: url('../assets/images/screenshots/smart-masks.png');  }
 .media-frame--screenshot-bake         { background-image: url('../assets/images/screenshots/bake.png');         }
 
-/* When a media-frame has a real image set, hide the placeholder hint.
-   Detection: any modifier that has a background-image whose URL doesn't
-   404. There's no CSS-native "image loaded" hook, so we keep this opt-in:
-   on missing images the placeholder remains a useful drop-in guide;
-   when you add the file the image renders on top and the placeholder
-   text overlays it (mostly transparent). If overlay becomes annoying,
-   add the `is-filled` class to the media-frame to hide the placeholder.
-*/
-.media-frame.is-filled .placeholder { display: none; }
+/* Placeholders are a DEV-ONLY drop-in guide ("Drop in <path>"). They must
+   never show on the public site — hidden globally. A frame with no image
+   simply shows its clean dark surface. (Was gated on an `is-filled` class
+   that nothing ever set, so the dev hints overlaid every real image.) */
+.media-frame .placeholder { display: none; }
 
 /* ── Placeholder ── */
 .placeholder {
