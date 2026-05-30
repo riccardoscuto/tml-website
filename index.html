@@ -272,8 +272,8 @@
   <section class="section blend-section" id="workflow">
     <div class="section__inner">
       <p class="section__eyebrow reveal">Compositing</p>
-      <h2 class="section__title reveal">19 Blend Modes &middot; 41 Alpha Math Ops.</h2>
-      <p class="section__subtitle reveal">The same blend modes you know from Photoshop. <strong>In practice:</strong> Multiply a grime layer so it only darkens the crevices, Screen a glow over the base, or Overlay surface detail without washing out the colour underneath &mdash; each with per-layer opacity (keyframeable).</p>
+      <h2 class="section__title reveal">Composite Like Photoshop. Branch Like Substance.</h2>
+      <p class="section__subtitle reveal">19 blend modes with per-layer, keyframeable opacity &mdash; Multiply grime into the crevices, Screen a glow, Overlay detail without washing out the colour beneath. Then route any layer to any channel, with its own blend math per channel.</p>
       <div class="blend reveal">
         <div class="blend__group">
           <h4 class="blend__label">Basic &mdash; everyday compositing</h4>
@@ -318,40 +318,6 @@
             <span class="blend__pill">Color</span>
             <span class="blend__pill">Luminosity</span>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════════════════════════════════
-       OUTPUT ROUTING & ALPHA MATH
-       ════════════════════════════════════════════════════════════════════ -->
-  <section class="section routing-section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Output Routing</p>
-      <h2 class="section__title reveal">Route Any Layer to Any Channel.</h2>
-      <p class="section__subtitle reveal">Every layer carries an <strong>Output Channel</strong> setting that decides where it ends up &mdash; paint a noise straight into Roughness, or fill a cutout straight into Alpha. No node tree to wire.</p>
-
-      <div class="routing__channels reveal">
-        <div class="routing__channel" style="--accent: #8BC34A">
-          <span class="routing__dot"></span>
-          <h4>Base Color</h4>
-          <p>Default. The layer drives the diffuse color of the material.</p>
-        </div>
-        <div class="routing__channel" style="--accent: #607D8B">
-          <span class="routing__dot"></span>
-          <h4>Roughness</h4>
-          <p>The layer's value becomes a roughness map &mdash; paint dirt, fingerprints or scratches as smooth/rough shifts.</p>
-        </div>
-        <div class="routing__channel" style="--accent: #9E9E9E">
-          <span class="routing__dot"></span>
-          <h4>Metallic</h4>
-          <p>The layer's value becomes a metallic mask &mdash; expose bare metal exactly where you paint.</p>
-        </div>
-        <div class="routing__channel" style="--accent: #EF5350">
-          <span class="routing__dot"></span>
-          <h4>Alpha</h4>
-          <p>The layer becomes a cutout / transparency mask &mdash; with a special twist below.</p>
         </div>
       </div>
 
@@ -825,7 +791,7 @@
           <span class="stats__label">Export Presets</span>
         </div>
       </div>
-      <p class="stats__extra reveal">+ per-channel blend overrides, cumulative routing, hot-update sliders (no rebuild lag), compound dual-mask, mask blur &amp; contrast, coordinate transforms (polar, spherical, swirl, cylindrical), selective emission, clipping masks, solo mode, color tags, group layers, convert-to-editable-nodes, clipboard paste, .tlm preset I/O, performance debug panel, and more.</p>
+      <p class="stats__extra reveal">+ per-channel blend overrides, cumulative routing, hot-update sliders, compound dual-masks, selective emission, clipping masks, solo mode, group layers, convert-to-editable-nodes and .tlm preset I/O.</p>
     </div>
   </section>
 
@@ -845,20 +811,15 @@
           </div>
         </div>
         <ul class="pricing__features">
-          <li>6 layer types with 19 blend modes + per-channel branching</li>
-          <li>Per-layer output routing (Base Color / Roughness / Metallic / Alpha) + 41 alpha math ops</li>
-          <li>8 PBR channels per layer with cumulative routing</li>
-          <li>16 procedural textures (incl. Gabor, Dots, Ridged, Cracks) + coordinate transforms</li>
-          <li>4 adjustment types routed to any channel</li>
-          <li>5 live smart masks + compound dual-mask + clipping masks</li>
-          <li>Reference layers &mdash; one pattern, many channels</li>
-          <li>Hot-update sliders (no full rebuild lag)</li>
-          <li>PBR bake for Unreal, Unity, glTF + custom channel packing</li>
-          <li>Import PBR sets with auto-detection</li>
-          <li>13 showcase material presets (production-ready)</li>
-          <li>Convert-to-editable-nodes (eject anytime)</li>
-          <li>Blender 5.0+ compatible &middot; Cycles &amp; Eevee Next</li>
-          <li>Lifetime updates</li>
+          <li>6 layer types &middot; 19 blend modes &middot; per-channel branching</li>
+          <li>8 PBR channels per layer with cumulative routing + 41 alpha math ops</li>
+          <li>16 live procedurals + coordinate transforms</li>
+          <li>5 smart masks + compound dual-mask + clipping masks</li>
+          <li>Reference layers &mdash; one pattern drives many channels</li>
+          <li>Hot-update sliders &mdash; no rebuild lag</li>
+          <li>One-click PBR bake (Unreal / Unity / glTF) + PBR import</li>
+          <li>13 production-ready showcase presets</li>
+          <li>Convert to editable nodes anytime &middot; lifetime updates</li>
         </ul>
         <a href="#" class="btn btn--primary btn--lg pricing__cta">Get TLM on Blender Market</a>
         <p class="pricing__note">One-time purchase. No subscription. No account required.</p>
