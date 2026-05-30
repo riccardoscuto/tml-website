@@ -490,6 +490,8 @@
 .presets__card:hover {
   border-color: var(--color-border-hover);
   transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45),
+              0 0 28px var(--color-accent-glow);
 }
 .presets__preview {
   aspect-ratio: 1;
@@ -497,7 +499,9 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  transition: transform var(--dur-normal) var(--ease-out);
 }
+.presets__card:hover .presets__preview { transform: scale(1.05); }
 /*
    Per-preset slot.
    Each rule stacks:
@@ -1023,6 +1027,8 @@
 .imagefx__card:hover {
   border-color: var(--color-border-hover);
   transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45),
+              0 0 28px var(--color-accent-glow);
 }
 .imagefx__card img {
   display: block;
