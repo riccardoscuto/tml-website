@@ -1002,3 +1002,47 @@
   color: var(--color-text-muted);
   margin-top: var(--space-4);
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   IMAGE-BASED EFFECTS  (Bring Your Own Image)
+   ══════════════════════════════════════════════════════════════════════ */
+.imagefx__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.imagefx__card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+}
+.imagefx__card:hover {
+  border-color: var(--color-border-hover);
+  transform: translateY(-4px);
+}
+.imagefx__card img {
+  display: block;
+  width: 100%;
+  height: 360px;
+  object-fit: contain;
+  background: radial-gradient(ellipse at center, var(--color-accent-glow) 0%, transparent 68%);
+}
+.imagefx__body {
+  padding: var(--space-5) var(--space-6) var(--space-6);
+}
+.imagefx__card h4 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-2);
+}
+.imagefx__card p {
+  color: var(--color-text-sub);
+  line-height: 1.6;
+}
+@media (max-width: 767px) {
+  .imagefx__grid { grid-template-columns: 1fr; gap: var(--space-6); }
+  .imagefx__card img { height: 300px; }
+}
