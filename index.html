@@ -320,43 +320,19 @@
       <div class="routing__alpha reveal">
         <div class="routing__alpha-head">
           <span class="badge">Alpha Math</span>
-          <h3>Blend modes become 41 math operations when output is Alpha.</h3>
-          <p>Composite alpha masks the way Substance Designer wires them: multiply two masks together, take the smooth minimum, raise to a power, threshold with greater-than. Build complex cutouts without touching the node tree.</p>
+          <h3>Send a layer to Alpha and blend modes turn into mask math.</h3>
+          <p>When a layer outputs to Alpha, the blend dropdown swaps to <strong>41 math operations</strong> &mdash; so you can combine cutout masks the way Substance Designer does: multiply two masks to intersect them, take the smooth minimum for a soft union, or threshold with greater-than. Complex cutouts, no node tree. The ones you'll actually reach for:</p>
         </div>
         <div class="routing__alpha-ops">
+          <span class="blend__pill">Multiply</span>
           <span class="blend__pill">Add</span>
           <span class="blend__pill">Subtract</span>
-          <span class="blend__pill">Multiply</span>
-          <span class="blend__pill">Divide</span>
-          <span class="blend__pill">Multiply Add</span>
-          <span class="blend__pill">Power</span>
           <span class="blend__pill">Minimum</span>
           <span class="blend__pill">Maximum</span>
           <span class="blend__pill">Smooth Min</span>
-          <span class="blend__pill">Smooth Max</span>
-          <span class="blend__pill">Less Than</span>
+          <span class="blend__pill">Power</span>
           <span class="blend__pill">Greater Than</span>
-          <span class="blend__pill">Compare</span>
-          <span class="blend__pill">Modulo</span>
-          <span class="blend__pill">Floored Mod</span>
-          <span class="blend__pill">Wrap</span>
-          <span class="blend__pill">Snap</span>
-          <span class="blend__pill">PingPong</span>
-          <span class="blend__pill">Round</span>
-          <span class="blend__pill">Floor</span>
-          <span class="blend__pill">Ceil</span>
-          <span class="blend__pill">Truncate</span>
-          <span class="blend__pill">Fraction</span>
-          <span class="blend__pill">Absolute</span>
-          <span class="blend__pill">Sign</span>
-          <span class="blend__pill">Logarithm</span>
-          <span class="blend__pill">Sqrt</span>
-          <span class="blend__pill">Inverse Sqrt</span>
-          <span class="blend__pill">Exponent</span>
-          <span class="blend__pill">Sine</span>
-          <span class="blend__pill">Cosine</span>
-          <span class="blend__pill">Tangent</span>
-          <span class="blend__pill blend__pill--more">+ 9 more trig &amp; conversions</span>
+          <span class="blend__pill blend__pill--more">+ 33 more (rounding, trig, modulo&hellip;)</span>
         </div>
       </div>
     </div>
