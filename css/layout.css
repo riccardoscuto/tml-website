@@ -1,6 +1,6 @@
 /* ── Section container ── */
 .section {
-  padding: var(--space-20) var(--space-6);
+  padding: var(--space-16) var(--space-6);
 }
 .section__inner {
   max-width: var(--max-width);
