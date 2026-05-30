@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reference Layer — Texture Layer Manager</title>
+  <meta name="description" content="Reuse one layer's pattern to drive many channels independently - Substance-grade smart materials, with no baking and no round-trips.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__brand">
+        <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
+        </svg>
+        <span class="nav__brand-text">Texture Layer Manager</span>
+      </a>
+      <div class="nav__links" id="nav-links">
+        <a href="../index.html#layer-types" class="nav__link">Layers</a>
+        <a href="../index.html#workflow" class="nav__link">Features</a>
+        <a href="../index.html#export" class="nav__link">Export</a>
+        <a href="../index.html#pricing" class="nav__link">Pricing</a>
+      </div>
+      <a href="../index.html#pricing" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $15</a>
+      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="section layerhero">
+    <div class="section__inner">
+      <a href="../index.html#layer-types" class="layerhero__back">&larr; All layer types</a>
+      <p class="section__eyebrow reveal">Layer Type &middot; Reference</p>
+      <h1 class="layerhero__title reveal">The Reference Layer</h1>
+      <p class="layerhero__lead reveal">Reuse one layer's pattern to drive <strong>many</strong> channels independently &mdash; Substance-grade smart materials, with no baking and no round-trips.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section__inner layerdetail">
+      <div class="layerdetail__media reveal">
+        <img class="layerclip" src="../assets/images/layer-types/reference.png" alt="Reference layer preview">
+        <p class="layerclip__cap">A weathered material driven by one shared pattern.</p>
+      </div>
+      <div class="layerdetail__text reveal">
+        <h2>What it does</h2>
+        <p>A reference layer borrows another layer's pattern instead of making its own &mdash; but it keeps its own blend mode, opacity, mask and channel routing. The pattern is shared; the behaviour is independent.</p>
+        <p>Build a single wear mask once, then reference it to expose bare metal, raise roughness and add bump &mdash; all from one source. Edit that source later and every dependent channel follows, live.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section blend-section">
+    <div class="section__inner">
+      <p class="section__eyebrow reveal">Smart Materials</p>
+      <h2 class="section__title reveal">Build a Driver Once. Drive Everything.</h2>
+      <div class="pbr__grid reveal">
+        <div class="pbr__card" style="--accent:#8BC34A"><h4>Reuse a pattern</h4><p>Point at any layer; share its shape without copying.</p></div>
+        <div class="pbr__card" style="--accent:#26C6DA"><h4>Independent</h4><p>Own blend / opacity / mask per reference.</p></div>
+        <div class="pbr__card" style="--accent:#AB47BC"><h4>Any channel</h4><p>One driver feeds colour, metallic, roughness, bump.</p></div>
+        <div class="pbr__card" style="--accent:#FF9800"><h4>Live updates</h4><p>Tweak the source &mdash; everything downstream follows.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section masks-section">
+    <div class="section__inner">
+      <p class="section__eyebrow reveal">In practice</p>
+      <h2 class="section__title reveal">One Wear Mask, Four Channels.</h2>
+      <div class="branching__grid reveal">
+        <div class="branching__example">
+          <span class="badge">Worn paint</span>
+          <ul class="branching__list">
+            <li><span class="branching__ch">Chip mask</span> a Voronoi / edge driver layer.</li>
+            <li><span class="branching__ch">&rarr; Metallic</span> reference it to expose bare metal on the chips.</li>
+            <li><span class="branching__ch">&rarr; Roughness + Bump</span> reference it again for fresh, raised metal.</li>
+          </ul>
+        </div>
+        <div class="branching__example">
+          <span class="badge">Good to know</span>
+          <ul class="branching__list">
+            <li><span class="branching__ch">No baking</span> it is live &mdash; no texture round-trips.</li>
+            <li><span class="branching__ch">Acyclic</span> a reference cannot point at another reference.</li>
+            <li><span class="branching__ch">Substance-style</span> smart-material authoring, native in Blender.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section__title reveal">The Six Layer Types</h2>
+      <div class="layernav reveal">
+        <a class="layernav__item" href="adjustment.html">Adjustment</a>
+        <a class="layernav__item" href="fill.html">Fill</a>
+        <a class="layernav__item" href="group.html">Group</a>
+        <a class="layernav__item" href="paint.html">Paint</a>
+        <a class="layernav__item" href="procedural.html">Procedural</a>
+        <a class="layernav__item layernav__item--active" href="reference.html">Reference</a>
+      </div>
+      <div style="text-align:center;margin-top:var(--space-8)">
+        <a href="../index.html#pricing" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
+        </svg>
+        <span>Texture Layer Manager</span>
+      </div>
+      <div class="footer__links">
+        <a href="../index.html">Home</a><a href="#">Blender Market</a><a href="#">Documentation</a>
+      </div>
+      <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

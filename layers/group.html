@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group Layer — Texture Layer Manager</title>
+  <meta name="description" content="Fold related layers into a folder - collapse, reorder, and fade the whole set with one opacity slider. Nest groups for complex stacks.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__brand">
+        <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
+        </svg>
+        <span class="nav__brand-text">Texture Layer Manager</span>
+      </a>
+      <div class="nav__links" id="nav-links">
+        <a href="../index.html#layer-types" class="nav__link">Layers</a>
+        <a href="../index.html#workflow" class="nav__link">Features</a>
+        <a href="../index.html#export" class="nav__link">Export</a>
+        <a href="../index.html#pricing" class="nav__link">Pricing</a>
+      </div>
+      <a href="../index.html#pricing" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $15</a>
+      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="section layerhero">
+    <div class="section__inner">
+      <a href="../index.html#layer-types" class="layerhero__back">&larr; All layer types</a>
+      <p class="section__eyebrow reveal">Layer Type &middot; Group</p>
+      <h1 class="layerhero__title reveal">The Group Layer</h1>
+      <p class="layerhero__lead reveal">Fold related layers into a folder &mdash; collapse, reorder, and fade the whole set with <strong>one opacity slider</strong>. Nest groups for complex stacks.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section__inner layerdetail">
+      <div class="layerdetail__media reveal">
+        <img class="layerclip" src="../assets/images/layer-types/group.png" alt="Group layer preview">
+        <p class="layerclip__cap">Related layers folded into a single group.</p>
+      </div>
+      <div class="layerdetail__text reveal">
+        <h2>What it does</h2>
+        <p>A group is a folder for layers, exactly like Photoshop. Collapse it to tidy the stack, drag it to reorder everything inside at once, and give the whole group a single opacity.</p>
+        <p>Groups nest: a rust group can live inside a metal group, so you can dial entire effects in and out without touching the individual layers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section blend-section">
+    <div class="section__inner">
+      <p class="section__eyebrow reveal">Organise the Stack</p>
+      <h2 class="section__title reveal">Tame Big Material Stacks.</h2>
+      <div class="pbr__grid reveal">
+        <div class="pbr__card" style="--accent:#FF9800"><h4>Folders</h4><p>Bundle related layers into one collapsible group.</p></div>
+        <div class="pbr__card" style="--accent:#26C6DA"><h4>Group opacity</h4><p>Fade an entire effect in or out with one slider.</p></div>
+        <div class="pbr__card" style="--accent:#AB47BC"><h4>Nesting</h4><p>Groups inside groups for layered complexity.</p></div>
+        <div class="pbr__card" style="--accent:#8BC34A"><h4>Reorder</h4><p>Move a whole effect up or down in one drag.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section masks-section">
+    <div class="section__inner">
+      <p class="section__eyebrow reveal">In practice</p>
+      <h2 class="section__title reveal">A Whole Effect on One Slider.</h2>
+      <div class="branching__grid reveal">
+        <div class="branching__example">
+          <span class="badge">Rust kit</span>
+          <ul class="branching__list">
+            <li><span class="branching__ch">Group: Rust</span> colour + roughness + bump layers inside.</li>
+            <li><span class="branching__ch">Group opacity</span> 0&rarr;100% fades the entire rust effect.</li>
+            <li><span class="branching__ch">Reorder</span> drag the group below the paint to flip the look.</li>
+          </ul>
+        </div>
+        <div class="branching__example">
+          <span class="badge">Good to know</span>
+          <ul class="branching__list">
+            <li><span class="branching__ch">Tidy</span> collapse groups you are not editing.</li>
+            <li><span class="branching__ch">Reusable</span> duplicate a group to repeat an effect.</li>
+            <li><span class="branching__ch">Masked</span> mask the group to confine the whole effect.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section__title reveal">The Six Layer Types</h2>
+      <div class="layernav reveal">
+        <a class="layernav__item" href="adjustment.html">Adjustment</a>
+        <a class="layernav__item" href="fill.html">Fill</a>
+        <a class="layernav__item layernav__item--active" href="group.html">Group</a>
+        <a class="layernav__item" href="paint.html">Paint</a>
+        <a class="layernav__item" href="procedural.html">Procedural</a>
+        <a class="layernav__item" href="reference.html">Reference</a>
+      </div>
+      <div style="text-align:center;margin-top:var(--space-8)">
+        <a href="../index.html#pricing" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
+        </svg>
+        <span>Texture Layer Manager</span>
+      </div>
+      <div class="footer__links">
+        <a href="../index.html">Home</a><a href="#">Blender Market</a><a href="#">Documentation</a>
+      </div>
+      <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

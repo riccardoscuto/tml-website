@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fill Layer — Texture Layer Manager</title>
+  <meta name="description" content="Parametric solid values - colour, roughness, metallic - that you can change anytime. The primer almost every material starts from.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__brand">
+        <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
+        </svg>
+        <span class="nav__brand-text">Texture Layer Manager</span>
+      </a>
+      <div class="nav__links" id="nav-links">
+        <a href="../index.html#layer-types" class="nav__link">Layers</a>
+        <a href="../index.html#workflow" class="nav__link">Features</a>
+        <a href="../index.html#export" class="nav__link">Export</a>
+        <a href="../index.html#pricing" class="nav__link">Pricing</a>
+      </div>
+      <a href="../index.html#pricing" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $15</a>
+      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="section layerhero">
+    <div class="section__inner">
+      <a href="../index.html#layer-types" class="layerhero__back">&larr; All layer types</a>
+      <p class="section__eyebrow reveal">Layer Type &middot; Fill</p>
+      <h1 class="layerhero__title reveal">The Fill Layer</h1>
+      <p class="layerhero__lead reveal">Parametric solid values &mdash; colour, roughness, metallic &mdash; that you can change anytime. The <strong>primer</strong> almost every material starts from.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section__inner layerdetail">
+      <div class="layerdetail__media reveal">
+        <img class="layerclip" src="../assets/images/layer-types/fill.png" alt="Fill layer preview">
+        <p class="layerclip__cap">A parametric Fill layer &mdash; one solid set of PBR values.</p>
+      </div>
+      <div class="layerdetail__text reveal">
+        <h2>What it does</h2>
+        <p>A fill layer is a flat, editable set of values: a base colour, a roughness, a metallic amount. No painting, no texture &mdash; just sliders you can revisit whenever.</p>
+        <p>Thanks to cumulative routing, a single fill can drive several channels at once: set the colour, the metallic and the roughness of your base in one layer.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section blend-section">
+    <div class="section__inner">
+      <p class="section__eyebrow reveal">The Parametric Base</p>
+      <h2 class="section__title reveal">Set It, Change It Anytime.</h2>
+      <div class="pbr__grid reveal">
+        <div class="pbr__card" style="--accent:#8BC34A"><h4>Base Color</h4><p>A solid diffuse colour for the whole layer.</p></div>
+        <div class="pbr__card" style="--accent:#9E9E9E"><h4>Metallic</h4><p>Dielectric to metal in one 0&ndash;1 slider.</p></div>
+        <div class="pbr__card" style="--accent:#607D8B"><h4>Roughness</h4><p>Mirror-sharp to fully matte.</p></div>
+        <div class="pbr__card" style="--accent:#5C6BC0"><h4>Cumulative routing</h4><p>One fill feeds Base Color, Metallic &amp; Roughness together.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section masks-section">
+    <div class="section__inner">
+      <p class="section__eyebrow reveal">In practice</p>
+      <h2 class="section__title reveal">The Foundation of Every Stack.</h2>
+      <div class="branching__grid reveal">
+        <div class="branching__example">
+          <span class="badge">Bronze base</span>
+          <ul class="branching__list">
+            <li><span class="branching__ch">Base Color</span> a warm brown.</li>
+            <li><span class="branching__ch">Metallic</span> 1.0 &mdash; it is metal.</li>
+            <li><span class="branching__ch">Roughness</span> 0.35 &mdash; a soft sheen.</li>
+          </ul>
+        </div>
+        <div class="branching__example">
+          <span class="badge">Good to know</span>
+          <ul class="branching__list">
+            <li><span class="branching__ch">No UVs</span> values are uniform &mdash; nothing to unwrap.</li>
+            <li><span class="branching__ch">Instant</span> zero render cost, changes are live.</li>
+            <li><span class="branching__ch">Bottom layer</span> build everything else on top of it.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section__title reveal">The Six Layer Types</h2>
+      <div class="layernav reveal">
+        <a class="layernav__item" href="adjustment.html">Adjustment</a>
+        <a class="layernav__item layernav__item--active" href="fill.html">Fill</a>
+        <a class="layernav__item" href="group.html">Group</a>
+        <a class="layernav__item" href="paint.html">Paint</a>
+        <a class="layernav__item" href="procedural.html">Procedural</a>
+        <a class="layernav__item" href="reference.html">Reference</a>
+      </div>
+      <div style="text-align:center;margin-top:var(--space-8)">
+        <a href="../index.html#pricing" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
+        </svg>
+        <span>Texture Layer Manager</span>
+      </div>
+      <div class="footer__links">
+        <a href="../index.html">Home</a><a href="#">Blender Market</a><a href="#">Documentation</a>
+      </div>
+      <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>
