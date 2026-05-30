@@ -602,6 +602,9 @@
           <p>Change chip density once &mdash; every dependent channel updates live. No node spaghetti. No baking.</p>
         </div>
       </div>
+      <div style="text-align:center;margin-top:var(--space-8)">
+        <a href="layers/reference.html" class="btn btn--outline">See the Reference layer &rarr;</a>
+      </div>
     </div>
   </section>
 
@@ -612,68 +615,17 @@
     <div class="section__inner">
       <p class="section__eyebrow reveal">Procedural Library</p>
       <h2 class="section__title reveal">16 Procedurals. Swap Them Live.</h2>
-      <p class="section__subtitle reveal">Change procedural type, scale, distortion, vector warp &mdash; every parameter updates the viewport without rebuilding the node tree. Drop one in, dial it, swap to another. Sixteen patterns at your fingertips.</p>
+      <p class="section__subtitle reveal">Noise, Voronoi, Marble, Wave, Gabor, Cracks and more &mdash; fully parametric, no UVs, infinite resolution. Swap the type or dial any value and the viewport updates live.</p>
 
-      <!--
-        Procedural showcase video.
-        Drop a loop into  assets/videos/procedurals-loop.{mp4,webm}
-        (recommended: 10-15s, 720p H.264 MP4 + VP9 WebM, muted, ~1-3 MB).
-        Optional first-frame poster: assets/images/procedurals/poster.jpg
-        While both files are missing, the dashed placeholder shows the
-        expected path so it's clear what's needed.
-      -->
       <div class="proc__showcase reveal">
-        <video class="proc__video" autoplay muted loop playsinline
-               poster="assets/images/procedurals/poster.jpg">
-          <source src="assets/videos/procedurals-loop.webm" type="video/webm">
-          <source src="assets/videos/procedurals-loop.mp4" type="video/mp4">
+        <video class="proc__video" autoplay muted loop playsinline poster="assets/images/layers/procedural-poster.jpg">
+          <source src="assets/videos/layer-procedural.mp4" type="video/mp4">
         </video>
-        <div class="proc__placeholder">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6 4 20 12 6 20"/></svg>
-          <span>Drop loop into <code>assets/videos/procedurals-loop.mp4</code> (or <code>.webm</code>)</span>
-        </div>
       </div>
 
-      <!-- Procedurals grouped by family, each with a "what it's for" hint. -->
-      <div class="blend reveal" aria-label="All procedural types, grouped by family">
-        <div class="blend__group">
-          <h4 class="blend__label">Noise &amp; Fractal &mdash; organic, cloudy surfaces</h4>
-          <div class="blend__modes">
-            <span class="blend__pill">Noise</span>
-            <span class="blend__pill">Musgrave</span>
-            <span class="blend__pill">Ridged</span>
-            <span class="blend__pill">White Noise</span>
-            <span class="blend__pill">Magic</span>
-          </div>
-        </div>
-        <div class="blend__group">
-          <h4 class="blend__label">Cellular &mdash; stone, scales, cracks, dots</h4>
-          <div class="blend__modes">
-            <span class="blend__pill">Voronoi</span>
-            <span class="blend__pill">Cracks</span>
-            <span class="blend__pill">Dots</span>
-          </div>
-        </div>
-        <div class="blend__group">
-          <h4 class="blend__label">Tiling &amp; Geometric &mdash; man-made surfaces</h4>
-          <div class="blend__modes">
-            <span class="blend__pill">Brick</span>
-            <span class="blend__pill">Hex Grid</span>
-            <span class="blend__pill">Checker</span>
-            <span class="blend__pill">Stripes</span>
-          </div>
-        </div>
-        <div class="blend__group">
-          <h4 class="blend__label">Waves &amp; Gradients &mdash; veins, ramps, anisotropy</h4>
-          <div class="blend__modes">
-            <span class="blend__pill">Wave</span>
-            <span class="blend__pill">Marble</span>
-            <span class="blend__pill">Gradient</span>
-            <span class="blend__pill">Gabor</span>
-          </div>
-        </div>
+      <div style="text-align:center;margin-top:var(--space-6)">
+        <a href="layers/procedural.html" class="btn btn--primary">Explore all 16 &mdash; see the Procedural layer &rarr;</a>
       </div>
-      <p class="masks__extra reveal">Every procedural shares the same live controls &mdash; <strong>scale, detail, distortion, dual / multi-stop colour ramp, 3D offset, vector warp</strong> &mdash; plus coordinate transforms (<strong>polar, spherical, swirl, cylindrical</strong>) and a view-driven shift for holographic foils. Swap the type or dial any value and the viewport updates without rebuilding the node tree.</p>
     </div>
   </section>
 
