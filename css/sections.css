@@ -1008,6 +1008,32 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════
+   SECTION DEPTH GLOWS — subtle accent radiance behind key sections so the
+   flat black gains depth. Content kept above via .section__inner z-index.
+   ══════════════════════════════════════════════════════════════════════ */
+.masks-section,
+.pricing-section,
+.imagefx-section {
+  position: relative;
+  overflow: hidden;
+}
+.masks-section::after,
+.pricing-section::after,
+.imagefx-section::after {
+  content: '';
+  position: absolute;
+  top: -8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 72%;
+  height: 55%;
+  background: radial-gradient(ellipse at center, var(--color-accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.section__inner { position: relative; z-index: 1; }
+
+/* ══════════════════════════════════════════════════════════════════════
    IMAGE-BASED EFFECTS  (Bring Your Own Image)
    ══════════════════════════════════════════════════════════════════════ */
 .imagefx__grid {
