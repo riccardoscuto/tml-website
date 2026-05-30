@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Procedural Layer — Texture Layer Manager</title>
+  <meta name="description" content="The Procedural layer in TLM: 16 built-in patterns, fully parametric, no UVs — Noise, Voronoi, Marble, Wave, Gabor, Cracks and more, routable to any PBR channel.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__brand">
+        <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
+        </svg>
+        <span class="nav__brand-text">Texture Layer Manager</span>
+      </a>
+      <div class="nav__links" id="nav-links">
+        <a href="../index.html#layer-types" class="nav__link">Layers</a>
+        <a href="../index.html#workflow" class="nav__link">Features</a>
+        <a href="../index.html#export" class="nav__link">Export</a>
+        <a href="../index.html#pricing" class="nav__link">Pricing</a>
+      </div>
+      <a href="../index.html#pricing" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $15</a>
+      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- LAYER HERO -->
+  <header class="section layerhero">
+    <div class="section__inner">
+      <a href="../index.html#layer-types" class="layerhero__back">&larr; All layer types</a>
+      <p class="section__eyebrow reveal">Layer Type &middot; Procedural</p>
+      <h1 class="layerhero__title reveal">The Procedural Layer</h1>
+      <p class="layerhero__lead reveal">Sixteen built-in patterns, fully parametric, with <strong>no UVs required</strong>. Drop one in, dial it, swap it for another &mdash; every change updates the viewport live, no node tree to rewire.</p>
+    </div>
+  </header>
+
+  <!-- CLIP + WHAT IT DOES -->
+  <section class="section">
+    <div class="section__inner layerdetail">
+      <div class="layerdetail__media reveal">
+        <video class="layerclip" autoplay muted loop playsinline poster="../assets/images/layers/procedural-poster.jpg">
+          <source src="../assets/videos/layer-procedural.mp4" type="video/mp4">
+        </video>
+        <p class="layerclip__cap">Galaxy Marble &mdash; a single procedural layer, rendered in 3D object space.</p>
+      </div>
+      <div class="layerdetail__text reveal">
+        <h2>What it does</h2>
+        <p>A procedural layer generates a pattern mathematically &mdash; so it's infinitely sharp at any resolution, tiles seamlessly, and costs almost no texture memory. Because it lives in 3D space, it wraps a model with no seams and no unwrapping.</p>
+        <p>Pick a pattern, set its look with a handful of sliders, then send the result to <strong>any</strong> PBR channel &mdash; colour, roughness, bump, emission &mdash; or use it as a mask for another layer.</p>
+        <p class="masks__extra" style="text-align:left;margin-top:var(--space-4)">Live in the viewport &middot; no UVs &middot; resolution-independent</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE 16 PATTERNS -->
+  <section class="section blend-section">
+    <div class="section__inner">
+      <p class="section__eyebrow reveal">16 Patterns</p>
+      <h2 class="section__title reveal">One Layer, Sixteen Looks.</h2>
+      <p class="section__subtitle reveal">Swap the pattern type from a dropdown &mdash; the viewport updates instantly. Grouped by what they're good for:</p>
+      <div class="blend reveal">
+        <div class="blend__group">
+          <h4 class="blend__label">Noise &amp; Fractal &mdash; organic, cloudy surfaces</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Noise</span><span class="blend__pill">Musgrave</span>
+            <span class="blend__pill">Ridged</span><span class="blend__pill">White Noise</span><span class="blend__pill">Magic</span>
+          </div>
+        </div>
+        <div class="blend__group">
+          <h4 class="blend__label">Cellular &mdash; stone, scales, cracks, dots</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Voronoi</span><span class="blend__pill">Cracks</span><span class="blend__pill">Dots</span>
+          </div>
+        </div>
+        <div class="blend__group">
+          <h4 class="blend__label">Tiling &amp; Geometric &mdash; man-made surfaces</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Brick</span><span class="blend__pill">Hex Grid</span>
+            <span class="blend__pill">Checker</span><span class="blend__pill">Stripes</span>
+          </div>
+        </div>
+        <div class="blend__group">
+          <h4 class="blend__label">Waves &amp; Gradients &mdash; veins, ramps, anisotropy</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Wave</span><span class="blend__pill">Marble</span>
+            <span class="blend__pill">Gradient</span><span class="blend__pill">Gabor</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVERY KNOB IS LIVE -->
+  <section class="section">
+    <div class="section__inner">
+      <p class="section__eyebrow reveal">Fully Parametric</p>
+      <h2 class="section__title reveal">Every Knob Updates Live.</h2>
+      <div class="pbr__grid reveal">
+        <div class="pbr__card" style="--accent:#8BC34A"><h4>Scale &amp; Detail</h4><p>Size of the pattern and how many octaves of fine detail layer on top.</p></div>
+        <div class="pbr__card" style="--accent:#26C6DA"><h4>Distortion &amp; Vector Warp</h4><p>Bend the pattern with noise &mdash; turn straight bands into organic, hand-marbled flow.</p></div>
+        <div class="pbr__card" style="--accent:#AB47BC"><h4>Colour Ramp</h4><p>Two, three or N colour stops with positions &amp; interpolation &mdash; map one pattern to a full spectrum.</p></div>
+        <div class="pbr__card" style="--accent:#FF9800"><h4>Coordinate Space</h4><p>Generated, Object or UV &mdash; plus polar, spherical, swirl &amp; cylindrical transforms for rings &amp; spirals.</p></div>
+        <div class="pbr__card" style="--accent:#5C6BC0"><h4>Contrast &amp; Centre</h4><p>Tighten the transition into a crisp edge or a soft gradient, and shift where it sits.</p></div>
+        <div class="pbr__card" style="--accent:#EF5350"><h4>View Parallax</h4><p>Slide the pattern by the viewing angle &mdash; the holographic-foil trick, on any pattern.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEND IT ANYWHERE -->
+  <section class="section masks-section">
+    <div class="section__inner">
+      <p class="section__eyebrow reveal">Route &amp; Mask</p>
+      <h2 class="section__title reveal">Send It to Any Channel &mdash; or Use It as a Mask.</h2>
+      <p class="section__subtitle reveal">A procedural isn't just colour. Point the same pattern at Roughness for smudges, at Bump for relief, at Emission for glow &mdash; or set it as a layer's mask so another layer lands exactly in its cells, cracks or bands.</p>
+      <div class="branching__grid reveal">
+        <div class="branching__example">
+          <span class="badge">Example &mdash; cobblestone</span>
+          <ul class="branching__list">
+            <li><span class="branching__ch">Voronoi</span> &rarr; Base Color &mdash; the stones.</li>
+            <li><span class="branching__ch">Same Voronoi</span> &rarr; Bump &mdash; raises each stone.</li>
+            <li><span class="branching__ch">Voronoi edges</span> &rarr; a dirt layer's mask &mdash; grime lands in the joints.</li>
+          </ul>
+        </div>
+        <div class="branching__example">
+          <span class="badge">Example &mdash; sci-fi panel</span>
+          <ul class="branching__list">
+            <li><span class="branching__ch">Brick / Hex</span> &rarr; Base Color &mdash; the panels.</li>
+            <li><span class="branching__ch">Seams</span> &rarr; Emission &mdash; glowing grooves.</li>
+            <li><span class="branching__ch">Noise</span> &rarr; Roughness &mdash; uneven wear.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYER NAV -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section__title reveal">The Six Layer Types</h2>
+      <div class="layernav reveal">
+        <a class="layernav__item" href="../index.html#layer-types">Adjustment</a>
+        <a class="layernav__item" href="../index.html#layer-types">Fill</a>
+        <a class="layernav__item" href="../index.html#layer-types">Group</a>
+        <a class="layernav__item" href="../index.html#layer-types">Paint</a>
+        <a class="layernav__item layernav__item--active" href="procedural.html">Procedural</a>
+        <a class="layernav__item" href="../index.html#layer-types">Reference</a>
+      </div>
+      <div style="text-align:center;margin-top:var(--space-8)">
+        <a href="../index.html#pricing" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
+        </svg>
+        <span>Texture Layer Manager</span>
+      </div>
+      <div class="footer__links">
+        <a href="../index.html">Home</a>
+        <a href="#">Blender Market</a>
+        <a href="#">Documentation</a>
+      </div>
+      <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

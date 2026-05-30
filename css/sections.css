@@ -1034,6 +1034,76 @@
 .section__inner { position: relative; z-index: 1; }
 
 /* ══════════════════════════════════════════════════════════════════════
+   PER-LAYER DETAIL PAGES
+   ══════════════════════════════════════════════════════════════════════ */
+.layerhero {
+  padding-top: calc(70px + var(--space-12));
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.layerhero::after {
+  content: '';
+  position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
+  width: 60%; height: 70%;
+  background: radial-gradient(ellipse at center, var(--color-accent-glow) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+.layerhero__back {
+  display: inline-block;
+  margin-bottom: var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--color-text-sub);
+}
+.layerhero__back:hover { color: var(--color-text); }
+.layerhero__title { font-size: var(--text-5xl); margin-bottom: var(--space-4); }
+.layerhero__lead {
+  max-width: var(--max-width-text);
+  margin: 0 auto;
+  font-size: var(--text-lg);
+  color: var(--color-text-sub);
+}
+.layerdetail {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+.layerdetail__text h2 { font-size: var(--text-3xl); margin-bottom: var(--space-4); }
+.layerdetail__text p { color: var(--color-text-sub); margin-bottom: var(--space-3); line-height: 1.7; }
+.layerclip {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: radial-gradient(ellipse at center, var(--color-accent-glow) 0%, transparent 68%);
+}
+.layerclip__cap {
+  margin-top: var(--space-3);
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+.layernav {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3);
+}
+.layernav__item {
+  padding: var(--space-3) var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text-sub);
+  font-weight: 600;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.layernav__item:hover { border-color: var(--color-border-hover); color: var(--color-text); transform: translateY(-2px); }
+.layernav__item--active { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+@media (max-width: 767px) {
+  .layerdetail { grid-template-columns: 1fr; gap: var(--space-8); }
+  .layerhero__title { font-size: var(--text-3xl); }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
    IMAGE-BASED EFFECTS  (Bring Your Own Image)
    ══════════════════════════════════════════════════════════════════════ */
 .imagefx__grid {
