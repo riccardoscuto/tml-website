@@ -6,6 +6,16 @@
   max-width: var(--max-width);
   margin: 0 auto;
 }
+.section__eyebrow {
+  display: block;
+  text-align: center;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+}
 .section__title {
   text-align: center;
   margin-bottom: var(--space-4);
