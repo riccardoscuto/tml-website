@@ -461,75 +461,37 @@
       </div>
 
       <!-- THE 11 SOURCES -->
-      <h3 class="masks__subhead reveal">11 Mask Sources &mdash; what each one reads</h3>
-      <div class="pbr__grid reveal">
-        <div class="pbr__card" style="--accent: #B0BEC5">
-          <h4>Image</h4>
-          <p>A painted or baked black/white texture. The classic hand-authored mask &mdash; paint exactly where the layer lives.</p>
+      <h3 class="masks__subhead reveal">11 Mask Sources &mdash; pick what the mask reads from</h3>
+      <div class="blend reveal">
+        <div class="blend__group">
+          <h4 class="blend__label">From the mesh &mdash; live, no bake</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Ambient Occlusion</span>
+            <span class="blend__pill">Pointiness</span>
+            <span class="blend__pill">Curvature</span>
+            <span class="blend__pill">Edge Wear</span>
+            <span class="blend__pill">Dirt</span>
+            <span class="blend__pill">Wireframe</span>
+          </div>
         </div>
-        <div class="pbr__card" style="--accent: #8D6E63">
-          <h4>Ambient Occlusion</h4>
-          <p>Cavity mask straight from the geometry: dark in recesses, bright on exposed faces. Pools dirt &amp; grime where it belongs.</p>
+        <div class="blend__group">
+          <h4 class="blend__label">From the view &amp; light &mdash; angle-reactive</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Fresnel</span>
+            <span class="blend__pill">Light Angle (NdotL)</span>
+            <span class="blend__pill">Half-Vector (NdotH)</span>
+          </div>
         </div>
-        <div class="pbr__card" style="--accent: #A1887F">
-          <h4>Pointiness</h4>
-          <p>Surface curvature: bright on convex edges, dark in concavities. The raw signal behind edge highlights and wear.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #C0CA33">
-          <h4>Edge Wear <span class="badge badge--sm">live</span></h4>
-          <p>Convex edges + noise breakup + a sharpness control. Paint chips and scuffs that ride the model's edges &mdash; real-time, no bake.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #795548">
-          <h4>Dirt <span class="badge badge--sm">live</span></h4>
-          <p>Inverted AO &times; noise grunge. Accumulates organically in cavities &mdash; soot, dust, oxidation in the cracks.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #BCAAA4">
-          <h4>Curvature <span class="badge badge--sm">live</span></h4>
-          <p>Bipolar pointiness: catches <em>both</em> convex and concave edges with a threshold &mdash; highlight every panel seam at once.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #4FC3F7">
-          <h4>Wireframe</h4>
-          <p>A true mesh-edge mask from Blender's Wireframe node &mdash; follows the actual topology, not a faked grid.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #26C6DA">
-          <h4>Fresnel</h4>
-          <p>Viewing-angle gradient: 0 facing the camera, 1 at the grazing silhouette. Drives iridescence, oil-slick, bubble &amp; rim effects.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #FFB300">
-          <h4>Light Angle <span class="badge badge--sm">NdotL</span></h4>
-          <p>Normal &middot; Sun direction, remapped 0&ndash;1: lit vs. in-shadow. With a hard ramp it&rsquo;s instant binary cel-shading.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #FF7043">
-          <h4>Half-Vector <span class="badge badge--sm">NdotH</span></h4>
-          <p>Peaks at the Phong specular spot between sun and camera &mdash; shaped toon highlights and anime sparkle.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #AB47BC">
-          <h4>Voronoi / Pattern</h4>
-          <p>Use a Voronoi (cell distance or distance-to-edge) as the mask &mdash; align its scale with a layer to drop grime exactly between stones, tiles or panels.</p>
+        <div class="blend__group">
+          <h4 class="blend__label">Authored &amp; procedural</h4>
+          <div class="blend__modes">
+            <span class="blend__pill">Image</span>
+            <span class="blend__pill">Voronoi / Pattern</span>
+          </div>
         </div>
       </div>
 
-      <!-- COMBINE + REFINE -->
-      <div class="branching__grid reveal" style="margin-top: var(--space-12);">
-        <div class="branching__example">
-          <span class="badge">Two-slot compositing</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Multiply</span> <code>A&times;B</code> &mdash; intersect: only where both agree (edges <em>and</em> facing up).</li>
-            <li><span class="branching__ch">Maximum</span> <code>max</code> &mdash; union: either mask reveals.</li>
-            <li><span class="branching__ch">Subtract</span> <code>A&minus;B</code> &mdash; carve B out of A (mask out a painted zone).</li>
-            <li><span class="branching__ch">Min / Add / Screen / Diff</span> &mdash; the rest of the set. Each slot has its own <strong>Invert</strong>.</li>
-          </ul>
-        </div>
-        <div class="branching__example">
-          <span class="badge">Refinement chain</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Contrast</span> &mdash; harden a soft gradient into a crisp cutoff, or vice-versa.</li>
-            <li><span class="branching__ch">Levels</span> &mdash; input black/white + gamma + output range, Photoshop-style.</li>
-            <li><span class="branching__ch">Softness</span> &mdash; smoothstep the threshold for a feathered edge.</li>
-            <li><span class="branching__ch">Blur</span> &mdash; feather an image mask without re-painting it.</li>
-          </ul>
-        </div>
-      </div>
+      <p class="masks__extra reveal">Combine a second source (Multiply, Min, Max, Subtract&hellip; each invertible), then refine with Contrast, Levels, Softness &amp; Blur &mdash; the whole chain in step 2&ndash;3 above.</p>
 
       <p class="masks__extra reveal">Two ways to <em>apply</em> a mask, on top of the sources above: <strong>Layer Masks</strong> gate a single layer (white reveals, black conceals); <strong>Clipping Masks</strong> clip a layer to the one below. Plus image projection &mdash; Flat, Box (triplanar), Sphere &amp; Tube.</p>
 
