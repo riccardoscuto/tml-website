@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Texture Layer Manager — Photoshop-Style Layers for Blender</title>
-  <meta name="description" content="Substance-grade smart-material authoring inside Blender. 6 layer types, 8 PBR channels, 16 procedurals, 5 live smart masks, per-channel blend overrides, reference layers, and one-click PBR bake.">
+  <meta name="description" content="Substance-grade smart-material authoring inside Blender. 6 layer types, 8 PBR channels, 24 procedurals, 5 live smart masks, per-channel blend overrides, reference layers, and one-click PBR bake.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Texture Layer Manager for Blender">
@@ -77,7 +77,7 @@
           <div class="hero__stat"><strong>6</strong> Layer Types</div>
           <div class="hero__stat"><strong>19</strong> Blend Modes</div>
           <div class="hero__stat"><strong>8</strong> PBR Channels</div>
-          <div class="hero__stat"><strong>16</strong> Procedurals</div>
+          <div class="hero__stat"><strong>24</strong> Procedurals</div>
           <div class="hero__stat"><strong>5</strong> Smart Masks</div>
         </div>
       </div>
@@ -181,7 +181,7 @@
             <div class="layers__info">
               <span class="badge">Adjustment Layer</span>
               <h3>Non-destructive color grading</h3>
-              <p>Hue/Saturation, Brightness/Contrast, Levels and Color Balance. Adjust everything below without touching a single pixel &mdash; and route the adjustment to any PBR channel (Roughness, Metallic, Emission…), not just Base Color. <strong>Use it for:</strong> warming a whole stack, knocking back an over-bright preset, or grading <em>only</em> the roughness.</p>
+              <p>Hue/Saturation, Brightness/Contrast, Levels, Color Balance and Gradient Map. Adjust everything below without touching a single pixel &mdash; and route the adjustment to any PBR channel (Roughness, Metallic, Emission…), not just Base Color. <strong>Use it for:</strong> warming a whole stack, knocking back an over-bright preset, or grading <em>only</em> the roughness.</p>
               <a href="layers/adjustment.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">See the Adjustment layer &rarr;</a>
             </div>
             <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-adjustment">
@@ -236,8 +236,8 @@
           <div class="layers__panel" id="tab-procedural">
             <div class="layers__info">
               <span class="badge">Procedural Layer</span>
-              <h3>16 procedural patterns, no UV needed</h3>
-              <p>Noise, Voronoi, Wave, Marble, Musgrave, Gradient, Checker, Brick, Hex Grid, Magic, Stripes, White Noise, anisotropic Gabor, Dots, Ridged fractal and Cracks. Fully parametric: scale, detail, distortion, dual colors, 3D offset, vector distortion, and coordinate transforms (polar, spherical, swirl, cylindrical). <strong>Use it for:</strong> infinite-resolution surfaces with zero UVs and zero texture memory.</p>
+              <h3>24 procedural patterns, no UV needed</h3>
+              <p>Noise, Voronoi, Wave, Marble, Musgrave, Gradient, Checker, Brick, Hex Grid, Magic, Stripes, White Noise, Gabor, Dots, Ridged, Cracks &mdash; plus Wood, Tiles, Weave, Truchet, Caustics, Scratches and Scatter. Fully parametric: scale, detail, distortion, dual / multi-stop colour ramp, 3D offset, vector distortion, and coordinate transforms (polar, spherical, swirl, cylindrical). <strong>Use it for:</strong> infinite-resolution surfaces with zero UVs and zero texture memory.</p>
               <a href="layers/procedural.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">See the Procedural layer &rarr;</a>
             </div>
             <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-procedural">
@@ -543,7 +543,7 @@
   <section class="section proc-section">
     <div class="section__inner">
       <p class="section__eyebrow reveal">Procedural Library</p>
-      <h2 class="section__title reveal">16 Procedurals. Swap Them Live.</h2>
+      <h2 class="section__title reveal">24 Procedurals. Swap Them Live.</h2>
       <p class="section__subtitle reveal">Noise, Voronoi, Marble, Wave, Gabor, Cracks and more &mdash; fully parametric, no UVs, infinite resolution. Swap the type or dial any value and the viewport updates live.</p>
 
       <div class="proc__showcase reveal">
@@ -553,7 +553,7 @@
       </div>
 
       <div style="text-align:center;margin-top:var(--space-6)">
-        <a href="layers/procedural.html" class="btn btn--primary">Explore all 16 &mdash; see the Procedural layer &rarr;</a>
+        <a href="layers/procedural.html" class="btn btn--primary">Explore all 24 &mdash; see the Procedural layer &rarr;</a>
       </div>
     </div>
   </section>
@@ -701,11 +701,11 @@
           <span class="stats__label">PBR Channels</span>
         </div>
         <div class="stats__item">
-          <span class="stats__number" data-target="16">0</span>
+          <span class="stats__number" data-target="24">0</span>
           <span class="stats__label">Procedural Types</span>
         </div>
         <div class="stats__item">
-          <span class="stats__number" data-target="4">0</span>
+          <span class="stats__number" data-target="5">0</span>
           <span class="stats__label">Adjustment Types</span>
         </div>
         <div class="stats__item">
@@ -743,7 +743,7 @@
         <ul class="pricing__features">
           <li>6 layer types &middot; 19 blend modes &middot; per-channel branching</li>
           <li>8 PBR channels per layer with cumulative routing + 41 alpha math ops</li>
-          <li>16 live procedurals + coordinate transforms</li>
+          <li>24 live procedurals + coordinate transforms</li>
           <li>5 smart masks + compound dual-mask + clipping masks</li>
           <li>Reference layers &mdash; one pattern drives many channels</li>
           <li>Hot-update sliders &mdash; no rebuild lag</li>
