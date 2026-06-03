@@ -653,7 +653,7 @@
     <div class="section__inner">
       <div class="compat__row reveal">
         <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Blender 5.x</span></div>
-        <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Cycles &amp; EEVEE Next</span></div>
+        <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Cycles (full) &middot; EEVEE Next for most materials</span></div>
         <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Converts to editable nodes</span></div>
         <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Windows, macOS, Linux</span></div>
         <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>No external dependencies</span></div>
@@ -680,7 +680,11 @@
         </div>
         <div class="faq__item">
           <p class="faq__q">Which Blender versions are supported?</p>
-          <p class="faq__a">Built and tested on Blender 5.x. Renders in both Cycles and EEVEE Next.</p>
+          <p class="faq__a">Built and tested on Blender 5.x.</p>
+        </div>
+        <div class="faq__item">
+          <p class="faq__q">Does it render in EEVEE Next?</p>
+          <p class="faq__a">Cycles renders every material. EEVEE Next renders the large majority identically &mdash; but a very heavy all-procedural or emissive stack can exceed EEVEE&rsquo;s shader-complexity limit and fall back to flat shading. For those, render in Cycles or bake the material to textures first.</p>
         </div>
         <div class="faq__item">
           <p class="faq__q">Will it slow down my viewport?</p>
