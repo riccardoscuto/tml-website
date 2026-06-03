@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Procedural Layer — Texture Layer Manager</title>
-  <meta name="description" content="The Procedural layer in TLM: 16 built-in patterns, fully parametric, no UVs — Noise, Voronoi, Marble, Wave, Gabor, Cracks and more, routable to any PBR channel.">
+  <meta name="description" content="The Procedural layer: 24 parametric patterns — Noise, Voronoi, Marble, Wave, Gabor, Cracks, Wood, Tiles and more — generated in 3D space. No unwrap required (UV optional). Route to any PBR channel or use as a mask.">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,8 +29,9 @@
         <span class="nav__brand-text">Texture Layer Manager</span>
       </a>
       <div class="nav__links" id="nav-links">
+        <a href="../index.html#overview" class="nav__link">Overview</a>
         <a href="../index.html#layer-types" class="nav__link">Layers</a>
-        <a href="../index.html#workflow" class="nav__link">Features</a>
+        <a href="../index.html#channels" class="nav__link">PBR</a>
         <a href="../index.html#export" class="nav__link">Export</a>
         <a href="../index.html#pricing" class="nav__link">Pricing</a>
       </div>
@@ -46,8 +47,8 @@
     <div class="section__inner">
       <a href="../index.html#layer-types" class="layerhero__back">&larr; All layer types</a>
       <p class="section__eyebrow reveal">Layer Type &middot; Procedural</p>
-      <h1 class="layerhero__title reveal">The Procedural Layer</h1>
-      <p class="layerhero__lead reveal">Twenty-four built-in patterns, fully parametric, with <strong>no UVs required</strong>. Drop one in, dial it, swap it for another &mdash; every change updates the viewport live, no node tree to rewire.</p>
+      <h1 class="layerhero__title reveal">Procedural Layer</h1>
+      <p class="layerhero__lead reveal">24 parametric patterns generated in 3D space &mdash; so they&rsquo;re sharp at any resolution and need <strong>no unwrap</strong> (UV is an optional coordinate mode). Pick a pattern, dial it, swap it &mdash; the viewport updates live, with no node tree to rewire.</p>
     </div>
   </header>
 
@@ -58,26 +59,26 @@
         <video class="layerclip" autoplay muted loop playsinline poster="../assets/images/layers/procedural-poster.jpg">
           <source src="../assets/videos/layer-procedural.mp4" type="video/mp4">
         </video>
-        <p class="layerclip__cap">Galaxy Marble &mdash; a single procedural layer, rendered in 3D object space.</p>
+        <p class="layerclip__cap">A single procedural layer, generated in 3D object space &mdash; no UVs.</p>
       </div>
       <div class="layerdetail__text reveal">
         <h2>What it does</h2>
-        <p>A procedural layer generates a pattern mathematically &mdash; so it's infinitely sharp at any resolution, tiles seamlessly, and costs almost no texture memory. Because it lives in 3D space, it wraps a model with no seams and no unwrapping.</p>
-        <p>Pick a pattern, set its look with a handful of sliders, then send the result to <strong>any</strong> PBR channel &mdash; colour, roughness, bump, emission &mdash; or use it as a mask for another layer.</p>
-        <p class="masks__extra" style="text-align:left;margin-top:var(--space-4)">Live in the viewport &middot; no UVs &middot; resolution-independent</p>
+        <p>A procedural layer computes its pattern mathematically rather than sampling an image. That means it stays crisp at any resolution, tiles seamlessly, and costs almost no texture memory &mdash; and because it&rsquo;s evaluated in 3D space, it wraps a model with no seams and no unwrapping.</p>
+        <p>Set the look with a handful of sliders, then send the result to any PBR channel &mdash; colour, roughness, bump, emission &mdash; or use the same pattern as a mask for another layer.</p>
+        <p class="masks__extra" style="text-align:left;margin-top:var(--space-4)">Live in the viewport &middot; no unwrap needed (UV optional) &middot; resolution-independent</p>
       </div>
     </div>
   </section>
 
-  <!-- THE 16 PATTERNS -->
+  <!-- THE 24 PATTERNS -->
   <section class="section blend-section">
     <div class="section__inner">
-      <p class="section__eyebrow reveal">24 Patterns</p>
-      <h2 class="section__title reveal">One Layer, Two Dozen Looks.</h2>
-      <p class="section__subtitle reveal">Swap the pattern type from a dropdown &mdash; the viewport updates instantly. Grouped by what they're good for:</p>
+      <p class="section__eyebrow reveal">The library</p>
+      <h2 class="section__title reveal">24 patterns, grouped by what they&rsquo;re for.</h2>
+      <p class="section__subtitle reveal">Switch the pattern type from a dropdown and the viewport updates instantly. By category:</p>
       <div class="blend reveal">
         <div class="blend__group">
-          <h4 class="blend__label">Noise &amp; Fractal &mdash; organic, cloudy surfaces</h4>
+          <h4 class="blend__label">Noise &amp; fractal &mdash; organic, cloudy surfaces</h4>
           <div class="blend__modes">
             <span class="blend__pill">Noise</span><span class="blend__pill">Musgrave</span>
             <span class="blend__pill">Ridged</span><span class="blend__pill">White Noise</span><span class="blend__pill">Magic</span>
@@ -90,21 +91,21 @@
           </div>
         </div>
         <div class="blend__group">
-          <h4 class="blend__label">Tiling &amp; Geometric &mdash; man-made surfaces</h4>
+          <h4 class="blend__label">Tiling &amp; geometric &mdash; man-made surfaces</h4>
           <div class="blend__modes">
             <span class="blend__pill">Brick</span><span class="blend__pill">Tiles</span><span class="blend__pill">Hex Grid</span>
             <span class="blend__pill">Checker</span><span class="blend__pill">Stripes</span><span class="blend__pill">Truchet</span>
           </div>
         </div>
         <div class="blend__group">
-          <h4 class="blend__label">Waves &amp; Gradients &mdash; veins, ramps, anisotropy, caustics</h4>
+          <h4 class="blend__label">Waves &amp; gradients &mdash; veins, ramps, anisotropy, caustics</h4>
           <div class="blend__modes">
             <span class="blend__pill">Wave</span><span class="blend__pill">Marble</span>
             <span class="blend__pill">Gradient</span><span class="blend__pill">Gabor</span><span class="blend__pill">Caustics</span><span class="blend__pill">Fresnel</span>
           </div>
         </div>
         <div class="blend__group">
-          <h4 class="blend__label">Surfaces &amp; Materials &mdash; wood, fabric, wear</h4>
+          <h4 class="blend__label">Surfaces &amp; materials &mdash; wood, fabric, wear</h4>
           <div class="blend__modes">
             <span class="blend__pill">Wood</span><span class="blend__pill">Weave</span><span class="blend__pill">Scratches</span>
           </div>
@@ -113,39 +114,39 @@
     </div>
   </section>
 
-  <!-- EVERY KNOB IS LIVE -->
+  <!-- PARAMETERS -->
   <section class="section">
     <div class="section__inner">
-      <p class="section__eyebrow reveal">Fully Parametric</p>
-      <h2 class="section__title reveal">Every Knob Updates Live.</h2>
+      <p class="section__eyebrow reveal">Parameters</p>
+      <h2 class="section__title reveal">The controls on every pattern.</h2>
       <div class="pbr__grid reveal">
-        <div class="pbr__card" style="--accent:#8BC34A"><h4>Scale &amp; Detail</h4><p>Size of the pattern and how many octaves of fine detail layer on top.</p></div>
-        <div class="pbr__card" style="--accent:#26C6DA"><h4>Distortion &amp; Vector Warp</h4><p>Bend the pattern with noise &mdash; turn straight bands into organic, hand-marbled flow.</p></div>
-        <div class="pbr__card" style="--accent:#AB47BC"><h4>Colour Ramp</h4><p>Two, three or N colour stops with positions &amp; interpolation &mdash; map one pattern to a full spectrum.</p></div>
-        <div class="pbr__card" style="--accent:#FF9800"><h4>Coordinate Space</h4><p>Generated, Object or UV &mdash; plus polar, spherical, swirl &amp; cylindrical transforms for rings &amp; spirals.</p></div>
-        <div class="pbr__card" style="--accent:#5C6BC0"><h4>Contrast &amp; Centre</h4><p>Tighten the transition into a crisp edge or a soft gradient, and shift where it sits.</p></div>
-        <div class="pbr__card" style="--accent:#EF5350"><h4>View Parallax</h4><p>Slide the pattern by the viewing angle &mdash; the holographic-foil trick, on any pattern.</p></div>
+        <div class="pbr__card" style="--accent:#8BC34A"><h4>Scale &amp; detail</h4><p>Pattern size, plus how many octaves of fine detail layer on top.</p></div>
+        <div class="pbr__card" style="--accent:#26C6DA"><h4>Distortion &amp; warp</h4><p>Bend the pattern with noise &mdash; straight bands become organic, hand-marbled flow.</p></div>
+        <div class="pbr__card" style="--accent:#AB47BC"><h4>Colour ramp</h4><p>Two, three or N colour stops with positions and interpolation &mdash; map one pattern to a full spectrum.</p></div>
+        <div class="pbr__card" style="--accent:#FF9800"><h4>Coordinate space</h4><p>Generated or Object (3D, no unwrap), or UV when you want it &mdash; plus polar, spherical, swirl and cylindrical transforms.</p></div>
+        <div class="pbr__card" style="--accent:#5C6BC0"><h4>Contrast &amp; centre</h4><p>Tighten the transition into a crisp edge or a soft gradient, and shift where it sits.</p></div>
+        <div class="pbr__card" style="--accent:#EF5350"><h4>View parallax</h4><p>Slide the pattern by viewing angle &mdash; the holographic-foil trick, on any pattern.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- SEND IT ANYWHERE -->
+  <!-- ROUTE & MASK -->
   <section class="section masks-section">
     <div class="section__inner">
-      <p class="section__eyebrow reveal">Route &amp; Mask</p>
-      <h2 class="section__title reveal">Send It to Any Channel &mdash; or Use It as a Mask.</h2>
-      <p class="section__subtitle reveal">A procedural isn't just colour. Point the same pattern at Roughness for smudges, at Bump for relief, at Emission for glow &mdash; or set it as a layer's mask so another layer lands exactly in its cells, cracks or bands.</p>
+      <p class="section__eyebrow reveal">Route &amp; mask</p>
+      <h2 class="section__title reveal">Drive any channel &mdash; or gate another layer.</h2>
+      <p class="section__subtitle reveal">A procedural isn&rsquo;t only colour. Point the same pattern at Roughness for smudges, at Bump for relief, at Emission for glow &mdash; or set it as a layer&rsquo;s mask so another layer lands exactly in its cells, cracks or bands.</p>
       <div class="branching__grid reveal">
         <div class="branching__example">
-          <span class="badge">Example &mdash; cobblestone</span>
+          <span class="badge">Cobblestone</span>
           <ul class="branching__list">
             <li><span class="branching__ch">Voronoi</span> &rarr; Base Color &mdash; the stones.</li>
             <li><span class="branching__ch">Same Voronoi</span> &rarr; Bump &mdash; raises each stone.</li>
-            <li><span class="branching__ch">Voronoi edges</span> &rarr; a dirt layer's mask &mdash; grime lands in the joints.</li>
+            <li><span class="branching__ch">Voronoi edges</span> &rarr; a dirt layer&rsquo;s mask &mdash; grime lands in the joints.</li>
           </ul>
         </div>
         <div class="branching__example">
-          <span class="badge">Example &mdash; sci-fi panel</span>
+          <span class="badge">Sci-fi panel</span>
           <ul class="branching__list">
             <li><span class="branching__ch">Brick / Hex</span> &rarr; Base Color &mdash; the panels.</li>
             <li><span class="branching__ch">Seams</span> &rarr; Emission &mdash; glowing grooves.</li>
@@ -159,14 +160,14 @@
   <!-- LAYER NAV -->
   <section class="section">
     <div class="section__inner">
-      <h2 class="section__title reveal">The Six Layer Types</h2>
+      <h2 class="section__title reveal">The six layer types</h2>
       <div class="layernav reveal">
-        <a class="layernav__item" href="adjustment.html">Adjustment</a>
-        <a class="layernav__item" href="fill.html">Fill</a>
-        <a class="layernav__item" href="group.html">Group</a>
         <a class="layernav__item" href="paint.html">Paint</a>
+        <a class="layernav__item" href="fill.html">Fill</a>
         <a class="layernav__item layernav__item--active" href="procedural.html">Procedural</a>
+        <a class="layernav__item" href="adjustment.html">Adjustment</a>
         <a class="layernav__item" href="reference.html">Reference</a>
+        <a class="layernav__item" href="group.html">Group</a>
       </div>
       <div style="text-align:center;margin-top:var(--space-8)">
         <a href="../index.html#pricing" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>

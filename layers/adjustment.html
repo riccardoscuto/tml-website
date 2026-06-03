@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adjustment Layer — Texture Layer Manager</title>
-  <meta name="description" content="Non-destructive colour grading - tweak everything below without touching a pixel, and route the adjustment to any channel, not just colour.">
+  <meta name="description" content="The Adjustment layer: non-destructive grading applied to everything below it — Hue/Sat, Brightness/Contrast, Levels, Color Balance, Gradient Map — routable to any PBR channel, not just colour.">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,8 +27,9 @@
         <span class="nav__brand-text">Texture Layer Manager</span>
       </a>
       <div class="nav__links" id="nav-links">
+        <a href="../index.html#overview" class="nav__link">Overview</a>
         <a href="../index.html#layer-types" class="nav__link">Layers</a>
-        <a href="../index.html#workflow" class="nav__link">Features</a>
+        <a href="../index.html#channels" class="nav__link">PBR</a>
         <a href="../index.html#export" class="nav__link">Export</a>
         <a href="../index.html#pricing" class="nav__link">Pricing</a>
       </div>
@@ -41,8 +42,8 @@
     <div class="section__inner">
       <a href="../index.html#layer-types" class="layerhero__back">&larr; All layer types</a>
       <p class="section__eyebrow reveal">Layer Type &middot; Adjustment</p>
-      <h1 class="layerhero__title reveal">The Adjustment Layer</h1>
-      <p class="layerhero__lead reveal">Non-destructive colour grading &mdash; tweak everything below without touching a pixel, and route the adjustment to <strong>any</strong> channel, not just colour.</p>
+      <h1 class="layerhero__title reveal">Adjustment Layer</h1>
+      <p class="layerhero__lead reveal">A non-destructive grade applied to everything beneath it &mdash; like a Photoshop adjustment layer &mdash; that you can aim at any PBR channel, not only colour.</p>
     </div>
   </header>
 
@@ -52,26 +53,26 @@
         <video class="layerclip" autoplay muted loop playsinline poster="../assets/images/layers/adjustment-poster.jpg">
           <source src="../assets/videos/layer-adjustment.mp4" type="video/mp4">
         </video>
-        <p class="layerclip__cap">An Adjustment layer &mdash; hue graded across the whole material, live.</p>
+        <p class="layerclip__cap">An adjustment layer &mdash; hue graded across the whole material, live.</p>
       </div>
       <div class="layerdetail__text reveal">
         <h2>What it does</h2>
-        <p>An adjustment layer sits on top of the stack and re-grades whatever shows through it &mdash; like a Photoshop adjustment layer. Nothing underneath is altered; hide the adjustment and the original is back.</p>
-        <p>The twist: you can aim it at any PBR channel. Drop the roughness of everything below by 20%, or shift only the metallic &mdash; not just the colour.</p>
+        <p>An adjustment layer re-grades whatever shows through it, without altering the layers below &mdash; hide it and the original is back. It&rsquo;s the right tool when a stack is nearly right and just needs a tonal pass over the top.</p>
+        <p>What makes it more than a colour tool: you can route it to a specific channel. Knock the roughness of everything below down by 20%, or shift only the metallic &mdash; the grade doesn&rsquo;t have to touch base colour at all.</p>
       </div>
     </div>
   </section>
 
   <section class="section blend-section">
     <div class="section__inner">
-      <p class="section__eyebrow reveal">Five Adjustments</p>
-      <h2 class="section__title reveal">Grade Without Repainting.</h2>
+      <p class="section__eyebrow reveal">The five operations</p>
+      <h2 class="section__title reveal">Five ways to grade the stack.</h2>
       <div class="pbr__grid reveal">
-        <div class="pbr__card" style="--accent:#8BC34A"><h4>Hue / Saturation</h4><p>Shift hue, push or pull saturation and value across the stack.</p></div>
-        <div class="pbr__card" style="--accent:#26C6DA"><h4>Brightness / Contrast</h4><p>Lift or crush the whole material in one slider.</p></div>
-        <div class="pbr__card" style="--accent:#AB47BC"><h4>Levels</h4><p>Photoshop-style input/output + gamma remap for precise control.</p></div>
+        <div class="pbr__card" style="--accent:#8BC34A"><h4>Hue / Saturation</h4><p>Shift hue, push or pull saturation and value across everything below.</p></div>
+        <div class="pbr__card" style="--accent:#26C6DA"><h4>Brightness / Contrast</h4><p>Lift or crush the whole material with two sliders.</p></div>
+        <div class="pbr__card" style="--accent:#AB47BC"><h4>Levels</h4><p>Input/output range plus gamma &mdash; the precise Photoshop-style remap.</p></div>
         <div class="pbr__card" style="--accent:#FF9800"><h4>Color Balance</h4><p>Warm the shadows, cool the highlights &mdash; cinematic colour shifts.</p></div>
-        <div class="pbr__card" style="--accent:#7E57C2"><h4>Gradient Map</h4><p>Recolour everything below by luminance through a colour ramp &mdash; thermal, duotone, stylised looks.</p></div>
+        <div class="pbr__card" style="--accent:#7E57C2"><h4>Gradient Map</h4><p>Remap luminance through a colour ramp &mdash; thermal, duotone and stylised looks.</p></div>
       </div>
     </div>
   </section>
@@ -79,22 +80,22 @@
   <section class="section masks-section">
     <div class="section__inner">
       <p class="section__eyebrow reveal">In practice</p>
-      <h2 class="section__title reveal">One Layer, Whole-Stack Control.</h2>
+      <h2 class="section__title reveal">Warm a whole material &mdash; or just its gloss.</h2>
       <div class="branching__grid reveal">
         <div class="branching__example">
-          <span class="badge">Warm a material</span>
+          <span class="badge">Targeted grade</span>
           <ul class="branching__list">
-            <li><span class="branching__ch">Hue/Sat</span> nudge hue warm &mdash; the entire stack shifts together.</li>
-            <li><span class="branching__ch">&rarr; Base Color</span> the default target, but&hellip;</li>
-            <li><span class="branching__ch">&rarr; Roughness</span> route it there instead to grade only the gloss.</li>
+            <li><span class="branching__ch">Hue/Sat</span> nudge hue warm &mdash; the whole stack shifts together.</li>
+            <li><span class="branching__ch">&rarr; Base Color</span> the default target&hellip;</li>
+            <li><span class="branching__ch">&rarr; Roughness</span> &hellip;or route it here instead to grade only the gloss.</li>
           </ul>
         </div>
         <div class="branching__example">
           <span class="badge">Good to know</span>
           <ul class="branching__list">
-            <li><span class="branching__ch">Non-destructive</span> toggle it off, the original is untouched.</li>
-            <li><span class="branching__ch">Stacks</span> layer several adjustments; reorder to taste.</li>
-            <li><span class="branching__ch">Masked</span> give the adjustment a mask to grade only one area.</li>
+            <li><span class="branching__ch">Non-destructive</span> &mdash; toggle it off and the original is untouched.</li>
+            <li><span class="branching__ch">Stackable</span> &mdash; layer several grades and reorder them.</li>
+            <li><span class="branching__ch">Maskable</span> &mdash; give it a mask to grade just one area.</li>
           </ul>
         </div>
       </div>
@@ -103,14 +104,14 @@
 
   <section class="section">
     <div class="section__inner">
-      <h2 class="section__title reveal">The Six Layer Types</h2>
+      <h2 class="section__title reveal">The six layer types</h2>
       <div class="layernav reveal">
-        <a class="layernav__item layernav__item--active" href="adjustment.html">Adjustment</a>
-        <a class="layernav__item" href="fill.html">Fill</a>
-        <a class="layernav__item" href="group.html">Group</a>
         <a class="layernav__item" href="paint.html">Paint</a>
+        <a class="layernav__item" href="fill.html">Fill</a>
         <a class="layernav__item" href="procedural.html">Procedural</a>
+        <a class="layernav__item layernav__item--active" href="adjustment.html">Adjustment</a>
         <a class="layernav__item" href="reference.html">Reference</a>
+        <a class="layernav__item" href="group.html">Group</a>
       </div>
       <div style="text-align:center;margin-top:var(--space-8)">
         <a href="../index.html#pricing" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>

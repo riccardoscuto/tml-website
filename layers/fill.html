@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fill Layer — Texture Layer Manager</title>
-  <meta name="description" content="Parametric solid values - colour, roughness, metallic - that you can change anytime. The primer almost every material starts from.">
+  <meta name="description" content="The Fill layer: flat, editable colour / roughness / metallic values with no image — the parametric base almost every material starts from. One fill can drive several channels at once.">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,8 +27,9 @@
         <span class="nav__brand-text">Texture Layer Manager</span>
       </a>
       <div class="nav__links" id="nav-links">
+        <a href="../index.html#overview" class="nav__link">Overview</a>
         <a href="../index.html#layer-types" class="nav__link">Layers</a>
-        <a href="../index.html#workflow" class="nav__link">Features</a>
+        <a href="../index.html#channels" class="nav__link">PBR</a>
         <a href="../index.html#export" class="nav__link">Export</a>
         <a href="../index.html#pricing" class="nav__link">Pricing</a>
       </div>
@@ -41,8 +42,8 @@
     <div class="section__inner">
       <a href="../index.html#layer-types" class="layerhero__back">&larr; All layer types</a>
       <p class="section__eyebrow reveal">Layer Type &middot; Fill</p>
-      <h1 class="layerhero__title reveal">The Fill Layer</h1>
-      <p class="layerhero__lead reveal">Parametric solid values &mdash; colour, roughness, metallic &mdash; that you can change anytime. The <strong>primer</strong> almost every material starts from.</p>
+      <h1 class="layerhero__title reveal">Fill Layer</h1>
+      <p class="layerhero__lead reveal">A flat, editable set of values &mdash; colour, roughness, metallic &mdash; with no image and no painting. It&rsquo;s the parametric base layer almost every material is built on top of.</p>
     </div>
   </header>
 
@@ -52,25 +53,25 @@
         <video class="layerclip" autoplay muted loop playsinline poster="../assets/images/layers/fill-poster.jpg">
           <source src="../assets/videos/layer-fill.mp4" type="video/mp4">
         </video>
-        <p class="layerclip__cap">A Fill layer &mdash; roughness swept live from glossy to matte.</p>
+        <p class="layerclip__cap">A fill layer &mdash; roughness swept live from glossy to matte.</p>
       </div>
       <div class="layerdetail__text reveal">
         <h2>What it does</h2>
-        <p>A fill layer is a flat, editable set of values: a base colour, a roughness, a metallic amount. No painting, no texture &mdash; just sliders you can revisit whenever.</p>
-        <p>Thanks to cumulative routing, a single fill can drive several channels at once: set the colour, the metallic and the roughness of your base in one layer.</p>
+        <p>A fill layer holds uniform values: a base colour, a roughness amount, a metallic amount &mdash; sliders you can revisit at any time. There&rsquo;s no texture and no render cost; it&rsquo;s the flat foundation a stack starts from.</p>
+        <p>One fill can feed several channels at once, so a single layer can set the colour, the metallic and the roughness of your base material in one move &mdash; then everything above it (paint, procedurals, wear) composites on top.</p>
       </div>
     </div>
   </section>
 
   <section class="section blend-section">
     <div class="section__inner">
-      <p class="section__eyebrow reveal">The Parametric Base</p>
-      <h2 class="section__title reveal">Set It, Change It Anytime.</h2>
+      <p class="section__eyebrow reveal">Controls</p>
+      <h2 class="section__title reveal">Three values, editable forever.</h2>
       <div class="pbr__grid reveal">
         <div class="pbr__card" style="--accent:#8BC34A"><h4>Base Color</h4><p>A solid diffuse colour for the whole layer.</p></div>
-        <div class="pbr__card" style="--accent:#9E9E9E"><h4>Metallic</h4><p>Dielectric to metal in one 0&ndash;1 slider.</p></div>
-        <div class="pbr__card" style="--accent:#607D8B"><h4>Roughness</h4><p>Mirror-sharp to fully matte.</p></div>
-        <div class="pbr__card" style="--accent:#5C6BC0"><h4>Cumulative routing</h4><p>One fill feeds Base Color, Metallic &amp; Roughness together.</p></div>
+        <div class="pbr__card" style="--accent:#9E9E9E"><h4>Metallic</h4><p>Dielectric to metal on one 0&ndash;1 slider.</p></div>
+        <div class="pbr__card" style="--accent:#607D8B"><h4>Roughness</h4><p>Mirror-sharp through to fully matte.</p></div>
+        <div class="pbr__card" style="--accent:#5C6BC0"><h4>Multi-channel</h4><p>One fill can drive Base Color, Metallic and Roughness together.</p></div>
       </div>
     </div>
   </section>
@@ -78,22 +79,22 @@
   <section class="section masks-section">
     <div class="section__inner">
       <p class="section__eyebrow reveal">In practice</p>
-      <h2 class="section__title reveal">The Foundation of Every Stack.</h2>
+      <h2 class="section__title reveal">The bottom of almost every stack.</h2>
       <div class="branching__grid reveal">
         <div class="branching__example">
           <span class="badge">Bronze base</span>
           <ul class="branching__list">
             <li><span class="branching__ch">Base Color</span> a warm brown.</li>
-            <li><span class="branching__ch">Metallic</span> 1.0 &mdash; it is metal.</li>
+            <li><span class="branching__ch">Metallic</span> 1.0 &mdash; it&rsquo;s metal.</li>
             <li><span class="branching__ch">Roughness</span> 0.35 &mdash; a soft sheen.</li>
           </ul>
         </div>
         <div class="branching__example">
           <span class="badge">Good to know</span>
           <ul class="branching__list">
-            <li><span class="branching__ch">No UVs</span> values are uniform &mdash; nothing to unwrap.</li>
-            <li><span class="branching__ch">Instant</span> zero render cost, changes are live.</li>
-            <li><span class="branching__ch">Bottom layer</span> build everything else on top of it.</li>
+            <li><span class="branching__ch">Uniform</span> &mdash; the values are flat, so there&rsquo;s nothing to unwrap.</li>
+            <li><span class="branching__ch">Free</span> &mdash; no texture memory, changes are instant.</li>
+            <li><span class="branching__ch">Also a tint</span> &mdash; a low-opacity fill on top grades everything below.</li>
           </ul>
         </div>
       </div>
@@ -102,14 +103,14 @@
 
   <section class="section">
     <div class="section__inner">
-      <h2 class="section__title reveal">The Six Layer Types</h2>
+      <h2 class="section__title reveal">The six layer types</h2>
       <div class="layernav reveal">
-        <a class="layernav__item" href="adjustment.html">Adjustment</a>
-        <a class="layernav__item layernav__item--active" href="fill.html">Fill</a>
-        <a class="layernav__item" href="group.html">Group</a>
         <a class="layernav__item" href="paint.html">Paint</a>
+        <a class="layernav__item layernav__item--active" href="fill.html">Fill</a>
         <a class="layernav__item" href="procedural.html">Procedural</a>
+        <a class="layernav__item" href="adjustment.html">Adjustment</a>
         <a class="layernav__item" href="reference.html">Reference</a>
+        <a class="layernav__item" href="group.html">Group</a>
       </div>
       <div style="text-align:center;margin-top:var(--space-8)">
         <a href="../index.html#pricing" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>

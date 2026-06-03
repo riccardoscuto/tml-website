@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paint Layer — Texture Layer Manager</title>
-  <meta name="description" content="Brush detail straight onto your model - each layer gets its own image (512&ndash;4096), full alpha, per-layer blend modes and a live viewport preview.">
+  <meta name="description" content="The Paint layer: a per-layer image texture (512–4096) you brush on with Blender's paint tools — full alpha, per-layer blend modes, paintable into any PBR channel.">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,8 +27,9 @@
         <span class="nav__brand-text">Texture Layer Manager</span>
       </a>
       <div class="nav__links" id="nav-links">
+        <a href="../index.html#overview" class="nav__link">Overview</a>
         <a href="../index.html#layer-types" class="nav__link">Layers</a>
-        <a href="../index.html#workflow" class="nav__link">Features</a>
+        <a href="../index.html#channels" class="nav__link">PBR</a>
         <a href="../index.html#export" class="nav__link">Export</a>
         <a href="../index.html#pricing" class="nav__link">Pricing</a>
       </div>
@@ -41,34 +42,34 @@
     <div class="section__inner">
       <a href="../index.html#layer-types" class="layerhero__back">&larr; All layer types</a>
       <p class="section__eyebrow reveal">Layer Type &middot; Paint</p>
-      <h1 class="layerhero__title reveal">The Paint Layer</h1>
-      <p class="layerhero__lead reveal">Brush detail straight onto your model &mdash; each layer gets its own image (512&ndash;4096), full alpha, per-layer blend modes and a live viewport preview.</p>
+      <h1 class="layerhero__title reveal">Paint Layer</h1>
+      <p class="layerhero__lead reveal">A paintable image layer: each one owns its own texture (512&ndash;4096) that you brush on with Blender&rsquo;s texture-paint tools. Use it for anything that has to sit in an exact place on the model.</p>
     </div>
   </header>
 
   <section class="section">
     <div class="section__inner layerdetail">
       <div class="layerdetail__media reveal">
-        <img class="layerclip" src="../assets/images/layer-types/paint.png" alt="Paint layer preview">
-        <p class="layerclip__cap">A Paint layer &mdash; a hand-painted image mapped to the model.</p>
+        <img class="layerclip" src="../assets/images/layer-types/paint.png" alt="A paint layer mapped onto a model">
+        <p class="layerclip__cap">A paint layer &mdash; a hand-painted image mapped through the model&rsquo;s UVs.</p>
       </div>
       <div class="layerdetail__text reveal">
         <h2>What it does</h2>
-        <p>The familiar paintable layer. Each one owns an image texture at the resolution you choose, and you paint on it with Blender's texture-paint tools with live preview.</p>
-        <p>Because it is a real image bound to the UVs, a paint layer is the right tool for anything that has to sit in an exact spot &mdash; logos, decals, hand-placed grime, lettering.</p>
+        <p>A paint layer is a real image texture bound to the layer. You pick its resolution, then paint on it with Blender&rsquo;s native texture-paint brushes and see the strokes composite into the material live.</p>
+        <p>Because it&rsquo;s an image mapped through the model&rsquo;s UVs, it&rsquo;s the right tool whenever position matters &mdash; a logo on a panel, a decal, hand-placed grime, lettering. (Paint and image layers are the part of TLM that uses your UVs; procedural and mask layers don&rsquo;t.)</p>
       </div>
     </div>
   </section>
 
   <section class="section blend-section">
     <div class="section__inner">
-      <p class="section__eyebrow reveal">Hand-Painted Detail</p>
-      <h2 class="section__title reveal">Paint Exactly Where You Mean It.</h2>
+      <p class="section__eyebrow reveal">Controls</p>
+      <h2 class="section__title reveal">What you get on a paint layer.</h2>
       <div class="pbr__grid reveal">
-        <div class="pbr__card" style="--accent:#8BC34A"><h4>Your resolution</h4><p>512 to 4096 per layer &mdash; spend detail where it matters.</p></div>
-        <div class="pbr__card" style="--accent:#EF5350"><h4>Full alpha</h4><p>Transparent areas let lower layers through.</p></div>
-        <div class="pbr__card" style="--accent:#26C6DA"><h4>Symmetry paint</h4><p>Mirror strokes across an axis automatically.</p></div>
-        <div class="pbr__card" style="--accent:#AB47BC"><h4>Live preview</h4><p>See strokes composite into the material in real time.</p></div>
+        <div class="pbr__card" style="--accent:#8BC34A"><h4>Per-layer resolution</h4><p>512, 1024, 2048 or 4096 &mdash; spend texture memory only where the detail is needed.</p></div>
+        <div class="pbr__card" style="--accent:#EF5350"><h4>Full alpha</h4><p>Unpainted / transparent areas let the layers below show through, so decals don&rsquo;t need a separate mask.</p></div>
+        <div class="pbr__card" style="--accent:#FF9800"><h4>Paints into any channel</h4><p>Route the layer to Roughness, Emission or Bump and paint <em>that</em> channel directly, not just Base Color.</p></div>
+        <div class="pbr__card" style="--accent:#AB47BC"><h4>Live viewport</h4><p>Strokes update the composited material in real time &mdash; no bake, no rebuild.</p></div>
       </div>
     </div>
   </section>
@@ -76,22 +77,22 @@
   <section class="section masks-section">
     <div class="section__inner">
       <p class="section__eyebrow reveal">In practice</p>
-      <h2 class="section__title reveal">UV-Specific, Every Time.</h2>
+      <h2 class="section__title reveal">A decal that stays exactly where you put it.</h2>
       <div class="branching__grid reveal">
         <div class="branching__example">
-          <span class="badge">Decals &amp; logos</span>
+          <span class="badge">Logo on a panel</span>
           <ul class="branching__list">
-            <li><span class="branching__ch">Paint layer</span> stamp a logo onto a panel.</li>
-            <li><span class="branching__ch">Alpha</span> everything around it stays transparent.</li>
-            <li><span class="branching__ch">Blend</span> Multiply hand-painted dirt into the crevices.</li>
+            <li><span class="branching__ch">Paint</span> stamp the logo onto the surface.</li>
+            <li><span class="branching__ch">Alpha</span> the area around it stays transparent &mdash; lower layers read through.</li>
+            <li><span class="branching__ch">Multiply</span> add a second paint layer for grime worked into the seams.</li>
           </ul>
         </div>
         <div class="branching__example">
           <span class="badge">Good to know</span>
           <ul class="branching__list">
-            <li><span class="branching__ch">Screencast</span> a UI walkthrough clip is coming soon.</li>
-            <li><span class="branching__ch">Any channel</span> paint straight into Roughness or Emission too.</li>
-            <li><span class="branching__ch">Non-destructive</span> it is just another layer &mdash; reorder, mask, fade.</li>
+            <li><span class="branching__ch">It&rsquo;s just a layer</span> &mdash; reorder it, mask it, fade its opacity like any other.</li>
+            <li><span class="branching__ch">Needs UVs</span> &mdash; the image follows the model&rsquo;s unwrap.</li>
+            <li><span class="branching__ch">Any channel</span> &mdash; paint straight into Roughness or Emission too.</li>
           </ul>
         </div>
       </div>
@@ -100,14 +101,14 @@
 
   <section class="section">
     <div class="section__inner">
-      <h2 class="section__title reveal">The Six Layer Types</h2>
+      <h2 class="section__title reveal">The six layer types</h2>
       <div class="layernav reveal">
-        <a class="layernav__item" href="adjustment.html">Adjustment</a>
+        <a class="layernav__item" href="paint.html">Paint</a>
         <a class="layernav__item" href="fill.html">Fill</a>
-        <a class="layernav__item" href="group.html">Group</a>
-        <a class="layernav__item layernav__item--active" href="paint.html">Paint</a>
         <a class="layernav__item" href="procedural.html">Procedural</a>
+        <a class="layernav__item" href="adjustment.html">Adjustment</a>
         <a class="layernav__item" href="reference.html">Reference</a>
+        <a class="layernav__item" href="group.html">Group</a>
       </div>
       <div style="text-align:center;margin-top:var(--space-8)">
         <a href="../index.html#pricing" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>

@@ -113,6 +113,92 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════
+   EDITABLE SHADER
+   ══════════════════════════════════════════════════════════════════════ */
+.editable-section {
+  background: var(--color-bg-alt);
+}
+.editable__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: stretch;
+}
+.editable__panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  min-width: 0;
+}
+.editable__panel .badge {
+  margin-bottom: var(--space-4);
+}
+.editable__panel h3 {
+  margin-bottom: var(--space-3);
+}
+.editable__panel p {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  margin-bottom: var(--space-5);
+}
+.editable__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.editable__list li {
+  position: relative;
+  padding-left: var(--space-6);
+  color: var(--color-text-sub);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+}
+.editable__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.editable__convert {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-accent);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.editable__convert svg {
+  color: var(--color-accent);
+}
+.editable__note {
+  text-align: center;
+  margin-top: var(--space-8);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .editable__grid {
+    grid-template-columns: 1fr;
+  }
+  .editable__convert svg {
+    transform: rotate(90deg);
+  }
+  .editable__panel {
+    padding: var(--space-6);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
    LAYER TYPES (tabs)
    ══════════════════════════════════════════════════════════════════════ */
 .layers {

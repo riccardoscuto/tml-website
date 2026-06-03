@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reference Layer — Texture Layer Manager</title>
-  <meta name="description" content="Reuse one layer's pattern to drive many channels independently - Substance-grade smart materials, with no baking and no round-trips.">
+  <meta name="description" content="The Reference layer: reuse one layer's pattern as the source for others, each with its own blend, mask and channel routing. Build a wear mask once and drive colour, metallic, roughness and bump from it — no baking.">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,8 +27,9 @@
         <span class="nav__brand-text">Texture Layer Manager</span>
       </a>
       <div class="nav__links" id="nav-links">
+        <a href="../index.html#overview" class="nav__link">Overview</a>
         <a href="../index.html#layer-types" class="nav__link">Layers</a>
-        <a href="../index.html#workflow" class="nav__link">Features</a>
+        <a href="../index.html#channels" class="nav__link">PBR</a>
         <a href="../index.html#export" class="nav__link">Export</a>
         <a href="../index.html#pricing" class="nav__link">Pricing</a>
       </div>
@@ -41,8 +42,8 @@
     <div class="section__inner">
       <a href="../index.html#layer-types" class="layerhero__back">&larr; All layer types</a>
       <p class="section__eyebrow reveal">Layer Type &middot; Reference</p>
-      <h1 class="layerhero__title reveal">The Reference Layer</h1>
-      <p class="layerhero__lead reveal">Reuse one layer's pattern to drive <strong>many</strong> channels independently &mdash; Substance-grade smart materials, with no baking and no round-trips.</p>
+      <h1 class="layerhero__title reveal">Reference Layer</h1>
+      <p class="layerhero__lead reveal">Reuse one layer&rsquo;s pattern as the source for others &mdash; each with its own blend, opacity, mask and channel routing. It&rsquo;s how you build a Substance-style smart material in Blender, with no baking.</p>
     </div>
   </header>
 
@@ -52,25 +53,25 @@
         <video class="layerclip" autoplay muted loop playsinline poster="../assets/images/layers/reference-poster.jpg">
           <source src="../assets/videos/layer-reference.mp4" type="video/mp4">
         </video>
-        <p class="layerclip__cap">A Reference layer &mdash; one pattern drives moss colour, roughness &amp; bump.</p>
+        <p class="layerclip__cap">One chip mask, referenced into base colour, roughness and bump at once.</p>
       </div>
       <div class="layerdetail__text reveal">
         <h2>What it does</h2>
-        <p>A reference layer borrows another layer's pattern instead of making its own &mdash; but it keeps its own blend mode, opacity, mask and channel routing. The pattern is shared; the behaviour is independent.</p>
-        <p>Build a single wear mask once, then reference it to expose bare metal, raise roughness and add bump &mdash; all from one source. Edit that source later and every dependent channel follows, live.</p>
+        <p>A reference layer doesn&rsquo;t generate its own pattern &mdash; it borrows another layer&rsquo;s. The shape is shared, but the reference keeps its own blend mode, opacity, mask and PBR routing, so the same source can behave differently in each place it&rsquo;s used.</p>
+        <p>Build a wear/chip mask once, then reference it to expose bare metal on Metallic, raise Roughness and add relief on Bump. Edit the source later and every layer that references it updates live &mdash; the &ldquo;smart material&rdquo; idea, without a bake step.</p>
       </div>
     </div>
   </section>
 
   <section class="section blend-section">
     <div class="section__inner">
-      <p class="section__eyebrow reveal">Smart Materials</p>
-      <h2 class="section__title reveal">Build a Driver Once. Drive Everything.</h2>
+      <p class="section__eyebrow reveal">Why it matters</p>
+      <h2 class="section__title reveal">One source, many channels &mdash; edited in one place.</h2>
       <div class="pbr__grid reveal">
-        <div class="pbr__card" style="--accent:#8BC34A"><h4>Reuse a pattern</h4><p>Point at any layer; share its shape without copying.</p></div>
-        <div class="pbr__card" style="--accent:#26C6DA"><h4>Independent</h4><p>Own blend / opacity / mask per reference.</p></div>
-        <div class="pbr__card" style="--accent:#AB47BC"><h4>Any channel</h4><p>One driver feeds colour, metallic, roughness, bump.</p></div>
-        <div class="pbr__card" style="--accent:#FF9800"><h4>Live updates</h4><p>Tweak the source &mdash; everything downstream follows.</p></div>
+        <div class="pbr__card" style="--accent:#8BC34A"><h4>Reuse, don&rsquo;t copy</h4><p>Point at any layer and share its shape &mdash; no duplicated patterns to keep in sync.</p></div>
+        <div class="pbr__card" style="--accent:#26C6DA"><h4>Independent behaviour</h4><p>Each reference has its own blend, opacity and mask.</p></div>
+        <div class="pbr__card" style="--accent:#AB47BC"><h4>Any channel</h4><p>One driver can feed colour, metallic, roughness and bump separately.</p></div>
+        <div class="pbr__card" style="--accent:#FF9800"><h4>Edit once</h4><p>Change the source and everything referencing it follows, live.</p></div>
       </div>
     </div>
   </section>
@@ -78,12 +79,12 @@
   <section class="section masks-section">
     <div class="section__inner">
       <p class="section__eyebrow reveal">In practice</p>
-      <h2 class="section__title reveal">One Wear Mask, Four Channels.</h2>
+      <h2 class="section__title reveal">One wear mask drives a worn-paint look.</h2>
       <div class="branching__grid reveal">
         <div class="branching__example">
           <span class="badge">Worn paint</span>
           <ul class="branching__list">
-            <li><span class="branching__ch">Chip mask</span> a Voronoi / edge driver layer.</li>
+            <li><span class="branching__ch">Driver</span> a Voronoi / edge-wear layer = the chip mask.</li>
             <li><span class="branching__ch">&rarr; Metallic</span> reference it to expose bare metal on the chips.</li>
             <li><span class="branching__ch">&rarr; Roughness + Bump</span> reference it again for fresh, raised metal.</li>
           </ul>
@@ -91,9 +92,9 @@
         <div class="branching__example">
           <span class="badge">Good to know</span>
           <ul class="branching__list">
-            <li><span class="branching__ch">No baking</span> it is live &mdash; no texture round-trips.</li>
-            <li><span class="branching__ch">Acyclic</span> a reference cannot point at another reference.</li>
-            <li><span class="branching__ch">Substance-style</span> smart-material authoring, native in Blender.</li>
+            <li><span class="branching__ch">Live</span> &mdash; no baking, no texture round-trips.</li>
+            <li><span class="branching__ch">Acyclic</span> &mdash; a reference can&rsquo;t point at another reference.</li>
+            <li><span class="branching__ch">Raw or composed</span> &mdash; borrow just the source&rsquo;s raw pattern, or its full composited result.</li>
           </ul>
         </div>
       </div>
@@ -102,14 +103,14 @@
 
   <section class="section">
     <div class="section__inner">
-      <h2 class="section__title reveal">The Six Layer Types</h2>
+      <h2 class="section__title reveal">The six layer types</h2>
       <div class="layernav reveal">
-        <a class="layernav__item" href="adjustment.html">Adjustment</a>
-        <a class="layernav__item" href="fill.html">Fill</a>
-        <a class="layernav__item" href="group.html">Group</a>
         <a class="layernav__item" href="paint.html">Paint</a>
+        <a class="layernav__item" href="fill.html">Fill</a>
         <a class="layernav__item" href="procedural.html">Procedural</a>
+        <a class="layernav__item" href="adjustment.html">Adjustment</a>
         <a class="layernav__item layernav__item--active" href="reference.html">Reference</a>
+        <a class="layernav__item" href="group.html">Group</a>
       </div>
       <div style="text-align:center;margin-top:var(--space-8)">
         <a href="../index.html#pricing" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>

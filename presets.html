@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Preset Library — Texture Layer Manager</title>
-  <meta name="description" content="All 13 showcase material presets shipping with Texture Layer Manager — photoreal PBR, stylised NPR, image-driven effects and emissive sci-fi. Each a documented look-dev study, shareable as .tlm files.">
+  <title>Included Presets — Texture Layer Manager</title>
+  <meta name="description" content="The 13 preset materials that ship with Texture Layer Manager — photoreal surfaces, stylised NPR, image-driven effects, emissive looks and utility materials. Each is a real, editable layer stack you can take apart, and presets save/load as .tlm files.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,8 +27,9 @@
         <span class="nav__brand-text">Texture Layer Manager</span>
       </a>
       <div class="nav__links" id="nav-links">
+        <a href="index.html#overview" class="nav__link">Overview</a>
         <a href="index.html#layer-types" class="nav__link">Layers</a>
-        <a href="index.html#workflow" class="nav__link">Features</a>
+        <a href="index.html#channels" class="nav__link">PBR</a>
         <a href="index.html#export" class="nav__link">Export</a>
         <a href="index.html#pricing" class="nav__link">Pricing</a>
       </div>
@@ -40,90 +41,109 @@
   <header class="section layerhero">
     <div class="section__inner">
       <a href="index.html" class="layerhero__back">&larr; Back to home</a>
-      <p class="section__eyebrow reveal">Preset Library</p>
-      <h1 class="layerhero__title reveal">13 Showcase Materials</h1>
-      <p class="layerhero__lead reveal">Every preset ships in the pack as a documented look-dev study &mdash; not a generic procedural. Photoreal PBR, stylised NPR, image-driven effects and emissive sci-fi. Load one, learn the stack, make it yours. Save your own and share as <code>.tlm</code> files.</p>
+      <p class="section__eyebrow reveal">Included presets</p>
+      <h1 class="layerhero__title reveal">13 preset materials</h1>
+      <p class="layerhero__lead reveal">Each preset is a real, editable layer stack &mdash; not a baked image. Load one as a starting point, or open it up to see exactly how the look is built. Save your own and share them as <code>.tlm</code> files. Grouped by what they&rsquo;re for:</p>
     </div>
   </header>
 
   <section class="section presets-section">
     <div class="section__inner">
+
+      <h3 class="masks__subhead reveal">Photoreal surfaces</h3>
       <div class="presets__strip reveal">
         <div class="presets__card">
-          <div class="presets__preview presets__preview--anime-genshin-hero" role="img" aria-label="Anime Cel-Shaded preset"></div>
-          <h4>Anime Cel-Shaded</h4>
-          <p>NdotL shadow bands, rim light &amp; integrated outline &mdash; no extra modifiers</p>
-        </div>
-        <div class="presets__card">
           <div class="presets__preview presets__preview--bronze-verdigris-patina" role="img" aria-label="Bronze Verdigris Patina preset"></div>
-          <h4>Bronze Verdigris Patina</h4>
-          <p>Cast bronze with green patina pooling in cavities, polished edges</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--burn-dissolve" role="img" aria-label="Burn Dissolve preset"></div>
-          <h4>Burn Dissolve</h4>
-          <p>Procedural burn-away with a glowing edge &mdash; one slider drives the progress</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--galaxy-marble" role="img" aria-label="Galaxy Marble preset"></div>
-          <h4>Galaxy Marble</h4>
-          <p>Black marble with swirling cosmic veins in violet &amp; gold</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--holo-card" role="img" aria-label="Holographic Card preset"></div>
-          <h4>Holographic Card</h4>
-          <p>Your image + a view-dependent rainbow foil &mdash; five switchable patterns</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--inverted-checker" role="img" aria-label="Inverted Checker preset"></div>
-          <h4>Inverted Checker</h4>
-          <p>Crisp UV checker &mdash; instant scale &amp; seam reference</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--led-screen" role="img" aria-label="LED Screen preset"></div>
-          <h4>LED Screen</h4>
-          <p>Any imported image rendered as an emissive LED dot-matrix wall</p>
+          <h4>Bronze Verdigris</h4>
+          <p>Cast bronze with green patina pooling in the cavities and polished high edges &mdash; an AO/curvature mask driving colour, roughness and bump.</p>
         </div>
         <div class="presets__card">
           <div class="presets__preview presets__preview--mars" role="img" aria-label="Mars Regolith preset"></div>
           <h4>Mars Regolith</h4>
-          <p>Iron-oxide dust, drift mottling, dry rocky surface</p>
+          <p>Iron-oxide dust with drift mottling and a dry, rocky micro-surface &mdash; fully procedural, no textures.</p>
         </div>
         <div class="presets__card">
-          <div class="presets__preview presets__preview--mirror" role="img" aria-label="Chrome Mirror preset"></div>
-          <h4>Chrome Mirror</h4>
-          <p>Flawless specular chrome &mdash; perfect for studio reflection tests</p>
+          <div class="presets__preview presets__preview--galaxy-marble" role="img" aria-label="Galaxy Marble preset"></div>
+          <h4>Galaxy Marble</h4>
+          <p>Black marble with swirling cosmic veins in violet and gold, from a distorted multi-stop colour ramp.</p>
         </div>
+      </div>
+
+      <h3 class="masks__subhead reveal">Stylised &amp; NPR</h3>
+      <div class="presets__strip reveal">
         <div class="presets__card">
-          <div class="presets__preview presets__preview--oil-slick" role="img" aria-label="Iridescent Oil Slick preset"></div>
-          <h4>Iridescent Oil Slick</h4>
-          <p>Wet black surface with petrol rainbow swirls, Fresnel-masked</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--plasma-core" role="img" aria-label="Plasma Core preset"></div>
-          <h4>Plasma Core</h4>
-          <p>Roiling emissive plasma &mdash; a molten ball of energy</p>
+          <div class="presets__preview presets__preview--anime-genshin-hero" role="img" aria-label="Anime Cel-Shaded preset"></div>
+          <h4>Anime Cel-Shaded</h4>
+          <p>Hard NdotL shadow bands, a rim light and an integrated outline &mdash; no Solidify modifier and no second material.</p>
         </div>
         <div class="presets__card">
           <div class="presets__preview presets__preview--watercolor" role="img" aria-label="Watercolor preset"></div>
           <h4>Watercolor</h4>
-          <p>Soft painterly washes &mdash; a stylised hand-illustrated look</p>
+          <p>Soft painterly washes with paper-grain breakup &mdash; a stylised, hand-illustrated look.</p>
         </div>
         <div class="presets__card">
           <div class="presets__preview presets__preview--wireframe" role="img" aria-label="Wireframe preset"></div>
           <h4>Wireframe</h4>
-          <p>Emissive wireframe overlay for tech / blueprint renders</p>
+          <p>An emissive wireframe overlay from the real mesh edges &mdash; for tech and blueprint renders.</p>
         </div>
       </div>
+
+      <h3 class="masks__subhead reveal">Image-driven</h3>
+      <div class="presets__strip reveal">
+        <div class="presets__card">
+          <div class="presets__preview presets__preview--led-screen" role="img" aria-label="LED Screen preset"></div>
+          <h4>LED Screen</h4>
+          <p>Any image you import, re-rendered as an emissive LED dot-matrix wall. Swap the source, swap the screen.</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview presets__preview--holo-card" role="img" aria-label="Holographic Card preset"></div>
+          <h4>Holographic Card</h4>
+          <p>Your artwork under a view-dependent rainbow foil that scrolls as the card turns &mdash; five switchable foil patterns.</p>
+        </div>
+      </div>
+
+      <h3 class="masks__subhead reveal">Emissive &amp; effects</h3>
+      <div class="presets__strip reveal">
+        <div class="presets__card">
+          <div class="presets__preview presets__preview--plasma-core" role="img" aria-label="Plasma Core preset"></div>
+          <h4>Plasma Core</h4>
+          <p>Roiling emissive plasma &mdash; a molten ball of energy driven by animated noise.</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview presets__preview--burn-dissolve" role="img" aria-label="Burn Dissolve preset"></div>
+          <h4>Burn Dissolve</h4>
+          <p>A procedural burn-away with a glowing ember edge &mdash; one slider drives the dissolve from 0 to 100%.</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview presets__preview--oil-slick" role="img" aria-label="Iridescent Oil Slick preset"></div>
+          <h4>Iridescent Oil Slick</h4>
+          <p>A wet black surface with petrol-rainbow swirls, masked by Fresnel so the colour rides the grazing angle.</p>
+        </div>
+      </div>
+
+      <h3 class="masks__subhead reveal">Utility</h3>
+      <div class="presets__strip reveal">
+        <div class="presets__card">
+          <div class="presets__preview presets__preview--mirror" role="img" aria-label="Chrome Mirror preset"></div>
+          <h4>Chrome Mirror</h4>
+          <p>Flawless specular chrome &mdash; a quick way to check lighting and reflections on a model.</p>
+        </div>
+        <div class="presets__card">
+          <div class="presets__preview presets__preview--inverted-checker" role="img" aria-label="Inverted Checker preset"></div>
+          <h4>Inverted Checker</h4>
+          <p>A crisp UV checker &mdash; instant scale and seam reference while you work.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <section class="section ctaband">
     <div class="ctaband__inner reveal">
-      <h2>All 13 Presets Ship in the Pack.</h2>
-      <p>Load any of them, study the stack, and remix it into your own look &mdash; then save and share it as a <code>.tlm</code> file.</p>
+      <h2>All 13 ship in the pack.</h2>
+      <p>Load any of them, open the stack to see how it&rsquo;s built, and remix it into your own look &mdash; then save and share it as a <code>.tlm</code> file.</p>
       <a href="index.html#pricing" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>
-      <p class="ctaband__note">One-time purchase &middot; Free updates &middot; Blender 4.2 LTS &amp; 5.x</p>
+      <p class="ctaband__note">One-time purchase &middot; free updates &middot; Blender 4.2 LTS &amp; 5.x</p>
     </div>
   </section>
 
