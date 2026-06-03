@@ -1,4 +1,4 @@
 
-# local preview artifacts
-_shot*.png
-_preview_full.html
+# local preview / scratch artifacts (never deployed)
+_*.png
+_preview_*
