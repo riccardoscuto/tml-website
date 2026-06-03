@@ -626,10 +626,10 @@
     url('../assets/images/presets/inverted-checker.png'),
     linear-gradient(135deg, #111111, #f5f5f5, #111111);
 }
-.presets__preview--led-screen {
+.presets__preview--moon {
   background-image:
-    url('../assets/images/presets/led-screen.png'),
-    linear-gradient(135deg, #14181c, #3a4a55, #d8a23a);
+    url('../assets/images/presets/moon.png'),
+    linear-gradient(135deg, #1a1c20, #8a8a8c, #d8d8da);
 }
 .presets__preview--mars {
   background-image:

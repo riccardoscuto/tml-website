@@ -68,12 +68,12 @@
     <div class="hero__inner">
       <div class="hero__text">
         <h1 class="hero__title">Build Blender materials<br>in layers, not node trees.</h1>
-        <p class="hero__subtitle">Texture Layer Manager adds a Photoshop-style layer stack to the Blender material editor. Each layer routes to the PBR channels you choose; the addon compiles the stack into a normal Principled BSDF graph behind the scenes &mdash; and converts it to fully editable nodes whenever you want.</p>
+        <p class="hero__subtitle">Texture Layer Manager adds a real layer stack to the Blender material editor. Each layer routes to the PBR channels you choose; the addon compiles the stack into a normal Principled BSDF graph behind the scenes &mdash; and converts it to fully editable nodes whenever you want.</p>
         <div class="hero__ctas">
           <a href="#pricing" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>
           <a href="#overview" class="btn btn--outline btn--lg">How it works</a>
         </div>
-        <p class="hero__trust">Blender 4.2 LTS &amp; 5.x &middot; Cycles + EEVEE Next &middot; one-time purchase &middot; converts to standard Blender nodes</p>
+        <p class="hero__trust">Blender 5.x &middot; Cycles + EEVEE Next &middot; one-time purchase &middot; converts to standard Blender nodes</p>
         <div class="hero__stats">
           <div class="hero__stat"><strong>6</strong> Layer Types</div>
           <div class="hero__stat"><strong>8</strong> PBR Channels</div>
@@ -100,13 +100,13 @@
     <div class="section__inner">
       <p class="section__eyebrow reveal">What it is</p>
       <h2 class="section__title reveal">A layer stack that compiles to a real Blender shader.</h2>
-      <p class="section__subtitle reveal">If you texture in Blender, you usually choose between hand-wiring a node graph or round-tripping to Substance. TLM is a third option: author the material as a stack of layers inside Blender, route each layer to the PBR channels it should drive, and let the addon build the underlying node tree for you. It&rsquo;s aimed at people who already know Blender and want to move faster &mdash; not a closed &ldquo;easy mode&rdquo;.</p>
+      <p class="section__subtitle reveal">Wiring a PBR material by hand means a sprawling node graph where one tweak sends you hunting through spaghetti. A layer stack organises the same work more clearly: each layer is one decision &mdash; a colour, a pattern, a bit of wear &mdash; stacked in an order you can read, reorder and re-tweak. TLM gives you that stack, routes each layer to the PBR channels it drives, and builds the underlying node tree for you. For people who already know Blender and want to move faster &mdash; not a closed &ldquo;easy mode&rdquo;.</p>
 
       <div class="workflow__flow reveal">
         <div class="workflow__step">
           <span class="workflow__badge">1</span>
           <h4>Stack layers</h4>
-          <p>Add paint, fill, procedural, adjustment, reference or group layers. Reorder them, set opacity, pick a blend mode &mdash; the same mental model as Photoshop or Krita. Nothing is destructive; every layer stays editable.</p>
+          <p>Add paint, fill, procedural, adjustment, reference or group layers. Reorder them, set opacity, pick a blend mode. Nothing is destructive; every layer stays editable.</p>
         </div>
         <div class="workflow__arrow" aria-hidden="true">&rarr;</div>
         <div class="workflow__step">
@@ -235,7 +235,7 @@
             <div class="layers__info">
               <span class="badge">Adjustment Layer</span>
               <h3>Re-grade what&rsquo;s below it</h3>
-              <p>Five non-destructive operations &mdash; Hue/Saturation, Brightness/Contrast, Levels, Color Balance and Gradient Map &mdash; applied to everything beneath, like a Photoshop adjustment layer. It can target any PBR channel, not just colour.</p>
+              <p>Five non-destructive operations &mdash; Hue/Saturation, Brightness/Contrast, Levels, Color Balance and Gradient Map &mdash; applied non-destructively to everything beneath. It can target any PBR channel, not just colour.</p>
               <p><strong>Reach for it when:</strong> you want to warm a whole stack, knock back an over-bright preset, or grade <em>only</em> the roughness without repainting anything.</p>
               <a href="layers/adjustment.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Adjustment layer in detail &rarr;</a>
             </div>
@@ -250,7 +250,7 @@
             <div class="layers__info">
               <span class="badge">Reference Layer</span>
               <h3>Reuse one pattern across channels</h3>
-              <p>A reference layer borrows another layer&rsquo;s pattern as its source, then applies its own blend mode, opacity, mask and channel routing. Build a wear mask once and drive base colour, metallic, roughness and bump from it independently &mdash; the Substance &ldquo;smart material&rdquo; idea, without baking.</p>
+              <p>A reference layer borrows another layer&rsquo;s pattern as its source, then applies its own blend mode, opacity, mask and channel routing. Build a wear mask once and drive base colour, metallic, roughness and bump from it independently &mdash; a reusable smart-material driver, without baking.</p>
               <p><strong>Reach for it when:</strong> one chip mask should simultaneously expose bare metal, raise roughness and add relief. Edit the source once; everything that references it follows.</p>
               <a href="layers/reference.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Reference layer in detail &rarr;</a>
             </div>
@@ -267,7 +267,6 @@
               <h3>Fold related layers into one</h3>
               <p>Collapse a set of layers into a folder, reorder it, and control the whole group&rsquo;s opacity at once. Groups can nest for larger material stacks.</p>
               <p><strong>Reach for it when:</strong> you&rsquo;ve built a &ldquo;rust kit&rdquo; (colour + roughness + bump) and want to fade it all in or out with a single slider.</p>
-              <a href="layers/group.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Group layer in detail &rarr;</a>
             </div>
             <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-group">
               <div class="placeholder">
@@ -339,7 +338,7 @@
     <div class="section__inner">
       <p class="section__eyebrow reveal">Compositing</p>
       <h2 class="section__title reveal">19 blend modes &mdash; and a different one per channel.</h2>
-      <p class="section__subtitle reveal">Each layer has opacity and a blend mode, the same way Photoshop composites pixels: Multiply grime into crevices, Screen a glow, Overlay detail without washing out what&rsquo;s beneath. The difference here is that a layer can use a <em>different</em> blend mode on each PBR channel.</p>
+      <p class="section__subtitle reveal">Each layer has opacity and a blend mode: Multiply grime into crevices, Screen a glow, Overlay detail without washing out what&rsquo;s beneath. The difference here is that a layer can use a <em>different</em> blend mode on each PBR channel.</p>
       <div class="blend reveal">
         <div class="blend__group">
           <h4 class="blend__label">Basic &mdash; everyday compositing</h4>
@@ -391,7 +390,7 @@
         </div>
         <div class="branching__example">
           <span class="badge">Alpha = mask math</span>
-          <p style="margin-bottom:var(--space-3)">Route a layer to <strong>Alpha</strong> and the blend dropdown becomes <strong>41 math operations</strong>, so you combine cutout masks the way Substance Designer does &mdash; intersect, soft-union, threshold:</p>
+          <p style="margin-bottom:var(--space-3)">Route a layer to <strong>Alpha</strong> and the blend dropdown becomes <strong>41 math operations</strong>, so you combine cutout masks with real set operations &mdash; intersect, soft-union, threshold:</p>
           <div class="routing__alpha-ops">
             <span class="blend__pill">Multiply</span><span class="blend__pill">Minimum</span>
             <span class="blend__pill">Maximum</span><span class="blend__pill">Smooth Min</span>
@@ -498,19 +497,28 @@
   <!-- ════════════════════════════════════════════════════════════════════
        IMAGE-BASED
        ════════════════════════════════════════════════════════════════════ -->
+  <!-- ════════════════════════════════════════════════════════════════════
+       MATERIAL-LEVEL EXTRAS
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section__inner">
+      <p class="section__eyebrow reveal">Beyond the stack</p>
+      <h2 class="section__title reveal">Displacement, volume and scatter too.</h2>
+      <p class="section__subtitle reveal">A few capabilities reach past flat PBR channels &mdash; the ones that matter for stone, glass and natural surfaces.</p>
+      <div class="pbr__grid reveal">
+        <div class="pbr__card" style="--accent:#5C6BC0"><h4>Real displacement</h4><p>True geometric displacement, per-layer or material-level, with adaptive subdivision &mdash; not just a bump fake.</p></div>
+        <div class="pbr__card" style="--accent:#4DD0E1"><h4>Volume</h4><p>Material-level absorption and scatter for tinted glass, frosted interiors, fog and translucency.</p></div>
+        <div class="pbr__card" style="--accent:#8BC34A"><h4>Scatter (texture bombing)</h4><p>The Scatter procedural drops cells at random so a surface never visibly tiles &mdash; gravel, freckles, stars.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section class="section imagefx-section">
     <div class="section__inner">
       <p class="section__eyebrow reveal">Your own images</p>
       <h2 class="section__title reveal">Use an image as a material input.</h2>
-      <p class="section__subtitle reveal">Drop in a photo, a logo or your own artwork as an image layer, then stack procedural and adjustment layers on top to transform it. Two worked examples ship in the pack:</p>
+      <p class="section__subtitle reveal">Drop in a photo, a logo or your own artwork as an image layer, then stack procedural and adjustment layers on top to transform it. One ships in the pack:</p>
       <div class="imagefx__grid reveal">
-        <div class="imagefx__card">
-          <img src="assets/images/presets/led-screen.png" alt="An image rendered as an emissive LED dot-matrix wall" loading="lazy">
-          <div class="imagefx__body">
-            <h4>LED Screen</h4>
-            <p>Pixelate any image into an emissive LED dot-matrix. Swap the source image and it re-renders as glowing LEDs &mdash; signage, billboards, retro displays.</p>
-          </div>
-        </div>
         <div class="imagefx__card">
           <video class="imagefx__media" autoplay muted loop playsinline poster="assets/images/presets/holo-card-poster.jpg">
             <source src="assets/videos/holo-card.mp4" type="video/mp4">
@@ -644,7 +652,7 @@
   <section class="section compat-section">
     <div class="section__inner">
       <div class="compat__row reveal">
-        <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Blender 5.x (4.2 LTS supported)</span></div>
+        <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Blender 5.x</span></div>
         <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Cycles &amp; EEVEE Next</span></div>
         <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Converts to editable nodes</span></div>
         <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Windows, macOS, Linux</span></div>
@@ -672,7 +680,7 @@
         </div>
         <div class="faq__item">
           <p class="faq__q">Which Blender versions are supported?</p>
-          <p class="faq__a">Built for Blender 5.x and tested down to 4.2 LTS. Renders in both Cycles and EEVEE Next.</p>
+          <p class="faq__a">Built and tested on Blender 5.x. Renders in both Cycles and EEVEE Next.</p>
         </div>
         <div class="faq__item">
           <p class="faq__q">Will it slow down my viewport?</p>
@@ -698,7 +706,7 @@
       <h2>Texture in layers. Finish in nodes.</h2>
       <p>A layer-based PBR workflow inside Blender &mdash; non-destructive, routable to 8 channels, bakeable for any engine, and convertible to standard nodes whenever you want.</p>
       <a href="#pricing" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>
-      <p class="ctaband__note">One-time purchase &middot; free updates &middot; Blender 4.2 LTS &amp; 5.x</p>
+      <p class="ctaband__note">One-time purchase &middot; free updates &middot; Blender 5.x</p>
     </div>
   </section>
 
