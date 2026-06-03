@@ -563,7 +563,7 @@
    ══════════════════════════════════════════════════════════════════════ */
 .presets__strip {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-4);
 }
 .presets__card {
@@ -626,11 +626,6 @@
     url('../assets/images/presets/inverted-checker.png'),
     linear-gradient(135deg, #111111, #f5f5f5, #111111);
 }
-.presets__preview--moon {
-  background-image:
-    url('../assets/images/presets/moon.png'),
-    linear-gradient(135deg, #1a1c20, #8a8a8c, #d8d8da);
-}
 .presets__preview--mars {
   background-image:
     url('../assets/images/presets/mars.png'),
@@ -673,14 +668,9 @@
 
 @media (max-width: 767px) {
   .presets__strip {
-    grid-template-columns: repeat(5, 160px);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-3);
-    padding-bottom: var(--space-4);
   }
-  .presets__card { scroll-snap-align: start; }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   .presets__strip { grid-template-columns: repeat(3, 1fr); }
