@@ -50,8 +50,10 @@
   <section class="section">
     <div class="section__inner layerdetail">
       <div class="layerdetail__media reveal">
-        <img class="layerclip" src="../assets/images/layer-types/paint.png" alt="A paint layer mapped onto a model">
-        <p class="layerclip__cap">A paint layer &mdash; a hand-painted image mapped through the model&rsquo;s UVs.</p>
+        <video class="layerclip" autoplay muted loop playsinline poster="../assets/images/layers/paintSite.png">
+          <source src="../assets/videos/paintVideo.mp4" type="video/mp4">
+        </video>
+        <p class="layerclip__cap">A paint layer &mdash; brushing a stroke straight onto the model, live.</p>
       </div>
       <div class="layerdetail__text reveal">
         <h2>What it does</h2>
@@ -103,10 +105,10 @@
     <div class="section__inner">
       <h2 class="section__title reveal">The layer types</h2>
       <div class="layernav reveal">
-        <a class="layernav__item" href="paint.html">Paint</a>
-        <a class="layernav__item" href="fill.html">Fill</a>
-        <a class="layernav__item" href="procedural.html">Procedural</a>
         <a class="layernav__item" href="adjustment.html">Adjustment</a>
+        <a class="layernav__item" href="fill.html">Fill</a>
+        <a class="layernav__item layernav__item--active" href="paint.html">Paint</a>
+        <a class="layernav__item" href="procedural.html">Procedural</a>
         <a class="layernav__item" href="reference.html">Reference</a>
       </div>
       <div style="text-align:center;margin-top:var(--space-8)">

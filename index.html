@@ -106,7 +106,7 @@
         <div class="workflow__step">
           <span class="workflow__badge">1</span>
           <h4>Stack layers</h4>
-          <p>Add paint, fill, procedural, adjustment, reference or group layers. Reorder them, set opacity, pick a blend mode. Nothing is destructive; every layer stays editable.</p>
+          <p>Add adjustment, fill, paint, procedural, reference or group layers. Reorder them, set opacity, pick a blend mode. Nothing is destructive; every layer stays editable.</p>
         </div>
         <div class="workflow__arrow" aria-hidden="true">&rarr;</div>
         <div class="workflow__step">
@@ -175,28 +175,28 @@
     <div class="section__inner">
       <p class="section__eyebrow reveal">Layer types</p>
       <h2 class="section__title reveal">Five core layer types, each with a clear job.</h2>
-      <p class="section__subtitle reveal">Paint, fill, procedural, adjustment and reference &mdash; click a tab to see what each does and when you&rsquo;d reach for it. (Group layers fold any of them into a collapsible folder.)</p>
+      <p class="section__subtitle reveal">Adjustment, fill, paint, procedural and reference &mdash; click a tab to see what each does and when you&rsquo;d reach for it. (Group layers fold any of them into a collapsible folder.)</p>
       <div class="layers reveal">
         <div class="layers__tabs">
-          <button class="layers__tab is-active" data-tab="paint">Paint</button>
+          <button class="layers__tab is-active" data-tab="adjustment">Adjustment</button>
           <button class="layers__tab" data-tab="fill">Fill</button>
+          <button class="layers__tab" data-tab="paint">Paint</button>
           <button class="layers__tab" data-tab="procedural">Procedural</button>
-          <button class="layers__tab" data-tab="adjustment">Adjustment</button>
           <button class="layers__tab" data-tab="reference">Reference</button>
         </div>
         <div class="layers__content">
-          <div class="layers__panel is-active" id="tab-paint">
+          <div class="layers__panel is-active" id="tab-adjustment">
             <div class="layers__info">
-              <span class="badge">Paint Layer</span>
-              <h3>Brush directly onto the model</h3>
-              <p>A paintable layer backed by its own image texture at the resolution you choose (512&ndash;4096), with full alpha and per-layer blend modes. Because it&rsquo;s an image, it follows the model&rsquo;s UVs.</p>
-              <p><strong>Reach for it when:</strong> you need something in a specific place &mdash; a logo, a decal, hand-painted dirt or wear that has to sit exactly where you put it.</p>
-              <a href="layers/paint.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Paint layer in detail &rarr;</a>
+              <span class="badge">Adjustment Layer</span>
+              <h3>Re-grade what&rsquo;s below it</h3>
+              <p>Five non-destructive operations &mdash; Hue/Saturation, Brightness/Contrast, Levels, Color Balance and Gradient Map &mdash; applied non-destructively to everything beneath. It can target any PBR channel, not just colour.</p>
+              <p><strong>Reach for it when:</strong> you want to warm a whole stack, knock back an over-bright preset, or grade <em>only</em> the roughness without repainting anything.</p>
+              <a href="layers/adjustment.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Adjustment layer in detail &rarr;</a>
             </div>
-            <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-paint">
+            <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-adjustment">
               <div class="placeholder">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m15.232 5.232 3.536 3.536m-2.036-5.036a2.5 2.5 0 0 1 3.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
-                <span>Paint layer in action</span>
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v1m0 16v1m-8-9H3m18 0h-1M5.6 5.6l.7.7m12.4 12.4.7-.7M5.6 18.4l.7-.7M18 5.6l.7.7"/><circle cx="12" cy="12" r="4"/></svg>
+                <span>Adjustment layer controls</span>
               </div>
             </div>
           </div>
@@ -215,6 +215,18 @@
               </div>
             </div>
           </div>
+          <div class="layers__panel" id="tab-paint">
+            <div class="layers__info">
+              <span class="badge">Paint Layer</span>
+              <h3>Brush directly onto the model</h3>
+              <p>A paintable layer backed by its own image texture at the resolution you choose (512&ndash;4096), with full alpha and per-layer blend modes. Because it&rsquo;s an image, it follows the model&rsquo;s UVs.</p>
+              <p><strong>Reach for it when:</strong> you need something in a specific place &mdash; a logo, a decal, hand-painted dirt or wear that has to sit exactly where you put it.</p>
+              <a href="layers/paint.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Paint layer in detail &rarr;</a>
+            </div>
+            <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-paint">
+              <img src="assets/images/layers/paintSite.png" alt="A model with a hand-painted stroke" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+          </div>
           <div class="layers__panel" id="tab-procedural">
             <div class="layers__info">
               <span class="badge">Procedural Layer</span>
@@ -227,21 +239,6 @@
               <div class="placeholder">
                 <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
                 <span>Procedural pattern on a sphere</span>
-              </div>
-            </div>
-          </div>
-          <div class="layers__panel" id="tab-adjustment">
-            <div class="layers__info">
-              <span class="badge">Adjustment Layer</span>
-              <h3>Re-grade what&rsquo;s below it</h3>
-              <p>Five non-destructive operations &mdash; Hue/Saturation, Brightness/Contrast, Levels, Color Balance and Gradient Map &mdash; applied non-destructively to everything beneath. It can target any PBR channel, not just colour.</p>
-              <p><strong>Reach for it when:</strong> you want to warm a whole stack, knock back an over-bright preset, or grade <em>only</em> the roughness without repainting anything.</p>
-              <a href="layers/adjustment.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Adjustment layer in detail &rarr;</a>
-            </div>
-            <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-adjustment">
-              <div class="placeholder">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v1m0 16v1m-8-9H3m18 0h-1M5.6 5.6l.7.7m12.4 12.4.7-.7M5.6 18.4l.7-.7M18 5.6l.7.7"/><circle cx="12" cy="12" r="4"/></svg>
-                <span>Adjustment layer controls</span>
               </div>
             </div>
           </div>
