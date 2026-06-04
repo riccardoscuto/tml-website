@@ -75,7 +75,7 @@
 .media-frame--layer-fill        { background-image: url('../assets/images/layer-types/fill.png');        }
 .media-frame--layer-group       { background-image: url('../assets/images/layer-types/group.png');       }
 .media-frame--layer-paint       { background-image: url('../assets/images/layers/paintSite.png');        }
-.media-frame--layer-procedural  { background-image: url('../assets/images/layer-types/procedural.png');  }
+.media-frame--layer-procedural  { background-image: url('../assets/images/layers/procSite.png');         }
 .media-frame--layer-reference   { background-image: url('../assets/images/layer-types/reference.png');   }
 
 .media-frame--screenshot-hero         { background-image: url('../assets/images/screenshots/hero.png');         }
