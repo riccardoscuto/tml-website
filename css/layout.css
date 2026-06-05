@@ -71,7 +71,7 @@
   background-repeat: no-repeat;
 }
 
-.media-frame--layer-adjustment  { background-image: url('../assets/images/layer-types/adjustment.png');  }
+.media-frame--layer-adjustment  { background-image: url('../assets/images/layers/adjSite.png');           }
 .media-frame--layer-fill        { background-image: url('../assets/images/layers/fillSite.png');         }
 .media-frame--layer-group       { background-image: url('../assets/images/layer-types/group.png');       }
 .media-frame--layer-paint       { background-image: url('../assets/images/layers/paintSite.png');        }
@@ -83,6 +83,7 @@
    `cover` was scaling the square 800x800 render up to fill the 4:3 frame and
    slicing the object's top/side corners against the frame edge. `contain`
    fits the subject inside the frame with clean margins instead. */
+.media-frame--layer-adjustment,
 .media-frame--layer-fill,
 .media-frame--layer-paint,
 .media-frame--layer-procedural {
