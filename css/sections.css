@@ -1141,8 +1141,8 @@
 }
 .layerdetail {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: var(--space-12);
+  grid-template-columns: 1.3fr 1fr;
+  gap: var(--space-10);
   align-items: center;
 }
 .layerdetail__text h2 { font-size: var(--text-3xl); margin-bottom: var(--space-4); }
@@ -1150,6 +1150,11 @@
 .layerclip {
   display: block;
   width: 100%;
+  /* Clips fill the column width. The cap is a safety net: if a tall/portrait
+     clip is ever swapped in, it can't exceed the viewport — the browser keeps
+     the aspect ratio and shrinks width to match, staying centred. */
+  max-height: 80vh;
+  margin-inline: auto;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
   background: radial-gradient(ellipse at center, var(--color-accent-glow) 0%, transparent 68%);
@@ -1177,6 +1182,18 @@
 @media (max-width: 767px) {
   .layerdetail { grid-template-columns: 1fr; gap: var(--space-8); }
   .layerhero__title { font-size: var(--text-3xl); }
+}
+/* On desktop the clip is the focus: give it the lion's share of the row and
+   let this one section run a little wider than the 1200px content band so the
+   screen-recording reads clearly on large monitors. Stays centred via
+   .section__inner's margin:0 auto. Tablet (768–1023px) keeps the balanced
+   1.3fr layout above so the text column doesn't get squeezed. */
+@media (min-width: 1024px) {
+  .layerdetail {
+    grid-template-columns: 2.4fr 1fr;
+    gap: var(--space-8);
+    max-width: 1340px;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════════════
