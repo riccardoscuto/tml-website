@@ -23,7 +23,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/variables.css">
@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/sections.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/bento.css">
 </head>
 <body>
 
@@ -42,7 +43,7 @@
     <div class="nav__inner">
       <a href="#" class="nav__brand">
         <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
-          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
         <span class="nav__brand-text">Texture Layer Manager</span>
@@ -96,34 +97,71 @@
   <!-- ════════════════════════════════════════════════════════════════════
        OVERVIEW — what it is, plainly
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section howto-section" id="overview">
+  <!-- ════════════════════════════════════════════════════════════════════
+       BENTO — core capabilities at a glance (asymmetric)
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section bento-section" id="overview">
     <div class="section__inner">
-      <p class="section__eyebrow reveal">What it is</p>
-      <h2 class="section__title reveal">A layer stack that compiles to a real Blender shader.</h2>
-      <p class="section__subtitle reveal">Wiring a PBR material by hand means a sprawling node graph where one tweak sends you hunting through spaghetti. A layer stack organises the same work more clearly: each layer is one decision &mdash; a colour, a pattern, a bit of wear &mdash; stacked in an order you can read, reorder and re-tweak. TLM gives you that stack, routes each layer to the PBR channels it drives, and builds the underlying node tree for you. For people who already know Blender and want to move faster &mdash; not a closed &ldquo;easy mode&rdquo;.</p>
+      <p class="section__eyebrow reveal">What it does</p>
+      <h2 class="section__title reveal">A material is a stack of decisions &mdash; not a node maze.</h2>
+    </div>
+    <div class="bento reveal">
+      <article class="bento__tile bento__tile--lg bento__tile--render" style="background-image:url('assets/images/screenshots/hero.png')">
+        <span class="bento__kicker">The idea</span>
+        <h3>Author in layers, compile to real nodes.</h3>
+        <p>Stack paint, fill, procedural, adjustment and reference layers &mdash; each routes to the PBR channels you choose, and TLM builds the Principled BSDF graph for you.</p>
+        <a href="#layer-types" class="btn btn--outline btn--sm">See the layer types &rarr;</a>
+      </article>
 
-      <div class="workflow__flow reveal">
-        <div class="workflow__step">
-          <span class="workflow__badge">1</span>
-          <h4>Stack layers</h4>
-          <p>Add adjustment, fill, paint, procedural, reference or group layers. Reorder them, set opacity, pick a blend mode. Nothing is destructive; every layer stays editable.</p>
+      <article class="bento__tile bento__tile--wide">
+        <span class="bento__kicker">Routing</span>
+        <h3>One layer &rarr; eight PBR channels.</h3>
+        <div class="bento__chips">
+          <span class="bento__chip" style="--chip:#8BC34A">Base Color</span>
+          <span class="bento__chip" style="--chip:#607D8B">Roughness</span>
+          <span class="bento__chip" style="--chip:#9E9E9E">Metallic</span>
+          <span class="bento__chip" style="--chip:#7E57C2">Normal</span>
+          <span class="bento__chip" style="--chip:#5C6BC0">Bump</span>
+          <span class="bento__chip" style="--chip:#FF9800">Emission</span>
+          <span class="bento__chip" style="--chip:#4DD0E1">Transmission</span>
+          <span class="bento__chip" style="--chip:#EF5350">Alpha</span>
         </div>
-        <div class="workflow__arrow" aria-hidden="true">&rarr;</div>
-        <div class="workflow__step">
-          <span class="workflow__badge">2</span>
-          <h4>Route to PBR channels</h4>
-          <p>Send a layer to Base Color, Roughness, Metallic, Normal, Bump, Emission, Transmission or Alpha &mdash; one layer can feed several at once. That routing is what turns a stack of layers into a complete PBR material.</p>
-        </div>
-        <div class="workflow__arrow" aria-hidden="true">&rarr;</div>
-        <div class="workflow__step">
-          <span class="workflow__badge">3</span>
-          <h4>Mask &amp; finish</h4>
-          <p>Gate each layer with a painted or procedural mask, then either keep iterating in the stack or convert the whole thing to standard Blender nodes and bake it for your engine.</p>
-        </div>
-      </div>
-      <p class="masks__extra reveal">Everything below is just more detail on these three steps.</p>
+      </article>
+
+      <article class="bento__tile bento__tile--render" style="background-image:url('assets/images/layers/procSite.png')">
+        <span class="bento__kicker">Procedural</span>
+        <h3>24 patterns, no unwrap.</h3>
+      </article>
+
+      <article class="bento__tile bento__tile--render" style="background-image:url('assets/images/layers/refSite.png')">
+        <span class="bento__kicker">Reference</span>
+        <h3>One source, many channels.</h3>
+      </article>
+
+      <article class="bento__tile bento__tile--wide">
+        <span class="bento__kicker">No lock-in</span>
+        <h3>Converts to standard Blender nodes.</h3>
+        <p>One button turns the stack into an editable node graph &mdash; the .blend keeps rendering even without the addon.</p>
+      </article>
+
+      <article class="bento__tile">
+        <span class="bento__kicker">Masking</span>
+        <h3>11 live mask sources.</h3>
+        <p>AO, curvature, edge-wear, Fresnel, light angle, procedurals &mdash; no baking.</p>
+      </article>
+
+      <article class="bento__tile">
+        <span class="bento__kicker">Export</span>
+        <h3>Bake game-ready.</h3>
+        <p>Unreal &middot; Unity &middot; glTF, with channel packing.</p>
+      </article>
     </div>
   </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       OVERVIEW — what it is, plainly
+       ════════════════════════════════════════════════════════════════════ -->
+  <!-- "What it is" / 3-step flow merged into the bento above -->
 
   <!-- ════════════════════════════════════════════════════════════════════
        NO LOCK-IN — convert to editable nodes
@@ -273,41 +311,7 @@
       <p class="section__eyebrow reveal">PBR routing</p>
       <h2 class="section__title reveal">Every layer can drive eight PBR channels.</h2>
       <p class="section__subtitle reveal">Routing is the core idea: a layer isn&rsquo;t just &ldquo;colour&rdquo;. Point the same pattern at Roughness for smudges, at Bump for relief, at Emission for glow. One layer can feed several channels at once &mdash; a single Fill can set base colour, metallic and roughness in one move.</p>
-      <div class="pbr__grid reveal">
-        <div class="pbr__card" style="--accent: #8BC34A">
-          <h4>Base Color</h4>
-          <p>The diffuse colour, set per layer by paint, fill, image or procedural.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #607D8B">
-          <h4>Roughness</h4>
-          <p>Per-layer roughness from a slider, an image, or a procedural value.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #9E9E9E">
-          <h4>Metallic</h4>
-          <p>Per-layer metallic, smooth 0&ndash;1, for bare-metal reveals and trim.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #7E57C2">
-          <h4>Normal</h4>
-          <p>Per-layer normal maps with strength, scale and rotation &mdash; blended as true vectors across layers, not a naive RGB mix.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #5C6BC0">
-          <h4>Bump</h4>
-          <p>Relief generated from any layer&rsquo;s texture or procedural, with adjustable strength and distance.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #FF9800">
-          <h4>Emission</h4>
-          <p>Glow colour and strength, with selective emission to gate the glow to a noise, cell or image sub-region.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #4DD0E1">
-          <h4>Transmission</h4>
-          <p>Per-layer glass / refraction weight for crystals, frosted glass and translucent inserts.</p>
-        </div>
-        <div class="pbr__card" style="--accent: #EF5350">
-          <h4>Alpha</h4>
-          <p>Cutout transparency, Cycles-correct, with hashed alpha auto-enabled in EEVEE where needed.</p>
-        </div>
-      </div>
-      <div class="media-frame media-frame--16x9 media-frame--screenshot media-frame--screenshot-pbr reveal" style="max-width: 800px; margin: var(--space-12) auto 0;">
+      <div class="media-frame media-frame--16x9 media-frame--screenshot media-frame--screenshot-pbr reveal" style="max-width: 920px; margin: var(--space-10) auto 0;">
         <div class="placeholder">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
           <span>Drop in <code>assets/images/screenshots/pbr-channels.png</code></span>
@@ -468,8 +472,8 @@
       <p class="section__subtitle reveal">Noise, Voronoi, Marble, Wave, Gabor, Cracks, Wood, Tiles, Weave and more &mdash; all parametric and resolution-independent. Change the type or any value and the viewport updates without rebuilding the node tree. They generate in 3D space, so no unwrap is required (UV is optional, for when you want the pattern to follow existing UVs).</p>
 
       <div class="proc__showcase reveal">
-        <video class="proc__video" autoplay muted loop playsinline poster="assets/images/layers/procedural-poster.jpg">
-          <source src="assets/videos/layer-procedural.mp4" type="video/mp4">
+        <video class="proc__video" autoplay muted loop playsinline poster="assets/images/layers/procSite.png">
+          <source src="assets/videos/procVideo.mp4" type="video/mp4">
         </video>
       </div>
 
@@ -490,10 +494,22 @@
       <p class="section__eyebrow reveal">Beyond the stack</p>
       <h2 class="section__title reveal">Displacement, volume and scatter too.</h2>
       <p class="section__subtitle reveal">A few capabilities reach past flat PBR channels &mdash; the ones that matter for stone, glass and natural surfaces.</p>
-      <div class="pbr__grid reveal">
-        <div class="pbr__card" style="--accent:#5C6BC0"><h4>Real displacement</h4><p>True geometric displacement, per-layer or material-level, with adaptive subdivision &mdash; not just a bump fake.</p></div>
-        <div class="pbr__card" style="--accent:#4DD0E1"><h4>Volume</h4><p>Material-level absorption and scatter for tinted glass, frosted interiors, fog and translucency.</p></div>
-        <div class="pbr__card" style="--accent:#8BC34A"><h4>Scatter (texture bombing)</h4><p>The Scatter procedural drops cells at random so a surface never visibly tiles &mdash; gravel, freckles, stars.</p></div>
+      <div class="bento bento--trio reveal">
+        <div class="bento__tile">
+          <span class="bento__kicker">Geometry</span>
+          <h3>Real displacement</h3>
+          <p>True geometric displacement, per-layer or material-level, with adaptive subdivision &mdash; not just a bump fake.</p>
+        </div>
+        <div class="bento__tile">
+          <span class="bento__kicker">Volume</span>
+          <h3>Inside the surface</h3>
+          <p>Material-level absorption and scatter for tinted glass, frosted interiors, fog and translucency.</p>
+        </div>
+        <div class="bento__tile">
+          <span class="bento__kicker">Anti-tiling</span>
+          <h3>Scatter &amp; texture bombing</h3>
+          <p>The Scatter procedural drops cells at random so a surface never visibly tiles &mdash; gravel, freckles, stars.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -701,7 +717,7 @@
     <div class="footer__inner">
       <div class="footer__brand">
         <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
-          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
         <span>Texture Layer Manager</span>

@@ -8,12 +8,13 @@
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/bento.css">
   <link rel="stylesheet" href="../css/animations.css">
 </head>
 <body>
@@ -21,7 +22,7 @@
     <div class="nav__inner">
       <a href="../index.html" class="nav__brand">
         <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
-          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
         <span class="nav__brand-text">Texture Layer Manager</span>
@@ -67,12 +68,12 @@
     <div class="section__inner">
       <p class="section__eyebrow reveal">The five operations</p>
       <h2 class="section__title reveal">Five ways to grade the stack.</h2>
-      <div class="pbr__grid reveal">
-        <div class="pbr__card" style="--accent:#8BC34A"><h4>Hue / Saturation</h4><p>Shift hue, push or pull saturation and value across everything below.</p></div>
-        <div class="pbr__card" style="--accent:#26C6DA"><h4>Brightness / Contrast</h4><p>Lift or crush the whole material with two sliders.</p></div>
-        <div class="pbr__card" style="--accent:#AB47BC"><h4>Levels</h4><p>Input/output range plus gamma &mdash; the precise tonal remap.</p></div>
-        <div class="pbr__card" style="--accent:#FF9800"><h4>Color Balance</h4><p>Warm the shadows, cool the highlights &mdash; cinematic colour shifts.</p></div>
-        <div class="pbr__card" style="--accent:#7E57C2"><h4>Gradient Map</h4><p>Remap luminance through a colour ramp &mdash; thermal, duotone and stylised looks.</p></div>
+      <div class="bento bento--grid reveal">
+        <div class="bento__tile"><h3>Hue / Saturation</h3><p>Shift hue, push or pull saturation and value across everything below.</p></div>
+        <div class="bento__tile"><h3>Brightness / Contrast</h3><p>Lift or crush the whole material with two sliders.</p></div>
+        <div class="bento__tile"><h3>Levels</h3><p>Input/output range plus gamma &mdash; the precise tonal remap.</p></div>
+        <div class="bento__tile"><h3>Color Balance</h3><p>Warm the shadows, cool the highlights &mdash; cinematic colour shifts.</p></div>
+        <div class="bento__tile"><h3>Gradient Map</h3><p>Remap luminance through a colour ramp &mdash; thermal, duotone and stylised looks.</p></div>
       </div>
     </div>
   </section>
@@ -122,7 +123,7 @@
     <div class="footer__inner">
       <div class="footer__brand">
         <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
-          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
         <span>Texture Layer Manager</span>

@@ -8,12 +8,13 @@
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/bento.css">
   <link rel="stylesheet" href="../css/animations.css">
 </head>
 <body>
@@ -21,7 +22,7 @@
     <div class="nav__inner">
       <a href="../index.html" class="nav__brand">
         <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
-          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
         <span class="nav__brand-text">Texture Layer Manager</span>
@@ -67,11 +68,11 @@
     <div class="section__inner">
       <p class="section__eyebrow reveal">Why it matters</p>
       <h2 class="section__title reveal">One source, many channels &mdash; edited in one place.</h2>
-      <div class="pbr__grid reveal">
-        <div class="pbr__card" style="--accent:#8BC34A"><h4>Reuse, don&rsquo;t copy</h4><p>Point at any layer and share its shape &mdash; no duplicated patterns to keep in sync.</p></div>
-        <div class="pbr__card" style="--accent:#26C6DA"><h4>Independent behaviour</h4><p>Each reference has its own blend, opacity and mask.</p></div>
-        <div class="pbr__card" style="--accent:#AB47BC"><h4>Any channel</h4><p>One driver can feed colour, metallic, roughness and bump separately.</p></div>
-        <div class="pbr__card" style="--accent:#FF9800"><h4>Edit once</h4><p>Change the source and everything referencing it follows, live.</p></div>
+      <div class="bento bento--grid reveal">
+        <div class="bento__tile"><h3>Reuse, don&rsquo;t copy</h3><p>Point at any layer and share its shape &mdash; no duplicated patterns to keep in sync.</p></div>
+        <div class="bento__tile"><h3>Independent behaviour</h3><p>Each reference has its own blend, opacity and mask.</p></div>
+        <div class="bento__tile"><h3>Any channel</h3><p>One driver can feed colour, metallic, roughness and bump separately.</p></div>
+        <div class="bento__tile"><h3>Edit once</h3><p>Change the source and everything referencing it follows, live.</p></div>
       </div>
     </div>
   </section>
@@ -121,7 +122,7 @@
     <div class="footer__inner">
       <div class="footer__brand">
         <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
-          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
         <span>Texture Layer Manager</span>

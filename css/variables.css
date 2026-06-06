@@ -1,27 +1,28 @@
 :root {
-  /* ── Colors ── */
-  --color-bg:          #0a0a0f;
-  --color-bg-alt:      #0e0e15;
-  --color-surface:     #12121a;
-  --color-surface-alt: #1a1a25;
-  --color-surface-hover: #22222f;
+  /* ── Colors ── warm near-black + ember accent (was cool blue-black) ── */
+  --color-bg:          #0e0c0b;
+  --color-bg-alt:      #14110f;
+  --color-surface:     #1b1714;
+  --color-surface-alt: #261f19;
+  --color-surface-hover: #322a22;
 
-  --color-text:        #e8e8f0;
-  --color-text-sub:    #8888a0;
-  --color-text-muted:  #55556a;
+  --color-text:        #f3efe8;
+  --color-text-sub:    #a59d8e;
+  --color-text-muted:  #6c6457;
 
-  --color-accent:      #4d8bff;
-  --color-accent-hover:#6ba1ff;
-  --color-accent-glow: rgba(77, 139, 255, 0.15);
-  --color-accent-glow-strong: rgba(77, 139, 255, 0.25);
+  --color-accent:      #ff6a3d;
+  --color-accent-hover:#ff8a66;
+  --color-accent-glow: rgba(255, 106, 61, 0.16);
+  --color-accent-glow-strong: rgba(255, 106, 61, 0.28);
 
-  --color-cta:         #ff6b4a;
-  --color-cta-hover:   #ff8566;
+  --color-cta:         #ff6a3d;
+  --color-cta-hover:   #ff8a66;
 
-  --color-border:      rgba(255, 255, 255, 0.06);
-  --color-border-hover:rgba(255, 255, 255, 0.12);
+  --color-border:      rgba(255, 238, 224, 0.08);
+  --color-border-hover:rgba(255, 238, 224, 0.16);
 
-  /* ── Typography ── */
+  /* ── Typography ── characterful display for headings, Inter for body ── */
+  --font-display: 'Bricolage Grotesque', 'Inter', sans-serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 

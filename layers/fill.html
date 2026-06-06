@@ -8,12 +8,13 @@
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/bento.css">
   <link rel="stylesheet" href="../css/animations.css">
 </head>
 <body>
@@ -21,7 +22,7 @@
     <div class="nav__inner">
       <a href="../index.html" class="nav__brand">
         <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
-          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
         <span class="nav__brand-text">Texture Layer Manager</span>
@@ -67,11 +68,11 @@
     <div class="section__inner">
       <p class="section__eyebrow reveal">Controls</p>
       <h2 class="section__title reveal">Three values, editable forever.</h2>
-      <div class="pbr__grid reveal">
-        <div class="pbr__card" style="--accent:#8BC34A"><h4>Base Color</h4><p>A solid diffuse colour for the whole layer.</p></div>
-        <div class="pbr__card" style="--accent:#9E9E9E"><h4>Metallic</h4><p>Dielectric to metal on one 0&ndash;1 slider.</p></div>
-        <div class="pbr__card" style="--accent:#607D8B"><h4>Roughness</h4><p>Mirror-sharp through to fully matte.</p></div>
-        <div class="pbr__card" style="--accent:#5C6BC0"><h4>Multi-channel</h4><p>One fill can drive Base Color, Metallic and Roughness together.</p></div>
+      <div class="bento bento--grid reveal">
+        <div class="bento__tile"><h3>Base Color</h3><p>A solid diffuse colour for the whole layer.</p></div>
+        <div class="bento__tile"><h3>Metallic</h3><p>Dielectric to metal on one 0&ndash;1 slider.</p></div>
+        <div class="bento__tile"><h3>Roughness</h3><p>Mirror-sharp through to fully matte.</p></div>
+        <div class="bento__tile"><h3>Multi-channel</h3><p>One fill can drive Base Color, Metallic and Roughness together.</p></div>
       </div>
     </div>
   </section>
@@ -121,7 +122,7 @@
     <div class="footer__inner">
       <div class="footer__brand">
         <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
-          <rect width="32" height="32" rx="6" fill="#4d8bff"/>
+          <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
         <span>Texture Layer Manager</span>
