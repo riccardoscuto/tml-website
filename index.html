@@ -51,7 +51,8 @@
       <div class="nav__links" id="nav-links">
         <a href="#overview" class="nav__link">Overview</a>
         <a href="#layer-types" class="nav__link">Layers</a>
-        <a href="#channels" class="nav__link">PBR</a>
+        <a href="#channels" class="nav__link">Output</a>
+        <a href="#pbr-channels" class="nav__link">PBR</a>
         <a href="#export" class="nav__link">Export</a>
         <a href="#pricing" class="nav__link">Pricing</a>
       </div>
@@ -109,13 +110,13 @@
       <article class="bento__tile bento__tile--lg bento__tile--render" style="background-image:url('assets/images/screenshots/hero.png')">
         <span class="bento__kicker">The idea</span>
         <h3>Author in layers, compile to real nodes.</h3>
-        <p>Stack paint, fill, procedural, adjustment and reference layers &mdash; each routes to the PBR channels you choose, and TLM builds the Principled BSDF graph for you.</p>
+        <p>Stack paint, fill, procedural, adjustment and reference layers &mdash; each has an Output that routes it to the channel you pick, and TLM builds the Principled BSDF graph for you.</p>
         <a href="#layer-types" class="btn btn--outline btn--sm">See the layer types &rarr;</a>
       </article>
 
       <article class="bento__tile bento__tile--wide">
-        <span class="bento__kicker">Routing</span>
-        <h3>One layer &rarr; eight PBR channels.</h3>
+        <span class="bento__kicker">Channels</span>
+        <h3>Drive any of eight PBR channels.</h3>
         <div class="bento__chips">
           <span class="bento__chip" style="--chip:#8BC34A">Base Color</span>
           <span class="bento__chip" style="--chip:#607D8B">Roughness</span>
@@ -308,15 +309,47 @@
        ════════════════════════════════════════════════════════════════════ -->
   <section class="section pbr-section" id="channels">
     <div class="section__inner">
-      <p class="section__eyebrow reveal">PBR routing</p>
-      <h2 class="section__title reveal">Every layer can drive eight PBR channels.</h2>
-      <p class="section__subtitle reveal">Routing is the core idea: a layer isn&rsquo;t just &ldquo;colour&rdquo;. Point the same pattern at Roughness for smudges, at Bump for relief, at Emission for glow. One layer can feed several channels at once &mdash; a single Fill can set base colour, metallic and roughness in one move.</p>
-      <div class="media-frame media-frame--16x9 media-frame--screenshot media-frame--screenshot-pbr reveal" style="max-width: 920px; margin: var(--space-10) auto 0;">
-        <div class="placeholder">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <span>Drop in <code>assets/images/screenshots/pbr-channels.png</code></span>
-        </div>
+      <p class="section__eyebrow reveal">Output</p>
+      <h2 class="section__title reveal">One control decides what a layer does: its Output.</h2>
+      <p class="section__subtitle reveal">A layer isn&rsquo;t locked to &ldquo;colour&rdquo;. Its <strong>Output</strong> picks the single channel the layer drives &mdash; Base Color, Roughness, Metallic, Emission, Transmission or Alpha. Change the Output and the same layer changes job: move a painted decal from Base Color to <strong>Alpha</strong> and it stops colouring and starts cutting holes.</p>
+
+      <div class="proc__showcase reveal">
+        <video class="proc__video" autoplay muted loop playsinline poster="assets/images/screenshots/hero.png">
+          <source src="assets/videos/output.mp4" type="video/mp4">
+        </video>
       </div>
+
+      <p class="section__subtitle reveal" style="margin-top:var(--space-8)">Output is just the <em>first</em> routing decision &mdash; one layer can also drive several channels at the same time. That&rsquo;s the PBR Channels panel, next. &darr;</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       PBR CHANNELS — one layer drives several channels at once
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="section pbr-section" id="pbr-channels">
+    <div class="section__inner">
+      <p class="section__eyebrow reveal">PBR Channels</p>
+      <h2 class="section__title reveal">One layer can drive several channels at once.</h2>
+      <p class="section__subtitle reveal">The Output sends a layer to <em>one</em> channel. Open its <strong>PBR Channels</strong> panel and you can switch on more &mdash; each with its own image or value, its own blend mode and mask. They stack <em>on top</em> of the Output, so a single layer behaves like a complete little material on its own.</p>
+
+      <div class="bento__chips reveal" style="justify-content:center;margin:0 0 var(--space-8)">
+        <span class="bento__chip" style="--chip:#8BC34A">Base Color</span>
+        <span class="bento__chip" style="--chip:#607D8B">Roughness</span>
+        <span class="bento__chip" style="--chip:#9E9E9E">Metallic</span>
+        <span class="bento__chip" style="--chip:#7E57C2">Normal</span>
+        <span class="bento__chip" style="--chip:#5C6BC0">Bump</span>
+        <span class="bento__chip" style="--chip:#FF9800">Emission</span>
+        <span class="bento__chip" style="--chip:#4DD0E1">Transmission</span>
+        <span class="bento__chip" style="--chip:#EF5350">Alpha</span>
+      </div>
+
+      <div class="proc__showcase reveal">
+        <video class="proc__video" autoplay muted loop playsinline poster="assets/images/screenshots/hero.png">
+          <source src="assets/videos/pbr.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <p class="section__subtitle reveal" style="margin-top:var(--space-8)">So one <strong>Fill</strong> can set Base Color, Metallic and Roughness together; one <strong>procedural</strong> can colour the surface, add relief on Bump <em>and</em> a glow on Emission &mdash; all without adding another layer. Output is <em>where</em> the layer routes first; PBR Channels is how it feeds many BSDF inputs at the same time.</p>
     </div>
   </section>
 
