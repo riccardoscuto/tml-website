@@ -85,11 +85,10 @@
         </div>
       </div>
       <div class="hero__media">
-        <div class="media-frame media-frame--16x9 hero__image media-frame--screenshot media-frame--screenshot-hero">
-          <div class="placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            <span>Drop in <code>assets/images/screenshots/hero.png</code></span>
-          </div>
+        <div class="media-frame hero__image">
+          <video controls autoplay muted loop playsinline style="width:100%;height:auto;display:block">
+            <source src="assets/videos/main.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
     </div>
@@ -110,7 +109,7 @@
       <article class="bento__tile bento__tile--lg">
         <span class="bento__kicker">The idea</span>
         <h3>Author in layers, compile to real nodes.</h3>
-        <p>Stack paint, fill, procedural, adjustment and reference layers &mdash; each has an Output that routes it to the channel you pick, and TLM builds the Principled BSDF graph for you.</p>
+        <p>Stack paint, fill, procedural, adjustment, reference and group layers &mdash; each has an Output that routes it to the channel you pick, and TLM builds the Principled BSDF graph for you.</p>
         <a href="#layer-types" class="btn btn--outline btn--sm">See the layer types &rarr;</a>
       </article>
 
@@ -497,12 +496,6 @@
       <p class="section__eyebrow reveal">Procedurals</p>
       <h2 class="section__title reveal">24 patterns, swapped from a dropdown.</h2>
       <p class="section__subtitle reveal">Noise, Voronoi, Marble, Wave, Gabor, Cracks, Wood, Tiles, Weave and more &mdash; all parametric and resolution-independent. Change the type or any value and the viewport updates without rebuilding the node tree. They generate in 3D space, so no unwrap is required (UV is optional, for when you want the pattern to follow existing UVs).</p>
-
-      <div class="proc__showcase reveal">
-        <video class="proc__video" controls autoplay muted loop playsinline poster="assets/images/layers/procSite.png">
-          <source src="assets/videos/procVideo.mp4" type="video/mp4">
-        </video>
-      </div>
 
       <div style="text-align:center;margin-top:var(--space-6)">
         <a href="layers/procedural.html" class="btn btn--primary">All 24 procedurals in detail &rarr;</a>
