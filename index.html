@@ -51,12 +51,12 @@
       <div class="nav__links" id="nav-links">
         <a href="#overview" class="nav__link">Overview</a>
         <a href="#layer-types" class="nav__link">Layers</a>
+        <a href="features.html" class="nav__link">Features</a>
         <a href="#channels" class="nav__link">Output</a>
         <a href="#pbr-channels" class="nav__link">PBR</a>
         <a href="#export" class="nav__link">Export</a>
-        <a href="#pricing" class="nav__link">Pricing</a>
       </div>
-      <a href="#pricing" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $15</a>
+      <a href="#" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $15</a>
       <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -72,7 +72,7 @@
         <h1 class="hero__title">Build Blender materials<br>in layers, not node trees.</h1>
         <p class="hero__subtitle">Texture Layer Manager adds a real layer stack to the Blender material editor. Each layer routes to the PBR channels you choose; the addon compiles the stack into a normal Principled BSDF graph behind the scenes &mdash; and converts it to fully editable nodes whenever you want.</p>
         <div class="hero__ctas">
-          <a href="#pricing" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>
+          <a href="#" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>
           <a href="#overview" class="btn btn--outline btn--lg">How it works</a>
         </div>
         <p class="hero__trust">Blender 5.x &middot; Full in Cycles, most materials in EEVEE Next &middot; one-time purchase &middot; converts to standard Blender nodes</p>
@@ -103,12 +103,12 @@
   <section class="section bento-section" id="overview">
     <div class="section__inner">
       <p class="section__eyebrow reveal">What it does</p>
-      <h2 class="section__title reveal">A material is a stack of decisions &mdash; not a node maze.</h2>
+      <h2 class="section__title reveal">Author materials as a layer stack.</h2>
     </div>
     <div class="bento reveal">
       <article class="bento__tile bento__tile--lg">
         <span class="bento__kicker">The idea</span>
-        <h3>Author in layers, compile to real nodes.</h3>
+        <h3>Stack layers, TLM builds the nodes.</h3>
         <p>Stack paint, fill, procedural, adjustment, reference and group layers &mdash; each has an Output that routes it to the channel you pick, and TLM builds the Principled BSDF graph for you.</p>
         <a href="#layer-types" class="btn btn--outline btn--sm">See the layer types &rarr;</a>
       </article>
@@ -212,7 +212,7 @@
   <section class="section layers-section" id="layer-types">
     <div class="section__inner">
       <p class="section__eyebrow reveal">Layer types</p>
-      <h2 class="section__title reveal">Five core layer types, each with a clear job.</h2>
+      <h2 class="section__title reveal">Five core layer types.</h2>
       <p class="section__subtitle reveal">Adjustment, fill, paint, procedural and reference &mdash; click a tab to see what each does and when you&rsquo;d reach for it. (Group layers fold any of them into a collapsible folder.)</p>
       <div class="layers reveal">
         <div class="layers__tabs">
@@ -309,7 +309,7 @@
   <section class="section pbr-section" id="channels">
     <div class="section__inner">
       <p class="section__eyebrow reveal">Output</p>
-      <h2 class="section__title reveal">One control decides what a layer does: its Output.</h2>
+      <h2 class="section__title reveal">Output: the channel each layer drives.</h2>
       <p class="section__subtitle reveal">A layer isn&rsquo;t locked to &ldquo;colour&rdquo;. Its <strong>Output</strong> picks the single channel the layer drives &mdash; Base Color, Roughness, Metallic, Emission, Transmission or Alpha. Change the Output and the same layer changes job: move a painted decal from Base Color to <strong>Alpha</strong> and it stops colouring and starts cutting holes.</p>
 
       <div class="proc__showcase reveal">
@@ -512,7 +512,7 @@
   <section class="section">
     <div class="section__inner">
       <p class="section__eyebrow reveal">Beyond the stack</p>
-      <h2 class="section__title reveal">The extras a finished material actually needs.</h2>
+      <h2 class="section__title reveal">Displacement, volume and projection.</h2>
       <p class="section__subtitle reveal">Layers and channels are the core &mdash; but real surfaces also want depth, glass, projection control and finishing touches. They&rsquo;re all in the box.</p>
       <div class="bento bento--trio reveal">
         <div class="bento__tile">
@@ -594,7 +594,7 @@
   <section class="section io-section" id="export">
     <div class="section__inner">
       <p class="section__eyebrow reveal">Import &amp; bake</p>
-      <h2 class="section__title reveal">Bring textures in, bake game-ready sets out.</h2>
+      <h2 class="section__title reveal">Import textures, bake PBR sets.</h2>
       <div class="io__grid reveal">
         <div class="io__col">
           <div class="io__icon">
@@ -635,7 +635,7 @@
   <section class="section presets-section">
     <div class="section__inner">
       <p class="section__eyebrow reveal">Included presets</p>
-      <h2 class="section__title reveal">12 preset materials to start from or take apart.</h2>
+      <h2 class="section__title reveal">12 included preset materials.</h2>
       <p class="section__subtitle reveal">The pack ships 12 complete stacks &mdash; photoreal PBR, stylised NPR, image-driven effects and emissive sci-fi. Each is a real, editable layer stack you can use as a starting point or open up to see how it&rsquo;s built. A sample:</p>
       <div class="presets__strip reveal">
         <div class="presets__card">
@@ -668,33 +668,6 @@
   <!-- ════════════════════════════════════════════════════════════════════
        PRICING
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section pricing-section" id="pricing">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Pricing</p>
-      <h2 class="section__title reveal">One-time purchase. $15.</h2>
-      <div class="pricing__card reveal">
-        <div class="pricing__header">
-          <span class="pricing__name">Texture Layer Manager</span>
-          <div class="pricing__price">
-            <span class="pricing__currency">$</span>
-            <span class="pricing__amount">15</span>
-          </div>
-        </div>
-        <ul class="pricing__features">
-          <li>6 layer types &middot; 19 blend modes &middot; per-channel blending</li>
-          <li>8 PBR channels per layer with multi-channel routing</li>
-          <li>24 procedurals + coordinate transforms</li>
-          <li>11 mask sources + dual-mask combine + clipping masks</li>
-          <li>Reference layers &mdash; one pattern drives many channels</li>
-          <li>Converts to standard, editable Blender nodes &mdash; no lock-in</li>
-          <li>One-click PBR bake (Unreal / Unity / glTF) + PBR import</li>
-          <li>12 included preset materials &middot; <code>.tlm</code> preset I/O</li>
-        </ul>
-        <a href="#" class="btn btn--primary btn--lg pricing__cta">Get TLM on Blender Market</a>
-        <p class="pricing__note">One-time purchase. No subscription. No account required.</p>
-      </div>
-    </div>
-  </section>
 
   <!-- ════════════════════════════════════════════════════════════════════
        COMPATIBILITY
@@ -718,7 +691,7 @@
   <section class="section faq-section">
     <div class="section__inner">
       <p class="section__eyebrow reveal">FAQ</p>
-      <h2 class="section__title reveal">Questions, answered.</h2>
+      <h2 class="section__title reveal">Common questions.</h2>
       <div class="faq__grid reveal">
         <div class="faq__item">
           <p class="faq__q">Do my materials still work without the addon?</p>
@@ -759,7 +732,7 @@
     <div class="ctaband__inner reveal">
       <h2>Texture in layers. Finish in nodes.</h2>
       <p>A layer-based PBR workflow inside Blender &mdash; non-destructive, routable to 8 channels, bakeable for any engine, and convertible to standard nodes whenever you want.</p>
-      <a href="#pricing" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>
+      <a href="#" class="btn btn--primary btn--lg">Get TLM on Blender Market &mdash; $15</a>
       <p class="ctaband__note">One-time purchase &middot; free updates &middot; Blender 5.x</p>
     </div>
   </section>
