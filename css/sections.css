@@ -619,7 +619,7 @@
 .presets__preview--holo-card {
   background-image:
     url('../assets/images/presets/holo-card.png'),
-    linear-gradient(135deg, #2a1840, #ff3cf0, #2cc8ff);
+    linear-gradient(135deg, #7b34e0, #ff3cf0, #2cc8ff);
 }
 .presets__preview--inverted-checker {
   background-image:
@@ -630,6 +630,11 @@
   background-image:
     url('../assets/images/presets/mars.png'),
     linear-gradient(135deg, #6e2a14, #b8642a, #d8a060);
+}
+.presets__preview--coral-rock {
+  background-image:
+    url('../assets/images/presets/coral-rock.png'),
+    linear-gradient(135deg, #2a1a12, #6b4326, #b07a4a);
 }
 .presets__preview--mirror {
   background-image:
