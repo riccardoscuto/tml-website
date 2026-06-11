@@ -2,3 +2,5 @@
 # local preview / scratch artifacts (never deployed)
 _*.png
 _preview_*
+# Stray Blender asset used to re-render the foil preview — not site content
+suzanne.jpg
