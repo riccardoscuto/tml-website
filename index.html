@@ -447,28 +447,6 @@
         </div>
       </div>
 
-      <div class="branching__grid reveal" style="margin-top:var(--space-12)">
-        <div class="branching__example">
-          <span class="badge">Per-channel example &mdash; rust bleed</span>
-          <p style="margin-bottom:var(--space-3)">One rust layer, four channels, four different blends &mdash; the way a real material behaves:</p>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Base Color</span> <code>Multiply</code> &mdash; rust stains the paint below.</li>
-            <li><span class="branching__ch">Metallic</span> <code>Mix</code> &mdash; rust is dielectric, drops to 0.</li>
-            <li><span class="branching__ch">Roughness</span> <code>Mix</code> &mdash; rust is rough, raises toward 0.9.</li>
-            <li><span class="branching__ch">Bump</span> <code>Mix</code> &mdash; rust is raised, adds relief.</li>
-          </ul>
-        </div>
-        <div class="branching__example">
-          <span class="badge">Alpha = mask math</span>
-          <p style="margin-bottom:var(--space-3)">Route a layer to <strong>Alpha</strong> and the blend dropdown becomes <strong>41 math operations</strong>, so you combine cutout masks with real set operations &mdash; intersect, soft-union, threshold:</p>
-          <div class="routing__alpha-ops">
-            <span class="blend__pill">Multiply</span><span class="blend__pill">Minimum</span>
-            <span class="blend__pill">Maximum</span><span class="blend__pill">Smooth Min</span>
-            <span class="blend__pill">Greater Than</span><span class="blend__pill">Power</span>
-            <span class="blend__pill blend__pill--more">+ 35 more</span>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
