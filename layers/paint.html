@@ -1,137 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paint Layer — Texture Layer Manager</title>
-  <meta name="description" content="The Paint layer: a per-layer image texture (512–4096) you brush on with Blender's paint tools — full alpha, per-layer blend modes, paintable into any PBR channel.">
-  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../css/fonts.css">
-  <link rel="stylesheet" href="../css/variables.css">
-  <link rel="stylesheet" href="../css/base.css">
-  <link rel="stylesheet" href="../css/layout.css">
-  <link rel="stylesheet" href="../css/components.css">
-  <link rel="stylesheet" href="../css/sections.css">
-  <link rel="stylesheet" href="../css/bento.css">
-  <link rel="stylesheet" href="../css/animations.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint Layer — Texture Layer Manager</title>
+    <meta name="description" content="The Paint layer: a per-layer image texture (512–4096) you brush on with Blender's paint tools — full alpha, per-layer blend modes, paintable into any PBR channel.">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/sections.css">
+    <link rel="stylesheet" href="../css/bento.css">
+    <link rel="stylesheet" href="../css/animations.css">
 </head>
+
 <body>
-  <nav class="nav nav--scrolled" id="nav">
-    <div class="nav__inner">
-      <a href="../index.html" class="nav__brand">
-        <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+    <nav class="nav nav--scrolled" id="nav">
+        <div class="nav__inner">
+            <a href="../index.html" class="nav__brand">
+                <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
           <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
-        <span class="nav__brand-text">Texture Layer Manager</span>
-      </a>
-      <div class="nav__links" id="nav-links">
-        <a href="../index.html#overview" class="nav__link">Overview</a>
-        <a href="../index.html#layer-types" class="nav__link">Layers</a>
-        <a href="../features.html" class="nav__link">Features</a>
-        <a href="../index.html#channels" class="nav__link">Output</a>
-        <a href="../index.html#pbr-channels" class="nav__link">PBR</a>
-        <a href="../index.html#export" class="nav__link">Export</a>
-      </div>
-      <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $25</a>
-      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
+                <span class="nav__brand-text">Texture Layer Manager</span>
+            </a>
+            <div class="nav__links" id="nav-links">
+                <a href="../index.html#overview" class="nav__link">Overview</a>
+                <a href="../index.html#layer-types" class="nav__link">Layers</a>
+                <a href="../features.html" class="nav__link">Features</a>
+                <a href="../index.html#channels" class="nav__link">Output</a>
+                <a href="../index.html#pbr-channels" class="nav__link">PBR</a>
+                <a href="../index.html#export" class="nav__link">Export</a>
+            </div>
+            <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $19.99</a>
+            <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
 
-  <header class="section layerhero">
-    <div class="section__inner">
-      <a href="../index.html#layer-types" class="layerhero__back">&larr; All layer types</a>
-      <p class="section__eyebrow reveal">Layer Type &middot; Paint</p>
-      <h1 class="layerhero__title reveal">Paint Layer</h1>
-      <p class="layerhero__lead reveal">A paintable image layer: each one owns its own texture (512&ndash;4096) that you brush on with Blender&rsquo;s texture-paint tools. Use it for anything that has to sit in an exact place on the model.</p>
-    </div>
-  </header>
+    <header class="section layerhero">
+        <div class="section__inner">
+            <a href="../index.html#layer-types" class="layerhero__back">&larr; All layer types</a>
+            <p class="section__eyebrow reveal">Layer Type &middot; Paint</p>
+            <h1 class="layerhero__title reveal">Paint Layer</h1>
+            <p class="layerhero__lead reveal">A paintable image layer: each one owns its own texture (512&ndash;4096) that you brush on with Blender&rsquo;s texture-paint tools. Use it for anything that has to sit in an exact place on the model.</p>
+        </div>
+    </header>
 
-  <section class="section">
-    <div class="section__inner layerdetail">
-      <div class="layerdetail__media reveal">
-        <video class="layerclip" controls autoplay muted loop playsinline poster="../assets/images/layers/paintSite.png">
+    <section class="section">
+        <div class="section__inner layerdetail">
+            <div class="layerdetail__media reveal">
+                <video class="layerclip" controls autoplay muted loop playsinline poster="../assets/images/layers/paintSite.png">
           <source src="../assets/videos/paintVideo.mp4" type="video/mp4">
         </video>
-        <p class="layerclip__cap">A paint layer &mdash; brushing a stroke straight onto the model, live.</p>
-      </div>
-      <div class="layerdetail__text reveal">
-        <h2>What it does</h2>
-        <p>A paint layer is a real image texture bound to the layer. You pick its resolution, then paint on it with Blender&rsquo;s native texture-paint brushes and see the strokes composite into the material live.</p>
-        <p>Because it&rsquo;s an image mapped through the model&rsquo;s UVs, it&rsquo;s the right tool whenever position matters &mdash; a logo on a panel, a decal, hand-placed grime, lettering. (Paint and image layers are the part of TLM that uses your UVs; procedural and mask layers don&rsquo;t.)</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section blend-section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Controls</p>
-      <h2 class="section__title reveal">What you get on a paint layer.</h2>
-      <div class="bento bento--grid reveal">
-        <div class="bento__tile"><h3>Per-layer resolution</h3><p>512, 1024, 2048 or 4096 &mdash; spend texture memory only where the detail is needed.</p></div>
-        <div class="bento__tile"><h3>Full alpha</h3><p>Unpainted / transparent areas let the layers below show through, so decals don&rsquo;t need a separate mask.</p></div>
-        <div class="bento__tile"><h3>Paints into any channel</h3><p>Route the layer to Roughness, Emission or Bump and paint <em>that</em> channel directly, not just Base Color.</p></div>
-        <div class="bento__tile"><h3>Live viewport</h3><p>Strokes update the composited material in real time &mdash; no bake, no rebuild.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section masks-section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">In practice</p>
-      <h2 class="section__title reveal">A decal that stays exactly where you put it.</h2>
-      <div class="branching__grid reveal">
-        <div class="branching__example">
-          <span class="badge">Logo on a panel</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Paint</span> stamp the logo onto the surface.</li>
-            <li><span class="branching__ch">Alpha</span> the area around it stays transparent &mdash; lower layers read through.</li>
-            <li><span class="branching__ch">Multiply</span> add a second paint layer for grime worked into the seams.</li>
-          </ul>
+                <p class="layerclip__cap">A paint layer &mdash; brushing a stroke straight onto the model, live.</p>
+            </div>
+            <div class="layerdetail__text reveal">
+                <h2>What it does</h2>
+                <p>A paint layer is a real image texture bound to the layer. You pick its resolution, then paint on it with Blender&rsquo;s native texture-paint brushes and see the strokes composite into the material live.</p>
+                <p>Because it&rsquo;s an image mapped through the model&rsquo;s UVs, it&rsquo;s the right tool whenever position matters &mdash; a logo on a panel, a decal, hand-placed grime, lettering. (Paint and image layers are the part of TLM that uses
+                    your UVs; procedural and mask layers don&rsquo;t.)</p>
+            </div>
         </div>
-        <div class="branching__example">
-          <span class="badge">Good to know</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">It&rsquo;s just a layer</span> &mdash; reorder it, mask it, fade its opacity like any other.</li>
-            <li><span class="branching__ch">Needs UVs</span> &mdash; the image follows the model&rsquo;s unwrap.</li>
-            <li><span class="branching__ch">Any channel</span> &mdash; paint straight into Roughness or Emission too.</li>
-          </ul>
+    </section>
+
+    <section class="section blend-section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Controls</p>
+            <h2 class="section__title reveal">What you get on a paint layer.</h2>
+            <div class="bento bento--grid reveal">
+                <div class="bento__tile">
+                    <h3>Per-layer resolution</h3>
+                    <p>512, 1024, 2048 or 4096 &mdash; spend texture memory only where the detail is needed.</p>
+                </div>
+                <div class="bento__tile">
+                    <h3>Full alpha</h3>
+                    <p>Unpainted / transparent areas let the layers below show through, so decals don&rsquo;t need a separate mask.</p>
+                </div>
+                <div class="bento__tile">
+                    <h3>Paints into any channel</h3>
+                    <p>Route the layer to Roughness, Emission or Bump and paint <em>that</em> channel directly, not just Base Color.</p>
+                </div>
+                <div class="bento__tile">
+                    <h3>Live viewport</h3>
+                    <p>Strokes update the composited material in real time &mdash; no bake, no rebuild.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <div class="section__inner">
-      <h2 class="section__title reveal">The layer types</h2>
-      <div class="layernav reveal">
-        <a class="layernav__item" href="adjustment.html">Adjustment</a>
-        <a class="layernav__item" href="fill.html">Fill</a>
-        <a class="layernav__item layernav__item--active" href="paint.html">Paint</a>
-        <a class="layernav__item" href="procedural.html">Procedural</a>
-        <a class="layernav__item" href="reference.html">Reference</a>
-      </div>
-      <div style="text-align:center;margin-top:var(--space-8)">
-        <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Get TLM on Gumroad &mdash; $25</a>
-      </div>
-    </div>
-  </section>
+    <section class="section masks-section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">In practice</p>
+            <h2 class="section__title reveal">A decal that stays exactly where you put it.</h2>
+            <div class="branching__grid reveal">
+                <div class="branching__example">
+                    <span class="badge">Logo on a panel</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">Paint</span> stamp the logo onto the surface.</li>
+                        <li><span class="branching__ch">Alpha</span> the area around it stays transparent &mdash; lower layers read through.</li>
+                        <li><span class="branching__ch">Multiply</span> add a second paint layer for grime worked into the seams.</li>
+                    </ul>
+                </div>
+                <div class="branching__example">
+                    <span class="badge">Good to know</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">It&rsquo;s just a layer</span> &mdash; reorder it, mask it, fade its opacity like any other.</li>
+                        <li><span class="branching__ch">Needs UVs</span> &mdash; the image follows the model&rsquo;s unwrap.</li>
+                        <li><span class="branching__ch">Any channel</span> &mdash; paint straight into Roughness or Emission too.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+    <section class="section">
+        <div class="section__inner">
+            <h2 class="section__title reveal">The layer types</h2>
+            <div class="layernav reveal">
+                <a class="layernav__item" href="adjustment.html">Adjustment</a>
+                <a class="layernav__item" href="fill.html">Fill</a>
+                <a class="layernav__item layernav__item--active" href="paint.html">Paint</a>
+                <a class="layernav__item" href="procedural.html">Procedural</a>
+                <a class="layernav__item" href="reference.html">Reference</a>
+            </div>
+            <div style="text-align:center;margin-top:var(--space-8)">
+                <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Get TLM on Gumroad &mdash; $19.99</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__brand">
+                <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
           <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
-        <span>Texture Layer Manager</span>
-      </div>
-      <div class="footer__links">
-        <a href="../index.html">Home</a><a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener">Gumroad</a><a href="../privacy.html">Privacy</a>
-      </div>
-      <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
-    </div>
-  </footer>
-  <script src="../js/main.js"></script>
+                <span>Texture Layer Manager</span>
+            </div>
+            <div class="footer__links">
+                <a href="../index.html">Home</a><a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener">Gumroad</a><a href="../privacy.html">Privacy</a>
+            </div>
+            <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
 </body>
+
 </html>

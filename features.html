@@ -1,284 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Features — everything TLM can do, layer by layer</title>
-  <meta name="description" content="The complete Texture Layer Manager feature reference: what every layer type can do (paint, fill, procedural, adjustment, reference, group), the controls on each layer, surface/depth/volume, procedurals, and the export pipeline.">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/sections.css">
-  <link rel="stylesheet" href="css/animations.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features — everything TLM can do, layer by layer</title>
+    <meta name="description" content="The complete Texture Layer Manager feature reference: what every layer type can do (paint, fill, procedural, adjustment, reference, group), the controls on each layer, surface/depth/volume, procedurals, and the export pipeline.">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/animations.css">
 </head>
+
 <body>
-  <nav class="nav nav--scrolled" id="nav">
-    <div class="nav__inner">
-      <a href="index.html" class="nav__brand">
-        <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+    <nav class="nav nav--scrolled" id="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__brand">
+                <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
           <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
-        <span class="nav__brand-text">Texture Layer Manager</span>
-      </a>
-      <div class="nav__links" id="nav-links">
-        <a href="index.html#overview" class="nav__link">Overview</a>
-        <a href="index.html#layer-types" class="nav__link">Layers</a>
-        <a href="features.html" class="nav__link">Features</a>
-        <a href="index.html#channels" class="nav__link">Output</a>
-        <a href="index.html#pbr-channels" class="nav__link">PBR</a>
-        <a href="index.html#export" class="nav__link">Export</a>
-      </div>
-      <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $25</a>
-      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
-
-  <header class="section layerhero">
-    <div class="section__inner">
-      <a href="index.html" class="layerhero__back">&larr; Back to home</a>
-      <p class="section__eyebrow reveal">Feature reference</p>
-      <h1 class="layerhero__title reveal">What every layer can do.</h1>
-      <p class="layerhero__lead reveal">The full feature list: the six layer types, the controls on every layer, surface and depth, volume, and the export pipeline.</p>
-    </div>
-  </header>
-
-  <!-- ════════ THE SIX LAYER TYPES ════════ -->
-  <section class="section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Layer types</p>
-      <h2 class="section__title reveal">The six layer types.</h2>
-      <div class="branching__grid reveal">
-
-        <div class="branching__example">
-          <span class="badge">Paint</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Real canvas</span> a true image bound to the layer &mdash; paint with Blender&rsquo;s native brushes, live.</li>
-            <li><span class="branching__ch">Resolution</span> per-layer 512 / 1024 / 2048 / 4096.</li>
-            <li><span class="branching__ch">Full alpha</span> unpainted areas let lower layers through &mdash; decals need no extra mask.</li>
-            <li><span class="branching__ch">Any channel</span> paint straight into Roughness, Emission or Bump, not just Base Color.</li>
-            <li><span class="branching__ch">Mapping</span> Source, Interpolation, Projection (Flat / Box / Sphere / Tube), Extension + per-axis Location / Rotation / Scale.</li>
-          </ul>
+                <span class="nav__brand-text">Texture Layer Manager</span>
+            </a>
+            <div class="nav__links" id="nav-links">
+                <a href="index.html#overview" class="nav__link">Overview</a>
+                <a href="index.html#layer-types" class="nav__link">Layers</a>
+                <a href="features.html" class="nav__link">Features</a>
+                <a href="index.html#channels" class="nav__link">Output</a>
+                <a href="index.html#pbr-channels" class="nav__link">PBR</a>
+                <a href="index.html#export" class="nav__link">Export</a>
+            </div>
+            <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $19.99</a>
+            <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
         </div>
+    </nav>
 
-        <div class="branching__example">
-          <span class="badge">Fill</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Flat values</span> Base Color, Roughness, Metallic &mdash; no image, no render cost.</li>
-            <li><span class="branching__ch">Multi-channel</span> one fill drives several channels at once.</li>
-            <li><span class="branching__ch">Tint</span> a low-opacity fill on top grades everything below.</li>
-            <li><span class="branching__ch">Parametric</span> every value stays editable forever.</li>
-          </ul>
+    <header class="section layerhero">
+        <div class="section__inner">
+            <a href="index.html" class="layerhero__back">&larr; Back to home</a>
+            <p class="section__eyebrow reveal">Feature reference</p>
+            <h1 class="layerhero__title reveal">What every layer can do.</h1>
+            <p class="layerhero__lead reveal">The full feature list: the six layer types, the controls on every layer, surface and depth, volume, and the export pipeline.</p>
         </div>
+    </header>
 
-        <div class="branching__example">
-          <span class="badge">Procedural</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">24 patterns</span> Noise, Voronoi, Marble, Wave, Gabor, Cracks, Wood, Tiles, Weave, Truchet, Caustics, Scatter, Brick, Hex, Checker, Stripes, Magic, Dots, Gradient, Fresnel&hellip;</li>
-            <li><span class="branching__ch">Parametric</span> Scale, Detail, Distortion, Contrast, Centre &mdash; live.</li>
-            <li><span class="branching__ch">Colour ramp</span> 2, 3 or N stops with positions, interpolation, manual stops.</li>
-            <li><span class="branching__ch">No unwrap</span> Generated / Object 3D space (UV optional) + Polar, Spherical, Swirl, Cylindrical, Triplanar, view parallax.</li>
-            <li><span class="branching__ch">Also a mask</span> use the same pattern to gate another layer; selective emission.</li>
-          </ul>
+    <!-- ════════ THE SIX LAYER TYPES ════════ -->
+    <section class="section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Layer types</p>
+            <h2 class="section__title reveal">The six layer types.</h2>
+            <div class="branching__grid reveal">
+
+                <div class="branching__example">
+                    <span class="badge">Paint</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">Real canvas</span> a true image bound to the layer &mdash; paint with Blender&rsquo;s native brushes, live.</li>
+                        <li><span class="branching__ch">Resolution</span> per-layer 512 / 1024 / 2048 / 4096.</li>
+                        <li><span class="branching__ch">Full alpha</span> unpainted areas let lower layers through &mdash; decals need no extra mask.</li>
+                        <li><span class="branching__ch">Any channel</span> paint straight into Roughness, Emission or Bump, not just Base Color.</li>
+                        <li><span class="branching__ch">Mapping</span> Source, Interpolation, Projection (Flat / Box / Sphere / Tube), Extension + per-axis Location / Rotation / Scale.</li>
+                    </ul>
+                </div>
+
+                <div class="branching__example">
+                    <span class="badge">Fill</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">Flat values</span> Base Color, Roughness, Metallic &mdash; no image, no render cost.</li>
+                        <li><span class="branching__ch">Multi-channel</span> one fill drives several channels at once.</li>
+                        <li><span class="branching__ch">Tint</span> a low-opacity fill on top grades everything below.</li>
+                        <li><span class="branching__ch">Parametric</span> every value stays editable forever.</li>
+                    </ul>
+                </div>
+
+                <div class="branching__example">
+                    <span class="badge">Procedural</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">24 patterns</span> Noise, Voronoi, Marble, Wave, Gabor, Cracks, Wood, Tiles, Weave, Truchet, Caustics, Scatter, Brick, Hex, Checker, Stripes, Magic, Dots, Gradient, Fresnel&hellip;</li>
+                        <li><span class="branching__ch">Parametric</span> Scale, Detail, Distortion, Contrast, Centre &mdash; live.</li>
+                        <li><span class="branching__ch">Colour ramp</span> 2, 3 or N stops with positions, interpolation, manual stops.</li>
+                        <li><span class="branching__ch">No unwrap</span> Generated / Object 3D space (UV optional) + Polar, Spherical, Swirl, Cylindrical, Triplanar, view parallax.</li>
+                        <li><span class="branching__ch">Also a mask</span> use the same pattern to gate another layer; selective emission.</li>
+                    </ul>
+                </div>
+
+                <div class="branching__example">
+                    <span class="badge">Adjustment</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">5 operations</span> Hue/Saturation, Brightness/Contrast, Levels, Color Balance, Gradient Map.</li>
+                        <li><span class="branching__ch">Any channel</span> grade only Roughness or Metallic &mdash; not just colour.</li>
+                        <li><span class="branching__ch">Non-destructive</span> toggle off and the original is back.</li>
+                        <li><span class="branching__ch">Stackable</span> layer several grades, reorder, mask any of them.</li>
+                    </ul>
+                </div>
+
+                <div class="branching__example">
+                    <span class="badge">Reference</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">Reuse</span> borrow another layer&rsquo;s pattern &mdash; no duplicates to keep in sync.</li>
+                        <li><span class="branching__ch">Independent</span> its own blend, opacity, mask and channel routing.</li>
+                        <li><span class="branching__ch">Raw or composed</span> borrow just the source&rsquo;s raw pattern, or its full result.</li>
+                        <li><span class="branching__ch">One &rarr; many</span> build a wear mask once, drive colour + metallic + roughness + bump from it.</li>
+                    </ul>
+                </div>
+
+                <div class="branching__example">
+                    <span class="badge">Group</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">Folders</span> organise the stack &mdash; collapse, reorder, nest.</li>
+                        <li><span class="branching__ch">Folder blend</span> blend mode + opacity on the whole group as one.</li>
+                        <li><span class="branching__ch">Clip</span> clip a group to the layer below.</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <div class="branching__example">
-          <span class="badge">Adjustment</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">5 operations</span> Hue/Saturation, Brightness/Contrast, Levels, Color Balance, Gradient Map.</li>
-            <li><span class="branching__ch">Any channel</span> grade only Roughness or Metallic &mdash; not just colour.</li>
-            <li><span class="branching__ch">Non-destructive</span> toggle off and the original is back.</li>
-            <li><span class="branching__ch">Stackable</span> layer several grades, reorder, mask any of them.</li>
-          </ul>
+    <!-- ════════ ON EVERY LAYER ════════ -->
+    <section class="section blend-section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">On every layer</p>
+            <h2 class="section__title reveal">Controls available on every layer.</h2>
+            <div class="branching__grid reveal">
+
+                <div class="branching__example">
+                    <span class="badge">Output</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">One channel</span> route the layer to Base Color, Roughness, Metallic, Emission, Transmission or Alpha.</li>
+                        <li><span class="branching__ch">Changes the job</span> move a paint from Base Color to Alpha and it stops colouring, starts cutting holes.</li>
+                    </ul>
+                </div>
+
+                <div class="branching__example">
+                    <span class="badge">PBR Channels</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">Stack on top</span> beyond the Output, switch on extra channels on the same layer.</li>
+                        <li><span class="branching__ch">All at once</span> one Fill can set Base Color + Metallic + Roughness together.</li>
+                        <li><span class="branching__ch">Own data</span> each channel takes its own image / value, blend and mask.</li>
+                    </ul>
+                </div>
+
+                <div class="branching__example">
+                    <span class="badge">Blend &amp; opacity</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">19 modes</span> Mix, Multiply, Screen, Overlay, Add, Soft Light, Color, Luminosity&hellip;</li>
+                        <li><span class="branching__ch">Per channel</span> a different blend mode on each PBR channel.</li>
+                        <li><span class="branching__ch">Animatable</span> keyframe opacity to animate the stack.</li>
+                    </ul>
+                </div>
+
+                <div class="branching__example">
+                    <span class="badge">Masks</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">11 sources</span> paint, image, AO, curvature/pointiness, edge-wear, dirt, Fresnel, light angle, procedural, Voronoi&hellip;</li>
+                        <li><span class="branching__ch">Combine A + B</span> two mask slots with a combine op.</li>
+                        <li><span class="branching__ch">Clipping masks</span> clip a layer to the one below.</li>
+                        <li><span class="branching__ch">No baking</span> smart masks read live from the mesh.</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <div class="branching__example">
-          <span class="badge">Reference</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Reuse</span> borrow another layer&rsquo;s pattern &mdash; no duplicates to keep in sync.</li>
-            <li><span class="branching__ch">Independent</span> its own blend, opacity, mask and channel routing.</li>
-            <li><span class="branching__ch">Raw or composed</span> borrow just the source&rsquo;s raw pattern, or its full result.</li>
-            <li><span class="branching__ch">One &rarr; many</span> build a wear mask once, drive colour + metallic + roughness + bump from it.</li>
-          </ul>
+    <!-- ════════ SURFACE / DEPTH / VOLUME ════════ -->
+    <section class="section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Surface, depth &amp; volume</p>
+            <h2 class="section__title reveal">Surface, depth and volume.</h2>
+            <div class="branching__grid reveal">
+
+                <div class="branching__example">
+                    <span class="badge">Relief</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">Bump</span> relief from any layer&rsquo;s texture or procedural, with strength &amp; distance.</li>
+                        <li><span class="branching__ch">Normal</span> normal maps blended as true vectors across layers, not a naive RGB mix.</li>
+                        <li><span class="branching__ch">Displacement</span> real geometry, per-layer + material-level, with strength / midlevel, adaptive.</li>
+                    </ul>
+                </div>
+
+                <div class="branching__example">
+                    <span class="badge">Volume &amp; glass</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">Transmission</span> glass / refraction weight per layer.</li>
+                        <li><span class="branching__ch">Volume absorption</span> tinted glass, coloured interiors.</li>
+                        <li><span class="branching__ch">Volume scatter</span> fog, frosted / cloudy interiors, with anisotropy.</li>
+                        <li><span class="branching__ch">Material IOR</span> index of refraction for the whole surface.</li>
+                    </ul>
+                </div>
+
+                <div class="branching__example">
+                    <span class="badge">Emission</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">Colour + strength</span> glow on any layer routed to Emission.</li>
+                        <li><span class="branching__ch">Selective</span> gate the glow to random cells, noise blobs or an image mask.</li>
+                    </ul>
+                </div>
+
+                <div class="branching__example">
+                    <span class="badge">Alpha</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">Cutout</span> Cycles-correct transparency, hashed alpha auto-enabled in EEVEE.</li>
+                        <li><span class="branching__ch">Math ops</span> add / subtract / multiply alpha across layers for dissolves and gaps.</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <div class="branching__example">
-          <span class="badge">Group</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Folders</span> organise the stack &mdash; collapse, reorder, nest.</li>
-            <li><span class="branching__ch">Folder blend</span> blend mode + opacity on the whole group as one.</li>
-            <li><span class="branching__ch">Clip</span> clip a group to the layer below.</li>
-          </ul>
+    <!-- ════════ PIPELINE ════════ -->
+    <section class="section io-section" id="export">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Pipeline</p>
+            <h2 class="section__title reveal">Import, export and node conversion.</h2>
+            <div class="branching__grid reveal">
+
+                <div class="branching__example">
+                    <span class="badge">Convert to nodes</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">One click</span> the stack becomes a standard Principled BSDF graph.</li>
+                        <li><span class="branching__ch">No lock-in</span> the .blend keeps rendering even without the addon.</li>
+                    </ul>
+                </div>
+
+                <div class="branching__example">
+                    <span class="badge">Bake &amp; pack</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">Game-ready</span> bake to flat PBR sets for Unreal, Unity or glTF.</li>
+                        <li><span class="branching__ch">Channel packing</span> ORM-style maps and mask packing.</li>
+                    </ul>
+                </div>
+
+                <div class="branching__example">
+                    <span class="badge">Import</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">PBR sets</span> drop a texture set &mdash; channels auto-detected by suffix.</li>
+                    </ul>
+                </div>
+
+                <div class="branching__example">
+                    <span class="badge">Presets</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">.tlm files</span> save, load and share whole stacks.</li>
+                        <li><span class="branching__ch">13 included</span> photoreal, stylised, image-driven and emissive starting points.</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════ ON EVERY LAYER ════════ -->
-  <section class="section blend-section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">On every layer</p>
-      <h2 class="section__title reveal">Controls available on every layer.</h2>
-      <div class="branching__grid reveal">
-
-        <div class="branching__example">
-          <span class="badge">Output</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">One channel</span> route the layer to Base Color, Roughness, Metallic, Emission, Transmission or Alpha.</li>
-            <li><span class="branching__ch">Changes the job</span> move a paint from Base Color to Alpha and it stops colouring, starts cutting holes.</li>
-          </ul>
+    <!-- ════════ CTA ════════ -->
+    <section class="section ctaband">
+        <div class="section__inner" style="text-align:center">
+            <h2 class="section__title reveal" style="max-width:none;text-align:center">Texture Layer Manager &mdash; $19.99, one-time.</h2>
+            <div style="margin-top:var(--space-8)">
+                <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Get TLM on Gumroad &mdash; $19.99</a>
+                <a href="index.html" class="btn btn--outline btn--lg">Back to home</a>
+            </div>
         </div>
+    </section>
 
-        <div class="branching__example">
-          <span class="badge">PBR Channels</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Stack on top</span> beyond the Output, switch on extra channels on the same layer.</li>
-            <li><span class="branching__ch">All at once</span> one Fill can set Base Color + Metallic + Roughness together.</li>
-            <li><span class="branching__ch">Own data</span> each channel takes its own image / value, blend and mask.</li>
-          </ul>
-        </div>
-
-        <div class="branching__example">
-          <span class="badge">Blend &amp; opacity</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">19 modes</span> Mix, Multiply, Screen, Overlay, Add, Soft Light, Color, Luminosity&hellip;</li>
-            <li><span class="branching__ch">Per channel</span> a different blend mode on each PBR channel.</li>
-            <li><span class="branching__ch">Animatable</span> keyframe opacity to animate the stack.</li>
-          </ul>
-        </div>
-
-        <div class="branching__example">
-          <span class="badge">Masks</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">11 sources</span> paint, image, AO, curvature/pointiness, edge-wear, dirt, Fresnel, light angle, procedural, Voronoi&hellip;</li>
-            <li><span class="branching__ch">Combine A + B</span> two mask slots with a combine op.</li>
-            <li><span class="branching__ch">Clipping masks</span> clip a layer to the one below.</li>
-            <li><span class="branching__ch">No baking</span> smart masks read live from the mesh.</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════ SURFACE / DEPTH / VOLUME ════════ -->
-  <section class="section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Surface, depth &amp; volume</p>
-      <h2 class="section__title reveal">Surface, depth and volume.</h2>
-      <div class="branching__grid reveal">
-
-        <div class="branching__example">
-          <span class="badge">Relief</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Bump</span> relief from any layer&rsquo;s texture or procedural, with strength &amp; distance.</li>
-            <li><span class="branching__ch">Normal</span> normal maps blended as true vectors across layers, not a naive RGB mix.</li>
-            <li><span class="branching__ch">Displacement</span> real geometry, per-layer + material-level, with strength / midlevel, adaptive.</li>
-          </ul>
-        </div>
-
-        <div class="branching__example">
-          <span class="badge">Volume &amp; glass</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Transmission</span> glass / refraction weight per layer.</li>
-            <li><span class="branching__ch">Volume absorption</span> tinted glass, coloured interiors.</li>
-            <li><span class="branching__ch">Volume scatter</span> fog, frosted / cloudy interiors, with anisotropy.</li>
-            <li><span class="branching__ch">Material IOR</span> index of refraction for the whole surface.</li>
-          </ul>
-        </div>
-
-        <div class="branching__example">
-          <span class="badge">Emission</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Colour + strength</span> glow on any layer routed to Emission.</li>
-            <li><span class="branching__ch">Selective</span> gate the glow to random cells, noise blobs or an image mask.</li>
-          </ul>
-        </div>
-
-        <div class="branching__example">
-          <span class="badge">Alpha</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Cutout</span> Cycles-correct transparency, hashed alpha auto-enabled in EEVEE.</li>
-            <li><span class="branching__ch">Math ops</span> add / subtract / multiply alpha across layers for dissolves and gaps.</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════ PIPELINE ════════ -->
-  <section class="section io-section" id="export">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Pipeline</p>
-      <h2 class="section__title reveal">Import, export and node conversion.</h2>
-      <div class="branching__grid reveal">
-
-        <div class="branching__example">
-          <span class="badge">Convert to nodes</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">One click</span> the stack becomes a standard Principled BSDF graph.</li>
-            <li><span class="branching__ch">No lock-in</span> the .blend keeps rendering even without the addon.</li>
-          </ul>
-        </div>
-
-        <div class="branching__example">
-          <span class="badge">Bake &amp; pack</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Game-ready</span> bake to flat PBR sets for Unreal, Unity or glTF.</li>
-            <li><span class="branching__ch">Channel packing</span> ORM-style maps and mask packing.</li>
-          </ul>
-        </div>
-
-        <div class="branching__example">
-          <span class="badge">Import</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">PBR sets</span> drop a texture set &mdash; channels auto-detected by suffix.</li>
-          </ul>
-        </div>
-
-        <div class="branching__example">
-          <span class="badge">Presets</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">.tlm files</span> save, load and share whole stacks.</li>
-            <li><span class="branching__ch">13 included</span> photoreal, stylised, image-driven and emissive starting points.</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════ CTA ════════ -->
-  <section class="section ctaband">
-    <div class="section__inner" style="text-align:center">
-      <h2 class="section__title reveal" style="max-width:none;text-align:center">Texture Layer Manager &mdash; $25, one-time.</h2>
-      <div style="margin-top:var(--space-8)">
-        <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Get TLM on Gumroad &mdash; $25</a>
-        <a href="index.html" class="btn btn--outline btn--lg">Back to home</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__brand">
+                <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
           <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
-        <span>Texture Layer Manager</span>
-      </div>
-      <div class="footer__links">
-        <a href="index.html">Home</a><a href="presets.html">Presets</a><a href="features.html">Features</a><a href="privacy.html">Privacy</a>
-      </div>
-      <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
-    </div>
-  </footer>
-  <script src="js/main.js"></script>
+                <span>Texture Layer Manager</span>
+            </div>
+            <div class="footer__links">
+                <a href="index.html">Home</a><a href="presets.html">Presets</a><a href="features.html">Features</a><a href="privacy.html">Privacy</a>
+            </div>
+            <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
 </body>
+
 </html>

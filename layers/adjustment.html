@@ -1,138 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adjustment Layer — Texture Layer Manager</title>
-  <meta name="description" content="The Adjustment layer: non-destructive grading applied to everything below it — Hue/Sat, Brightness/Contrast, Levels, Color Balance, Gradient Map — routable to any PBR channel, not just colour.">
-  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../css/fonts.css">
-  <link rel="stylesheet" href="../css/variables.css">
-  <link rel="stylesheet" href="../css/base.css">
-  <link rel="stylesheet" href="../css/layout.css">
-  <link rel="stylesheet" href="../css/components.css">
-  <link rel="stylesheet" href="../css/sections.css">
-  <link rel="stylesheet" href="../css/bento.css">
-  <link rel="stylesheet" href="../css/animations.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adjustment Layer — Texture Layer Manager</title>
+    <meta name="description" content="The Adjustment layer: non-destructive grading applied to everything below it — Hue/Sat, Brightness/Contrast, Levels, Color Balance, Gradient Map — routable to any PBR channel, not just colour.">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/sections.css">
+    <link rel="stylesheet" href="../css/bento.css">
+    <link rel="stylesheet" href="../css/animations.css">
 </head>
+
 <body>
-  <nav class="nav nav--scrolled" id="nav">
-    <div class="nav__inner">
-      <a href="../index.html" class="nav__brand">
-        <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+    <nav class="nav nav--scrolled" id="nav">
+        <div class="nav__inner">
+            <a href="../index.html" class="nav__brand">
+                <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
           <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
-        <span class="nav__brand-text">Texture Layer Manager</span>
-      </a>
-      <div class="nav__links" id="nav-links">
-        <a href="../index.html#overview" class="nav__link">Overview</a>
-        <a href="../index.html#layer-types" class="nav__link">Layers</a>
-        <a href="../features.html" class="nav__link">Features</a>
-        <a href="../index.html#channels" class="nav__link">Output</a>
-        <a href="../index.html#pbr-channels" class="nav__link">PBR</a>
-        <a href="../index.html#export" class="nav__link">Export</a>
-      </div>
-      <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $25</a>
-      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
+                <span class="nav__brand-text">Texture Layer Manager</span>
+            </a>
+            <div class="nav__links" id="nav-links">
+                <a href="../index.html#overview" class="nav__link">Overview</a>
+                <a href="../index.html#layer-types" class="nav__link">Layers</a>
+                <a href="../features.html" class="nav__link">Features</a>
+                <a href="../index.html#channels" class="nav__link">Output</a>
+                <a href="../index.html#pbr-channels" class="nav__link">PBR</a>
+                <a href="../index.html#export" class="nav__link">Export</a>
+            </div>
+            <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $19.99</a>
+            <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
 
-  <header class="section layerhero">
-    <div class="section__inner">
-      <a href="../index.html#layer-types" class="layerhero__back">&larr; All layer types</a>
-      <p class="section__eyebrow reveal">Layer Type &middot; Adjustment</p>
-      <h1 class="layerhero__title reveal">Adjustment Layer</h1>
-      <p class="layerhero__lead reveal">A non-destructive grade applied to everything beneath it &mdash; targetable at any PBR channel, not only colour.</p>
-    </div>
-  </header>
+    <header class="section layerhero">
+        <div class="section__inner">
+            <a href="../index.html#layer-types" class="layerhero__back">&larr; All layer types</a>
+            <p class="section__eyebrow reveal">Layer Type &middot; Adjustment</p>
+            <h1 class="layerhero__title reveal">Adjustment Layer</h1>
+            <p class="layerhero__lead reveal">A non-destructive grade applied to everything beneath it &mdash; targetable at any PBR channel, not only colour.</p>
+        </div>
+    </header>
 
-  <section class="section">
-    <div class="section__inner layerdetail">
-      <div class="layerdetail__media reveal">
-        <video class="layerclip" controls autoplay muted loop playsinline poster="../assets/images/layers/adjSite.png">
+    <section class="section">
+        <div class="section__inner layerdetail">
+            <div class="layerdetail__media reveal">
+                <video class="layerclip" controls autoplay muted loop playsinline poster="../assets/images/layers/adjSite.png">
           <source src="../assets/videos/adjVideo.mp4" type="video/mp4">
         </video>
-        <p class="layerclip__cap">An adjustment layer &mdash; hue graded across the whole material, live.</p>
-      </div>
-      <div class="layerdetail__text reveal">
-        <h2>What it does</h2>
-        <p>An adjustment layer re-grades whatever shows through it, without altering the layers below &mdash; hide it and the original is back. It&rsquo;s the right tool when a stack is nearly right and just needs a tonal pass over the top.</p>
-        <p>What makes it more than a colour tool: you can route it to a specific channel. Knock the roughness of everything below down by 20%, or shift only the metallic &mdash; the grade doesn&rsquo;t have to touch base colour at all.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section blend-section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">The five operations</p>
-      <h2 class="section__title reveal">Five ways to grade the stack.</h2>
-      <div class="bento bento--grid reveal">
-        <div class="bento__tile"><h3>Hue / Saturation</h3><p>Shift hue, push or pull saturation and value across everything below.</p></div>
-        <div class="bento__tile"><h3>Brightness / Contrast</h3><p>Lift or crush the whole material with two sliders.</p></div>
-        <div class="bento__tile"><h3>Levels</h3><p>Input/output range plus gamma &mdash; the precise tonal remap.</p></div>
-        <div class="bento__tile"><h3>Color Balance</h3><p>Warm the shadows, cool the highlights &mdash; cinematic colour shifts.</p></div>
-        <div class="bento__tile"><h3>Gradient Map</h3><p>Remap luminance through a colour ramp &mdash; thermal, duotone and stylised looks.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section masks-section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">In practice</p>
-      <h2 class="section__title reveal">Warm a whole material &mdash; or just its gloss.</h2>
-      <div class="branching__grid reveal">
-        <div class="branching__example">
-          <span class="badge">Targeted grade</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Hue/Sat</span> nudge hue warm &mdash; the whole stack shifts together.</li>
-            <li><span class="branching__ch">&rarr; Base Color</span> the default target&hellip;</li>
-            <li><span class="branching__ch">&rarr; Roughness</span> &hellip;or route it here instead to grade only the gloss.</li>
-          </ul>
+                <p class="layerclip__cap">An adjustment layer &mdash; hue graded across the whole material, live.</p>
+            </div>
+            <div class="layerdetail__text reveal">
+                <h2>What it does</h2>
+                <p>An adjustment layer re-grades whatever shows through it, without altering the layers below &mdash; hide it and the original is back. It&rsquo;s the right tool when a stack is nearly right and just needs a tonal pass over the top.</p>
+                <p>What makes it more than a colour tool: you can route it to a specific channel. Knock the roughness of everything below down by 20%, or shift only the metallic &mdash; the grade doesn&rsquo;t have to touch base colour at all.</p>
+            </div>
         </div>
-        <div class="branching__example">
-          <span class="badge">Good to know</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Non-destructive</span> &mdash; toggle it off and the original is untouched.</li>
-            <li><span class="branching__ch">Stackable</span> &mdash; layer several grades and reorder them.</li>
-            <li><span class="branching__ch">Maskable</span> &mdash; give it a mask to grade just one area.</li>
-          </ul>
+    </section>
+
+    <section class="section blend-section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">The five operations</p>
+            <h2 class="section__title reveal">Five ways to grade the stack.</h2>
+            <div class="bento bento--grid reveal">
+                <div class="bento__tile">
+                    <h3>Hue / Saturation</h3>
+                    <p>Shift hue, push or pull saturation and value across everything below.</p>
+                </div>
+                <div class="bento__tile">
+                    <h3>Brightness / Contrast</h3>
+                    <p>Lift or crush the whole material with two sliders.</p>
+                </div>
+                <div class="bento__tile">
+                    <h3>Levels</h3>
+                    <p>Input/output range plus gamma &mdash; the precise tonal remap.</p>
+                </div>
+                <div class="bento__tile">
+                    <h3>Color Balance</h3>
+                    <p>Warm the shadows, cool the highlights &mdash; cinematic colour shifts.</p>
+                </div>
+                <div class="bento__tile">
+                    <h3>Gradient Map</h3>
+                    <p>Remap luminance through a colour ramp &mdash; thermal, duotone and stylised looks.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <div class="section__inner">
-      <h2 class="section__title reveal">The layer types</h2>
-      <div class="layernav reveal">
-        <a class="layernav__item layernav__item--active" href="adjustment.html">Adjustment</a>
-        <a class="layernav__item" href="fill.html">Fill</a>
-        <a class="layernav__item" href="paint.html">Paint</a>
-        <a class="layernav__item" href="procedural.html">Procedural</a>
-        <a class="layernav__item" href="reference.html">Reference</a>
-      </div>
-      <div style="text-align:center;margin-top:var(--space-8)">
-        <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Get TLM on Gumroad &mdash; $25</a>
-      </div>
-    </div>
-  </section>
+    <section class="section masks-section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">In practice</p>
+            <h2 class="section__title reveal">Warm a whole material &mdash; or just its gloss.</h2>
+            <div class="branching__grid reveal">
+                <div class="branching__example">
+                    <span class="badge">Targeted grade</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">Hue/Sat</span> nudge hue warm &mdash; the whole stack shifts together.</li>
+                        <li><span class="branching__ch">&rarr; Base Color</span> the default target&hellip;</li>
+                        <li><span class="branching__ch">&rarr; Roughness</span> &hellip;or route it here instead to grade only the gloss.</li>
+                    </ul>
+                </div>
+                <div class="branching__example">
+                    <span class="badge">Good to know</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">Non-destructive</span> &mdash; toggle it off and the original is untouched.</li>
+                        <li><span class="branching__ch">Stackable</span> &mdash; layer several grades and reorder them.</li>
+                        <li><span class="branching__ch">Maskable</span> &mdash; give it a mask to grade just one area.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+    <section class="section">
+        <div class="section__inner">
+            <h2 class="section__title reveal">The layer types</h2>
+            <div class="layernav reveal">
+                <a class="layernav__item layernav__item--active" href="adjustment.html">Adjustment</a>
+                <a class="layernav__item" href="fill.html">Fill</a>
+                <a class="layernav__item" href="paint.html">Paint</a>
+                <a class="layernav__item" href="procedural.html">Procedural</a>
+                <a class="layernav__item" href="reference.html">Reference</a>
+            </div>
+            <div style="text-align:center;margin-top:var(--space-8)">
+                <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Get TLM on Gumroad &mdash; $19.99</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__brand">
+                <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
           <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
-        <span>Texture Layer Manager</span>
-      </div>
-      <div class="footer__links">
-        <a href="../index.html">Home</a><a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener">Gumroad</a><a href="../privacy.html">Privacy</a>
-      </div>
-      <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
-    </div>
-  </footer>
-  <script src="../js/main.js"></script>
+                <span>Texture Layer Manager</span>
+            </div>
+            <div class="footer__links">
+                <a href="../index.html">Home</a><a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener">Gumroad</a><a href="../privacy.html">Privacy</a>
+            </div>
+            <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
 </body>
+
 </html>

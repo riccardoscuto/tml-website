@@ -1,147 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Included Presets — Texture Layer Manager</title>
-  <meta name="description" content="The 13 preset materials that ship with Texture Layer Manager — photoreal surfaces, stylised NPR, image-driven effects and emissive looks. Each is a real, editable layer stack you can take apart, and presets save/load as .tlm files.">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/sections.css">
-  <link rel="stylesheet" href="css/animations.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Included Presets — Texture Layer Manager</title>
+    <meta name="description" content="The 13 preset materials that ship with Texture Layer Manager — photoreal surfaces, stylised NPR, image-driven effects and emissive looks. Each is a real, editable layer stack you can take apart, and presets save/load as .tlm files.">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/animations.css">
 </head>
+
 <body>
-  <nav class="nav nav--scrolled" id="nav">
-    <div class="nav__inner">
-      <a href="index.html" class="nav__brand">
-        <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+    <nav class="nav nav--scrolled" id="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__brand">
+                <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
           <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
-        <span class="nav__brand-text">Texture Layer Manager</span>
-      </a>
-      <div class="nav__links" id="nav-links">
-        <a href="index.html#overview" class="nav__link">Overview</a>
-        <a href="index.html#layer-types" class="nav__link">Layers</a>
-        <a href="features.html" class="nav__link">Features</a>
-        <a href="index.html#channels" class="nav__link">Output</a>
-        <a href="index.html#pbr-channels" class="nav__link">PBR</a>
-        <a href="index.html#export" class="nav__link">Export</a>
-      </div>
-      <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $25</a>
-      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
+                <span class="nav__brand-text">Texture Layer Manager</span>
+            </a>
+            <div class="nav__links" id="nav-links">
+                <a href="index.html#overview" class="nav__link">Overview</a>
+                <a href="index.html#layer-types" class="nav__link">Layers</a>
+                <a href="features.html" class="nav__link">Features</a>
+                <a href="index.html#channels" class="nav__link">Output</a>
+                <a href="index.html#pbr-channels" class="nav__link">PBR</a>
+                <a href="index.html#export" class="nav__link">Export</a>
+            </div>
+            <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $19.99</a>
+            <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
 
-  <header class="section layerhero">
-    <div class="section__inner">
-      <a href="index.html" class="layerhero__back">&larr; Back to home</a>
-      <p class="section__eyebrow reveal">Included presets</p>
-      <h1 class="layerhero__title reveal">13 preset materials</h1>
-      <p class="layerhero__lead reveal">Each preset is a real, editable layer stack &mdash; not a baked image. Load one as a starting point, or open it up to see exactly how the look is built. Save your own and share them as <code>.tlm</code> files.</p>
-    </div>
-  </header>
+    <header class="section layerhero">
+        <div class="section__inner">
+            <a href="index.html" class="layerhero__back">&larr; Back to home</a>
+            <p class="section__eyebrow reveal">Included presets</p>
+            <h1 class="layerhero__title reveal">13 preset materials</h1>
+            <p class="layerhero__lead reveal">Each preset is a real, editable layer stack &mdash; not a baked image. Load one as a starting point, or open it up to see exactly how the look is built. Save your own and share them as <code>.tlm</code> files.</p>
+        </div>
+    </header>
 
-  <section class="section presets-section">
-    <div class="section__inner">
-      <div class="presets__strip reveal">
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--bronze-verdigris-patina" role="img" aria-label="Bronze Verdigris Patina preset"></div>
-          <h4>Bronze Verdigris</h4>
-          <p>Cast bronze with green patina pooling in the cavities and polished high edges &mdash; an AO/curvature mask driving colour, roughness and bump.</p>
+    <section class="section presets-section">
+        <div class="section__inner">
+            <div class="presets__strip reveal">
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--bronze-verdigris-patina" role="img" aria-label="Bronze Verdigris Patina preset"></div>
+                    <h4>Bronze Verdigris</h4>
+                    <p>Cast bronze with green patina pooling in the cavities and polished high edges &mdash; an AO/curvature mask driving colour, roughness and bump.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--mars" role="img" aria-label="Mars Regolith preset"></div>
+                    <h4>Mars Regolith</h4>
+                    <p>Iron-oxide dust with drift mottling and a dry, rocky micro-surface &mdash; fully procedural, no textures.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--coral-rock" role="img" aria-label="Coral Rock preset"></div>
+                    <h4>Coral Rock</h4>
+                    <p>Porous coral stone with real geometric displacement &mdash; Voronoi cells and layered noise carve the surface.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--galaxy-marble" role="img" aria-label="Galaxy Marble preset"></div>
+                    <h4>Galaxy Marble</h4>
+                    <p>Black marble with swirling cosmic veins in violet and gold, from a distorted multi-stop colour ramp.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--anime-genshin-hero" role="img" aria-label="Anime Cel-Shaded preset"></div>
+                    <h4>Anime Cel-Shaded</h4>
+                    <p>Hard NdotL shadow bands and a rim light &mdash; crisp cel-shading driven by the light angle, no node wiring.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--watercolor" role="img" aria-label="Watercolor preset"></div>
+                    <h4>Watercolor</h4>
+                    <p>Soft painterly washes with paper-grain breakup &mdash; a stylised, hand-illustrated look.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--wireframe" role="img" aria-label="Wireframe preset"></div>
+                    <h4>Wireframe</h4>
+                    <p>An emissive wireframe overlay from the real mesh edges &mdash; for tech and blueprint renders.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--holo-card" role="img" aria-label="Holographic Card preset"></div>
+                    <h4>Holographic Card</h4>
+                    <p>Your artwork under a view-dependent rainbow foil that scrolls as the card turns &mdash; five switchable foil patterns.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--plasma-core" role="img" aria-label="Plasma Core preset"></div>
+                    <h4>Plasma Core</h4>
+                    <p>Roiling emissive plasma &mdash; a molten ball of energy driven by animated noise.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--burn-dissolve" role="img" aria-label="Burn Dissolve preset"></div>
+                    <h4>Burn Dissolve</h4>
+                    <p>A procedural burn-away with a glowing ember edge &mdash; one slider drives the dissolve from 0 to 100%.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--oil-slick" role="img" aria-label="Iridescent Oil Slick preset"></div>
+                    <h4>Iridescent Oil Slick</h4>
+                    <p>A wet black surface with petrol-rainbow swirls, masked by Fresnel so the colour rides the grazing angle.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--mirror" role="img" aria-label="Chrome Mirror preset"></div>
+                    <h4>Chrome Mirror</h4>
+                    <p>Flawless specular chrome &mdash; a quick way to check lighting and reflections on a model.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--inverted-checker" role="img" aria-label="Inverted Checker preset"></div>
+                    <h4>Inverted Checker</h4>
+                    <p>A crisp UV checker &mdash; instant scale and seam reference while you work.</p>
+                </div>
+            </div>
         </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--mars" role="img" aria-label="Mars Regolith preset"></div>
-          <h4>Mars Regolith</h4>
-          <p>Iron-oxide dust with drift mottling and a dry, rocky micro-surface &mdash; fully procedural, no textures.</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--coral-rock" role="img" aria-label="Coral Rock preset"></div>
-          <h4>Coral Rock</h4>
-          <p>Porous coral stone with real geometric displacement &mdash; Voronoi cells and layered noise carve the surface.</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--galaxy-marble" role="img" aria-label="Galaxy Marble preset"></div>
-          <h4>Galaxy Marble</h4>
-          <p>Black marble with swirling cosmic veins in violet and gold, from a distorted multi-stop colour ramp.</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--anime-genshin-hero" role="img" aria-label="Anime Cel-Shaded preset"></div>
-          <h4>Anime Cel-Shaded</h4>
-          <p>Hard NdotL shadow bands and a rim light &mdash; crisp cel-shading driven by the light angle, no node wiring.</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--watercolor" role="img" aria-label="Watercolor preset"></div>
-          <h4>Watercolor</h4>
-          <p>Soft painterly washes with paper-grain breakup &mdash; a stylised, hand-illustrated look.</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--wireframe" role="img" aria-label="Wireframe preset"></div>
-          <h4>Wireframe</h4>
-          <p>An emissive wireframe overlay from the real mesh edges &mdash; for tech and blueprint renders.</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--holo-card" role="img" aria-label="Holographic Card preset"></div>
-          <h4>Holographic Card</h4>
-          <p>Your artwork under a view-dependent rainbow foil that scrolls as the card turns &mdash; five switchable foil patterns.</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--plasma-core" role="img" aria-label="Plasma Core preset"></div>
-          <h4>Plasma Core</h4>
-          <p>Roiling emissive plasma &mdash; a molten ball of energy driven by animated noise.</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--burn-dissolve" role="img" aria-label="Burn Dissolve preset"></div>
-          <h4>Burn Dissolve</h4>
-          <p>A procedural burn-away with a glowing ember edge &mdash; one slider drives the dissolve from 0 to 100%.</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--oil-slick" role="img" aria-label="Iridescent Oil Slick preset"></div>
-          <h4>Iridescent Oil Slick</h4>
-          <p>A wet black surface with petrol-rainbow swirls, masked by Fresnel so the colour rides the grazing angle.</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--mirror" role="img" aria-label="Chrome Mirror preset"></div>
-          <h4>Chrome Mirror</h4>
-          <p>Flawless specular chrome &mdash; a quick way to check lighting and reflections on a model.</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--inverted-checker" role="img" aria-label="Inverted Checker preset"></div>
-          <h4>Inverted Checker</h4>
-          <p>A crisp UV checker &mdash; instant scale and seam reference while you work.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section ctaband">
-    <div class="ctaband__inner reveal">
-      <h2>All 13 ship in the pack.</h2>
-      <p>Load any of them, open the stack to see how it&rsquo;s built, and remix it into your own look &mdash; then save and share it as a <code>.tlm</code> file.</p>
-      <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Get TLM on Gumroad &mdash; $25</a>
-      <p class="ctaband__note">One-time purchase &middot; free updates &middot; Blender 5.x</p>
-    </div>
-  </section>
+    <section class="section ctaband">
+        <div class="ctaband__inner reveal">
+            <h2>All 13 ship in the pack.</h2>
+            <p>Load any of them, open the stack to see how it&rsquo;s built, and remix it into your own look &mdash; then save and share it as a <code>.tlm</code> file.</p>
+            <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Get TLM on Gumroad &mdash; $19.99</a>
+            <p class="ctaband__note">One-time purchase &middot; free updates &middot; Blender 5.x</p>
+        </div>
+    </section>
 
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__brand">
+                <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
           <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
-        <span>Texture Layer Manager</span>
-      </div>
-      <div class="footer__links">
-        <a href="index.html">Home</a><a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener">Gumroad</a><a href="privacy.html">Privacy</a>
-      </div>
-      <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
-    </div>
-  </footer>
-  <script src="js/main.js"></script>
+                <span>Texture Layer Manager</span>
+            </div>
+            <div class="footer__links">
+                <a href="index.html">Home</a><a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener">Gumroad</a><a href="privacy.html">Privacy</a>
+            </div>
+            <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
 </body>
+
 </html>

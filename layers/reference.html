@@ -1,137 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reference Layer — Texture Layer Manager</title>
-  <meta name="description" content="The Reference layer: reuse one layer's pattern as the source for others, each with its own blend, mask and channel routing. Build a wear mask once and drive colour, metallic, roughness and bump from it — no baking.">
-  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../css/fonts.css">
-  <link rel="stylesheet" href="../css/variables.css">
-  <link rel="stylesheet" href="../css/base.css">
-  <link rel="stylesheet" href="../css/layout.css">
-  <link rel="stylesheet" href="../css/components.css">
-  <link rel="stylesheet" href="../css/sections.css">
-  <link rel="stylesheet" href="../css/bento.css">
-  <link rel="stylesheet" href="../css/animations.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reference Layer — Texture Layer Manager</title>
+    <meta name="description" content="The Reference layer: reuse one layer's pattern as the source for others, each with its own blend, mask and channel routing. Build a wear mask once and drive colour, metallic, roughness and bump from it — no baking.">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/sections.css">
+    <link rel="stylesheet" href="../css/bento.css">
+    <link rel="stylesheet" href="../css/animations.css">
 </head>
+
 <body>
-  <nav class="nav nav--scrolled" id="nav">
-    <div class="nav__inner">
-      <a href="../index.html" class="nav__brand">
-        <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+    <nav class="nav nav--scrolled" id="nav">
+        <div class="nav__inner">
+            <a href="../index.html" class="nav__brand">
+                <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
           <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
-        <span class="nav__brand-text">Texture Layer Manager</span>
-      </a>
-      <div class="nav__links" id="nav-links">
-        <a href="../index.html#overview" class="nav__link">Overview</a>
-        <a href="../index.html#layer-types" class="nav__link">Layers</a>
-        <a href="../features.html" class="nav__link">Features</a>
-        <a href="../index.html#channels" class="nav__link">Output</a>
-        <a href="../index.html#pbr-channels" class="nav__link">PBR</a>
-        <a href="../index.html#export" class="nav__link">Export</a>
-      </div>
-      <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $25</a>
-      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
+                <span class="nav__brand-text">Texture Layer Manager</span>
+            </a>
+            <div class="nav__links" id="nav-links">
+                <a href="../index.html#overview" class="nav__link">Overview</a>
+                <a href="../index.html#layer-types" class="nav__link">Layers</a>
+                <a href="../features.html" class="nav__link">Features</a>
+                <a href="../index.html#channels" class="nav__link">Output</a>
+                <a href="../index.html#pbr-channels" class="nav__link">PBR</a>
+                <a href="../index.html#export" class="nav__link">Export</a>
+            </div>
+            <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $19.99</a>
+            <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
 
-  <header class="section layerhero">
-    <div class="section__inner">
-      <a href="../index.html#layer-types" class="layerhero__back">&larr; All layer types</a>
-      <p class="section__eyebrow reveal">Layer Type &middot; Reference</p>
-      <h1 class="layerhero__title reveal">Reference Layer</h1>
-      <p class="layerhero__lead reveal">Reuse one layer&rsquo;s pattern as the source for others &mdash; each with its own blend, opacity, mask and channel routing. It&rsquo;s how you build a reusable smart material in Blender, with no baking.</p>
-    </div>
-  </header>
+    <header class="section layerhero">
+        <div class="section__inner">
+            <a href="../index.html#layer-types" class="layerhero__back">&larr; All layer types</a>
+            <p class="section__eyebrow reveal">Layer Type &middot; Reference</p>
+            <h1 class="layerhero__title reveal">Reference Layer</h1>
+            <p class="layerhero__lead reveal">Reuse one layer&rsquo;s pattern as the source for others &mdash; each with its own blend, opacity, mask and channel routing. It&rsquo;s how you build a reusable smart material in Blender, with no baking.</p>
+        </div>
+    </header>
 
-  <section class="section">
-    <div class="section__inner layerdetail">
-      <div class="layerdetail__media reveal">
-        <video class="layerclip" controls autoplay muted loop playsinline poster="../assets/images/layers/refSite.png">
+    <section class="section">
+        <div class="section__inner layerdetail">
+            <div class="layerdetail__media reveal">
+                <video class="layerclip" controls autoplay muted loop playsinline poster="../assets/images/layers/refSite.png">
           <source src="../assets/videos/refVideo.mp4" type="video/mp4">
         </video>
-        <p class="layerclip__cap">One chip mask, referenced into base colour, roughness and bump at once.</p>
-      </div>
-      <div class="layerdetail__text reveal">
-        <h2>What it does</h2>
-        <p>A reference layer doesn&rsquo;t generate its own pattern &mdash; it borrows another layer&rsquo;s. The shape is shared, but the reference keeps its own blend mode, opacity, mask and PBR routing, so the same source can behave differently in each place it&rsquo;s used.</p>
-        <p>Build a wear/chip mask once, then reference it to expose bare metal on Metallic, raise Roughness and add relief on Bump. Edit the source later and every layer that references it updates live &mdash; the &ldquo;smart material&rdquo; idea, without a bake step.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section blend-section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Why it matters</p>
-      <h2 class="section__title reveal">One source, many channels &mdash; edited in one place.</h2>
-      <div class="bento bento--grid reveal">
-        <div class="bento__tile"><h3>Reuse, don&rsquo;t copy</h3><p>Point at any layer and share its shape &mdash; no duplicated patterns to keep in sync.</p></div>
-        <div class="bento__tile"><h3>Independent behaviour</h3><p>Each reference has its own blend, opacity and mask.</p></div>
-        <div class="bento__tile"><h3>Any channel</h3><p>One driver can feed colour, metallic, roughness and bump separately.</p></div>
-        <div class="bento__tile"><h3>Edit once</h3><p>Change the source and everything referencing it follows, live.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section masks-section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">In practice</p>
-      <h2 class="section__title reveal">One wear mask drives a worn-paint look.</h2>
-      <div class="branching__grid reveal">
-        <div class="branching__example">
-          <span class="badge">Worn paint</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Driver</span> a Voronoi / edge-wear layer = the chip mask.</li>
-            <li><span class="branching__ch">&rarr; Metallic</span> reference it to expose bare metal on the chips.</li>
-            <li><span class="branching__ch">&rarr; Roughness + Bump</span> reference it again for fresh, raised metal.</li>
-          </ul>
+                <p class="layerclip__cap">One chip mask, referenced into base colour, roughness and bump at once.</p>
+            </div>
+            <div class="layerdetail__text reveal">
+                <h2>What it does</h2>
+                <p>A reference layer doesn&rsquo;t generate its own pattern &mdash; it borrows another layer&rsquo;s. The shape is shared, but the reference keeps its own blend mode, opacity, mask and PBR routing, so the same source can behave differently
+                    in each place it&rsquo;s used.</p>
+                <p>Build a wear/chip mask once, then reference it to expose bare metal on Metallic, raise Roughness and add relief on Bump. Edit the source later and every layer that references it updates live &mdash; the &ldquo;smart material&rdquo; idea,
+                    without a bake step.</p>
+            </div>
         </div>
-        <div class="branching__example">
-          <span class="badge">Good to know</span>
-          <ul class="branching__list">
-            <li><span class="branching__ch">Live</span> &mdash; no baking, no texture round-trips.</li>
-            <li><span class="branching__ch">Acyclic</span> &mdash; a reference can&rsquo;t point at another reference.</li>
-            <li><span class="branching__ch">Raw or composed</span> &mdash; borrow just the source&rsquo;s raw pattern, or its full composited result.</li>
-          </ul>
+    </section>
+
+    <section class="section blend-section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Why it matters</p>
+            <h2 class="section__title reveal">One source, many channels &mdash; edited in one place.</h2>
+            <div class="bento bento--grid reveal">
+                <div class="bento__tile">
+                    <h3>Reuse, don&rsquo;t copy</h3>
+                    <p>Point at any layer and share its shape &mdash; no duplicated patterns to keep in sync.</p>
+                </div>
+                <div class="bento__tile">
+                    <h3>Independent behaviour</h3>
+                    <p>Each reference has its own blend, opacity and mask.</p>
+                </div>
+                <div class="bento__tile">
+                    <h3>Any channel</h3>
+                    <p>One driver can feed colour, metallic, roughness and bump separately.</p>
+                </div>
+                <div class="bento__tile">
+                    <h3>Edit once</h3>
+                    <p>Change the source and everything referencing it follows, live.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <div class="section__inner">
-      <h2 class="section__title reveal">The layer types</h2>
-      <div class="layernav reveal">
-        <a class="layernav__item" href="adjustment.html">Adjustment</a>
-        <a class="layernav__item" href="fill.html">Fill</a>
-        <a class="layernav__item" href="paint.html">Paint</a>
-        <a class="layernav__item" href="procedural.html">Procedural</a>
-        <a class="layernav__item layernav__item--active" href="reference.html">Reference</a>
-      </div>
-      <div style="text-align:center;margin-top:var(--space-8)">
-        <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Get TLM on Gumroad &mdash; $25</a>
-      </div>
-    </div>
-  </section>
+    <section class="section masks-section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">In practice</p>
+            <h2 class="section__title reveal">One wear mask drives a worn-paint look.</h2>
+            <div class="branching__grid reveal">
+                <div class="branching__example">
+                    <span class="badge">Worn paint</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">Driver</span> a Voronoi / edge-wear layer = the chip mask.</li>
+                        <li><span class="branching__ch">&rarr; Metallic</span> reference it to expose bare metal on the chips.</li>
+                        <li><span class="branching__ch">&rarr; Roughness + Bump</span> reference it again for fresh, raised metal.</li>
+                    </ul>
+                </div>
+                <div class="branching__example">
+                    <span class="badge">Good to know</span>
+                    <ul class="branching__list">
+                        <li><span class="branching__ch">Live</span> &mdash; no baking, no texture round-trips.</li>
+                        <li><span class="branching__ch">Acyclic</span> &mdash; a reference can&rsquo;t point at another reference.</li>
+                        <li><span class="branching__ch">Raw or composed</span> &mdash; borrow just the source&rsquo;s raw pattern, or its full composited result.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+    <section class="section">
+        <div class="section__inner">
+            <h2 class="section__title reveal">The layer types</h2>
+            <div class="layernav reveal">
+                <a class="layernav__item" href="adjustment.html">Adjustment</a>
+                <a class="layernav__item" href="fill.html">Fill</a>
+                <a class="layernav__item" href="paint.html">Paint</a>
+                <a class="layernav__item" href="procedural.html">Procedural</a>
+                <a class="layernav__item layernav__item--active" href="reference.html">Reference</a>
+            </div>
+            <div style="text-align:center;margin-top:var(--space-8)">
+                <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Get TLM on Gumroad &mdash; $19.99</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__brand">
+                <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
           <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
-        <span>Texture Layer Manager</span>
-      </div>
-      <div class="footer__links">
-        <a href="../index.html">Home</a><a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener">Gumroad</a><a href="../privacy.html">Privacy</a>
-      </div>
-      <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
-    </div>
-  </footer>
-  <script src="../js/main.js"></script>
+                <span>Texture Layer Manager</span>
+            </div>
+            <div class="footer__links">
+                <a href="../index.html">Home</a><a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener">Gumroad</a><a href="../privacy.html">Privacy</a>
+            </div>
+            <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
 </body>
+
 </html>
