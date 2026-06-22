@@ -1,793 +1,808 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Texture Layer Manager — layer-based material authoring for Blender</title>
-  <meta name="description" content="A layer stack for Blender materials: paint, fill, procedural, adjustment and reference layers route to 8 PBR channels, mask from geometry/light/procedurals, and bake to game-engine sets. Converts to standard Blender nodes — no lock-in.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texture Layer Manager — layer-based material authoring for Blender</title>
+    <meta name="description" content="A layer stack for Blender materials: paint, fill, procedural, adjustment and reference layers route to 8 PBR channels, mask from geometry/light/procedurals, and bake to game-engine sets. Converts to standard Blender nodes — no lock-in.">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Texture Layer Manager for Blender">
-  <meta property="og:description" content="Author Blender materials as a layer stack that routes to PBR channels and compiles to real Blender nodes. No node spaghetti, no lock-in.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/images/og-image.jpg">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Texture Layer Manager for Blender">
+    <meta property="og:description" content="Author Blender materials as a layer stack that routes to PBR channels and compiles to real Blender nodes. No node spaghetti, no lock-in.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/og-image.jpg">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Texture Layer Manager for Blender">
-  <meta name="twitter:description" content="Layer-based PBR material authoring inside Blender, with a one-click bake and full node conversion.">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Texture Layer Manager for Blender">
+    <meta name="twitter:description" content="Layer-based PBR material authoring inside Blender, with a one-click bake and full node conversion.">
 
-  <!-- Favicon -->
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-  <!-- Fonts -->
-  <link rel="stylesheet" href="css/fonts.css">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="css/fonts.css">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/sections.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/bento.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/bento.css">
 </head>
+
 <body>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        NAV
        ════════════════════════════════════════════════════════════════════ -->
-  <nav class="nav" id="nav">
-    <div class="nav__inner">
-      <a href="#" class="nav__brand">
-        <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+    <nav class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="#" class="nav__brand">
+                <svg class="nav__logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
           <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
-        <span class="nav__brand-text">Texture Layer Manager</span>
-      </a>
-      <div class="nav__links" id="nav-links">
-        <a href="#overview" class="nav__link">Overview</a>
-        <a href="#layer-types" class="nav__link">Layers</a>
-        <a href="features.html" class="nav__link">Features</a>
-        <a href="#channels" class="nav__link">Output</a>
-        <a href="#pbr-channels" class="nav__link">PBR</a>
-        <a href="#export" class="nav__link">Export</a>
-      </div>
-      <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $25</a>
-      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu">
+                <span class="nav__brand-text">Texture Layer Manager</span>
+            </a>
+            <div class="nav__links" id="nav-links">
+                <a href="#overview" class="nav__link">Overview</a>
+                <a href="#layer-types" class="nav__link">Layers</a>
+                <a href="features.html" class="nav__link">Features</a>
+                <a href="#channels" class="nav__link">Output</a>
+                <a href="#pbr-channels" class="nav__link">PBR</a>
+                <a href="#export" class="nav__link">Export</a>
+            </div>
+            <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--sm nav__cta">Get TLM &mdash; $19.99</a>
+            <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
-    </div>
-  </nav>
+        </div>
+    </nav>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        HERO
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="hero" id="hero">
-    <div class="hero__inner">
-      <div class="hero__text">
-        <h1 class="hero__title">Build Blender materials<br>in layers, not node trees.</h1>
-        <p class="hero__subtitle">Texture Layer Manager adds a real layer stack to the Blender material editor. Each layer routes to the PBR channels you choose; the addon compiles the stack into a normal Principled BSDF graph behind the scenes &mdash; and converts it to fully editable nodes whenever you want.</p>
-        <div class="hero__ctas">
-          <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Get TLM on Gumroad &mdash; $25</a>
-          <a href="#overview" class="btn btn--outline btn--lg">How it works</a>
-        </div>
-        <p class="hero__trust">Blender 5.x &middot; Full in Cycles, most materials in EEVEE Next &middot; one-time purchase &middot; converts to standard Blender nodes</p>
-        <div class="hero__stats">
-          <div class="hero__stat"><strong>6</strong> Layer Types</div>
-          <div class="hero__stat"><strong>8</strong> PBR Channels</div>
-          <div class="hero__stat"><strong>24</strong> Procedurals</div>
-          <div class="hero__stat"><strong>11</strong> Mask Sources</div>
-          <div class="hero__stat"><strong>19</strong> Blend Modes</div>
-        </div>
-      </div>
-      <div class="hero__media">
-        <div class="media-frame hero__image">
-          <video controls autoplay muted loop playsinline style="width:100%;height:auto;display:block">
+    <section class="hero" id="hero">
+        <div class="hero__inner">
+            <div class="hero__text">
+                <h1 class="hero__title">Build Blender materials<br>in layers, not node trees.</h1>
+                <p class="hero__subtitle">Texture Layer Manager adds a real layer stack to the Blender material editor. Each layer routes to the PBR channels you choose; the addon compiles the stack into a normal Principled BSDF graph behind the scenes &mdash; and converts it
+                    to fully editable nodes whenever you want.</p>
+                <div class="hero__ctas">
+                    <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Get TLM on Gumroad &mdash; $25</a>
+                    <a href="#overview" class="btn btn--outline btn--lg">How it works</a>
+                </div>
+                <p class="hero__trust">Blender 5.x &middot; Full in Cycles, most materials in EEVEE Next &middot; one-time purchase &middot; converts to standard Blender nodes</p>
+                <div class="hero__stats">
+                    <div class="hero__stat"><strong>6</strong> Layer Types</div>
+                    <div class="hero__stat"><strong>8</strong> PBR Channels</div>
+                    <div class="hero__stat"><strong>24</strong> Procedurals</div>
+                    <div class="hero__stat"><strong>11</strong> Mask Sources</div>
+                    <div class="hero__stat"><strong>19</strong> Blend Modes</div>
+                </div>
+            </div>
+            <div class="hero__media">
+                <div class="media-frame hero__image">
+                    <video controls autoplay muted loop playsinline style="width:100%;height:auto;display:block">
             <source src="assets/videos/main.mp4" type="video/mp4">
           </video>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        OVERVIEW — what it is, plainly
        ════════════════════════════════════════════════════════════════════ -->
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        BENTO — core capabilities at a glance (asymmetric)
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section bento-section" id="overview">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">What it does</p>
-      <h2 class="section__title reveal">Author materials as a layer stack.</h2>
-    </div>
-    <div class="bento reveal">
-      <article class="bento__tile bento__tile--lg">
-        <span class="bento__kicker">The idea</span>
-        <h3>Stack layers, TLM builds the nodes.</h3>
-        <p>Stack paint, fill, procedural, adjustment, reference and group layers &mdash; each has an Output that routes it to the channel you pick, and TLM builds the Principled BSDF graph for you.</p>
-        <a href="#layer-types" class="btn btn--outline btn--sm">See the layer types &rarr;</a>
-      </article>
-
-      <article class="bento__tile bento__tile--wide">
-        <span class="bento__kicker">Channels</span>
-        <h3>Drive any of eight PBR channels.</h3>
-        <div class="bento__chips">
-          <span class="bento__chip" style="--chip:#8BC34A">Base Color</span>
-          <span class="bento__chip" style="--chip:#607D8B">Roughness</span>
-          <span class="bento__chip" style="--chip:#9E9E9E">Metallic</span>
-          <span class="bento__chip" style="--chip:#7E57C2">Normal</span>
-          <span class="bento__chip" style="--chip:#5C6BC0">Bump</span>
-          <span class="bento__chip" style="--chip:#FF9800">Emission</span>
-          <span class="bento__chip" style="--chip:#4DD0E1">Transmission</span>
-          <span class="bento__chip" style="--chip:#EF5350">Alpha</span>
+    <section class="section bento-section" id="overview">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">What it does</p>
+            <h2 class="section__title reveal">Author materials as a layer stack.</h2>
         </div>
-      </article>
+        <div class="bento reveal">
+            <article class="bento__tile bento__tile--lg">
+                <span class="bento__kicker">The idea</span>
+                <h3>Stack layers, TLM builds the nodes.</h3>
+                <p>Stack paint, fill, procedural, adjustment, reference and group layers &mdash; each has an Output that routes it to the channel you pick, and TLM builds the Principled BSDF graph for you.</p>
+                <a href="#layer-types" class="btn btn--outline btn--sm">See the layer types &rarr;</a>
+            </article>
 
-      <article class="bento__tile">
-        <span class="bento__kicker">Procedural</span>
-        <h3>24 patterns, no unwrap.</h3>
-      </article>
+            <article class="bento__tile bento__tile--wide">
+                <span class="bento__kicker">Channels</span>
+                <h3>Drive any of eight PBR channels.</h3>
+                <div class="bento__chips">
+                    <span class="bento__chip" style="--chip:#8BC34A">Base Color</span>
+                    <span class="bento__chip" style="--chip:#607D8B">Roughness</span>
+                    <span class="bento__chip" style="--chip:#9E9E9E">Metallic</span>
+                    <span class="bento__chip" style="--chip:#7E57C2">Normal</span>
+                    <span class="bento__chip" style="--chip:#5C6BC0">Bump</span>
+                    <span class="bento__chip" style="--chip:#FF9800">Emission</span>
+                    <span class="bento__chip" style="--chip:#4DD0E1">Transmission</span>
+                    <span class="bento__chip" style="--chip:#EF5350">Alpha</span>
+                </div>
+            </article>
 
-      <article class="bento__tile">
-        <span class="bento__kicker">Reference</span>
-        <h3>One source, many channels.</h3>
-      </article>
+            <article class="bento__tile">
+                <span class="bento__kicker">Procedural</span>
+                <h3>24 patterns, no unwrap.</h3>
+            </article>
 
-      <article class="bento__tile bento__tile--wide">
-        <span class="bento__kicker">No lock-in</span>
-        <h3>Converts to standard Blender nodes.</h3>
-        <p>One button turns the stack into an editable node graph &mdash; the .blend keeps rendering even without the addon.</p>
-      </article>
+            <article class="bento__tile">
+                <span class="bento__kicker">Reference</span>
+                <h3>One source, many channels.</h3>
+            </article>
 
-      <article class="bento__tile">
-        <span class="bento__kicker">Masking</span>
-        <h3>11 live mask sources.</h3>
-        <p>AO, curvature, edge-wear, Fresnel, light angle, procedurals &mdash; no baking.</p>
-      </article>
+            <article class="bento__tile bento__tile--wide">
+                <span class="bento__kicker">No lock-in</span>
+                <h3>Converts to standard Blender nodes.</h3>
+                <p>One button turns the stack into an editable node graph &mdash; the .blend keeps rendering even without the addon.</p>
+            </article>
 
-      <article class="bento__tile">
-        <span class="bento__kicker">Export</span>
-        <h3>Bake game-ready.</h3>
-        <p>Unreal &middot; Unity &middot; glTF, with channel packing.</p>
-      </article>
-    </div>
-  </section>
+            <article class="bento__tile">
+                <span class="bento__kicker">Masking</span>
+                <h3>11 live mask sources.</h3>
+                <p>AO, curvature, edge-wear, Fresnel, light angle, procedurals &mdash; no baking.</p>
+            </article>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+            <article class="bento__tile">
+                <span class="bento__kicker">Export</span>
+                <h3>Bake game-ready.</h3>
+                <p>Unreal &middot; Unity &middot; glTF, with channel packing.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════════
        RESULTS — materials built with TLM, rendered as-is
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Results</p>
-      <h2 class="section__title reveal">Built with TLM.</h2>
-      <p class="section__subtitle reveal">Four of the included presets, rendered in Cycles exactly as they load. Each is an editable layer stack &mdash; open it and change any layer. Some presets ship extra detail or variant layers switched off &mdash; toggle them in the stack.</p>
-      <div class="presets__strip reveal">
-        <div class="presets__card">
-          <div class="presets__preview" style="background-image:url('assets/images/results/coral-rock.jpg')" role="img" aria-label="Coral Rock material"></div>
-          <h4>Coral Rock</h4>
-          <p>5 layers &middot; real geometric displacement.</p>
+    <section class="section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Results</p>
+            <h2 class="section__title reveal">Built with TLM.</h2>
+            <p class="section__subtitle reveal">Four of the included presets, rendered in Cycles exactly as they load. Each is an editable layer stack &mdash; open it and change any layer. Some presets ship extra detail or variant layers switched off &mdash; toggle them in the stack.</p>
+            <div class="presets__strip reveal">
+                <div class="presets__card">
+                    <div class="presets__preview" style="background-image:url('assets/images/results/coral-rock.jpg')" role="img" aria-label="Coral Rock material"></div>
+                    <h4>Coral Rock</h4>
+                    <p>5 layers &middot; real geometric displacement.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview" style="background-image:url('assets/images/results/plasma-core.jpg')" role="img" aria-label="Plasma Core material"></div>
+                    <h4>Plasma Core</h4>
+                    <p>14 layers &middot; emission + transmission.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview" style="background-image:url('assets/images/results/watercolor.jpg')" role="img" aria-label="Watercolor material"></div>
+                    <h4>Watercolor</h4>
+                    <p>6 layers &middot; flat NPR shading.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview" style="background-image:url('assets/images/results/mars.jpg')" role="img" aria-label="Mars material"></div>
+                    <h4>Mars</h4>
+                    <p>12 layers &middot; fully procedural terrain.</p>
+                </div>
+            </div>
         </div>
-        <div class="presets__card">
-          <div class="presets__preview" style="background-image:url('assets/images/results/plasma-core.jpg')" role="img" aria-label="Plasma Core material"></div>
-          <h4>Plasma Core</h4>
-          <p>14 layers &middot; emission + transmission.</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview" style="background-image:url('assets/images/results/watercolor.jpg')" role="img" aria-label="Watercolor material"></div>
-          <h4>Watercolor</h4>
-          <p>6 layers &middot; flat NPR shading.</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview" style="background-image:url('assets/images/results/mars.jpg')" role="img" aria-label="Mars material"></div>
-          <h4>Mars</h4>
-          <p>12 layers &middot; fully procedural terrain.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        STACK → RESULT — the panel and the material it produces
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section blend-section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Stack &rarr; result</p>
-      <h2 class="section__title reveal">The stack behind Coral Rock.</h2>
-      <p class="section__subtitle reveal">The five layers exactly as they sit in the panel &mdash; a fill base, two noises, Voronoi cells and micro grain, each with its own blend mode and opacity &mdash; and the material they produce. No nodes edited by hand.</p>
-      <div class="branching__grid reveal">
-        <div>
-          <div class="media-frame"><img src="assets/images/screenshots/stack-coral-rock.png" alt="The Coral Rock layer stack in the TLM panel" style="width:100%;height:auto;display:block" loading="lazy"></div>
-          <p class="layerclip__cap">The layer stack in the TLM panel.</p>
+    <section class="section blend-section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Stack &rarr; result</p>
+            <h2 class="section__title reveal">The stack behind Coral Rock.</h2>
+            <p class="section__subtitle reveal">The five layers exactly as they sit in the panel &mdash; a fill base, two noises, Voronoi cells and micro grain, each with its own blend mode and opacity &mdash; and the material they produce. No nodes edited by hand.</p>
+            <div class="branching__grid reveal">
+                <div>
+                    <div class="media-frame"><img src="assets/images/screenshots/stack-coral-rock.png" alt="The Coral Rock layer stack in the TLM panel" style="width:100%;height:auto;display:block" loading="lazy"></div>
+                    <p class="layerclip__cap">The layer stack in the TLM panel.</p>
+                </div>
+                <div>
+                    <div class="media-frame"><img src="assets/images/results/coral-rock.jpg" alt="The Coral Rock material rendered in Cycles" style="width:100%;height:auto;display:block" loading="lazy"></div>
+                    <p class="layerclip__cap">The same material, rendered in Cycles.</p>
+                </div>
+            </div>
         </div>
-        <div>
-          <div class="media-frame"><img src="assets/images/results/coral-rock.jpg" alt="The Coral Rock material rendered in Cycles" style="width:100%;height:auto;display:block" loading="lazy"></div>
-          <p class="layerclip__cap">The same material, rendered in Cycles.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        NO LOCK-IN — convert to editable nodes
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section editable-section" id="editable-shader">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">No lock-in</p>
-      <h2 class="section__title reveal">The stack converts to standard Blender nodes.</h2>
-      <p class="section__subtitle reveal">TLM is a faster way to author a material, not a container that traps it. The layers are compiled into an ordinary Principled BSDF node graph, and one button converts that graph into fully editable nodes you can hand-tune, extend, or ship without the addon installed.</p>
+    <section class="section editable-section" id="editable-shader">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">No lock-in</p>
+            <h2 class="section__title reveal">The stack converts to standard Blender nodes.</h2>
+            <p class="section__subtitle reveal">TLM is a faster way to author a material, not a container that traps it. The layers are compiled into an ordinary Principled BSDF node graph, and one button converts that graph into fully editable nodes you can hand-tune, extend, or ship without
+                the addon installed.</p>
 
-      <div class="editable__grid reveal">
-        <div class="editable__panel">
-          <span class="badge">While authoring</span>
-          <h3>Work in layers</h3>
-          <p>Stack and reorder layers, change blend modes, masks, PBR routing and opacity without opening the shader editor. Fast to iterate while the look is still moving, and readable months later because layers have names instead of being a wall of nodes.</p>
-          <ul class="editable__list">
-            <li>Non-destructive &mdash; any layer stays editable</li>
-            <li>Sliders hot-update the existing nodes in place</li>
-            <li>Stacks save in the .blend and export as <code>.tlm</code> presets</li>
-          </ul>
-        </div>
+            <div class="editable__grid reveal">
+                <div class="editable__panel">
+                    <span class="badge">While authoring</span>
+                    <h3>Work in layers</h3>
+                    <p>Stack and reorder layers, change blend modes, masks, PBR routing and opacity without opening the shader editor. Fast to iterate while the look is still moving, and readable months later because layers have names instead of being a
+                        wall of nodes.</p>
+                    <ul class="editable__list">
+                        <li>Non-destructive &mdash; any layer stays editable</li>
+                        <li>Sliders hot-update the existing nodes in place</li>
+                        <li>Stacks save in the .blend and export as <code>.tlm</code> presets</li>
+                    </ul>
+                </div>
 
-        <div class="editable__convert" aria-hidden="true">
-          <span>Convert</span>
-          <svg viewBox="0 0 48 24" width="96" height="48" fill="none" stroke="currentColor" stroke-width="2">
+                <div class="editable__convert" aria-hidden="true">
+                    <span>Convert</span>
+                    <svg viewBox="0 0 48 24" width="96" height="48" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 12h36"/>
             <path d="m31 4 9 8-9 8"/>
           </svg>
-        </div>
+                </div>
 
-        <div class="editable__panel">
-          <span class="badge">When you&rsquo;re done</span>
-          <h3>Own the node graph</h3>
-          <p>Convert the stack to a normal Blender shader and the result is just nodes: inspect them, add your own, hand-tune values, append the material into another file, or keep working with no dependency on the TLM UI.</p>
-          <ul class="editable__list">
-            <li>No proprietary container, no forced workflow</li>
-            <li>Final materials stay portable inside Blender</li>
-            <li>The .blend keeps rendering even without the addon</li>
-          </ul>
+                <div class="editable__panel">
+                    <span class="badge">When you&rsquo;re done</span>
+                    <h3>Own the node graph</h3>
+                    <p>Convert the stack to a normal Blender shader and the result is just nodes: inspect them, add your own, hand-tune values, append the material into another file, or keep working with no dependency on the TLM UI.</p>
+                    <ul class="editable__list">
+                        <li>No proprietary container, no forced workflow</li>
+                        <li>Final materials stay portable inside Blender</li>
+                        <li>The .blend keeps rendering even without the addon</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        LAYER TYPES
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section layers-section" id="layer-types">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Layer types</p>
-      <h2 class="section__title reveal">Five core layer types.</h2>
-      <p class="section__subtitle reveal">Adjustment, fill, paint, procedural and reference &mdash; click a tab to see what each does and when you&rsquo;d reach for it. (Group layers fold any of them into a collapsible folder.)</p>
-      <div class="layers reveal">
-        <div class="layers__tabs">
-          <button class="layers__tab is-active" data-tab="adjustment">Adjustment</button>
-          <button class="layers__tab" data-tab="fill">Fill</button>
-          <button class="layers__tab" data-tab="paint">Paint</button>
-          <button class="layers__tab" data-tab="procedural">Procedural</button>
-          <button class="layers__tab" data-tab="reference">Reference</button>
+    <section class="section layers-section" id="layer-types">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Layer types</p>
+            <h2 class="section__title reveal">Five core layer types.</h2>
+            <p class="section__subtitle reveal">Adjustment, fill, paint, procedural and reference &mdash; click a tab to see what each does and when you&rsquo;d reach for it. (Group layers fold any of them into a collapsible folder.)</p>
+            <div class="layers reveal">
+                <div class="layers__tabs">
+                    <button class="layers__tab is-active" data-tab="adjustment">Adjustment</button>
+                    <button class="layers__tab" data-tab="fill">Fill</button>
+                    <button class="layers__tab" data-tab="paint">Paint</button>
+                    <button class="layers__tab" data-tab="procedural">Procedural</button>
+                    <button class="layers__tab" data-tab="reference">Reference</button>
+                </div>
+                <div class="layers__content">
+                    <div class="layers__panel is-active" id="tab-adjustment">
+                        <div class="layers__info">
+                            <span class="badge">Adjustment Layer</span>
+                            <h3>Re-grade what&rsquo;s below it</h3>
+                            <p>Five non-destructive operations &mdash; Hue/Saturation, Brightness/Contrast, Levels, Color Balance and Gradient Map &mdash; applied non-destructively to everything beneath. It can target any PBR channel, not just colour.</p>
+                            <p><strong>Reach for it when:</strong> you want to warm a whole stack, knock back an over-bright preset, or grade <em>only</em> the roughness without repainting anything.</p>
+                            <a href="layers/adjustment.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Adjustment layer in detail &rarr;</a>
+                        </div>
+                        <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-adjustment">
+                            <div class="placeholder">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v1m0 16v1m-8-9H3m18 0h-1M5.6 5.6l.7.7m12.4 12.4.7-.7M5.6 18.4l.7-.7M18 5.6l.7.7"/><circle cx="12" cy="12" r="4"/></svg>
+                                <span>Adjustment layer controls</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layers__panel" id="tab-fill">
+                        <div class="layers__info">
+                            <span class="badge">Fill Layer</span>
+                            <h3>A flat, parametric value</h3>
+                            <p>A solid colour plus roughness and metallic values, all editable at any time &mdash; no painting, no image. One fill can drive several channels at once (e.g. base colour + roughness + metallic together).</p>
+                            <p><strong>Reach for it when:</strong> you need the base &ldquo;primer&rdquo; layer almost every material starts from, or a clean tint to grade everything above.</p>
+                            <a href="layers/fill.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Fill layer in detail &rarr;</a>
+                        </div>
+                        <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-fill">
+                            <div class="placeholder">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                <span>Fill layer properties</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layers__panel" id="tab-paint">
+                        <div class="layers__info">
+                            <span class="badge">Paint Layer</span>
+                            <h3>Brush directly onto the model</h3>
+                            <p>A paintable layer backed by its own image texture at the resolution you choose (512&ndash;4096), with full alpha and per-layer blend modes. Because it&rsquo;s an image, it follows the model&rsquo;s UVs.</p>
+                            <p><strong>Reach for it when:</strong> you need something in a specific place &mdash; a logo, a decal, hand-painted dirt or wear that has to sit exactly where you put it.</p>
+                            <a href="layers/paint.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Paint layer in detail &rarr;</a>
+                        </div>
+                        <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-paint">
+                            <div class="placeholder">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m15.232 5.232 3.536 3.536m-2.036-5.036a2.5 2.5 0 0 1 3.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+                                <span>Paint layer in action</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layers__panel" id="tab-procedural">
+                        <div class="layers__info">
+                            <span class="badge">Procedural Layer</span>
+                            <h3>A generated pattern, no unwrap needed</h3>
+                            <p>24 patterns &mdash; Noise, Voronoi, Wave, Marble, Musgrave, Gradient, Brick, Hex, Wood, Tiles, Weave, Cracks, Caustics and more &mdash; each parametric (scale, detail, distortion, colour ramp, coordinate transforms). They generate
+                                in 3D space, so they wrap a model with <strong>no UV unwrap required</strong>. UV is available as an optional coordinate mode when you want the pattern to follow existing UVs.</p>
+                            <p><strong>Reach for it when:</strong> you want resolution-independent surfaces &mdash; stone, fabric, panels, organic noise &mdash; without spending texture memory or unwrapping.</p>
+                            <a href="layers/procedural.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Procedural layer in detail &rarr;</a>
+                        </div>
+                        <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-procedural">
+                            <div class="placeholder">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                                <span>Procedural pattern on a sphere</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layers__panel" id="tab-reference">
+                        <div class="layers__info">
+                            <span class="badge">Reference Layer</span>
+                            <h3>Reuse one pattern across channels</h3>
+                            <p>A reference layer borrows another layer&rsquo;s pattern as its source, then applies its own blend mode, opacity, mask and channel routing. Build a wear mask once and drive base colour, metallic, roughness and bump from it independently
+                                &mdash; a reusable smart-material driver, without baking.</p>
+                            <p><strong>Reach for it when:</strong> one chip mask should simultaneously expose bare metal, raise roughness and add relief. Edit the source once; everything that references it follows.</p>
+                            <a href="layers/reference.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Reference layer in detail &rarr;</a>
+                        </div>
+                        <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-reference">
+                            <div class="placeholder">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3h-3a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/><circle cx="12" cy="12" r="3"/></svg>
+                                <span>Reference layer reusing a pattern</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="layers__content">
-          <div class="layers__panel is-active" id="tab-adjustment">
-            <div class="layers__info">
-              <span class="badge">Adjustment Layer</span>
-              <h3>Re-grade what&rsquo;s below it</h3>
-              <p>Five non-destructive operations &mdash; Hue/Saturation, Brightness/Contrast, Levels, Color Balance and Gradient Map &mdash; applied non-destructively to everything beneath. It can target any PBR channel, not just colour.</p>
-              <p><strong>Reach for it when:</strong> you want to warm a whole stack, knock back an over-bright preset, or grade <em>only</em> the roughness without repainting anything.</p>
-              <a href="layers/adjustment.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Adjustment layer in detail &rarr;</a>
-            </div>
-            <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-adjustment">
-              <div class="placeholder">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v1m0 16v1m-8-9H3m18 0h-1M5.6 5.6l.7.7m12.4 12.4.7-.7M5.6 18.4l.7-.7M18 5.6l.7.7"/><circle cx="12" cy="12" r="4"/></svg>
-                <span>Adjustment layer controls</span>
-              </div>
-            </div>
-          </div>
-          <div class="layers__panel" id="tab-fill">
-            <div class="layers__info">
-              <span class="badge">Fill Layer</span>
-              <h3>A flat, parametric value</h3>
-              <p>A solid colour plus roughness and metallic values, all editable at any time &mdash; no painting, no image. One fill can drive several channels at once (e.g. base colour + roughness + metallic together).</p>
-              <p><strong>Reach for it when:</strong> you need the base &ldquo;primer&rdquo; layer almost every material starts from, or a clean tint to grade everything above.</p>
-              <a href="layers/fill.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Fill layer in detail &rarr;</a>
-            </div>
-            <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-fill">
-              <div class="placeholder">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                <span>Fill layer properties</span>
-              </div>
-            </div>
-          </div>
-          <div class="layers__panel" id="tab-paint">
-            <div class="layers__info">
-              <span class="badge">Paint Layer</span>
-              <h3>Brush directly onto the model</h3>
-              <p>A paintable layer backed by its own image texture at the resolution you choose (512&ndash;4096), with full alpha and per-layer blend modes. Because it&rsquo;s an image, it follows the model&rsquo;s UVs.</p>
-              <p><strong>Reach for it when:</strong> you need something in a specific place &mdash; a logo, a decal, hand-painted dirt or wear that has to sit exactly where you put it.</p>
-              <a href="layers/paint.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Paint layer in detail &rarr;</a>
-            </div>
-            <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-paint">
-              <div class="placeholder">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m15.232 5.232 3.536 3.536m-2.036-5.036a2.5 2.5 0 0 1 3.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
-                <span>Paint layer in action</span>
-              </div>
-            </div>
-          </div>
-          <div class="layers__panel" id="tab-procedural">
-            <div class="layers__info">
-              <span class="badge">Procedural Layer</span>
-              <h3>A generated pattern, no unwrap needed</h3>
-              <p>24 patterns &mdash; Noise, Voronoi, Wave, Marble, Musgrave, Gradient, Brick, Hex, Wood, Tiles, Weave, Cracks, Caustics and more &mdash; each parametric (scale, detail, distortion, colour ramp, coordinate transforms). They generate in 3D space, so they wrap a model with <strong>no UV unwrap required</strong>. UV is available as an optional coordinate mode when you want the pattern to follow existing UVs.</p>
-              <p><strong>Reach for it when:</strong> you want resolution-independent surfaces &mdash; stone, fabric, panels, organic noise &mdash; without spending texture memory or unwrapping.</p>
-              <a href="layers/procedural.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Procedural layer in detail &rarr;</a>
-            </div>
-            <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-procedural">
-              <div class="placeholder">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                <span>Procedural pattern on a sphere</span>
-              </div>
-            </div>
-          </div>
-          <div class="layers__panel" id="tab-reference">
-            <div class="layers__info">
-              <span class="badge">Reference Layer</span>
-              <h3>Reuse one pattern across channels</h3>
-              <p>A reference layer borrows another layer&rsquo;s pattern as its source, then applies its own blend mode, opacity, mask and channel routing. Build a wear mask once and drive base colour, metallic, roughness and bump from it independently &mdash; a reusable smart-material driver, without baking.</p>
-              <p><strong>Reach for it when:</strong> one chip mask should simultaneously expose bare metal, raise roughness and add relief. Edit the source once; everything that references it follows.</p>
-              <a href="layers/reference.html" class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Reference layer in detail &rarr;</a>
-            </div>
-            <div class="media-frame media-frame--4x3 media-frame--layer media-frame--layer-reference">
-              <div class="placeholder">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3h-3a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/><circle cx="12" cy="12" r="3"/></svg>
-                <span>Reference layer reusing a pattern</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        PBR CHANNELS
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section pbr-section" id="channels">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Output</p>
-      <h2 class="section__title reveal">Output: the channel each layer drives.</h2>
-      <p class="section__subtitle reveal">A layer isn&rsquo;t locked to &ldquo;colour&rdquo;. Its <strong>Output</strong> picks the single channel the layer drives &mdash; Base Color, Roughness, Metallic, Emission, Transmission or Alpha. Change the Output and the same layer changes job: move a painted decal from Base Color to <strong>Alpha</strong> and it stops colouring and starts cutting holes.</p>
+    <section class="section pbr-section" id="channels">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Output</p>
+            <h2 class="section__title reveal">Output: the channel each layer drives.</h2>
+            <p class="section__subtitle reveal">A layer isn&rsquo;t locked to &ldquo;colour&rdquo;. Its <strong>Output</strong> picks the single channel the layer drives &mdash; Base Color, Roughness, Metallic, Emission, Transmission or Alpha. Change the Output and the same layer changes
+                job: move a painted decal from Base Color to <strong>Alpha</strong> and it stops colouring and starts cutting holes.</p>
 
-      <div class="proc__showcase reveal">
-        <video class="proc__video" controls autoplay muted loop playsinline poster="assets/images/screenshots/hero.png">
+            <div class="proc__showcase reveal">
+                <video class="proc__video" controls autoplay muted loop playsinline poster="assets/images/screenshots/hero.png">
           <source src="assets/videos/output.mp4" type="video/mp4">
         </video>
-      </div>
+            </div>
 
-      <p class="section__subtitle reveal" style="margin-top:var(--space-8)">Output is just the <em>first</em> routing decision &mdash; one layer can also drive several channels at the same time. That&rsquo;s the PBR Channels panel, next. &darr;</p>
-    </div>
-  </section>
+            <p class="section__subtitle reveal" style="margin-top:var(--space-8)">Output is just the <em>first</em> routing decision &mdash; one layer can also drive several channels at the same time. That&rsquo;s the PBR Channels panel, next. &darr;</p>
+        </div>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        PBR CHANNELS — one layer drives several channels at once
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section pbr-section" id="pbr-channels">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">PBR Channels</p>
-      <h2 class="section__title reveal">One layer can drive several channels at once.</h2>
-      <p class="section__subtitle reveal">The Output sends a layer to <em>one</em> channel. Open its <strong>PBR Channels</strong> panel and you can switch on more &mdash; each with its own image or value, its own blend mode and mask. They stack <em>on top</em> of the Output, so a single layer behaves like a complete little material on its own.</p>
+    <section class="section pbr-section" id="pbr-channels">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">PBR Channels</p>
+            <h2 class="section__title reveal">One layer can drive several channels at once.</h2>
+            <p class="section__subtitle reveal">The Output sends a layer to <em>one</em> channel. Open its <strong>PBR Channels</strong> panel and you can switch on more &mdash; each with its own image or value, its own blend mode and mask. They stack <em>on top</em> of the Output, so a
+                single layer behaves like a complete little material on its own.</p>
 
-      <div class="bento__chips reveal" style="justify-content:center;margin:0 0 var(--space-8)">
-        <span class="bento__chip" style="--chip:#8BC34A">Base Color</span>
-        <span class="bento__chip" style="--chip:#607D8B">Roughness</span>
-        <span class="bento__chip" style="--chip:#9E9E9E">Metallic</span>
-        <span class="bento__chip" style="--chip:#7E57C2">Normal</span>
-        <span class="bento__chip" style="--chip:#5C6BC0">Bump</span>
-        <span class="bento__chip" style="--chip:#FF9800">Emission</span>
-        <span class="bento__chip" style="--chip:#4DD0E1">Transmission</span>
-        <span class="bento__chip" style="--chip:#EF5350">Alpha</span>
-      </div>
+            <div class="bento__chips reveal" style="justify-content:center;margin:0 0 var(--space-8)">
+                <span class="bento__chip" style="--chip:#8BC34A">Base Color</span>
+                <span class="bento__chip" style="--chip:#607D8B">Roughness</span>
+                <span class="bento__chip" style="--chip:#9E9E9E">Metallic</span>
+                <span class="bento__chip" style="--chip:#7E57C2">Normal</span>
+                <span class="bento__chip" style="--chip:#5C6BC0">Bump</span>
+                <span class="bento__chip" style="--chip:#FF9800">Emission</span>
+                <span class="bento__chip" style="--chip:#4DD0E1">Transmission</span>
+                <span class="bento__chip" style="--chip:#EF5350">Alpha</span>
+            </div>
 
-      <div class="proc__showcase reveal">
-        <video class="proc__video" controls autoplay muted loop playsinline poster="assets/images/screenshots/hero.png">
+            <div class="proc__showcase reveal">
+                <video class="proc__video" controls autoplay muted loop playsinline poster="assets/images/screenshots/hero.png">
           <source src="assets/videos/pbr.mp4" type="video/mp4">
         </video>
-      </div>
+            </div>
 
-      <p class="section__subtitle reveal" style="margin-top:var(--space-8)">So one <strong>Fill</strong> can set Base Color, Metallic and Roughness together; one <strong>procedural</strong> can colour the surface, add relief on Bump <em>and</em> a glow on Emission &mdash; all without adding another layer. Output is <em>where</em> the layer routes first; PBR Channels is how it feeds many BSDF inputs at the same time.</p>
-    </div>
-  </section>
+            <p class="section__subtitle reveal" style="margin-top:var(--space-8)">So one <strong>Fill</strong> can set Base Color, Metallic and Roughness together; one <strong>procedural</strong> can colour the surface, add relief on Bump <em>and</em> a glow on Emission &mdash; all without adding another layer. Output is
+                <em>where</em> the layer routes first; PBR Channels is how it feeds many BSDF inputs at the same time.</p>
+        </div>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        BLEND MODES + PER-CHANNEL BRANCHING
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section blend-section" id="workflow">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Compositing</p>
-      <h2 class="section__title reveal">19 blend modes &mdash; and a different one per channel.</h2>
-      <p class="section__subtitle reveal">Each layer has opacity and a blend mode: Multiply grime into crevices, Screen a glow, Overlay detail without washing out what&rsquo;s beneath. The difference here is that a layer can use a <em>different</em> blend mode on each PBR channel.</p>
-      <div class="blend reveal">
-        <div class="blend__group">
-          <h4 class="blend__label">Basic &mdash; everyday compositing</h4>
-          <div class="blend__modes">
-            <span class="blend__pill">Normal</span><span class="blend__pill">Multiply</span>
-            <span class="blend__pill">Screen</span><span class="blend__pill">Overlay</span>
-          </div>
-        </div>
-        <div class="blend__group">
-          <h4 class="blend__label">Light &mdash; brighten &amp; add glow</h4>
-          <div class="blend__modes">
-            <span class="blend__pill">Add</span><span class="blend__pill">Color Dodge</span>
-            <span class="blend__pill">Soft Light</span><span class="blend__pill">Linear Light</span>
-          </div>
-        </div>
-        <div class="blend__group">
-          <h4 class="blend__label">Dark &mdash; deepen &amp; stain</h4>
-          <div class="blend__modes">
-            <span class="blend__pill">Subtract</span><span class="blend__pill">Darken</span>
-            <span class="blend__pill">Color Burn</span>
-          </div>
-        </div>
-        <div class="blend__group">
-          <h4 class="blend__label">Contrast &amp; invert</h4>
-          <div class="blend__modes">
-            <span class="blend__pill">Difference</span><span class="blend__pill">Exclusion</span>
-            <span class="blend__pill">Divide</span><span class="blend__pill">Lighten</span>
-          </div>
-        </div>
-        <div class="blend__group">
-          <h4 class="blend__label">Color &mdash; recolour, keep detail</h4>
-          <div class="blend__modes">
-            <span class="blend__pill">Hue</span><span class="blend__pill">Saturation</span>
-            <span class="blend__pill">Color</span><span class="blend__pill">Luminosity</span>
-          </div>
-        </div>
-      </div>
+    <section class="section blend-section" id="workflow">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Compositing</p>
+            <h2 class="section__title reveal">19 blend modes &mdash; and a different one per channel.</h2>
+            <p class="section__subtitle reveal">Each layer has opacity and a blend mode: Multiply grime into crevices, Screen a glow, Overlay detail without washing out what&rsquo;s beneath. The difference here is that a layer can use a <em>different</em> blend mode on each PBR channel.</p>
+            <div class="blend reveal">
+                <div class="blend__group">
+                    <h4 class="blend__label">Basic &mdash; everyday compositing</h4>
+                    <div class="blend__modes">
+                        <span class="blend__pill">Normal</span><span class="blend__pill">Multiply</span>
+                        <span class="blend__pill">Screen</span><span class="blend__pill">Overlay</span>
+                    </div>
+                </div>
+                <div class="blend__group">
+                    <h4 class="blend__label">Light &mdash; brighten &amp; add glow</h4>
+                    <div class="blend__modes">
+                        <span class="blend__pill">Add</span><span class="blend__pill">Color Dodge</span>
+                        <span class="blend__pill">Soft Light</span><span class="blend__pill">Linear Light</span>
+                    </div>
+                </div>
+                <div class="blend__group">
+                    <h4 class="blend__label">Dark &mdash; deepen &amp; stain</h4>
+                    <div class="blend__modes">
+                        <span class="blend__pill">Subtract</span><span class="blend__pill">Darken</span>
+                        <span class="blend__pill">Color Burn</span>
+                    </div>
+                </div>
+                <div class="blend__group">
+                    <h4 class="blend__label">Contrast &amp; invert</h4>
+                    <div class="blend__modes">
+                        <span class="blend__pill">Difference</span><span class="blend__pill">Exclusion</span>
+                        <span class="blend__pill">Divide</span><span class="blend__pill">Lighten</span>
+                    </div>
+                </div>
+                <div class="blend__group">
+                    <h4 class="blend__label">Color &mdash; recolour, keep detail</h4>
+                    <div class="blend__modes">
+                        <span class="blend__pill">Hue</span><span class="blend__pill">Saturation</span>
+                        <span class="blend__pill">Color</span><span class="blend__pill">Luminosity</span>
+                    </div>
+                </div>
+            </div>
 
-    </div>
-  </section>
+        </div>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        MASKS
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section masks-section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Masking</p>
-      <h2 class="section__title reveal">Eleven mask sources &mdash; from geometry, light or a pattern.</h2>
-      <p class="section__subtitle reveal">A mask is a 0&ndash;1 factor that decides <em>where</em> a layer shows. In TLM every layer can carry one, built from a short pipeline you control: pick a source, optionally combine a second, refine the falloff, and it gates the layer. Most sources read the mesh or the view live &mdash; no baking.</p>
+    <section class="section masks-section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Masking</p>
+            <h2 class="section__title reveal">Eleven mask sources &mdash; from geometry, light or a pattern.</h2>
+            <p class="section__subtitle reveal">A mask is a 0&ndash;1 factor that decides <em>where</em> a layer shows. In TLM every layer can carry one, built from a short pipeline you control: pick a source, optionally combine a second, refine the falloff, and it gates the layer. Most
+                sources read the mesh or the view live &mdash; no baking.</p>
 
-      <div class="workflow__flow reveal" style="margin-bottom: var(--space-12);">
-        <div class="workflow__step">
-          <span class="workflow__badge">1</span>
-          <h4>Pick a source</h4>
-          <p>What the mask reads from &mdash; a painted image, the mesh geometry, the view/light angle, or a procedural pattern.</p>
-        </div>
-        <div class="workflow__arrow" aria-hidden="true">&rarr;</div>
-        <div class="workflow__step">
-          <span class="workflow__badge">2</span>
-          <h4>Combine a second</h4>
-          <p>Optional slot B blended with A &mdash; Multiply, Min, Max, Add, Subtract, Screen or Difference &mdash; each slot independently invertible.</p>
-        </div>
-        <div class="workflow__arrow" aria-hidden="true">&rarr;</div>
-        <div class="workflow__step">
-          <span class="workflow__badge">3</span>
-          <h4>Refine the falloff</h4>
-          <p>Contrast, Levels (in / gamma / out), Softness and Blur &mdash; shape the mask edge without leaving the panel.</p>
-        </div>
-        <div class="workflow__arrow" aria-hidden="true">&rarr;</div>
-        <div class="workflow__step">
-          <span class="workflow__badge">4</span>
-          <h4>Gate the layer</h4>
-          <p>The final factor &times; the layer&rsquo;s opacity decides exactly where the layer contributes.</p>
-        </div>
-      </div>
+            <div class="workflow__flow reveal" style="margin-bottom: var(--space-12);">
+                <div class="workflow__step">
+                    <span class="workflow__badge">1</span>
+                    <h4>Pick a source</h4>
+                    <p>What the mask reads from &mdash; a painted image, the mesh geometry, the view/light angle, or a procedural pattern.</p>
+                </div>
+                <div class="workflow__arrow" aria-hidden="true">&rarr;</div>
+                <div class="workflow__step">
+                    <span class="workflow__badge">2</span>
+                    <h4>Combine a second</h4>
+                    <p>Optional slot B blended with A &mdash; Multiply, Min, Max, Add, Subtract, Screen or Difference &mdash; each slot independently invertible.</p>
+                </div>
+                <div class="workflow__arrow" aria-hidden="true">&rarr;</div>
+                <div class="workflow__step">
+                    <span class="workflow__badge">3</span>
+                    <h4>Refine the falloff</h4>
+                    <p>Contrast, Levels (in / gamma / out), Softness and Blur &mdash; shape the mask edge without leaving the panel.</p>
+                </div>
+                <div class="workflow__arrow" aria-hidden="true">&rarr;</div>
+                <div class="workflow__step">
+                    <span class="workflow__badge">4</span>
+                    <h4>Gate the layer</h4>
+                    <p>The final factor &times; the layer&rsquo;s opacity decides exactly where the layer contributes.</p>
+                </div>
+            </div>
 
-      <h3 class="masks__subhead reveal">The 11 sources</h3>
-      <div class="blend reveal">
-        <div class="blend__group">
-          <h4 class="blend__label">From the mesh &mdash; live, no bake</h4>
-          <div class="blend__modes">
-            <span class="blend__pill">Ambient Occlusion</span><span class="blend__pill">Pointiness</span>
-            <span class="blend__pill">Curvature</span><span class="blend__pill">Edge Wear</span>
-            <span class="blend__pill">Dirt</span><span class="blend__pill">Wireframe</span>
-          </div>
-        </div>
-        <div class="blend__group">
-          <h4 class="blend__label">From view &amp; light &mdash; angle-reactive</h4>
-          <div class="blend__modes">
-            <span class="blend__pill">Fresnel</span><span class="blend__pill">Light Angle (NdotL)</span>
-            <span class="blend__pill">Half-Vector (NdotH)</span>
-          </div>
-        </div>
-        <div class="blend__group">
-          <h4 class="blend__label">Authored &amp; procedural</h4>
-          <div class="blend__modes">
-            <span class="blend__pill">Image</span><span class="blend__pill">Voronoi</span>
-          </div>
-        </div>
-      </div>
+            <h3 class="masks__subhead reveal">The 11 sources</h3>
+            <div class="blend reveal">
+                <div class="blend__group">
+                    <h4 class="blend__label">From the mesh &mdash; live, no bake</h4>
+                    <div class="blend__modes">
+                        <span class="blend__pill">Ambient Occlusion</span><span class="blend__pill">Pointiness</span>
+                        <span class="blend__pill">Curvature</span><span class="blend__pill">Edge Wear</span>
+                        <span class="blend__pill">Dirt</span><span class="blend__pill">Wireframe</span>
+                    </div>
+                </div>
+                <div class="blend__group">
+                    <h4 class="blend__label">From view &amp; light &mdash; angle-reactive</h4>
+                    <div class="blend__modes">
+                        <span class="blend__pill">Fresnel</span><span class="blend__pill">Light Angle (NdotL)</span>
+                        <span class="blend__pill">Half-Vector (NdotH)</span>
+                    </div>
+                </div>
+                <div class="blend__group">
+                    <h4 class="blend__label">Authored &amp; procedural</h4>
+                    <div class="blend__modes">
+                        <span class="blend__pill">Image</span><span class="blend__pill">Voronoi</span>
+                    </div>
+                </div>
+            </div>
 
-      <p class="masks__extra reveal">Two ways to <em>apply</em> a mask: a <strong>layer mask</strong> gates one layer (white reveals, black conceals), or a <strong>clipping mask</strong> clips a layer to the one below. Image masks project Flat, Box (triplanar), Sphere or Tube.</p>
+            <p class="masks__extra reveal">Two ways to <em>apply</em> a mask: a <strong>layer mask</strong> gates one layer (white reveals, black conceals), or a <strong>clipping mask</strong> clips a layer to the one below. Image masks project Flat, Box (triplanar), Sphere or Tube.</p>
 
-    </div>
-  </section>
+        </div>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        PROCEDURALS
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section proc-section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Procedurals</p>
-      <h2 class="section__title reveal">24 patterns, swapped from a dropdown.</h2>
-      <p class="section__subtitle reveal">Noise, Voronoi, Marble, Wave, Gabor, Cracks, Wood, Tiles, Weave and more &mdash; all parametric and resolution-independent. Change the type or any value and the viewport updates without rebuilding the node tree. They generate in 3D space, so no unwrap is required (UV is optional, for when you want the pattern to follow existing UVs).</p>
+    <section class="section proc-section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Procedurals</p>
+            <h2 class="section__title reveal">24 patterns, swapped from a dropdown.</h2>
+            <p class="section__subtitle reveal">Noise, Voronoi, Marble, Wave, Gabor, Cracks, Wood, Tiles, Weave and more &mdash; all parametric and resolution-independent. Change the type or any value and the viewport updates without rebuilding the node tree. They generate in 3D space,
+                so no unwrap is required (UV is optional, for when you want the pattern to follow existing UVs).</p>
 
-      <div style="text-align:center;margin-top:var(--space-6)">
-        <a href="layers/procedural.html" class="btn btn--primary">All 24 procedurals in detail &rarr;</a>
-      </div>
-    </div>
-  </section>
+            <div style="text-align:center;margin-top:var(--space-6)">
+                <a href="layers/procedural.html" class="btn btn--primary">All 24 procedurals in detail &rarr;</a>
+            </div>
+        </div>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        IMAGE-BASED
        ════════════════════════════════════════════════════════════════════ -->
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        MATERIAL-LEVEL EXTRAS
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Beyond the stack</p>
-      <h2 class="section__title reveal">Displacement, volume and projection.</h2>
-      <p class="section__subtitle reveal">Layers and channels are the core &mdash; but real surfaces also want depth, glass, projection control and finishing touches. They&rsquo;re all in the box.</p>
-      <div class="bento bento--trio reveal">
-        <div class="bento__tile">
-          <span class="bento__kicker">Geometry</span>
-          <h3>Real displacement</h3>
-          <p>True geometric displacement, per-layer or material-level, with adaptive subdivision &mdash; not just a bump fake.</p>
-        </div>
-        <div class="bento__tile">
-          <span class="bento__kicker">Volume</span>
-          <h3>Inside the surface</h3>
-          <p>Material-level absorption and scatter for tinted glass, frosted interiors, fog and translucency.</p>
-        </div>
-        <div class="bento__tile">
-          <span class="bento__kicker">Anti-tiling</span>
-          <h3>Scatter &amp; texture bombing</h3>
-          <p>The Scatter procedural drops cells at random so a surface never visibly tiles &mdash; gravel, freckles, stars.</p>
-        </div>
-      </div>
+    <section class="section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Beyond the stack</p>
+            <h2 class="section__title reveal">Displacement, volume and projection.</h2>
+            <p class="section__subtitle reveal">Layers and channels are the core &mdash; but real surfaces also want depth, glass, projection control and finishing touches. They&rsquo;re all in the box.</p>
+            <div class="bento bento--trio reveal">
+                <div class="bento__tile">
+                    <span class="bento__kicker">Geometry</span>
+                    <h3>Real displacement</h3>
+                    <p>True geometric displacement, per-layer or material-level, with adaptive subdivision &mdash; not just a bump fake.</p>
+                </div>
+                <div class="bento__tile">
+                    <span class="bento__kicker">Volume</span>
+                    <h3>Inside the surface</h3>
+                    <p>Material-level absorption and scatter for tinted glass, frosted interiors, fog and translucency.</p>
+                </div>
+                <div class="bento__tile">
+                    <span class="bento__kicker">Anti-tiling</span>
+                    <h3>Scatter &amp; texture bombing</h3>
+                    <p>The Scatter procedural drops cells at random so a surface never visibly tiles &mdash; gravel, freckles, stars.</p>
+                </div>
+            </div>
 
-      <p class="masks__extra reveal" style="text-align:left;margin:var(--space-10) 0 var(--space-5)">&hellip; plus the controls that quietly do the finishing work:</p>
-      <div class="blend reveal">
-        <div class="blend__group">
-          <h4 class="blend__label">Volume &amp; glass</h4>
-          <div class="blend__modes">
-            <span class="blend__pill">Transmission</span>
-            <span class="blend__pill">Volume absorption</span>
-            <span class="blend__pill">Volume scatter</span>
-            <span class="blend__pill">Material IOR</span>
-          </div>
+            <p class="masks__extra reveal" style="text-align:left;margin:var(--space-10) 0 var(--space-5)">&hellip; plus the controls that quietly do the finishing work:</p>
+            <div class="blend reveal">
+                <div class="blend__group">
+                    <h4 class="blend__label">Volume &amp; glass</h4>
+                    <div class="blend__modes">
+                        <span class="blend__pill">Transmission</span>
+                        <span class="blend__pill">Volume absorption</span>
+                        <span class="blend__pill">Volume scatter</span>
+                        <span class="blend__pill">Material IOR</span>
+                    </div>
+                </div>
+                <div class="blend__group">
+                    <h4 class="blend__label">Projection &amp; coordinates</h4>
+                    <div class="blend__modes">
+                        <span class="blend__pill">Triplanar (anti-stretch)</span>
+                        <span class="blend__pill">Box projection</span>
+                        <span class="blend__pill">Generated / Object / UV</span>
+                        <span class="blend__pill">Polar &middot; Spherical &middot; Swirl &middot; Cylindrical</span>
+                        <span class="blend__pill">View parallax</span>
+                    </div>
+                </div>
+                <div class="blend__group">
+                    <h4 class="blend__label">Control &amp; finishing</h4>
+                    <div class="blend__modes">
+                        <span class="blend__pill">Per-channel blend modes</span>
+                        <span class="blend__pill">Combinable masks (A + B)</span>
+                        <span class="blend__pill">Clipping masks</span>
+                        <span class="blend__pill">Height-based blending</span>
+                        <span class="blend__pill">Multi-stop colour ramps</span>
+                        <span class="blend__pill">Selective emission</span>
+                        <span class="blend__pill">Keyframe opacity</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="blend__group">
-          <h4 class="blend__label">Projection &amp; coordinates</h4>
-          <div class="blend__modes">
-            <span class="blend__pill">Triplanar (anti-stretch)</span>
-            <span class="blend__pill">Box projection</span>
-            <span class="blend__pill">Generated / Object / UV</span>
-            <span class="blend__pill">Polar &middot; Spherical &middot; Swirl &middot; Cylindrical</span>
-            <span class="blend__pill">View parallax</span>
-          </div>
-        </div>
-        <div class="blend__group">
-          <h4 class="blend__label">Control &amp; finishing</h4>
-          <div class="blend__modes">
-            <span class="blend__pill">Per-channel blend modes</span>
-            <span class="blend__pill">Combinable masks (A + B)</span>
-            <span class="blend__pill">Clipping masks</span>
-            <span class="blend__pill">Height-based blending</span>
-            <span class="blend__pill">Multi-stop colour ramps</span>
-            <span class="blend__pill">Selective emission</span>
-            <span class="blend__pill">Keyframe opacity</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section imagefx-section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Your own images</p>
-      <h2 class="section__title reveal">Use an image as a material input.</h2>
-      <p class="section__subtitle reveal">Drop in a photo, a logo or your own artwork as an image layer, then stack procedural and adjustment layers on top to transform it. One ships in the pack:</p>
-      <div class="imagefx__grid reveal">
-        <div class="imagefx__card">
-          <video class="imagefx__media" autoplay muted loop playsinline poster="assets/images/presets/holo-card-poster.jpg">
+    <section class="section imagefx-section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Your own images</p>
+            <h2 class="section__title reveal">Use an image as a material input.</h2>
+            <p class="section__subtitle reveal">Drop in a photo, a logo or your own artwork as an image layer, then stack procedural and adjustment layers on top to transform it. One ships in the pack:</p>
+            <div class="imagefx__grid reveal">
+                <div class="imagefx__card">
+                    <video class="imagefx__media" autoplay muted loop playsinline poster="assets/images/presets/holo-card-poster.jpg">
             <source src="assets/videos/holo-card.mp4" type="video/mp4">
           </video>
-          <div class="imagefx__body">
-            <h4>Holographic Card <span class="imagefx__live">live</span></h4>
-            <p>A view-dependent rainbow foil over your artwork: the bands scroll and shift hue as the card turns, like a real holo card. Five switchable foil patterns.</p>
-          </div>
+                    <div class="imagefx__body">
+                        <h4>Holographic Card <span class="imagefx__live">live</span></h4>
+                        <p>A view-dependent rainbow foil over your artwork: the bands scroll and shift hue as the card turns, like a real holo card. Five switchable foil patterns.</p>
+                    </div>
+                </div>
+                <div class="imagefx__card">
+                    <img src="assets/images/screenshots/stack-holo-card.png" alt="The Holo Card layer stack in the TLM panel: five foil layers with visibility toggles" loading="lazy">
+                    <div class="imagefx__body">
+                        <h4>The stack behind it</h4>
+                        <p>Card art at the bottom, five foil patterns above it &mdash; one visible, four switched off. The eye toggles swap the foil; the colour ramp below drives the rainbow.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="imagefx__card">
-          <img src="assets/images/screenshots/stack-holo-card.png" alt="The Holo Card layer stack in the TLM panel: five foil layers with visibility toggles" loading="lazy">
-          <div class="imagefx__body">
-            <h4>The stack behind it</h4>
-            <p>Card art at the bottom, five foil patterns above it &mdash; one visible, four switched off. The eye toggles swap the foil; the colour ramp below drives the rainbow.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        IMPORT / EXPORT / BAKE
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section io-section" id="export">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Import &amp; bake</p>
-      <h2 class="section__title reveal">Import textures, bake PBR sets.</h2>
-      <div class="io__grid reveal">
-        <div class="io__col">
-          <div class="io__icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-          </div>
-          <h3>Import</h3>
-          <ul class="io__list">
-            <li>Single textures as layers</li>
-            <li>Full PBR sets, auto-detected by suffix</li>
-            <li>Paste from clipboard</li>
-            <li>Load <code>.tlm</code> preset files</li>
-          </ul>
+    <section class="section io-section" id="export">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Import &amp; bake</p>
+            <h2 class="section__title reveal">Import textures, bake PBR sets.</h2>
+            <div class="io__grid reveal">
+                <div class="io__col">
+                    <div class="io__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+                    </div>
+                    <h3>Import</h3>
+                    <ul class="io__list">
+                        <li>Single textures as layers</li>
+                        <li>Full PBR sets, auto-detected by suffix</li>
+                        <li>Paste from clipboard</li>
+                        <li>Load <code>.tlm</code> preset files</li>
+                    </ul>
+                </div>
+                <div class="io__divider"></div>
+                <div class="io__col">
+                    <div class="io__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15V3m0 0-4 4m4-4 4 4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+                    </div>
+                    <h3>Export &amp; bake</h3>
+                    <div class="io__engines">
+                        <span class="badge">Unreal</span><span class="badge">Unity HDRP</span>
+                        <span class="badge">glTF</span><span class="badge">Custom</span>
+                    </div>
+                    <ul class="io__list">
+                        <li>Bake the stack to a flat PBR set</li>
+                        <li>Channel packing (ORM, mask maps)</li>
+                        <li>PNG, JPEG, TIFF, EXR</li>
+                        <li>512&ndash;4096 resolution</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="io__divider"></div>
-        <div class="io__col">
-          <div class="io__icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15V3m0 0-4 4m4-4 4 4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-          </div>
-          <h3>Export &amp; bake</h3>
-          <div class="io__engines">
-            <span class="badge">Unreal</span><span class="badge">Unity HDRP</span>
-            <span class="badge">glTF</span><span class="badge">Custom</span>
-          </div>
-          <ul class="io__list">
-            <li>Bake the stack to a flat PBR set</li>
-            <li>Channel packing (ORM, mask maps)</li>
-            <li>PNG, JPEG, TIFF, EXR</li>
-            <li>512&ndash;4096 resolution</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        PRESETS
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section presets-section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">Included presets</p>
-      <h2 class="section__title reveal">13 included preset materials.</h2>
-      <p class="section__subtitle reveal">The pack ships 13 complete stacks &mdash; photoreal PBR, stylised NPR, image-driven effects and emissive sci-fi. Each is a real, editable layer stack you can use as a starting point or open up to see how it&rsquo;s built. A sample:</p>
-      <div class="presets__strip reveal">
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--anime-genshin-hero" role="img" aria-label="Anime Cel-Shaded preset"></div>
-          <h4>Anime Cel-Shaded</h4>
-          <p>NdotL shadow bands and a rim light &mdash; light-driven cel shading.</p>
+    <section class="section presets-section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">Included presets</p>
+            <h2 class="section__title reveal">13 included preset materials.</h2>
+            <p class="section__subtitle reveal">The pack ships 13 complete stacks &mdash; photoreal PBR, stylised NPR, image-driven effects and emissive sci-fi. Each is a real, editable layer stack you can use as a starting point or open up to see how it&rsquo;s built. A sample:</p>
+            <div class="presets__strip reveal">
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--anime-genshin-hero" role="img" aria-label="Anime Cel-Shaded preset"></div>
+                    <h4>Anime Cel-Shaded</h4>
+                    <p>NdotL shadow bands and a rim light &mdash; light-driven cel shading.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--bronze-verdigris-patina" role="img" aria-label="Bronze Verdigris Patina preset"></div>
+                    <h4>Bronze Verdigris</h4>
+                    <p>Cast bronze with green patina pooling in the cavities and polished high edges.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--galaxy-marble" role="img" aria-label="Galaxy Marble preset"></div>
+                    <h4>Galaxy Marble</h4>
+                    <p>Black marble with swirling cosmic veins in violet and gold.</p>
+                </div>
+                <div class="presets__card">
+                    <div class="presets__preview presets__preview--oil-slick" role="img" aria-label="Iridescent Oil Slick preset"></div>
+                    <h4>Iridescent Oil Slick</h4>
+                    <p>A wet black surface with petrol-rainbow swirls, masked by Fresnel.</p>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:var(--space-10)">
+                <a href="presets.html" class="btn btn--primary btn--lg">Browse all 13 presets &rarr;</a>
+            </div>
         </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--bronze-verdigris-patina" role="img" aria-label="Bronze Verdigris Patina preset"></div>
-          <h4>Bronze Verdigris</h4>
-          <p>Cast bronze with green patina pooling in the cavities and polished high edges.</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--galaxy-marble" role="img" aria-label="Galaxy Marble preset"></div>
-          <h4>Galaxy Marble</h4>
-          <p>Black marble with swirling cosmic veins in violet and gold.</p>
-        </div>
-        <div class="presets__card">
-          <div class="presets__preview presets__preview--oil-slick" role="img" aria-label="Iridescent Oil Slick preset"></div>
-          <h4>Iridescent Oil Slick</h4>
-          <p>A wet black surface with petrol-rainbow swirls, masked by Fresnel.</p>
-        </div>
-      </div>
-      <div style="text-align:center;margin-top:var(--space-10)">
-        <a href="presets.html" class="btn btn--primary btn--lg">Browse all 13 presets &rarr;</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        PRICING
        ════════════════════════════════════════════════════════════════════ -->
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        COMPATIBILITY
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section compat-section">
-    <div class="section__inner">
-      <div class="compat__row reveal">
-        <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Blender 5.x</span></div>
-        <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Cycles (full) &middot; EEVEE Next for most materials &mdash; limits listed in the FAQ</span></div>
-        <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Converts to editable nodes</span></div>
-        <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Windows, macOS, Linux</span></div>
-        <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>No external dependencies</span></div>
-        <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Saves inside the .blend</span></div>
-      </div>
-    </div>
-  </section>
+    <section class="section compat-section">
+        <div class="section__inner">
+            <div class="compat__row reveal">
+                <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Blender 5.x</span></div>
+                <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Cycles (full) &middot; EEVEE Next for most materials &mdash; limits listed in the FAQ</span></div>
+                <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Converts to editable nodes</span></div>
+                <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Windows, macOS, Linux</span></div>
+                <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>No external dependencies</span></div>
+                <div class="compat__item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6 9 17l-5-5"/></svg><span>Saves inside the .blend</span></div>
+            </div>
+        </div>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        FAQ
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section faq-section">
-    <div class="section__inner">
-      <p class="section__eyebrow reveal">FAQ</p>
-      <h2 class="section__title reveal">Common questions.</h2>
-      <div class="faq__grid reveal">
-        <div class="faq__item">
-          <p class="faq__q">Do my materials still work without the addon?</p>
-          <p class="faq__a">Yes. A TLM stack can be converted into standard Blender nodes, so the final shader isn&rsquo;t trapped in a proprietary container &mdash; the .blend keeps rendering normally even if the addon isn&rsquo;t installed.</p>
+    <section class="section faq-section">
+        <div class="section__inner">
+            <p class="section__eyebrow reveal">FAQ</p>
+            <h2 class="section__title reveal">Common questions.</h2>
+            <div class="faq__grid reveal">
+                <div class="faq__item">
+                    <p class="faq__q">Do my materials still work without the addon?</p>
+                    <p class="faq__a">Yes. A TLM stack can be converted into standard Blender nodes, so the final shader isn&rsquo;t trapped in a proprietary container &mdash; the .blend keeps rendering normally even if the addon isn&rsquo;t installed.</p>
+                </div>
+                <div class="faq__item">
+                    <p class="faq__q">Do I have to UV unwrap?</p>
+                    <p class="faq__a">Not for procedural or smart-mask layers &mdash; they work in 3D space with no unwrap. Paint and image layers use the model&rsquo;s existing UVs, and procedurals offer UV as an optional coordinate mode.</p>
+                </div>
+                <div class="faq__item">
+                    <p class="faq__q">Which Blender versions are supported?</p>
+                    <p class="faq__a">Built and tested on Blender 5.x.</p>
+                </div>
+                <div class="faq__item">
+                    <p class="faq__q">Does it render in EEVEE Next?</p>
+                    <p class="faq__a">Cycles renders every material in full. EEVEE Next handles most stacks, with three known limits: heavy emissive stacks (layers routed to Emission) can exceed EEVEE&rsquo;s shader-complexity limit and fall back to flat grey; real geometric
+                        displacement is Cycles-only &mdash; EEVEE shows it as bump; volume absorption and scatter render fully in Cycles only. The workaround is the same for all three: render in Cycles, or bake the material to textures &mdash; baked maps
+                        render identically in every engine.</p>
+                </div>
+                <div class="faq__item">
+                    <p class="faq__q">Will it slow down my viewport?</p>
+                    <p class="faq__a">Editing a value updates the existing nodes in place instead of rebuilding the whole tree, so dragging sliders stays responsive.</p>
+                </div>
+                <div class="faq__item">
+                    <p class="faq__q">Does it export to game engines?</p>
+                    <p class="faq__a">A one-click bake flattens the stack to a PBR set for Unreal, Unity or glTF, with channel packing for ORM-style maps.</p>
+                </div>
+                <div class="faq__item">
+                    <p class="faq__q">Is it a subscription?</p>
+                    <p class="faq__a">No &mdash; one-time purchase with free updates. No account, no login, no recurring fee, and it&rsquo;s fine for commercial work.</p>
+                </div>
+            </div>
         </div>
-        <div class="faq__item">
-          <p class="faq__q">Do I have to UV unwrap?</p>
-          <p class="faq__a">Not for procedural or smart-mask layers &mdash; they work in 3D space with no unwrap. Paint and image layers use the model&rsquo;s existing UVs, and procedurals offer UV as an optional coordinate mode.</p>
-        </div>
-        <div class="faq__item">
-          <p class="faq__q">Which Blender versions are supported?</p>
-          <p class="faq__a">Built and tested on Blender 5.x.</p>
-        </div>
-        <div class="faq__item">
-          <p class="faq__q">Does it render in EEVEE Next?</p>
-          <p class="faq__a">Cycles renders every material in full. EEVEE Next handles most stacks, with three known limits: heavy emissive stacks (layers routed to Emission) can exceed EEVEE&rsquo;s shader-complexity limit and fall back to flat grey; real geometric displacement is Cycles-only &mdash; EEVEE shows it as bump; volume absorption and scatter render fully in Cycles only. The workaround is the same for all three: render in Cycles, or bake the material to textures &mdash; baked maps render identically in every engine.</p>
-        </div>
-        <div class="faq__item">
-          <p class="faq__q">Will it slow down my viewport?</p>
-          <p class="faq__a">Editing a value updates the existing nodes in place instead of rebuilding the whole tree, so dragging sliders stays responsive.</p>
-        </div>
-        <div class="faq__item">
-          <p class="faq__q">Does it export to game engines?</p>
-          <p class="faq__a">A one-click bake flattens the stack to a PBR set for Unreal, Unity or glTF, with channel packing for ORM-style maps.</p>
-        </div>
-        <div class="faq__item">
-          <p class="faq__q">Is it a subscription?</p>
-          <p class="faq__a">No &mdash; one-time purchase with free updates. No account, no login, no recurring fee, and it&rsquo;s fine for commercial work.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        FINAL CTA
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="section ctaband">
-    <div class="ctaband__inner reveal">
-      <h2>Texture in layers. Finish in nodes.</h2>
-      <p>A layer-based PBR workflow inside Blender &mdash; non-destructive, routable to 8 channels, bakeable for any engine, and convertible to standard nodes whenever you want.</p>
-      <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Get TLM on Gumroad &mdash; $25</a>
-      <p class="ctaband__note">One-time purchase &middot; free updates &middot; Blender 5.x</p>
-    </div>
-  </section>
+    <section class="section ctaband">
+        <div class="ctaband__inner reveal">
+            <h2>Texture in layers. Finish in nodes.</h2>
+            <p>A layer-based PBR workflow inside Blender &mdash; non-destructive, routable to 8 channels, bakeable for any engine, and convertible to standard nodes whenever you want.</p>
+            <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Get TLM on Gumroad &mdash; $25</a>
+            <p class="ctaband__note">One-time purchase &middot; free updates &middot; Blender 5.x</p>
+        </div>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════════════════
        FOOTER
        ════════════════════════════════════════════════════════════════════ -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__brand">
+                <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
           <rect width="32" height="32" rx="6" fill="#ff6a3d"/>
           <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">TL</text>
         </svg>
-        <span>Texture Layer Manager</span>
-      </div>
-      <div class="footer__links">
-        <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener">Gumroad</a><a href="privacy.html">Privacy</a>
-      </div>
-      <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
-    </div>
-  </footer>
+                <span>Texture Layer Manager</span>
+            </div>
+            <div class="footer__links">
+                <a href="https://eihort.gumroad.com/l/tlm" target="_blank" rel="noopener">Gumroad</a><a href="privacy.html">Privacy</a>
+            </div>
+            <p class="footer__copy">Made for Blender artists. &copy; 2026 Texture Layer Manager.</p>
+        </div>
+    </footer>
 
-  <script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
