@@ -49,6 +49,8 @@
   color: var(--color-text-sub);
   font-size: var(--text-sm);
   font-weight: 500;
+  transition: color var(--dur-fast);
+}
 .nav__link:hover { color: var(--color-text); }
 
 .nav__cta { margin-left: var(--space-4); }
@@ -61,6 +63,7 @@
 .nav__actions .nav__cta { margin-left: 0; }
 
 .nav__hamburger {
+  display: none;
   flex-direction: column;
   gap: 5px;
   background: none;
