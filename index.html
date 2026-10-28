@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="css/sections.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/bento.css">
+    <link rel="stylesheet" href="css/polish.css?v=6">
 </head>
 
 <body>
@@ -65,6 +66,8 @@
       </button>
         </div>
     </nav>
+
+    <main id="main">
 
     <!-- ════════════════════════════════════════════════════════════════════
        HERO
@@ -174,22 +177,22 @@
             <div class="presets__strip reveal">
                 <div class="presets__card">
                     <div class="presets__preview" style="background-image:url('assets/images/results/coral-rock.jpg')" role="img" aria-label="Coral Rock material"></div>
-                    <h4>Coral Rock</h4>
+                    <h4 role="heading" aria-level="3">Coral Rock</h4>
                     <p>5 layers &middot; real geometric displacement.</p>
                 </div>
                 <div class="presets__card">
                     <div class="presets__preview" style="background-image:url('assets/images/results/plasma-core.jpg')" role="img" aria-label="Plasma Core material"></div>
-                    <h4>Plasma Core</h4>
+                    <h4 role="heading" aria-level="3">Plasma Core</h4>
                     <p>14 layers &middot; emission + transmission.</p>
                 </div>
                 <div class="presets__card">
                     <div class="presets__preview" style="background-image:url('assets/images/results/watercolor.jpg')" role="img" aria-label="Watercolor material"></div>
-                    <h4>Watercolor</h4>
+                    <h4 role="heading" aria-level="3">Watercolor</h4>
                     <p>6 layers &middot; flat NPR shading.</p>
                 </div>
                 <div class="presets__card">
                     <div class="presets__preview" style="background-image:url('assets/images/results/mars.jpg')" role="img" aria-label="Mars material"></div>
-                    <h4>Mars</h4>
+                    <h4 role="heading" aria-level="3">Mars</h4>
                     <p>12 layers &middot; fully procedural terrain.</p>
                 </div>
             </div>
@@ -423,35 +426,35 @@
             <p class="section__subtitle reveal">Each layer has opacity and a blend mode: Multiply grime into crevices, Screen a glow, Overlay detail without washing out what&rsquo;s beneath. The difference here is that a layer can use a <em>different</em> blend mode on each PBR channel.</p>
             <div class="blend reveal">
                 <div class="blend__group">
-                    <h4 class="blend__label">Basic &mdash; everyday compositing</h4>
+                    <h4 role="heading" aria-level="3" class="blend__label">Basic &mdash; everyday compositing</h4>
                     <div class="blend__modes">
                         <span class="blend__pill">Normal</span><span class="blend__pill">Multiply</span>
                         <span class="blend__pill">Screen</span><span class="blend__pill">Overlay</span>
                     </div>
                 </div>
                 <div class="blend__group">
-                    <h4 class="blend__label">Light &mdash; brighten &amp; add glow</h4>
+                    <h4 role="heading" aria-level="3" class="blend__label">Light &mdash; brighten &amp; add glow</h4>
                     <div class="blend__modes">
                         <span class="blend__pill">Add</span><span class="blend__pill">Color Dodge</span>
                         <span class="blend__pill">Soft Light</span><span class="blend__pill">Linear Light</span>
                     </div>
                 </div>
                 <div class="blend__group">
-                    <h4 class="blend__label">Dark &mdash; deepen &amp; stain</h4>
+                    <h4 role="heading" aria-level="3" class="blend__label">Dark &mdash; deepen &amp; stain</h4>
                     <div class="blend__modes">
                         <span class="blend__pill">Subtract</span><span class="blend__pill">Darken</span>
                         <span class="blend__pill">Color Burn</span>
                     </div>
                 </div>
                 <div class="blend__group">
-                    <h4 class="blend__label">Contrast &amp; invert</h4>
+                    <h4 role="heading" aria-level="3" class="blend__label">Contrast &amp; invert</h4>
                     <div class="blend__modes">
                         <span class="blend__pill">Difference</span><span class="blend__pill">Exclusion</span>
                         <span class="blend__pill">Divide</span><span class="blend__pill">Lighten</span>
                     </div>
                 </div>
                 <div class="blend__group">
-                    <h4 class="blend__label">Color &mdash; recolour, keep detail</h4>
+                    <h4 role="heading" aria-level="3" class="blend__label">Color &mdash; recolour, keep detail</h4>
                     <div class="blend__modes">
                         <span class="blend__pill">Hue</span><span class="blend__pill">Saturation</span>
                         <span class="blend__pill">Color</span><span class="blend__pill">Luminosity</span>
@@ -475,25 +478,25 @@
             <div class="workflow__flow reveal" style="margin-bottom: var(--space-12);">
                 <div class="workflow__step">
                     <span class="workflow__badge">1</span>
-                    <h4>Pick a source</h4>
+                    <h4 role="heading" aria-level="3">Pick a source</h4>
                     <p>What the mask reads from &mdash; a painted image, the mesh geometry, the view/light angle, or a procedural pattern.</p>
                 </div>
                 <div class="workflow__arrow" aria-hidden="true">&rarr;</div>
                 <div class="workflow__step">
                     <span class="workflow__badge">2</span>
-                    <h4>Combine a second</h4>
+                    <h4 role="heading" aria-level="3">Combine a second</h4>
                     <p>Optional slot B blended with A &mdash; Multiply, Min, Max, Add, Subtract, Screen or Difference &mdash; each slot independently invertible.</p>
                 </div>
                 <div class="workflow__arrow" aria-hidden="true">&rarr;</div>
                 <div class="workflow__step">
                     <span class="workflow__badge">3</span>
-                    <h4>Refine the falloff</h4>
+                    <h4 role="heading" aria-level="3">Refine the falloff</h4>
                     <p>Contrast, Levels (in / gamma / out), Softness and Blur &mdash; shape the mask edge without leaving the panel.</p>
                 </div>
                 <div class="workflow__arrow" aria-hidden="true">&rarr;</div>
                 <div class="workflow__step">
                     <span class="workflow__badge">4</span>
-                    <h4>Gate the layer</h4>
+                    <h4 role="heading" aria-level="3">Gate the layer</h4>
                     <p>The final factor &times; the layer&rsquo;s opacity decides exactly where the layer contributes.</p>
                 </div>
             </div>
@@ -501,7 +504,7 @@
             <h3 class="masks__subhead reveal">The 11 sources</h3>
             <div class="blend reveal">
                 <div class="blend__group">
-                    <h4 class="blend__label">From the mesh &mdash; live, no bake</h4>
+                    <h4 role="heading" aria-level="3" class="blend__label">From the mesh &mdash; live, no bake</h4>
                     <div class="blend__modes">
                         <span class="blend__pill">Ambient Occlusion</span><span class="blend__pill">Pointiness</span>
                         <span class="blend__pill">Curvature</span><span class="blend__pill">Edge Wear</span>
@@ -509,14 +512,14 @@
                     </div>
                 </div>
                 <div class="blend__group">
-                    <h4 class="blend__label">From view &amp; light &mdash; angle-reactive</h4>
+                    <h4 role="heading" aria-level="3" class="blend__label">From view &amp; light &mdash; angle-reactive</h4>
                     <div class="blend__modes">
                         <span class="blend__pill">Fresnel</span><span class="blend__pill">Light Angle (NdotL)</span>
                         <span class="blend__pill">Half-Vector (NdotH)</span>
                     </div>
                 </div>
                 <div class="blend__group">
-                    <h4 class="blend__label">Authored &amp; procedural</h4>
+                    <h4 role="heading" aria-level="3" class="blend__label">Authored &amp; procedural</h4>
                     <div class="blend__modes">
                         <span class="blend__pill">Image</span><span class="blend__pill">Voronoi</span>
                     </div>
@@ -576,7 +579,7 @@
             <p class="masks__extra reveal" style="text-align:left;margin:var(--space-10) 0 var(--space-5)">&hellip; plus the controls that quietly do the finishing work:</p>
             <div class="blend reveal">
                 <div class="blend__group">
-                    <h4 class="blend__label">Volume &amp; glass</h4>
+                    <h4 role="heading" aria-level="3" class="blend__label">Volume &amp; glass</h4>
                     <div class="blend__modes">
                         <span class="blend__pill">Transmission</span>
                         <span class="blend__pill">Volume absorption</span>
@@ -585,7 +588,7 @@
                     </div>
                 </div>
                 <div class="blend__group">
-                    <h4 class="blend__label">Projection &amp; coordinates</h4>
+                    <h4 role="heading" aria-level="3" class="blend__label">Projection &amp; coordinates</h4>
                     <div class="blend__modes">
                         <span class="blend__pill">Triplanar (anti-stretch)</span>
                         <span class="blend__pill">Box projection</span>
@@ -595,7 +598,7 @@
                     </div>
                 </div>
                 <div class="blend__group">
-                    <h4 class="blend__label">Control &amp; finishing</h4>
+                    <h4 role="heading" aria-level="3" class="blend__label">Control &amp; finishing</h4>
                     <div class="blend__modes">
                         <span class="blend__pill">Per-channel blend modes</span>
                         <span class="blend__pill">Combinable masks (A + B)</span>
@@ -621,14 +624,14 @@
             <source src="assets/videos/holo-card.mp4" type="video/mp4">
           </video>
                     <div class="imagefx__body">
-                        <h4>Holographic Card <span class="imagefx__live">live</span></h4>
+                        <h4 role="heading" aria-level="3">Holographic Card <span class="imagefx__live">live</span></h4>
                         <p>A view-dependent rainbow foil over your artwork: the bands scroll and shift hue as the card turns, like a real holo card. Five switchable foil patterns.</p>
                     </div>
                 </div>
                 <div class="imagefx__card">
                     <img src="assets/images/screenshots/stack-holo-card.png" alt="The Holo Card layer stack in the TLM panel: five foil layers with visibility toggles" loading="lazy">
                     <div class="imagefx__body">
-                        <h4>The stack behind it</h4>
+                        <h4 role="heading" aria-level="3">The stack behind it</h4>
                         <p>Card art at the bottom, five foil patterns above it &mdash; one visible, four switched off. The eye toggles swap the foil; the colour ramp below drives the rainbow.</p>
                     </div>
                 </div>
@@ -688,22 +691,22 @@
             <div class="presets__strip reveal">
                 <div class="presets__card">
                     <div class="presets__preview presets__preview--anime-genshin-hero" role="img" aria-label="Anime Cel-Shaded preset"></div>
-                    <h4>Anime Cel-Shaded</h4>
+                    <h4 role="heading" aria-level="3">Anime Cel-Shaded</h4>
                     <p>NdotL shadow bands and a rim light &mdash; light-driven cel shading.</p>
                 </div>
                 <div class="presets__card">
                     <div class="presets__preview presets__preview--bronze-verdigris-patina" role="img" aria-label="Bronze Verdigris Patina preset"></div>
-                    <h4>Bronze Verdigris</h4>
+                    <h4 role="heading" aria-level="3">Bronze Verdigris</h4>
                     <p>Cast bronze with green patina pooling in the cavities and polished high edges.</p>
                 </div>
                 <div class="presets__card">
                     <div class="presets__preview presets__preview--galaxy-marble" role="img" aria-label="Galaxy Marble preset"></div>
-                    <h4>Galaxy Marble</h4>
+                    <h4 role="heading" aria-level="3">Galaxy Marble</h4>
                     <p>Black marble with swirling cosmic veins in violet and gold.</p>
                 </div>
                 <div class="presets__card">
                     <div class="presets__preview presets__preview--oil-slick" role="img" aria-label="Iridescent Oil Slick preset"></div>
-                    <h4>Iridescent Oil Slick</h4>
+                    <h4 role="heading" aria-level="3">Iridescent Oil Slick</h4>
                     <p>A wet black surface with petrol-rainbow swirls, masked by Fresnel.</p>
                 </div>
             </div>
@@ -791,6 +794,8 @@
     <!-- ════════════════════════════════════════════════════════════════════
        FOOTER
        ════════════════════════════════════════════════════════════════════ -->
+    </main>
+
     <footer class="footer">
         <div class="footer__inner">
             <div class="footer__brand">

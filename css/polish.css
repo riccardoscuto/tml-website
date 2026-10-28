@@ -1,0 +1,269 @@
+/* ══════════════════════════════════════════════════════════════════════
+   CONSERVATIVE POLISH
+   Loaded last on every page. No markup, imagery, video or copy changes:
+   type scale, rhythm, hierarchy, contrast, focus and hover only.
+   ══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Buttons need white text at 4.5:1; the bright accent stays for links. */
+  --color-cta: #cf4616;
+  --color-cta-hover: #b93a12;
+  --color-text-muted: #8f8779;
+  --radius: 10px;
+}
+
+body { font-size: 1.0625rem; }
+
+h1, h2, h3, h4 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+[id] { scroll-margin-top: 96px; }
+
+::selection { background: var(--color-accent); color: #1a0d08; }
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Navigation ─────────────────────────────────────────────────────── */
+.nav__inner {
+  padding: 0.9rem var(--space-6);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+.nav__brand { font-size: 0.875rem; }
+.nav__links { gap: clamp(0.9rem, 1.9vw, 1.4rem); }
+.nav__link { font-size: 0.875rem; }
+.nav__actions { gap: 0.5rem; margin-left: 0.25rem; }
+.nav .btn--sm {
+  min-height: 36px;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.8125rem;
+}
+.nav--scrolled {
+  border-bottom-color: rgba(255, 238, 224, 0.1);
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────── */
+.btn {
+  min-height: 46px;
+  padding: 0.8rem 1.3rem;
+  border-radius: var(--radius);
+  font-size: 0.9375rem;
+  letter-spacing: 0.01em;
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+.btn--primary {
+  background: var(--color-cta);
+  border-color: var(--color-cta);
+  color: #fff;
+}
+.btn--primary:hover {
+  background: var(--color-cta-hover);
+  border-color: var(--color-cta-hover);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(207, 70, 22, 0.24);
+  transform: translateY(-1px);
+}
+.btn--outline {
+  border-color: rgba(255, 238, 224, 0.18);
+  color: var(--color-text-sub);
+}
+.btn--outline:hover {
+  border-color: rgba(255, 238, 224, 0.32);
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.035);
+}
+.btn--sm {
+  min-height: 38px;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.8125rem;
+}
+
+/* The third hero action reads as a quiet link, not a third button. */
+.hero__ctas .btn--outline:last-child {
+  min-height: 0;
+  padding: 0.2rem 0;
+  border: 0;
+  background: none;
+  font-size: 0.875rem;
+  color: var(--color-text-sub);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.hero__ctas .btn--outline:last-child:hover {
+  color: var(--color-accent);
+  background: none;
+  transform: none;
+}
+
+/* ── Hero ───────────────────────────────────────────────────────────── */
+.hero {
+  padding-top: calc(80px + 2rem);
+  padding-bottom: 2.5rem;
+}
+.hero__inner { gap: clamp(2rem, 4vw, 3rem); }
+.hero__title {
+  font-size: clamp(2.6rem, 5.2vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  max-width: 7.8em;
+  margin-bottom: 1.25rem;
+}
+.hero__subtitle {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  max-width: 34rem;
+  margin-bottom: 1.5rem;
+}
+.hero__ctas {
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+.hero__trust {
+  margin-top: 0.25rem;
+  max-width: 54ch;
+  font-size: 0.8125rem;
+  color: var(--color-text-sub);
+  text-wrap: balance;
+}
+.hero__stats {
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+.hero__stat {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.hero__stat strong {
+  font-size: 1.0625rem;
+  margin-bottom: 0.05rem;
+}
+.hero__image {
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Section rhythm ─────────────────────────────────────────────────── */
+.section {
+  padding: clamp(3.5rem, 5vw, 5rem) var(--space-6);
+}
+.section__eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  margin-bottom: 0.75rem;
+}
+.section__title {
+  line-height: 1.06;
+  margin-bottom: 1rem;
+}
+.section__subtitle {
+  font-size: 1.125rem;
+  line-height: 1.65;
+  max-width: 62ch;
+  margin-bottom: 2.75rem;
+}
+
+/* ── Cards and lists ────────────────────────────────────────────────── */
+.presets__card,
+.branching__example,
+.editable__panel,
+.faq__item,
+.masks__card,
+.pbr__card,
+.workflow__step,
+.imagefx__card,
+.bento__tile {
+  border-color: rgba(255, 238, 224, 0.1);
+}
+.presets__card:hover,
+.branching__example:hover,
+.editable__panel:hover,
+.faq__item:hover,
+.masks__card:hover,
+.pbr__card:hover,
+.workflow__step:hover,
+.imagefx__card:hover {
+  border-color: rgba(255, 106, 61, 0.32);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+}
+.presets__card h4 { font-size: 0.9375rem; }
+.presets__card p {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-text-sub);
+}
+.branching__list li {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+.branching__ch { min-width: 104px; }
+.editable__panel p { font-size: 1rem; line-height: 1.7; }
+.faq__q { font-size: 1.0625rem; }
+.faq__a { font-size: 0.9375rem; line-height: 1.7; }
+.badge {
+  font-size: 0.6875rem;
+  letter-spacing: 0.07em;
+  padding: 0.3rem 0.65rem;
+}
+
+/* ── Closing band and footer ────────────────────────────────────────── */
+.ctaband__inner {
+  padding: 3.5rem 2rem;
+  border-radius: 20px;
+}
+.ctaband__inner h2 { margin-bottom: 1rem; }
+.ctaband__inner > p { font-size: 1.0625rem; line-height: 1.65; }
+.ctaband__note { color: var(--color-text-sub); }
+
+.footer { padding: 3rem var(--space-6); }
+.footer__links { gap: 1.25rem; }
+.footer__links a { font-size: 0.875rem; }
+.footer__copy {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* ── Motion, kept quiet ─────────────────────────────────────────────── */
+.reveal {
+  transform: translateY(18px);
+  transition-duration: 700ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .reveal, .presets__card, .branching__example { transition: none; }
+}
+
+/* ── Phone ──────────────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .nav__actions .btn--outline { display: none; }
+}
+
+@media (max-width: 900px) {
+  .nav__inner { padding: 0.8rem 1rem; gap: 1rem; }
+  .nav__brand { font-size: 0.8125rem; }
+  .nav__links { gap: 0.75rem; }
+  .nav__link { font-size: 0.8125rem; }
+  .nav__actions { margin-left: 0.75rem; }
+}
+
+@media (max-width: 767px) {
+  body { font-size: 1rem; }
+  .section { padding: 3rem var(--space-4); }
+  .section__subtitle { font-size: 1.0625rem; margin-bottom: 2.25rem; }
+  .hero__title { font-size: clamp(2.25rem, 10vw, 2.75rem); max-width: 300px; }
+  .hero__ctas { gap: 0.65rem; }
+  .hero__ctas .btn { width: 100%; }
+  .hero__ctas .btn--outline:last-child {
+    width: auto;
+    align-self: flex-start;
+  }
+  .hero__stats { gap: 1rem 1.25rem; }
+  .presets__card p { font-size: 0.75rem; }
+}
